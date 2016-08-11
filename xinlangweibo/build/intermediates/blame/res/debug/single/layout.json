@@ -1,0 +1,198 @@
+[
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\view_keyboardbar.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\view_keyboardbar.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\xlistview_header.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\pullToRefreshSwipeMenuListViewSample\\unspecified\\res\\layout\\xlistview_header.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\status_headview_ad.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\status_headview_ad.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\activity_first.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\activity_first.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_profile.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\fragment_profile.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\view_keyboardpopwindow.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\view_keyboardpopwindow.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_message.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\fragment_message.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\item_card_profile.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\item_card_profile.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\activity_login.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\activity_writestatus.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\activity_writestatus.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\include_actbar.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\include_actbar.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\ic_spitview_vertical.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\ic_spitview_vertical.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\pop_mainact_navright.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\pop_mainact_navright.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\item_staggered_home.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\item_staggered_home.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\activity_status_details.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\activity_status_details.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\pull_to_refresh_header_horizontal.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\pulltorefresh\\unspecified\\res\\layout\\pull_to_refresh_header_horizontal.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\status_details_default_item.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\status_details_default_item.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\item_status.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\item_status.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\include_publisher.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\include_publisher.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\status_details_head.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\status_details_head.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\include_statuscontent.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\include_statuscontent.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_home.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\fragment_home.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\status_footview_loading.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\status_footview_loading.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\status_details_footview_loading.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\status_details_footview_loading.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\include_profile_actbar.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\include_profile_actbar.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\item_message.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\item_message.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\include_item_status_bottom.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\include_item_status_bottom.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\item_toolbtn.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\item_toolbtn.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\textscroll.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\textscroll.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\include_card_status.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\include_card_status.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\item_list_app.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\pullToRefreshSwipeMenuListViewSample\\unspecified\\res\\layout\\item_list_app.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\include_writestatus_bottom.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\include_writestatus_bottom.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\activity_web.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\activity_web.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\item_grid_statusimage.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\item_grid_statusimage.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\activity_list.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\pullToRefreshSwipeMenuListViewSample\\unspecified\\res\\layout\\activity_list.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\include_status_detail.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\include_status_detail.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\pull_to_refresh_header_vertical.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\pulltorefresh\\unspecified\\res\\layout\\pull_to_refresh_header_vertical.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\activity_image_browse.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\activity_image_browse.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\profile_head.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\profile_head.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\ic_spitview_horizontal.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\ic_spitview_horizontal.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\include_status_detail_tab.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\include_status_detail_tab.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_discover.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\fragment_discover.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\include_retweeted_statuscontent.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\include_retweeted_statuscontent.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\item_comments.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\item_comments.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\item_emoticon.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\item_emoticon.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\xlistview_footer.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\pullToRefreshSwipeMenuListViewSample\\unspecified\\res\\layout\\xlistview_footer.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\status_details_footview_bottom.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\status_details_footview_bottom.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\view_emoticonstoolbar.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\view_emoticonstoolbar.xml"
+    }
+]

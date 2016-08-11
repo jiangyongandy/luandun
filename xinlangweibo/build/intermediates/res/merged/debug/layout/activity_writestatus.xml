@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ll_rooview_writestatus"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <include layout="@layout/include_actbar" />
+
+        <ScrollView
+            android:id="@+id/content_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/white" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical" >
+
+                <!-- 编辑框 -->
+
+                <com.jy.xinlangweibo.widget.EmoticonsEditText
+                    android:id="@+id/et_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@null"
+                    android:hint="分享新鲜事..."
+                    android:textColor="@color/txt_light_gray"
+                    android:textSize="16sp" />
+
+                <!-- 图片编辑框 -->
+
+                <com.jy.xinlangweibo.widget.WrapHeightGridView
+                    android:id="@+id/gv_writestatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible" />
+
+                <!-- 转发微博内容（卡片） -->
+
+                <include
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    layout="@layout/include_card_status" />
+            </LinearLayout>
+        </ScrollView>
+        
+        <include layout="@layout/include_writestatus_bottom" />
+
+        <com.jy.xinlangweibo.widget.EmoticonsKeyBoardBar
+            android:id="@+id/EmoticonsKeyBoardBar"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:visibility="gone" >
+        </com.jy.xinlangweibo.widget.EmoticonsKeyBoardBar>
+        
+    </LinearLayout>

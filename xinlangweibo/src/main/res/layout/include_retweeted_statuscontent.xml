@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_retweeted"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_agray"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:visibility="visible" >
+
+    <TextView
+        android:id="@+id/tv_retweeted_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/txt_gray"
+        android:text="油坊桥从前有个人，后来他成shsiis了吴彦祖睡觉睡觉时间就是"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/iv_retweeted_singlecontent"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/psb" />
+
+    <com.jy.xinlangweibo.widget.WrapHeightGridView
+        android:id="@+id/gv_retweeted_contents"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:horizontalSpacing="4dp"
+        android:numColumns="3"
+        android:scrollbars="none"
+        android:verticalSpacing="4dp"
+        android:visibility="gone" >
+    </com.jy.xinlangweibo.widget.WrapHeightGridView>
+
+</LinearLayout>

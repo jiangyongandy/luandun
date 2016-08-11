@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <com.jy.xinlangweibo.widget.PulltorefreshRecyclerView
+        android:id="@+id/id_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.jy.xinlangweibo.widget.CustomActBar
+        android:id="@+id/profile_actbar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+    </com.jy.xinlangweibo.widget.CustomActBar>
+
+</FrameLayout>

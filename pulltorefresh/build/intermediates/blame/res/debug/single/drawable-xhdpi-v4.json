@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "D:\\Xinlangweibo1\\pulltorefresh\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\default_ptr_rotate.png",
+        "source": "D:\\Xinlangweibo1\\pulltorefresh\\src\\main\\res\\drawable-xhdpi\\default_ptr_rotate.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\pulltorefresh\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\common_loading.png",
+        "source": "D:\\Xinlangweibo1\\pulltorefresh\\src\\main\\res\\drawable-xhdpi\\common_loading.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\pulltorefresh\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\indicator_arrow.png",
+        "source": "D:\\Xinlangweibo1\\pulltorefresh\\src\\main\\res\\drawable-xhdpi\\indicator_arrow.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\pulltorefresh\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\default_ptr_flip.png",
+        "source": "D:\\Xinlangweibo1\\pulltorefresh\\src\\main\\res\\drawable-xhdpi\\default_ptr_flip.png"
+    }
+]

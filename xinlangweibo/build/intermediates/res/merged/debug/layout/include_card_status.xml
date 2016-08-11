@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rg_card_status"
+    android:background="@color/bg_agray" 
+    android:visibility="gone" 
+    >
+
+    <ImageView
+        android:id="@+id/iv_card_status"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/timeline_image_loading" />
+
+    <TextView
+        android:id="@+id/tv_card_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="17dp"
+        android:layout_toRightOf="@+id/iv_card_status"
+        android:text="卡片微博的文字内容。。。" />
+
+</RelativeLayout>

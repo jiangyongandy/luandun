@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_titlebar"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="@color/bg_agray"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/nav_left__iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:paddingLeft="16dp"
+        android:src="@drawable/icon_navbarhomeleft_gra2ora_sel" />
+
+    <TextView
+        android:id="@+id/nav_left_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:paddingLeft="16dp"
+        android:text="这是左标题"
+        android:textColor="@drawable/navbar_textcolor_bla2ora_sel"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/nav_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="这是中间标题"
+        android:textColor="@drawable/navbar_textcolor_bla2ora_sel"
+        android:textSize="20sp"
+        android:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/nav_right__iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:paddingRight="16dp"
+        android:src="@drawable/icon_navbarhomeright_gra2ora_sel"
+        android:visibility="visible" />
+
+    <Button
+        android:id="@+id/nav_right_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/timeline_card_small_button_highlighted"
+        android:clickable="true"
+        android:text="右题"
+        android:textColor="@drawable/navbar_textcolor_gray2ora_sel"
+        android:textSize="16sp"
+        android:visibility="gone" />
+
+</RelativeLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ll_item_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/backgro_status_whi2gra_sel"
+        android:clickable="true"
+        android:orientation="vertical" >
+
+        <include layout="@layout/include_publisher" />
+
+        <include layout="@layout/include_statuscontent" />
+
+        <include layout="@layout/include_retweeted_statuscontent" />
+    </LinearLayout>
+
+    <include layout="@layout/include_item_status_bottom" />
+
+</LinearLayout>

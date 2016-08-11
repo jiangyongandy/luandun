@@ -1,0 +1,61 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:id="@+id/contentframe"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/bg_gray" >
+    </FrameLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_gray" />
+
+    <RadioGroup
+        android:id="@+id/rg"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/tabhomeid"
+            style="@style/tabbar"
+            android:checked="true"
+            android:drawableTop="@drawable/icon_tabbarhome_gra2ora_sel"
+            android:text="@string/tablebar_home" />
+
+        <RadioButton
+            android:id="@+id/tabmessageid"
+            style="@style/tabbar"
+            android:drawableTop="@drawable/icon_tabbarmessage_gra2ora_sel"
+            android:text="@string/tab_message" />
+
+        <ImageView
+            android:id="@+id/tabcenterid"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/backgro_tabbarcenter_gra2ora_sel"
+            android:gravity="center"
+            android:src="@drawable/icon_tabbarcenter_gra2ora_sel" />
+
+        <RadioButton
+            android:id="@+id/tabdiscoverid"
+            style="@style/tabbar"
+            android:drawableTop="@drawable/icon_tabbardiscover_gra2ora_sel"
+            android:text="@string/tab_discover" />
+
+        <RadioButton
+            android:id="@+id/tabprofileid"
+            style="@style/tabbar"
+            android:drawableTop="@drawable/icon_tabbarprofile_gra2ora_sel"
+            android:text="@string/tab_profile" />
+    </RadioGroup>
+
+</LinearLayout>

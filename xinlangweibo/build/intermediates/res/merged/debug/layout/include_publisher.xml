@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" 
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/iv_head"
+        android:layout_width="40dp"
+        android:layout_height="40dp" />
+
+    <TextView
+        android:id="@+id/tv_pubname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/iv_head"
+        android:layout_marginLeft="14dp"
+        android:layout_toRightOf="@+id/iv_head"
+        android:textColor="@color/orange"
+        android:text="吴彦祖"
+        style="@style/middle_gray_text"/>
+
+    <TextView
+        android:id="@+id/tv_from"
+        style="@style/small_gray_text"
+        android:layout_below="@+id/tv_pubname"
+        android:layout_marginLeft="14dp"
+        android:layout_toRightOf="@+id/iv_head"
+        android:text="我是油坊桥吴彦祖！"
+        android:textSize="10sp" />
+
+</RelativeLayout>

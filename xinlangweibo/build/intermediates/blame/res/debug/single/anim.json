@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\anim\\scale_unlike.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\anim\\scale_unlike.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\anim\\slide_out_to_bottom.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\pulltorefresh\\unspecified\\res\\anim\\slide_out_to_bottom.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\anim\\slide_in_from_bottom.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\pulltorefresh\\unspecified\\res\\anim\\slide_in_from_bottom.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\anim\\slide_in_from_top.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\pulltorefresh\\unspecified\\res\\anim\\slide_in_from_top.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\anim\\slide_out_to_top.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\pulltorefresh\\unspecified\\res\\anim\\slide_out_to_top.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\anim\\option_entry_from_top.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\anim\\option_entry_from_top.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\anim\\ra_loading.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\anim\\ra_loading.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\anim\\option_entry_from_bottom.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\anim\\option_entry_from_bottom.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\anim\\option_leave_from_bottom.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\anim\\option_leave_from_bottom.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\anim\\option_leave_from_top.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\anim\\option_leave_from_top.xml"
+    }
+]

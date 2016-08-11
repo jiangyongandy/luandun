@@ -1,0 +1,114 @@
+[
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\indicator_bg_bottom.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\pulltorefresh\\unspecified\\res\\drawable\\indicator_bg_bottom.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\indicator_bg_top.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\pulltorefresh\\unspecified\\res\\drawable\\indicator_bg_top.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\headback_roundness.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable\\headback_roundness.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\com_sina_weibo_sdk_button_blue.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\weiboSDK1\\unspecified\\res\\drawable\\com_sina_weibo_sdk_button_blue.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\navbar_textcolor_gray2ora_sel.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable\\navbar_textcolor_gray2ora_sel.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\navbar_textcolor_bla2ora_sel.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable\\navbar_textcolor_bla2ora_sel.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\com_sina_weibo_sdk_login_button_with_frame_logo.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\weiboSDK1\\unspecified\\res\\drawable\\com_sina_weibo_sdk_login_button_with_frame_logo.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_tabbarprofile_gra2ora_sel.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable\\icon_tabbarprofile_gra2ora_sel.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_insert_keyboard.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable\\btn_insert_keyboard.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\backgro_status_whi2gra_sel.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable\\backgro_status_whi2gra_sel.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_insert_topic.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable\\btn_insert_topic.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_navbarhomeright_gra2ora_sel.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable\\icon_navbarhomeright_gra2ora_sel.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\backgro_tabbarcenter_gra2ora_sel.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable\\backgro_tabbarcenter_gra2ora_sel.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\com_sina_weibo_sdk_login_button_with_account_text.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\weiboSDK1\\unspecified\\res\\drawable\\com_sina_weibo_sdk_login_button_with_account_text.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_insert_at.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable\\btn_insert_at.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_insert_more.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable\\btn_insert_more.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_insert_emotion.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable\\btn_insert_emotion.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_tabbardiscover_gra2ora_sel.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable\\icon_tabbardiscover_gra2ora_sel.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_tabbarcenter_gra2ora_sel.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable\\icon_tabbarcenter_gra2ora_sel.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\com_sina_weibo_sdk_login_button_with_original_logo.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\weiboSDK1\\unspecified\\res\\drawable\\com_sina_weibo_sdk_login_button_with_original_logo.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_insert_pics.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable\\btn_insert_pics.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\tabbar_textcolor_bla2ora_sel.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable\\tabbar_textcolor_bla2ora_sel.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_tabbarhome_gra2ora_sel.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable\\icon_tabbarhome_gra2ora_sel.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_navbarhomeleft_gra2ora_sel.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable\\icon_navbarhomeleft_gra2ora_sel.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\com_sina_weibo_sdk_button_grey.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\weiboSDK1\\unspecified\\res\\drawable\\com_sina_weibo_sdk_button_grey.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_navbarback_gra2ora_sel.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable\\icon_navbarback_gra2ora_sel.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_statusunlike_gra2ora_sel.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable\\icon_statusunlike_gra2ora_sel.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_tabbarmessage_gra2ora_sel.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable\\icon_tabbarmessage_gra2ora_sel.xml"
+    }
+]

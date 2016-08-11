@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+    <TextView
+        android:id="@+id/tv_statuses_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="油坊桥从前有个人，后来他成吴彦祖！！！！"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/iv_statuses_singlecontent"
+        android:layout_marginTop="10dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/psb" 
+        android:visibility="gone"/>
+
+    <com.jy.xinlangweibo.widget.WrapHeightGridView
+        android:id="@+id/gv_statuses_contents"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:horizontalSpacing="4dp"
+        android:numColumns="3"
+        android:scrollbars="none"
+        android:verticalSpacing="4dp"
+        android:visibility="gone" >
+    </com.jy.xinlangweibo.widget.WrapHeightGridView>
+
+</LinearLayout>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:id="@+id/ll_item_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/backgro_status_whi2gra_sel"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+        <ImageView
+            android:id="@+id/iv_head"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:id="@+id/tv_pubname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/iv_head"
+            android:layout_marginLeft="14dp"
+            android:layout_toRightOf="@+id/iv_head"
+            android:text="吴彦祖"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_from"
+            style="@style/small_gray_text"
+            android:layout_below="@+id/tv_pubname"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="14dp"
+            android:layout_toRightOf="@+id/iv_head"
+            android:text="我是油坊桥吴彦祖！"
+            android:textColor="@color/txt_light_gray"
+            android:textSize="8sp" />
+
+        <TextView
+            android:id="@+id/tv_statuses_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tv_from"
+            android:layout_below="@+id/iv_head"
+            android:text="油坊桥从前有个人，后来他成吴彦祖！！！！"
+            android:textSize="13sp" />
+
+        <!--
+         <ImageView
+        android:id="@+id/iv_statuses_singlecontent"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignLeft="@+id/tv_statuses_content"
+        android:layout_below="@+id/tv_statuses_content"
+        android:scaleType="centerCrop"
+        android:src="@drawable/psb"
+        android:visibility="visible" />        -->
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/divider_gray" />
+
+</LinearLayout>
