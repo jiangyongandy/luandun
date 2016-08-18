@@ -1,8 +1,5 @@
 package com.jy.xinlangweibo.widget;
 
-import com.jy.xinlangweibo.R;
-
-import cn.swu.pulltorefresh.PullToRefreshListFooter;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +12,9 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.RelativeLayout;
 import android.widget.Scroller;
 import android.widget.TextView;
+
+import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.widget.pulltorefresh.PullToRefreshListFooter;
 
 public class PulltorefreshRecyclerView extends RecyclerView {
 

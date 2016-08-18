@@ -8,50 +8,50 @@ package com.sina.weibo.sdk;
 
 public final class R {
 	public static final class color {
-		public static final int com_sina_weibo_sdk_blue = 0x7f08000d;
-		public static final int com_sina_weibo_sdk_loginview_text_color = 0x7f08000e;
+		public static final int com_sina_weibo_sdk_blue = 0x7f0b0022;
+		public static final int com_sina_weibo_sdk_loginview_text_color = 0x7f0b0023;
 	}
 	public static final class dimen {
-		public static final int activity_horizontal_margin = 0x7f060000;
-		public static final int activity_vertical_margin = 0x7f060001;
-		public static final int com_sina_weibo_sdk_loginview_compound_drawable_padding = 0x7f060006;
-		public static final int com_sina_weibo_sdk_loginview_padding = 0x7f060007;
-		public static final int com_sina_weibo_sdk_loginview_padding_bottom = 0x7f060008;
-		public static final int com_sina_weibo_sdk_loginview_padding_left = 0x7f060009;
-		public static final int com_sina_weibo_sdk_loginview_padding_right = 0x7f06000a;
-		public static final int com_sina_weibo_sdk_loginview_padding_top = 0x7f06000b;
-		public static final int com_sina_weibo_sdk_loginview_text_size = 0x7f06000c;
+		public static final int activity_horizontal_margin = 0x7f060017;
+		public static final int activity_vertical_margin = 0x7f060049;
+		public static final int com_sina_weibo_sdk_loginview_compound_drawable_padding = 0x7f06004e;
+		public static final int com_sina_weibo_sdk_loginview_padding = 0x7f06004f;
+		public static final int com_sina_weibo_sdk_loginview_padding_bottom = 0x7f060050;
+		public static final int com_sina_weibo_sdk_loginview_padding_left = 0x7f060051;
+		public static final int com_sina_weibo_sdk_loginview_padding_right = 0x7f060052;
+		public static final int com_sina_weibo_sdk_loginview_padding_top = 0x7f060053;
+		public static final int com_sina_weibo_sdk_loginview_text_size = 0x7f060054;
 	}
 	public static final class drawable {
-		public static final int com_sina_weibo_sdk_button_blue = 0x7f02000a;
-		public static final int com_sina_weibo_sdk_button_grey = 0x7f02000b;
-		public static final int com_sina_weibo_sdk_login_button_with_account_text = 0x7f02000c;
-		public static final int com_sina_weibo_sdk_login_button_with_frame_logo = 0x7f02000d;
-		public static final int com_sina_weibo_sdk_login_button_with_original_logo = 0x7f02000e;
-		public static final int ic_com_sina_weibo_sdk_button_blue_focused = 0x7f0200b5;
-		public static final int ic_com_sina_weibo_sdk_button_blue_normal = 0x7f0200b6;
-		public static final int ic_com_sina_weibo_sdk_button_blue_pressed = 0x7f0200b7;
-		public static final int ic_com_sina_weibo_sdk_button_grey_focused = 0x7f0200b8;
-		public static final int ic_com_sina_weibo_sdk_button_grey_normal = 0x7f0200b9;
-		public static final int ic_com_sina_weibo_sdk_button_grey_pressed = 0x7f0200ba;
-		public static final int ic_com_sina_weibo_sdk_login_button_with_frame_logo_focused = 0x7f0200bb;
-		public static final int ic_com_sina_weibo_sdk_login_button_with_frame_logo_normal = 0x7f0200bc;
-		public static final int ic_com_sina_weibo_sdk_login_button_with_frame_logo_pressed = 0x7f0200bd;
-		public static final int ic_com_sina_weibo_sdk_login_with_account_text_focused = 0x7f0200be;
-		public static final int ic_com_sina_weibo_sdk_login_with_account_text_normal = 0x7f0200bf;
-		public static final int ic_com_sina_weibo_sdk_login_with_account_text_pressed = 0x7f0200c0;
-		public static final int ic_com_sina_weibo_sdk_login_with_text = 0x7f0200c1;
-		public static final int ic_com_sina_weibo_sdk_logo = 0x7f0200c2;
+		public static final int com_sina_weibo_sdk_button_blue = 0x7f020048;
+		public static final int com_sina_weibo_sdk_button_grey = 0x7f020049;
+		public static final int com_sina_weibo_sdk_login_button_with_account_text = 0x7f02004a;
+		public static final int com_sina_weibo_sdk_login_button_with_frame_logo = 0x7f02004b;
+		public static final int com_sina_weibo_sdk_login_button_with_original_logo = 0x7f02004c;
+		public static final int ic_com_sina_weibo_sdk_button_blue_focused = 0x7f0200f5;
+		public static final int ic_com_sina_weibo_sdk_button_blue_normal = 0x7f0200f6;
+		public static final int ic_com_sina_weibo_sdk_button_blue_pressed = 0x7f0200f7;
+		public static final int ic_com_sina_weibo_sdk_button_grey_focused = 0x7f0200f8;
+		public static final int ic_com_sina_weibo_sdk_button_grey_normal = 0x7f0200f9;
+		public static final int ic_com_sina_weibo_sdk_button_grey_pressed = 0x7f0200fa;
+		public static final int ic_com_sina_weibo_sdk_login_button_with_frame_logo_focused = 0x7f0200fb;
+		public static final int ic_com_sina_weibo_sdk_login_button_with_frame_logo_normal = 0x7f0200fc;
+		public static final int ic_com_sina_weibo_sdk_login_button_with_frame_logo_pressed = 0x7f0200fd;
+		public static final int ic_com_sina_weibo_sdk_login_with_account_text_focused = 0x7f0200fe;
+		public static final int ic_com_sina_weibo_sdk_login_with_account_text_normal = 0x7f0200ff;
+		public static final int ic_com_sina_weibo_sdk_login_with_account_text_pressed = 0x7f020100;
+		public static final int ic_com_sina_weibo_sdk_login_with_text = 0x7f020101;
+		public static final int ic_com_sina_weibo_sdk_logo = 0x7f020102;
 	}
 	public static final class string {
-		public static final int com_sina_weibo_sdk_login = 0x7f050000;
-		public static final int com_sina_weibo_sdk_login_with_weibo_account = 0x7f050001;
-		public static final int com_sina_weibo_sdk_logout = 0x7f050002;
+		public static final int com_sina_weibo_sdk_login = 0x7f050012;
+		public static final int com_sina_weibo_sdk_login_with_weibo_account = 0x7f050013;
+		public static final int com_sina_weibo_sdk_logout = 0x7f050014;
 	}
 	public static final class style {
-		public static final int AppBaseTheme = 0x7f0a0000;
-		public static final int AppTheme = 0x7f0a0001;
-		public static final int com_sina_weibo_sdk_loginview_default_style = 0x7f0a0008;
-		public static final int com_sina_weibo_sdk_loginview_silver_style = 0x7f0a0009;
+		public static final int AppBaseTheme = 0x7f070080;
+		public static final int AppTheme = 0x7f070081;
+		public static final int com_sina_weibo_sdk_loginview_default_style = 0x7f070147;
+		public static final int com_sina_weibo_sdk_loginview_silver_style = 0x7f070148;
 	}
 }

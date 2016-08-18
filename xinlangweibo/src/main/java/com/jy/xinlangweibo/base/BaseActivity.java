@@ -1,15 +1,17 @@
 package com.jy.xinlangweibo.base;
 
 
-import com.jy.xinlangweibo.utils.ACache;
-import com.jy.xinlangweibo.utils.Logger;
-import com.jy.xinlangweibo.utils.ToastUtils;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.WindowManager;
 import android.widget.Toast;
+
+import com.jy.xinlangweibo.utils.ACache;
+import com.jy.xinlangweibo.utils.Logger;
+import com.jy.xinlangweibo.utils.ToastUtils;
 
 public class BaseActivity extends Activity {
 
@@ -24,6 +26,10 @@ public class BaseActivity extends Activity {
 		mCache = ACache.get(this);
 		
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+			WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
+			localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
+		}
 	}
 
 	/**

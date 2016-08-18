@@ -3,7 +3,7 @@
     android:id="@+id/rl_titlebar"
     android:layout_width="match_parent"
     android:layout_height="48dp"
-    android:background="@color/bg_agray"
+    android:background="?attr/themeColor"
     android:orientation="horizontal" >
 
     <ImageView

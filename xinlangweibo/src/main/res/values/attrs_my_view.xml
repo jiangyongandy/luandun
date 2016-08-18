@@ -1,4 +1,9 @@
 <resources>
+
+    <attr name="themeColor" format="reference|color"/>
+    <attr name="themeStatusbarColor" format="reference|color"/>
+
+
     <declare-styleable name="MyView">
         <attr name="exampleString" format="string" />
         <attr name="exampleDimension" format="dimension" />

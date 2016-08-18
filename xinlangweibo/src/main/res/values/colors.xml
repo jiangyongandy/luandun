@@ -2,7 +2,7 @@
 <resources>
 
     <color name="transparent">#00000000</color>
-    <color name="white">#ffffff</color>
+    <color name="white">#ffffffff</color>
     <color name="alpha_white">#49ffffff</color>
     <color name="black">#000000</color>
     <color name="red">#ff403c</color>
@@ -30,5 +30,9 @@
     <color name="toolbar_spilt_line">#CDCDCD</color>
     <color name="toolbar_btn_select">#D9D9D9</color>
     <color name="toolbar_btn_nomal">@color/white</color>
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
 
 </resources>

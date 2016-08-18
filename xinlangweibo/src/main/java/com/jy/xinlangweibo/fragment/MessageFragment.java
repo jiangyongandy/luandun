@@ -1,7 +1,5 @@
 package com.jy.xinlangweibo.fragment;
 
-import java.util.ArrayList;
-
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -9,25 +7,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Toast;
 import android.widget.AdapterView.OnItemLongClickListener;
-
-import cn.swu.pulltorefreshswipemenulistviewsample.PullToRefreshSwipeMenuListView;
-import cn.swu.pulltorefreshswipemenulistviewsample.PullToRefreshSwipeMenuListView.IXListViewListener;
-import cn.swu.pulltorefreshswipemenulistviewsample.PullToRefreshSwipeMenuListView.OnMenuItemClickListener;
-import cn.swu.pulltorefreshswipemenulistviewsample.PullToRefreshSwipeMenuListView.OnSwipeListener;
-import cn.swu.swipemenulistview.SwipeMenu;
-import cn.swu.swipemenulistview.SwipeMenuCreator;
-import cn.swu.swipemenulistview.SwipeMenuItem;
+import android.widget.Toast;
 
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.adapter.MessageAdapter;
 import com.jy.xinlangweibo.base.BaseFragment;
 import com.jy.xinlangweibo.utils.TitleBuilder;
 import com.jy.xinlangweibo.utils.Utils;
+import com.jy.xinlangweibo.widget.pulltorefreshswipemenulistviewsample.PullToRefreshSwipeMenuListView;
+import com.jy.xinlangweibo.widget.swipemenulistview.SwipeMenu;
+import com.jy.xinlangweibo.widget.swipemenulistview.SwipeMenuCreator;
+import com.jy.xinlangweibo.widget.swipemenulistview.SwipeMenuItem;
 import com.sina.weibo.sdk.openapi.models.Status;
 
-public class MessageFragment extends BaseFragment implements IXListViewListener {
+import java.util.ArrayList;
+
+public class MessageFragment extends BaseFragment implements PullToRefreshSwipeMenuListView.IXListViewListener {
 	private View view;
 	private PullToRefreshSwipeMenuListView mListView;
 	private MessageAdapter adapter;
@@ -55,6 +51,23 @@ public class MessageFragment extends BaseFragment implements IXListViewListener 
 		mListView.setPullRefreshEnable(false);
 		mListView.setPullLoadEnable(false);
 		mListView.setXListViewListener(this);
+		mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				System.out.println("onitemclick----------------------");
+			}
+		});
+		// test item long click
+		mListView.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				Toast.makeText(activity, position + " long click",
+						Toast.LENGTH_SHORT).show();
+				return true;
+			}
+		});
 		// mHandler = new Handler();
 
 		// step 1. create a MenuCreator
@@ -95,7 +108,7 @@ public class MessageFragment extends BaseFragment implements IXListViewListener 
 		mListView.setMenuCreator(creator);
 
 		// step 2. listener item click event
-		mListView.setOnMenuItemClickListener(new OnMenuItemClickListener() {
+		mListView.setOnMenuItemClickListener(new PullToRefreshSwipeMenuListView.OnMenuItemClickListener() {
 			@Override
 			public void onMenuItemClick(int position, SwipeMenu menu, int index) {
 					if(index == 0) {
@@ -106,7 +119,7 @@ public class MessageFragment extends BaseFragment implements IXListViewListener 
 		});
 
 		// set SwipeListener
-		mListView.setOnSwipeListener(new OnSwipeListener() {
+		mListView.setOnSwipeListener(new PullToRefreshSwipeMenuListView.OnSwipeListener() {
 
 			@Override
 			public void onSwipeStart(int position) {
@@ -122,17 +135,6 @@ public class MessageFragment extends BaseFragment implements IXListViewListener 
 		// other setting
 		// listView.setCloseInterpolator(new BounceInterpolator());
 
-		// test item long click
-		mListView.setOnItemLongClickListener(new OnItemLongClickListener() {
-
-			@Override
-			public boolean onItemLongClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				Toast.makeText(activity, position + " long click",
-						Toast.LENGTH_SHORT).show();
-				return false;
-			}
-		});
 
 	}
 

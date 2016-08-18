@@ -63,12 +63,12 @@ public class MessageAdapter extends BaseAdapter {
 		imageLoader.displayImage(status.user.avatar_hd, headIv,
 				ImageLoadeOptions.getIvHeadOption());
 
-		messageItem.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-
-			}
-		});
+//		messageItem.setOnClickListener(new View.OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+////				System.out.println("messageItem  onclick--------------");
+//			}
+//		});
 		return vh.getMconvertView();
 	}
 

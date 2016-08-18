@@ -3,6 +3,7 @@ package com.jy.xinlangweibo.activity;
 import android.app.Fragment;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -46,6 +47,15 @@ public class MainActivity extends BaseActivity {
 		super.onDestroy();
 	}
 
+	@Override
+	public boolean dispatchTouchEvent(MotionEvent ev) {
+		try {
+			return super.dispatchTouchEvent(ev);
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
 @Override
 public void onAttachFragment(Fragment fragment) {
 	super.onAttachFragment(fragment);
@@ -73,6 +83,7 @@ public void onAttachFragment(Fragment fragment) {
 		fragmentController.show(0);
 //		底部按钮初始化
 		rg = (RadioGroup) findViewById(R.id.rg);
+		rg.setBackgroundColor(0xffffffff);
 		iv = (ImageView) findViewById(R.id.tabcenterid);
 		rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 

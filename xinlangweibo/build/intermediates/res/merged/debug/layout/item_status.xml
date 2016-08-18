@@ -22,4 +22,8 @@
 
     <include layout="@layout/include_item_status_bottom" />
 
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="8dp"
+        android:background="@color/bg_gray" />
 </LinearLayout>

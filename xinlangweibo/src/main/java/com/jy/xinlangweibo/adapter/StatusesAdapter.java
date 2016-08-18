@@ -1,25 +1,5 @@
 package com.jy.xinlangweibo.adapter;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-
-import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.activity.ImageBrowseActivity;
-import com.jy.xinlangweibo.activity.StatusDetailsActivity;
-import com.jy.xinlangweibo.constant.CustomConstant;
-import com.jy.xinlangweibo.utils.DateUtils;
-import com.jy.xinlangweibo.utils.ImageLoadeOptions;
-import com.jy.xinlangweibo.utils.Logger;
-import com.jy.xinlangweibo.utils.StringUtils;
-import com.jy.xinlangweibo.utils.ToastUtils;
-import com.jy.xinlangweibo.utils.Utils;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
-import com.sina.weibo.sdk.openapi.models.Status;
-import com.sina.weibo.sdk.openapi.models.User;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -38,7 +18,23 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.activity.ImageBrowseActivity;
+import com.jy.xinlangweibo.activity.StatusDetailsActivity;
+import com.jy.xinlangweibo.constant.CustomConstant;
+import com.jy.xinlangweibo.utils.DateUtils;
+import com.jy.xinlangweibo.utils.ImageLoadeOptions;
+import com.jy.xinlangweibo.utils.StringUtils;
+import com.jy.xinlangweibo.utils.Utils;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
+import com.sina.weibo.sdk.openapi.models.Status;
+import com.sina.weibo.sdk.openapi.models.User;
+
+import java.util.ArrayList;
 
 public class StatusesAdapter extends BaseAdapter {
 	private ArrayList<Status> list;
@@ -72,6 +68,7 @@ public class StatusesAdapter extends BaseAdapter {
 		ViewHolder vh;
 		if (convertView == null) {
 			convertView = View.inflate(context, R.layout.item_status, null);
+			convertView.setBackgroundResource(R.color.white);
 			vh = ViewHolder.getViewHolder(convertView);
 			convertView.setTag(vh);
 		} else {

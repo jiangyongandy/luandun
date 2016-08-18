@@ -1,10 +1,7 @@
 package com.jy.xinlangweibo.fragment;
 
-import java.util.ArrayList;
-
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.MeasureSpec;
@@ -16,11 +13,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.PopupWindow;
-import android.widget.Toast;
 import android.widget.PopupWindow.OnDismissListener;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshBase.OnLastItemVisibleListener;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.jy.xinlangweibo.R;
@@ -30,15 +25,15 @@ import com.jy.xinlangweibo.api.SimpleRequestlistener;
 import com.jy.xinlangweibo.base.BaseFragment;
 import com.jy.xinlangweibo.constant.AccessTokenKeeper;
 import com.jy.xinlangweibo.constant.Constants;
-import com.jy.xinlangweibo.utils.InternetConnectUtils;
 import com.jy.xinlangweibo.utils.Logger;
 import com.jy.xinlangweibo.utils.TitleBuilder;
-import com.jy.xinlangweibo.utils.ToastUtils;
 import com.jy.xinlangweibo.utils.Utils;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.exception.WeiboException;
 import com.sina.weibo.sdk.openapi.models.Status;
 import com.sina.weibo.sdk.openapi.models.StatusList;
+
+import java.util.ArrayList;
 
 public class HomeFragment extends BaseFragment {
 	private View view;

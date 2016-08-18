@@ -1,5 +1,9 @@
 [
     {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_ic_menu_paste_mtrl_am_alpha.png"
+    },
+    {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_login_button_with_frame_logo_focused.png",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\weiboSDK1\\unspecified\\res\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_login_button_with_frame_logo_focused.png"
     },
@@ -8,12 +12,236 @@
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_weiqu.png"
     },
     {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_list_pressed_holo_dark.9.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_list_pressed_holo_dark.9.png"
+    },
+    {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_nu.png",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_nu.png"
     },
     {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_ic_commit_search_api_mtrl_alpha.png"
+    },
+    {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_dahaqi.png",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_dahaqi.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_textfield_default_mtrl_alpha.9.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_textfield_default_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_aini.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_aini.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_login_with_account_text_focused.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\weiboSDK1\\unspecified\\res\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_login_with_account_text_focused.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_list_selector_disabled_holo_light.9.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_list_selector_disabled_holo_light.9.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_voice_search_api_mtrl_alpha.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_ic_voice_search_api_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_haixiu.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_haixiu.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_ku.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_ku.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_doge.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_doge.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_travel.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_travel.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_youhengheng.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_youhengheng.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_shuai.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_shuai.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_list_divider_mtrl_alpha.9.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_list_divider_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_landelini.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_landelini.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_bishi.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_bishi.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_textfield_search_activated_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_login_button_with_frame_logo_normal.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\weiboSDK1\\unspecified\\res\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_login_button_with_frame_logo_normal.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_menu_share_mtrl_alpha.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_ic_menu_share_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_kelian.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_kelian.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_clear_mtrl_alpha.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_ic_clear_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_go_search_api_mtrl_alpha.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_ic_go_search_api_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_ab_share_pack_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_yiwen.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_yiwen.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_shayan.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_shayan.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_015.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_btn_check_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_numa.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_numa.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_keai.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_keai.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_haha.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_haha.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_login_with_account_text_normal.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\weiboSDK1\\unspecified\\res\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_login_with_account_text_normal.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_zuohengheng.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_zuohengheng.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_taikaixin.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_taikaixin.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_yinxian.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_yinxian.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_btn_switch_to_on_mtrl_00001.9.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_launcher.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_shuijiao.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_shuijiao.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_nvhaier.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_nvhaier.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_list_pressed_holo_light.9.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_list_pressed_holo_light.9.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_login_with_account_text_pressed.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\weiboSDK1\\unspecified\\res\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_login_with_account_text_pressed.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_hehe.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_hehe.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_shengbing.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_shengbing.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_btn_rating_star_off_mtrl_alpha.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_btn_rating_star_off_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_fangdumianju.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_fangdumianju.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_qinqin.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_qinqin.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_search_api_mtrl_alpha.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_ic_search_api_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_button_blue_normal.9.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\weiboSDK1\\unspecified\\res\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_button_blue_normal.9.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_logo.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\weiboSDK1\\unspecified\\res\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_logo.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_chanzui.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_chanzui.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_kun.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_kun.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_button_blue_pressed.9.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\weiboSDK1\\unspecified\\res\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_button_blue_pressed.9.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_sikao.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_sikao.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_000.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_btn_check_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_list_focused_holo.9.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_list_focused_holo.9.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_ic_menu_copy_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_popup_background_mtrl_mult.9.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_popup_background_mtrl_mult.9.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_cab_background_top_mtrl_alpha.9.png"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_xixi.png",
@@ -24,20 +252,16 @@
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\weiboSDK1\\unspecified\\res\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_login_button_with_frame_logo_pressed.png"
     },
     {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_btn_switch_to_on_mtrl_00012.9.png"
+    },
+    {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_xu.png",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_xu.png"
     },
     {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_aini.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_aini.png"
-    },
-    {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\beautifulrichu.jpg",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\pullToRefreshSwipeMenuListViewSample\\unspecified\\res\\drawable-hdpi-v4\\beautifulrichu.jpg"
-    },
-    {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_login_with_account_text_focused.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\weiboSDK1\\unspecified\\res\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_login_with_account_text_focused.png"
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_btn_radio_to_on_mtrl_015.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_btn_radio_to_on_mtrl_015.png"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_login_with_text.png",
@@ -48,20 +272,12 @@
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_zhuakuang.png"
     },
     {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_haixiu.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_haixiu.png"
-    },
-    {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_xiaoku.png",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_xiaoku.png"
     },
     {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_ku.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_ku.png"
-    },
-    {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_doge.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_doge.png"
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_switch_track_mtrl_alpha.9.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_switch_track_mtrl_alpha.9.png"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_huaxin.png",
@@ -76,36 +292,24 @@
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_lei.png"
     },
     {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_travel.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_travel.png"
-    },
-    {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_zuiyou.png",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_zuiyou.png"
-    },
-    {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_youhengheng.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_youhengheng.png"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_han.png",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_han.png"
     },
     {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_shuai.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_shuai.png"
-    },
-    {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\indicator_arrow.png",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\pulltorefresh\\unspecified\\res\\drawable-hdpi-v4\\indicator_arrow.png"
     },
     {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_landelini.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_landelini.png"
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_textfield_activated_mtrl_alpha.9.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_textfield_activated_mtrl_alpha.9.png"
     },
     {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_bishi.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_bishi.png"
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_ic_menu_cut_mtrl_alpha.png"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_zhutou.png",
@@ -128,40 +332,28 @@
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\weiboSDK1\\unspecified\\res\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_button_blue_focused.9.png"
     },
     {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_login_button_with_frame_logo_normal.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\weiboSDK1\\unspecified\\res\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_login_button_with_frame_logo_normal.png"
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_tab_indicator_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_menu_moreoverflow_mtrl_alpha.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_ic_menu_moreoverflow_mtrl_alpha.png"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_heixian.png",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_heixian.png"
     },
     {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_kelian.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_kelian.png"
-    },
-    {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_lang.png",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_lang.png"
     },
     {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_yiwen.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_yiwen.png"
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_list_longpressed_holo.9.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_list_longpressed_holo.9.png"
     },
     {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_shayan.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_shayan.png"
-    },
-    {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_keai.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_keai.png"
-    },
-    {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_numa.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_numa.png"
-    },
-    {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_haha.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_haha.png"
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_textfield_search_default_mtrl_alpha.9.png"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_chijing.png",
@@ -176,20 +368,8 @@
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_shiwang.png"
     },
     {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_login_with_account_text_normal.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\weiboSDK1\\unspecified\\res\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_login_with_account_text_normal.png"
-    },
-    {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_taikaixin.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_taikaixin.png"
-    },
-    {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_zuohengheng.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_zuohengheng.png"
-    },
-    {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_yinxian.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_yinxian.png"
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_btn_rating_star_on_mtrl_alpha.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_btn_rating_star_on_mtrl_alpha.png"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_bizui.png",
@@ -200,20 +380,28 @@
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_nanhaier.png"
     },
     {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_button_grey_pressed.9.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\weiboSDK1\\unspecified\\res\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_button_grey_pressed.9.png"
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_ab_back_mtrl_am_alpha.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_ic_ab_back_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_list_selector_disabled_holo_dark.9.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_list_selector_disabled_holo_dark.9.png"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_wabishi.png",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_wabishi.png"
     },
     {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_qian.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_qian.png"
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_button_grey_pressed.9.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\weiboSDK1\\unspecified\\res\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_button_grey_pressed.9.png"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_miao.png",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_miao.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_qian.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_qian.png"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_baibai.png",
@@ -228,12 +416,16 @@
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_heng.png"
     },
     {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_shuijiao.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_shuijiao.png"
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_menu_hardkey_panel_mtrl_mult.9.png"
     },
     {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_launcher.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_ic_menu_selectall_mtrl_alpha.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_ic_menu_selectall_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_spinner_mtrl_am_alpha.9.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_spinner_mtrl_am_alpha.9.png"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\default_ptr_flip.png",
@@ -244,14 +436,6 @@
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_shenshou.png"
     },
     {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\xlistview_arrow.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\pullToRefreshSwipeMenuListViewSample\\unspecified\\res\\drawable-hdpi-v4\\xlistview_arrow.png"
-    },
-    {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_nvhaier.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_nvhaier.png"
-    },
-    {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_xiongmao.png",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_xiongmao.png"
     },
@@ -260,83 +444,39 @@
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_jiyan.png"
     },
     {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_login_with_account_text_pressed.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\weiboSDK1\\unspecified\\res\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_login_with_account_text_pressed.png"
-    },
-    {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_hehe.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_hehe.png"
-    },
-    {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_button_grey_focused.9.png",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\weiboSDK1\\unspecified\\res\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_button_grey_focused.9.png"
-    },
-    {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_shengbing.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_shengbing.png"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_button_grey_normal.9.png",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\weiboSDK1\\unspecified\\res\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_button_grey_normal.9.png"
     },
     {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_fangdumianju.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_fangdumianju.png"
-    },
-    {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_qinqin.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_qinqin.png"
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_tuzi.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_tuzi.png"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_ding.png",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_ding.png"
     },
     {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_tuzi.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_tuzi.png"
-    },
-    {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\richu.jpg",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\pullToRefreshSwipeMenuListViewSample\\unspecified\\res\\drawable-hdpi-v4\\richu.jpg"
-    },
-    {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_beishang.png",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_beishang.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_btn_radio_to_on_mtrl_000.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\drawable-hdpi\\abc_btn_radio_to_on_mtrl_000.png"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_aoteman.png",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_aoteman.png"
     },
     {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_button_blue_normal.9.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\weiboSDK1\\unspecified\\res\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_button_blue_normal.9.png"
-    },
-    {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_logo.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\weiboSDK1\\unspecified\\res\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_logo.png"
-    },
-    {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_chanzui.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_chanzui.png"
-    },
-    {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_kun.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_kun.png"
-    },
-    {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_yun.png",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_yun.png"
     },
     {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_button_blue_pressed.9.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\weiboSDK1\\unspecified\\res\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_button_blue_pressed.9.png"
-    },
-    {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_tu.png",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_tu.png"
-    },
-    {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\d_sikao.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-hdpi\\d_sikao.png"
     }
 ]

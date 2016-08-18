@@ -32,198 +32,198 @@ import com.sina.weibo.sdk.openapi.models.StatusList;
 import java.util.ArrayList;
 
 public class DiscoverFragment extends BaseFragment {
-	private View view;
-	private SwipeRefreshLayout mSwip;
-	private ArrayList<Status> mDatas = new ArrayList<Status>();
-	private StaggeredHomeAdapter mStaggeredHomeAdapter;
-	private int curPage;
-	private ArrayList<Integer> mHeights = new ArrayList<Integer>();
-	private RecyclerView mRecyclerView;
-	private int[] images = { R.drawable.desert, R.drawable.lighthouse,
-			R.drawable.penguins, R.drawable.tulips };
+    private View view;
+    private SwipeRefreshLayout mSwip;
+    private ArrayList<Status> mDatas = new ArrayList<Status>();
+    private StaggeredHomeAdapter mStaggeredHomeAdapter;
+    private int curPage;
+    private ArrayList<Integer> mHeights = new ArrayList<Integer>();
+    private RecyclerView mRecyclerView;
+    private int[] images = {R.drawable.desert, R.drawable.lighthouse,
+            R.drawable.penguins, R.drawable.tulips};
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		view = View.inflate(activity, R.layout.fragment_discover, null);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        view = View.inflate(activity, R.layout.fragment_discover, null);
 
-		init();
+        init();
 
-		return view;
-	}
+        return view;
+    }
 
-	private void init() {
+    private void init() {
 
-		// initData();
+        // initData();
 
-		mSwip = (SwipeRefreshLayout) view.findViewById(R.id.swiprefresh);
-		mSwip.setProgressBackgroundColorSchemeColor(getResources().getColor(
-				R.color.orange));
-		mSwip.setOnRefreshListener(new OnRefreshListener() {
+        mSwip = (SwipeRefreshLayout) view.findViewById(R.id.swiprefresh);
+        mSwip.setProgressBackgroundColorSchemeColor(getResources().getColor(
+                R.color.orange));
+        mSwip.setOnRefreshListener(new OnRefreshListener() {
 
-			@Override
-			public void onRefresh() {
-				loadData(1);
-			}
-		});
-		mRecyclerView = (RecyclerView) view.findViewById(R.id.id_recyclerview);
-		mStaggeredHomeAdapter = new StaggeredHomeAdapter(getActivity(), mDatas,
-				mHeights);
+            @Override
+            public void onRefresh() {
+                loadData(1);
+            }
+        });
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.id_recyclerview);
+        mStaggeredHomeAdapter = new StaggeredHomeAdapter(getActivity(), mDatas,
+                mHeights);
 
-		mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(3,
-				StaggeredGridLayoutManager.VERTICAL));
-		mRecyclerView.setAdapter(mStaggeredHomeAdapter);
-		// 设置item动画
-		mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-		initEvent();
+        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(3,
+                StaggeredGridLayoutManager.VERTICAL));
+        mRecyclerView.setAdapter(mStaggeredHomeAdapter);
+        // 设置item动画
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        initEvent();
 
-		AdvertizeView ad = (AdvertizeView) view.findViewById(R.id.ad);
-		ArrayList<View> views = new ArrayList<View>();
-		for (int i = 0; i < 4; i++) {
-			ImageView imageView = new ImageView(getActivity());
-			imageView.setImageResource(images[i]);
-			views.add(imageView);
-		}
-		ad.setDataSource(views);
+        AdvertizeView ad = (AdvertizeView) view.findViewById(R.id.ad);
+        ArrayList<View> views = new ArrayList<View>();
+        for (int i = 0; i < 4; i++) {
+            ImageView imageView = new ImageView(getActivity());
+            imageView.setImageResource(images[i]);
+            views.add(imageView);
+        }
+        ad.setDataSource(views);
 
-		loadData(1);
-	}
+        loadData(1);
+    }
 
-	private void loadData(final int page) {
-		new Thread(new Runnable() {
+    private void loadData(final int page) {
+        new Thread(new Runnable() {
 
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				String ip = InternetConnectUtils.GetNetIp();
-				if (!TextUtils.isEmpty(ip)) {
-					Oauth2AccessToken readAccessToken = AccessTokenKeeper
-							.readAccessToken(activity);
-					final MyWeiboapi api = new MyWeiboapi(activity,
-							Constants.APP_KEY, readAccessToken);
-					api.ip2Geo(ip, new SimpleRequestlistener(activity, null) {
-						@Override
-						public void onComplete(String arg0) {
-							super.onComplete(arg0);
-							GeoList geos = GeoList.parse(arg0);
-							System.out.println("" + geos.Geos.get(0).latitude
-									+ "   ," + geos.Geos.get(0).longitude);
-							api.nearby_timeline(page,
-									geos.Geos.get(0).latitude,
-									geos.Geos.get(0).longitude,
-									new SimpleRequestlistener(activity, null) {
-										@Override
-										public void onComplete(final String arg0) {
-											super.onComplete(arg0);
+            @Override
+            public void run() {
+                // TODO Auto-generated method stub
+                String ip = InternetConnectUtils.GetNetIp();
+                if (!TextUtils.isEmpty(ip)) {
+                    Oauth2AccessToken readAccessToken = AccessTokenKeeper
+                            .readAccessToken(activity);
+                    final MyWeiboapi api = new MyWeiboapi(activity,
+                            Constants.APP_KEY, readAccessToken);
+                    api.ip2Geo(ip, new SimpleRequestlistener(activity, null) {
+                        @Override
+                        public void onComplete(String arg0) {
+                            super.onComplete(arg0);
+                            GeoList geos = GeoList.parse(arg0);
+                            System.out.println("" + geos.Geos.get(0).latitude
+                                    + "   ," + geos.Geos.get(0).longitude);
+                            api.nearby_timeline(page,
+                                    geos.Geos.get(0).latitude,
+                                    geos.Geos.get(0).longitude,
+                                    new SimpleRequestlistener(activity, null) {
+                                        @Override
+                                        public void onComplete(final String arg0) {
+                                            super.onComplete(arg0);
 
-											activity.runOnUiThread(new Runnable() {
+                                            activity.runOnUiThread(new Runnable() {
 
-												@Override
-												public void run() {
-													// TODO Auto-generated
-													// method stub
+                                                @Override
+                                                public void run() {
+                                                    // TODO Auto-generated
+                                                    // method stub
 
-													addData(page, arg0);
-													mSwip.setRefreshing(false);
-												}
-											});
-										}
-										
-										@Override
-										public void onWeiboException(
-												WeiboException arg0) {
-											super.onWeiboException(arg0);
-											activity.runOnUiThread(new Runnable() {
+                                                    addData(page, arg0);
+                                                    mSwip.setRefreshing(false);
+                                                }
+                                            });
+                                        }
 
-												@Override
-												public void run() {
-													mSwip.setRefreshing(false);
-												}
-											});
-										}
-									});
-						}
-						
-						@Override
-						public void onWeiboException(WeiboException arg0) {
-							super.onWeiboException(arg0);
-							activity.runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void onWeiboException(
+                                                WeiboException arg0) {
+                                            super.onWeiboException(arg0);
+                                            activity.runOnUiThread(new Runnable() {
 
-								@Override
-								public void run() {
-									mSwip.setRefreshing(false);
-								}
-							});
-						}
-					});
-				} else {
-					activity.runOnUiThread(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    mSwip.setRefreshing(false);
+                                                }
+                                            });
+                                        }
+                                    });
+                        }
 
-						@Override
-						public void run() {
-							mSwip.setRefreshing(false);
-						}
-					});
-					// ToastUtils.show(activity, "连接异常请重新加载",
-					// Toast.LENGTH_SHORT);
-				}
-			}
+                        @Override
+                        public void onWeiboException(WeiboException arg0) {
+                            super.onWeiboException(arg0);
+                            activity.runOnUiThread(new Runnable() {
 
-			private void addData(final int page, String response) {
-				if (page == 1) {
-					mDatas.clear();
-					mHeights.clear();
-					curPage = 1;
-				}
-				curPage = page;
-				StatusList list = StatusList.parse(response);
-				if (list != null&&list.statusList != null) {
-					
-					for (int i = 0; i < list.statusList.size(); i++) {
-						mHeights.add((int) (100 + Math.random() * 300));
-					}
-					for (Status sta : list.statusList) {
-						mDatas.add(sta);
-					}
-					
-					mStaggeredHomeAdapter.notifyDataSetChanged();
-				}
-				// adapter.notifyDataSetChanged();
-				// ListView refreshableView = lv.getRefreshableView();
-				// if (curPage < list.total_number) {
-				// addFootView(refreshableView);
-				// } else {
-				// removeFootView(refreshableView);
-				// }
-			}
-		}).start();
-	}
+                                @Override
+                                public void run() {
+                                    mSwip.setRefreshing(false);
+                                }
+                            });
+                        }
+                    });
+                } else {
+                    activity.runOnUiThread(new Runnable() {
 
-	private void initEvent() {
-		mStaggeredHomeAdapter.setOnItemClickLitener(new OnItemClickLitener() {
-			@Override
-			public void onItemClick(View view, int position) {
-				Toast.makeText(activity, position + " click",
-						Toast.LENGTH_SHORT).show();
-			}
+                        @Override
+                        public void run() {
+                            mSwip.setRefreshing(false);
+                        }
+                    });
+                    // ToastUtils.show(activity, "连接异常请重新加载",
+                    // Toast.LENGTH_SHORT);
+                }
+            }
 
-			@Override
-			public void onItemLongClick(View view, int position) {
-				Toast.makeText(activity, position + " long click",
-						Toast.LENGTH_SHORT).show();
-			}
-		});
-	}
+            private void addData(final int page, String response) {
+                if (page == 1) {
+                    mDatas.clear();
+                    mHeights.clear();
+                    curPage = 1;
+                }
+                curPage = page;
+                StatusList list = StatusList.parse(response);
+                if (list != null && list.statusList != null) {
 
-	// protected void initData() {
-	// mDatas = new ArrayList<String>();
-	// for (int i = 'A'; i < 'z'; i++) {
-	// mDatas.add("" + (char) i);
-	// }
-	// }
+                    for (int i = 0; i < list.statusList.size(); i++) {
+                        mHeights.add((int) (100 + Math.random() * 300));
+                    }
+                    for (Status sta : list.statusList) {
+                        mDatas.add(sta);
+                    }
+
+                    mStaggeredHomeAdapter.notifyDataSetChanged();
+                }
+                // adapter.notifyDataSetChanged();
+                // ListView refreshableView = lv.getRefreshableView();
+                // if (curPage < list.total_number) {
+                // addFootView(refreshableView);
+                // } else {
+                // removeFootView(refreshableView);
+                // }
+            }
+        }).start();
+    }
+
+    private void initEvent() {
+        mStaggeredHomeAdapter.setOnItemClickLitener(new OnItemClickLitener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(activity, position + " click",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+                Toast.makeText(activity, position + " long click",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    // protected void initData() {
+    // mDatas = new ArrayList<String>();
+    // for (int i = 'A'; i < 'z'; i++) {
+    // mDatas.add("" + (char) i);
+    // }
+    // }
 
 
-	public SwipeRefreshLayout getmSwip() {
-		return mSwip;
-	}
+    public SwipeRefreshLayout getmSwip() {
+        return mSwip;
+    }
 }

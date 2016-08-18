@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Scroller;
 import android.widget.TextView;
+
 import cn.swu.pulltorefresh.PullToRefreshListFooter;
 import cn.swu.pulltorefresh.PullToRefreshListHeader;
 import cn.swu.swipemenulistview.SwipeMenu;
@@ -66,6 +67,7 @@ public class PullToRefreshSwipeMenuListView extends ListView implements OnScroll
 	private boolean mEnablePullLoad;
 	private boolean mPullLoading;
 	private boolean mIsFooterReady = false;
+	private int mTotalItemCount;
 	private int mScrollBack;
 	private final static int SCROLLBACK_HEADER = 0;
 	private final static int SCROLLBACK_FOOTER = 1;
@@ -73,7 +75,6 @@ public class PullToRefreshSwipeMenuListView extends ListView implements OnScroll
 	private final static int SCROLL_DURATION = 400;
 	private final static int PULL_LOAD_MORE_DELTA = 50;
 	private final static float OFFSET_RADIO = 2f;
-	private int mTotalItemCount;
 
 	public PullToRefreshSwipeMenuListView(Context context) {
 		super(context);
@@ -117,7 +118,7 @@ public class PullToRefreshSwipeMenuListView extends ListView implements OnScroll
 
 	@Override
 	public void setAdapter(ListAdapter adapter) {
-		if (!mIsFooterReady) {
+		if (mIsFooterReady == false) {
 			mIsFooterReady = true;
 			addFooterView(mFooterView);
 		}

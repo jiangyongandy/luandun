@@ -1,18 +1,11 @@
 package com.jy.xinlangweibo.utils;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.activity.WebActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.text.Spannable;
 import android.text.SpannableString;
-import android.text.SpannedString;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
@@ -22,6 +15,12 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.activity.WebActivity;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringUtils {
 	public static SpannableString getKeyText(final Context context,
 			String source, TextView tv) {
@@ -29,7 +28,7 @@ public class StringUtils {
 		String name = "@[\u4e00-\u9fa5\\w-]+";
 		String topic = "#[\u4e00-\u9fa5\\w]+#";
 		String emoji = "\\[[\u4e00-\u9fa5\\w]+\\]";
-		String http= "(\\w+):\\/\\/([^/:]+)(:\\d+)?([^# :[ ]\\s]*)";
+		String http= "http://[a-zA-Z0-9+&@#/%?=~_\\-|!:,\\.;]*[a-zA-Z0-9+&@#/%=~_|]";
 		String pattern = "(" + name + ")|(" + topic + ")|(" + emoji + ")|("+http+")";
 		Pattern pa = Pattern.compile(pattern);
 		Matcher matcher = pa.matcher(source);
