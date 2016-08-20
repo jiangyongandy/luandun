@@ -19,7 +19,7 @@ import com.jy.xinlangweibo.fragment.MessageFragment;
 import com.jy.xinlangweibo.fragment.ProfileFragment;
 import com.jy.xinlangweibo.utils.Logger;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements OnCheckedChangeListener,OnClickListener{
 
 	private RadioGroup rg;
 	private ImageView iv;
@@ -35,6 +35,9 @@ public class MainActivity extends BaseActivity {
 		initView();
 	}
 
+	/**
+	 * 退出主界面不退出应用
+	 */
 	@Override
 	public void onBackPressed() {
 		moveTaskToBack(false);
@@ -83,40 +86,38 @@ public void onAttachFragment(Fragment fragment) {
 		fragmentController.show(0);
 //		底部按钮初始化
 		rg = (RadioGroup) findViewById(R.id.rg);
-		rg.setBackgroundColor(0xffffffff);
+		rg.setOnCheckedChangeListener(this);
+//		rg.setBackgroundColor(0xffffffff);
 		iv = (ImageView) findViewById(R.id.tabcenterid);
-		rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+		iv.setOnClickListener(this);
 
-			@Override
-			public void onCheckedChanged(RadioGroup group, int checkedId) {
-				fragmentController.hide();
-				switch (checkedId) {
-				case R.id.tabhomeid:
-					fragmentController.show(0);
-					break;
-				case R.id.tabmessageid:
-					fragmentController.show(1);
-					break;
-				case R.id.tabdiscoverid:
-					fragmentController.show(2);
-					break;
-				case R.id.tabprofileid:
-					fragmentController.show(03);
-					break;
 
-				default:
-					break;
-				}
-			}
-		});
-		iv.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-//				ToastUtils.show(MainActivity.this, "add", Toast.LENGTH_SHORT);
-				MainActivity.this.intent2Activity(WriteStatusActivity.class);
-			}
-		});
 	}
 
+	@Override
+	public void onCheckedChanged(RadioGroup group, int checkedId) {
+		fragmentController.hide();
+		switch (checkedId) {
+			case R.id.tabhomeid:
+				fragmentController.show(0);
+				break;
+			case R.id.tabmessageid:
+				fragmentController.show(1);
+				break;
+			case R.id.tabdiscoverid:
+				fragmentController.show(2);
+				break;
+			case R.id.tabprofileid:
+				fragmentController.show(03);
+				break;
+
+			default:
+				break;
+		}
+	}
+
+	@Override
+	public void onClick(View v) {
+		MainActivity.this.intent2Activity(WriteStatusActivity.class);
+	}
 }

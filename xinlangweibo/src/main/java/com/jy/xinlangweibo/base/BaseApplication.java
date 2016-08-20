@@ -1,6 +1,7 @@
 package com.jy.xinlangweibo.base;
 
-import java.io.File;
+import android.app.Application;
+import android.content.Context;
 
 import com.jy.xinlangweibo.constant.CustomConstant;
 import com.jy.xinlangweibo.utils.ImageLoadeOptions;
@@ -10,15 +11,22 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 
-import android.app.Application;
-import android.content.Context;
+import java.io.File;
 
 public class BaseApplication extends Application {
+
+	private static Application application;
+
+	public static Application getInstance() {
+		return application;
+	}
+
 	@Override
 	public void onCreate() {
 		super.onCreate();
 		File cacheDir = StorageUtils.getOwnCacheDirectory(getApplicationContext(), "imageloader/Cache");  
 		CustomConstant.setContext(getApplicationContext());
+		application = this;
 		initImageLoader(this);
 	}
 	

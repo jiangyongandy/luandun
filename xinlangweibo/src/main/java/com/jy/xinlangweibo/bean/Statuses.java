@@ -1,8 +1,8 @@
-package com.jy.xinlangweibo.models;
-
-import java.util.ArrayList;
+package com.jy.xinlangweibo.bean;
 
 import com.sina.weibo.sdk.openapi.models.Status;
+
+import java.util.ArrayList;
 
 public class Statuses {
 	private ArrayList<Status> statuses;
