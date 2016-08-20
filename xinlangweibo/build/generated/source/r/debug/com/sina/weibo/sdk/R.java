@@ -8,8 +8,8 @@ package com.sina.weibo.sdk;
 
 public final class R {
 	public static final class color {
-		public static final int com_sina_weibo_sdk_blue = 0x7f0b0022;
-		public static final int com_sina_weibo_sdk_loginview_text_color = 0x7f0b0023;
+		public static final int com_sina_weibo_sdk_blue = 0x7f0b0023;
+		public static final int com_sina_weibo_sdk_loginview_text_color = 0x7f0b0024;
 	}
 	public static final class dimen {
 		public static final int activity_horizontal_margin = 0x7f060017;
@@ -51,7 +51,7 @@ public final class R {
 	public static final class style {
 		public static final int AppBaseTheme = 0x7f070080;
 		public static final int AppTheme = 0x7f070081;
-		public static final int com_sina_weibo_sdk_loginview_default_style = 0x7f070147;
-		public static final int com_sina_weibo_sdk_loginview_silver_style = 0x7f070148;
+		public static final int com_sina_weibo_sdk_loginview_default_style = 0x7f070197;
+		public static final int com_sina_weibo_sdk_loginview_silver_style = 0x7f070198;
 	}
 }

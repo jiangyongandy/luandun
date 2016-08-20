@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
     <group>
         <item android:id="@+id/navigation_item1"
             android:checkable="true"
@@ -26,10 +27,12 @@
                 android:checkable="true"
                 android:title="xxxx"
                 android:icon="@drawable/avatar_default"/>
+                <!--app:itemTextColor="?attr/themeColor"-->
             <item android:id="@+id/navigation_sub_item2"
                 android:checkable="true"
                 android:title="xxxx"
                 android:icon="@drawable/avatar_default"/>
+                <!--app:itemBackground="?attr/themeColor"-->
             <item android:id="@+id/navigation_sub_item3"
                 android:checkable="true"
                 android:title="设置"

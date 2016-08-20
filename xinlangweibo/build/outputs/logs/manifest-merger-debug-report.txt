@@ -31,6 +31,7 @@ MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweib
 MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:appcompat-v7:23.0.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.jakewharton:butterknife:8.2.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.jakewharton\butterknife\8.2.1\AndroidManifest.xml:5:5-43
 	android:targetSdkVersion
 		ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:9:9-38
 		INJECTED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml

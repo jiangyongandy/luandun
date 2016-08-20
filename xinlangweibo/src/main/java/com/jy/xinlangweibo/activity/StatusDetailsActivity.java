@@ -1,17 +1,11 @@
 package com.jy.xinlangweibo.activity;
 
-import java.util.ArrayList;
-
-import android.content.Context;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.view.animation.AnimationUtils;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
@@ -19,39 +13,34 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RadioButton;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnLastItemVisibleListener;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
-import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.adapter.CommentsStatusAdapter;
 import com.jy.xinlangweibo.adapter.GridIvAdapter;
-import com.jy.xinlangweibo.adapter.OnLastItemVisibleListenner;
 import com.jy.xinlangweibo.adapter.ViewHolder;
 import com.jy.xinlangweibo.api.MyWeiboapi;
 import com.jy.xinlangweibo.api.SimpleRequestlistener;
 import com.jy.xinlangweibo.base.BaseActivity;
 import com.jy.xinlangweibo.constant.AccessTokenKeeper;
 import com.jy.xinlangweibo.constant.Constants;
-import com.jy.xinlangweibo.models.Test;
 import com.jy.xinlangweibo.utils.DateUtils;
 import com.jy.xinlangweibo.utils.ImageLoadeOptions;
 import com.jy.xinlangweibo.utils.Logger;
 import com.jy.xinlangweibo.utils.StringUtils;
 import com.jy.xinlangweibo.utils.TitleBuilder;
-import com.jy.xinlangweibo.widget.MyListView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.openapi.models.Comment;
 import com.sina.weibo.sdk.openapi.models.CommentList;
 import com.sina.weibo.sdk.openapi.models.Status;
-import com.sina.weibo.sdk.openapi.models.StatusList;
 import com.sina.weibo.sdk.openapi.models.User;
+
+import java.util.ArrayList;
 
 public class StatusDetailsActivity extends BaseActivity {
 

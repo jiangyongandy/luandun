@@ -40,12 +40,12 @@
         "source": "D:\\Xinlangweibo1\\weiboSDK1\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_button_grey_pressed.9.png"
     },
     {
-        "merged": "D:\\Xinlangweibo1\\weiboSDK1\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_login_with_text.png",
-        "source": "D:\\Xinlangweibo1\\weiboSDK1\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_login_with_text.png"
-    },
-    {
         "merged": "D:\\Xinlangweibo1\\weiboSDK1\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_button_blue_normal.9.png",
         "source": "D:\\Xinlangweibo1\\weiboSDK1\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_button_blue_normal.9.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\weiboSDK1\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_login_with_text.png",
+        "source": "D:\\Xinlangweibo1\\weiboSDK1\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_login_with_text.png"
     },
     {
         "merged": "D:\\Xinlangweibo1\\weiboSDK1\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_com_sina_weibo_sdk_button_blue_focused.9.png",

@@ -24,12 +24,12 @@ public class BaseActivity extends Activity {
 		tag = this.getClass().getSimpleName();
 
 		setTheme(ThemeUtils.themeArr[AppSetting.getThemeColor()][0]);
-		
+
 //		得到缓存
 		mCache = ACache.get(this);
 		
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
+//使得侧边栏顶端不被statusbar覆盖  这里的写法是让状态栏透明
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 			WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
 			localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);

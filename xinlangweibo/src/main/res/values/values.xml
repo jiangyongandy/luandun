@@ -301,45 +301,6 @@
     <color name="md_yellow_a200">#ffff00</color>
     <color name="md_yellow_a400">#ffea00</color>
     <color name="md_yellow_a700">#ffd600</color>
-    <declare-styleable name="AbsListView"><attr format="color|reference" name="listSelector"/><attr format="boolean" name="drawSelectorOnTop"/><attr format="boolean" name="stackFromBottom"/><attr format="boolean" name="scrollingCache"/><attr format="boolean" name="textFilterEnabled"/><attr name="transcriptMode"><enum name="disabled" value="0"/><enum name="normal" value="1"/><enum name="alwaysScroll" value="2"/></attr><attr format="color" name="cacheColorHint"/><attr format="boolean" name="fastScrollEnabled"/><attr format="boolean" name="smoothScrollbar"/><attr name="choiceMode"><enum name="none" value="0"/><enum name="singleChoice" value="1"/><enum name="multipleChoice" value="2"/><enum name="multipleChoiceModal" value="3"/></attr><attr format="boolean" name="fastScrollAlwaysVisible"/></declare-styleable>
-    <declare-styleable name="CircleImageView"><attr format="dimension" name="border_width"/><attr format="color" name="border_color"/></declare-styleable>
-    <declare-styleable name="DragSortListView"><attr format="dimension" name="collapsed_height"/><attr format="float" name="drag_scroll_start"/><attr format="float" name="max_drag_scroll_speed"/><attr format="color" name="float_background_color"/><attr name="remove_mode"><enum name="clickRemove" value="0"/><enum name="flingRemove" value="1"/></attr><attr format="boolean" name="track_drag_sort"/><attr format="float" name="float_alpha"/><attr format="float" name="slide_shuffle_speed"/><attr format="integer" name="remove_animation_duration"/><attr format="integer" name="drop_animation_duration"/><attr format="boolean" name="drag_enabled"/><attr format="boolean" name="sort_enabled"/><attr format="boolean" name="remove_enabled"/><attr name="drag_start_mode"><enum name="onDown" value="0"/><enum name="onMove" value="1"/><enum name="onLongPress" value="2"/></attr><attr format="integer" name="drag_handle_id"/><attr format="integer" name="fling_handle_id"/><attr format="integer" name="click_remove_id"/><attr format="boolean" name="use_default_controller"/></declare-styleable>
-    <declare-styleable name="FitWindowsFrameLayout"><attr name="fitType"><enum name="top" value="0"/><enum name="bottom" value="1"/><enum name="both" value="2"/></attr><attr format="reference|color" name="statusBarColor"/><attr format="reference|color" name="navigationBarColor"/><attr format="boolean" name="drawStatusBar"/><attr format="boolean" name="drawNavigationBar"/></declare-styleable>
-    <declare-styleable name="ForegroundView"><attr name="android:foreground"/><attr name="foregroundInsidePadding"/><attr name="android:foregroundGravity"/></declare-styleable>
-    <declare-styleable name="ListView"><attr format="dimension" name="dividerHeight"/><attr format="boolean" name="headerDividersEnabled"/><attr format="boolean" name="footerDividersEnabled"/><attr format="reference|color" name="overScrollHeader"/><attr format="reference|color" name="overScrollFooter"/><attr format="color" name="plaContentBackground"/></declare-styleable>
-    <declare-styleable name="PLAMultiColumnListView"><attr format="integer" name="plaColumnNumber"/><attr format="integer" name="plaLandscapeColumnNumber"/><attr format="dimension" name="plaColumnPaddingLeft"/><attr format="dimension" name="plaColumnPaddingRight"/></declare-styleable>
-    <declare-styleable name="RoundImageView"><attr format="dimension" name="borderRadius"/><attr name="type"><enum name="round" value="1"/><enum name="circle" value="0"/></attr></declare-styleable>
-    <declare-styleable name="ScrimInsetsView"><attr format="reference|color" name="appInsetForeground"/></declare-styleable>
-    <declare-styleable name="SwipyRefreshLayout"><attr name="direction"><enum name="top" value="0"/><enum name="bottom" value="1"/><enum name="both" value="2"/></attr></declare-styleable>
-    <!-- From: file:/Users/wangdan/Documents/github/AisenWeibo_6.0/AisenWeiBo/library/src/main/res/values/comm_dimens.xml -->
-    <eat-comment/>
-    <dimen name="comm_footer_height">58dip</dimen>
-    <dimen name="comm_h_gap">10dip</dimen>
-    <dimen name="comm_h_margin">16dip</dimen>
-    <dimen name="comm_v_gap">10dip</dimen>
-    <dimen name="comm_v_margin">16dip</dimen>
-    <!-- From: file:/Users/wangdan/Documents/github/AisenWeibo_6.0/AisenWeiBo/library/src/main/res/values/comm_ids.xml -->
-    <eat-comment/>
-    <item name="click_remove" type="id"/>
-    <item name="drag_handle" type="id"/>
-    <item name="itemview" type="id"/>
-    <item name="layoutContent" type="id"/>
-    <item name="layoutEmpty" type="id"/>
-    <item name="layoutLoadFailed" type="id"/>
-    <item name="layoutLoading" type="id"/>
-    <item name="layoutProcessing" type="id"/>
-    <item name="layoutRefresh" type="id"/>
-    <item name="layoutReload" type="id"/>
-    <item name="listView" type="id"/>
-    <item name="recycleview" type="id"/>
-    <item name="toolbar" type="id"/>
-    <item name="txtLoadEmpty" type="id"/>
-    <item name="txtLoadFailed" type="id"/>
-    <!-- From: file:/Users/wangdan/Documents/github/AisenWeibo_6.0/AisenWeiBo/library/src/main/res/values/sheetfab_refs.xml -->
-    <eat-comment/>
-    <item name="msf_interpolator" type="interpolator">@android:interpolator/decelerate_cubic</item>
-    <!-- From: file:/Users/wangdan/Documents/github/AisenWeibo_6.0/AisenWeiBo/library/src/main/res/values/comm_exception.xml -->
-    <eat-comment/>
     <string name="comm_error_noneNetwork">没有网络连接</string>
     <string name="comm_error_resultIllegal">数据解析出错</string>
     <string name="comm_error_timeout">网络不给力</string>
