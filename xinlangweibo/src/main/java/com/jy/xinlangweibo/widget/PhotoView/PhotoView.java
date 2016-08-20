@@ -15,10 +15,6 @@
  *******************************************************************************/
 package com.jy.xinlangweibo.widget.PhotoView;
 
-import com.jy.xinlangweibo.widget.PhotoView.PhotoViewAttacher.OnMatrixChangedListener;
-import com.jy.xinlangweibo.widget.PhotoView.PhotoViewAttacher.OnPhotoTapListener;
-import com.jy.xinlangweibo.widget.PhotoView.PhotoViewAttacher.OnViewTapListener;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
@@ -28,6 +24,10 @@ import android.net.Uri;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.widget.ImageView;
+
+import com.jy.xinlangweibo.widget.PhotoView.PhotoViewAttacher.OnMatrixChangedListener;
+import com.jy.xinlangweibo.widget.PhotoView.PhotoViewAttacher.OnPhotoTapListener;
+import com.jy.xinlangweibo.widget.PhotoView.PhotoViewAttacher.OnViewTapListener;
 
 
 public class PhotoView extends ImageView implements IPhotoView {

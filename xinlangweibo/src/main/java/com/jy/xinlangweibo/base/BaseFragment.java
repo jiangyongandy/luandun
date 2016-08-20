@@ -1,13 +1,13 @@
 package com.jy.xinlangweibo.base;
 
 
-import com.jy.xinlangweibo.activity.MainActivity;
-import com.jy.xinlangweibo.utils.ACache;
-import com.jy.xinlangweibo.utils.Logger;
-
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.jy.xinlangweibo.activity.MainActivity;
+import com.jy.xinlangweibo.utils.ACache;
+import com.jy.xinlangweibo.utils.Logger;
 
 public class BaseFragment extends Fragment {
 	protected MainActivity activity;

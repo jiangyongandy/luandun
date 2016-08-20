@@ -17,7 +17,6 @@ import com.jy.xinlangweibo.adapter.EmoticonsAdapter;
 import com.jy.xinlangweibo.bean.EmoticonBean;
 import com.jy.xinlangweibo.bean.EmoticonSetBean;
 import com.jy.xinlangweibo.utils.EmoticonsKeyboardBuilder;
-import com.jy.xinlangweibo.utils.Logger;
 import com.jy.xinlangweibo.utils.Utils;
 import com.jy.xinlangweibo.widget.I.IEmoticonsKeyboard;
 import com.jy.xinlangweibo.widget.I.IView;

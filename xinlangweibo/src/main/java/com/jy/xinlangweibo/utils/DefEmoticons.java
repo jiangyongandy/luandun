@@ -1,6 +1,5 @@
 package com.jy.xinlangweibo.utils;
 
-import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.bean.EmoticonBean;
 
 public class DefEmoticons {

@@ -35,13 +35,12 @@ import android.view.animation.Interpolator;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
-import java.lang.ref.WeakReference;
-
 import com.jy.xinlangweibo.widget.PhotoView.gestures.OnGestureListener;
 import com.jy.xinlangweibo.widget.PhotoView.gestures.VersionedGestureDetector;
 import com.jy.xinlangweibo.widget.PhotoView.log.LogManager;
 import com.jy.xinlangweibo.widget.PhotoView.scrollerproxy.ScrollerProxy;
 
+import java.lang.ref.WeakReference;
 
 import static android.view.MotionEvent.ACTION_CANCEL;
 import static android.view.MotionEvent.ACTION_DOWN;

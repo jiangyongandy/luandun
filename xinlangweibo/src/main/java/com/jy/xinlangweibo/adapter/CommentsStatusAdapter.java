@@ -1,16 +1,5 @@
 package com.jy.xinlangweibo.adapter;
 
-import java.util.ArrayList;
-
-import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.utils.DateUtils;
-import com.jy.xinlangweibo.utils.ImageLoadeOptions;
-import com.jy.xinlangweibo.utils.Logger;
-import com.jy.xinlangweibo.utils.StringUtils;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.sina.weibo.sdk.openapi.models.Comment;
-import com.sina.weibo.sdk.openapi.models.User;
-
 import android.content.Context;
 import android.text.Html;
 import android.view.View;
@@ -19,6 +8,16 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.utils.DateUtils;
+import com.jy.xinlangweibo.utils.ImageLoadeOptions;
+import com.jy.xinlangweibo.utils.StringUtils;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.sina.weibo.sdk.openapi.models.Comment;
+import com.sina.weibo.sdk.openapi.models.User;
+
+import java.util.ArrayList;
 
 public class CommentsStatusAdapter extends BaseAdapter {
 	private ArrayList<Comment> list;

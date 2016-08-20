@@ -15,12 +15,12 @@
  *******************************************************************************/
 package com.jy.xinlangweibo.widget.PhotoView.gestures;
 
-import com.jy.xinlangweibo.widget.PhotoView.log.LogManager;
-
 import android.content.Context;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.ViewConfiguration;
+
+import com.jy.xinlangweibo.widget.PhotoView.log.LogManager;
 
 public class CupcakeGestureDetector implements GestureDetector {
 

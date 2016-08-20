@@ -1,25 +1,5 @@
 package com.jy.xinlangweibo.activity;
 
-import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.api.MyWeiboapi;
-import com.jy.xinlangweibo.api.SimpleRequestlistener;
-import com.jy.xinlangweibo.base.BaseActivity;
-import com.jy.xinlangweibo.constant.AccessTokenKeeper;
-import com.jy.xinlangweibo.constant.Constants;
-import com.jy.xinlangweibo.utils.EmoticonsUtils;
-import com.jy.xinlangweibo.utils.Logger;
-import com.jy.xinlangweibo.utils.TitleBuilder;
-import com.jy.xinlangweibo.utils.ToastUtils;
-import com.jy.xinlangweibo.widget.EmoticonsEditText;
-import com.jy.xinlangweibo.widget.EmoticonsEditText.OnTextChangedInterface;
-import com.jy.xinlangweibo.widget.EmoticonsIndicatorView;
-import com.jy.xinlangweibo.widget.EmoticonsPageView;
-import com.jy.xinlangweibo.widget.EmoticonsToolBarView;
-import com.jy.xinlangweibo.widget.EmoticonsKeyBoardBar;
-import com.sina.weibo.sdk.auth.Oauth2AccessToken;
-import com.sina.weibo.sdk.openapi.models.Status;
-
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -32,16 +12,27 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.api.MyWeiboapi;
+import com.jy.xinlangweibo.api.SimpleRequestlistener;
+import com.jy.xinlangweibo.base.BaseActivity;
+import com.jy.xinlangweibo.constant.AccessTokenKeeper;
+import com.jy.xinlangweibo.constant.Constants;
+import com.jy.xinlangweibo.utils.EmoticonsUtils;
+import com.jy.xinlangweibo.utils.TitleBuilder;
+import com.jy.xinlangweibo.utils.ToastUtils;
+import com.jy.xinlangweibo.widget.EmoticonsEditText;
+import com.jy.xinlangweibo.widget.EmoticonsEditText.OnTextChangedInterface;
+import com.jy.xinlangweibo.widget.EmoticonsKeyBoardBar;
+import com.sina.weibo.sdk.auth.Oauth2AccessToken;
+import com.sina.weibo.sdk.openapi.models.Status;
 
 public class WriteStatusActivity extends BaseActivity implements
 		OnClickListener, OnTextChangedInterface {

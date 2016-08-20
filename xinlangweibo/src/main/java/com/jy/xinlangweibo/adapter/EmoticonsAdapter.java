@@ -9,11 +9,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.bean.EmoticonBean;
 import com.jy.xinlangweibo.utils.imageloader.ImageBase;
 import com.jy.xinlangweibo.utils.imageloader.ImageLoader;
 import com.jy.xinlangweibo.widget.I.IView;
-import com.jy.xinlangweibo.R;
 
 import java.io.IOException;
 import java.util.List;

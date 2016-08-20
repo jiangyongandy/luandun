@@ -15,11 +15,11 @@
  *******************************************************************************/
 package com.jy.xinlangweibo.widget.PhotoView.gestures;
 
-import com.jy.xinlangweibo.widget.PhotoView.Compat;
-
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.view.MotionEvent;
+
+import com.jy.xinlangweibo.widget.PhotoView.Compat;
 
 @TargetApi(5)
 public class EclairGestureDetector extends CupcakeGestureDetector {

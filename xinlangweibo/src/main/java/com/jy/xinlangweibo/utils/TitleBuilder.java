@@ -1,7 +1,5 @@
 package com.jy.xinlangweibo.utils;
 
-import com.jy.xinlangweibo.R;
-
 import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
@@ -11,6 +9,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.jy.xinlangweibo.R;
 
 /**
  * @author JIANG

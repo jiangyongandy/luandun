@@ -1,19 +1,16 @@
 package com.jy.xinlangweibo.adapter;
 
-import java.util.ArrayList;
-
-import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.constant.CustomConstant;
-import com.jy.xinlangweibo.utils.ImageLoadeOptions;
-import com.jy.xinlangweibo.utils.Logger;
-import com.nostra13.universalimageloader.core.ImageLoader;
-
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
+
+import com.jy.xinlangweibo.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import java.util.ArrayList;
 
 public class GridIvAdapter extends BaseAdapter {
 	private ArrayList<Object> pic_ids;

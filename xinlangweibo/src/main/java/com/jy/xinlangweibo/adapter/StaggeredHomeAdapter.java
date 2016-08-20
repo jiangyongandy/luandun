@@ -1,14 +1,5 @@
 package com.jy.xinlangweibo.adapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.utils.ImageLoadeOptions;
-import com.jy.xinlangweibo.utils.StringUtils;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.sina.weibo.sdk.openapi.models.Status;
-
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
@@ -17,10 +8,18 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.utils.ImageLoadeOptions;
+import com.jy.xinlangweibo.utils.StringUtils;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.sina.weibo.sdk.openapi.models.Status;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class StaggeredHomeAdapter extends
 		RecyclerView.Adapter<StaggeredHomeAdapter.MyViewHolder> {

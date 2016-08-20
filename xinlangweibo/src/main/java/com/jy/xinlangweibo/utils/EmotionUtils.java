@@ -1,10 +1,10 @@
 package com.jy.xinlangweibo.utils;
 
+import com.jy.xinlangweibo.R;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
-
-import com.jy.xinlangweibo.R;
 
 
 @SuppressWarnings("serial")

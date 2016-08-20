@@ -1,8 +1,5 @@
 package com.jy.xinlangweibo.fragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -10,12 +7,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.text.TextUtils;
-import android.text.style.SuperscriptSpan;
-import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -29,7 +24,6 @@ import com.jy.xinlangweibo.adapter.GridIvAdapter;
 import com.jy.xinlangweibo.adapter.ParallaxRecyclerAdapter;
 import com.jy.xinlangweibo.adapter.ParallaxRecyclerAdapter.OnParallaxScroll;
 import com.jy.xinlangweibo.adapter.RecyleViewHolder;
-import com.jy.xinlangweibo.adapter.ViewHolder;
 import com.jy.xinlangweibo.base.BaseFragment;
 import com.jy.xinlangweibo.constant.CustomConstant;
 import com.jy.xinlangweibo.utils.DateUtils;
@@ -37,9 +31,10 @@ import com.jy.xinlangweibo.utils.ImageLoadeOptions;
 import com.jy.xinlangweibo.utils.StringUtils;
 import com.jy.xinlangweibo.utils.TitleBuilder;
 import com.jy.xinlangweibo.widget.CustomActBar;
-import com.nostra13.universalimageloader.core.ImageLoader;
 import com.sina.weibo.sdk.openapi.models.Status;
 import com.sina.weibo.sdk.openapi.models.User;
+
+import java.util.ArrayList;
 
 public class ProfileFragment extends BaseFragment {
 	private View view;

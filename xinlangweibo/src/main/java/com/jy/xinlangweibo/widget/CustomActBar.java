@@ -1,7 +1,5 @@
 package com.jy.xinlangweibo.widget;
 
-import com.jy.xinlangweibo.R;
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -10,6 +8,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.jy.xinlangweibo.R;
 
 public class CustomActBar extends RelativeLayout {
 

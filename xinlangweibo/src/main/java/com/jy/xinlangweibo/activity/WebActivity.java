@@ -1,28 +1,17 @@
 package com.jy.xinlangweibo.activity;
 
-import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.R.layout;
-import com.jy.xinlangweibo.base.BaseActivity;
-import com.jy.xinlangweibo.utils.ToastUtils;
-import com.sina.weibo.sdk.openapi.models.Status;
-
-import android.app.Activity;
-import android.os.Bundle;
 import android.os.Build.VERSION;
-import android.os.Build.VERSION_CODES;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
+import android.os.Bundle;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebSettings.PluginState;
 import android.webkit.WebSettings.RenderPriority;
-import android.webkit.WebSettings.ZoomDensity;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
+
+import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.base.BaseActivity;
 
 public class WebActivity extends BaseActivity {
 	// webview

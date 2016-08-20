@@ -1,10 +1,5 @@
 package com.jy.xinlangweibo.utils;
 
-import java.util.List;
-
-import com.jy.xinlangweibo.R;
-
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
@@ -16,6 +11,10 @@ import android.content.DialogInterface.OnMultiChoiceClickListener;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
+
+import com.jy.xinlangweibo.R;
+
+import java.util.List;
 
 public class DialogUtils {
 

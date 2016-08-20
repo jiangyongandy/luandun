@@ -2,28 +2,18 @@ package com.jy.xinlangweibo.widget;
 
 import android.content.Context;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
+import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.bean.EmoticonBean;
 import com.jy.xinlangweibo.utils.EmoticonsKeyboardBuilder;
-import com.jy.xinlangweibo.utils.Utils;
-import com.jy.xinlangweibo.widget.EmoticonsEditText;
-import com.jy.xinlangweibo.widget.EmoticonsIndicatorView;
-import com.jy.xinlangweibo.widget.EmoticonsPageView;
-import com.jy.xinlangweibo.widget.EmoticonsToolBarView;
 import com.jy.xinlangweibo.widget.I.IEmoticonsKeyboard;
 import com.jy.xinlangweibo.widget.I.IView;
-import com.jy.xinlangweibo.R;
 
 public class EmoticonsKeyBoardBar extends LinearLayout implements
 		IEmoticonsKeyboard, EmoticonsToolBarView.OnToolBarItemClickListener {

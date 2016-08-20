@@ -14,8 +14,6 @@ import android.view.animation.Interpolator;
 import android.widget.AbsListView;
 import android.widget.FrameLayout;
 
-import com.jy.xinlangweibo.utils.Logger;
-
 public class SwipeMenuLayout extends FrameLayout {
 
     private static final int CONTENT_VIEW_ID = 1;

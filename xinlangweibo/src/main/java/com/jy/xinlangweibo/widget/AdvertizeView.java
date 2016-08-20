@@ -1,9 +1,11 @@
 package com.jy.xinlangweibo.widget;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -12,11 +14,9 @@ import android.view.animation.Interpolator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Scroller;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 
 public class AdvertizeView extends RelativeLayout {
 
