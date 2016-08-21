@@ -16,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.activity.WebActivity;
+import com.jy.xinlangweibo.ui.activity.WebActivity;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

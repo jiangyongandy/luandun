@@ -1,42 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <group>
-        <item android:id="@+id/navigation_item1"
+        <item
+            android:id="@+id/navigation_item1"
+            android:icon="@drawable/avatar_default"
+            android:title="XXXX" />
+        <item
+            android:id="@+id/navigation_item2"
+            android:icon="@drawable/avatar_default"
+            android:title="XXXX" />
+        <item
+            android:id="@+id/navigation_item3"
             android:checkable="true"
-            android:title="XXXX"
-            android:icon="@drawable/avatar_default"/>
-        <item android:id="@+id/navigation_item2"
+            android:icon="@drawable/avatar_default"
+            android:title="XXXX" />
+        <item
+            android:id="@+id/navigation_item4"
             android:checkable="true"
-            android:title="XXXX"
-            android:icon="@drawable/avatar_default"/>
-        <item android:id="@+id/navigation_item3"
-            android:checkable="true"
-            android:title="XXXX"
-            android:icon="@drawable/avatar_default"/>
-        <item android:id="@+id/navigation_item4"
-            android:checkable="true"
-            android:title="XXXX"
-            android:icon="@drawable/avatar_default"/>
+            android:icon="@drawable/avatar_default"
+            android:title="XXXX" />
 
     </group>
-    <item android:id="@+id/navigation_sub"
+    <item
+        android:id="@+id/navigation_sub"
         android:title="其他">
         <menu>
-            <item android:id="@+id/navigation_sub_item1"
+            <item
+                android:id="@+id/navigation_sub_item1"
                 android:checkable="true"
+                android:icon="@drawable/avatar_default"
                 android:title="xxxx"
-                android:icon="@drawable/avatar_default"/>
-                <!--app:itemTextColor="?attr/themeColor"-->
-            <item android:id="@+id/navigation_sub_item2"
+                app:itemTextColor="?attr/themeColor" />
+            <item
+                android:id="@+id/navigation_sub_item2"
                 android:checkable="true"
+                android:icon="@drawable/avatar_default"
                 android:title="xxxx"
-                android:icon="@drawable/avatar_default"/>
-                <!--app:itemBackground="?attr/themeColor"-->
-            <item android:id="@+id/navigation_sub_item3"
+                app:itemBackground="?attr/themeColor" />
+            <item
+                android:id="@+id/navigation_sub_item3"
                 android:checkable="true"
-                android:title="设置"
-                android:icon="@drawable/compose_keyboardbutton_background_highlighted"/>
+                android:icon="@drawable/compose_keyboardbutton_background_highlighted"
+                android:title="设置" />
         </menu>
     </item>
 

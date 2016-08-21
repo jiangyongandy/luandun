@@ -3,7 +3,7 @@ package com.jy.xinlangweibo.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.jy.xinlangweibo.base.BaseApplication;
+import com.jy.xinlangweibo.BaseApplication;
 
 /**
  * Created by JIANG on 2016/8/20.

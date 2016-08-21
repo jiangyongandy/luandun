@@ -1,8 +1,8 @@
 package com.jy.xinlangweibo.utils;
 
 import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.base.AppSetting;
-import com.jy.xinlangweibo.base.BaseApplication;
+import com.jy.xinlangweibo.AppSetting;
+import com.jy.xinlangweibo.BaseApplication;
 
 
 /**

@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.RelativeLayout;
 
-import com.jy.xinlangweibo.adapter.EmoticonsAdapter;
+import com.jy.xinlangweibo.ui.adapter.EmoticonsAdapter;
 import com.jy.xinlangweibo.bean.EmoticonBean;
 import com.jy.xinlangweibo.bean.EmoticonSetBean;
 import com.jy.xinlangweibo.utils.EmoticonsKeyboardBuilder;

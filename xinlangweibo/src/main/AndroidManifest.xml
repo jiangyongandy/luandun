@@ -13,13 +13,16 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
-        android:name=".base.BaseApplication"
+        android:name=".BaseApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/appTheme">
-        <activity android:name=".activity.FirstActivity">
+        <activity android:name=".ui.activity.FirstActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,23 +33,30 @@
             android:name="com.sina.weibo.sdk.component.WeiboSdkBrowser"
             android:configChanges="keyboardHidden|orientation"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".activity.LoginActivity" />
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ui.activity.LoginActivity" />
+        <activity android:name=".ui.activity.base.FragmentActivity" />
+        <activity android:name=".ui.activity.MainActivity" />
+        <activity android:name=".ui.activity.StatusDetailsActivity" />
         <activity
-            android:name=".activity.MainActivity"
-            />
-        <activity android:name=".activity.StatusDetailsActivity" />
-        <activity
-            android:name=".activity.WriteStatusActivity"
+            android:name=".ui.activity.WriteStatusActivity"
             android:theme="@style/appTheme"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".activity.ImageBrowseActivity"
-            android:label="@string/title_activity_image_browse"/>
+            android:name=".ui.activity.ImageBrowseActivity"
+            android:label="@string/title_activity_image_browse" />
         <activity
-            android:name="com.jy.xinlangweibo.activity.WebActivity"
+            android:name=".ui.activity.WebActivity"
             android:hardwareAccelerated="true"
-            android:label="@string/title_activity_web"/>
+            android:label="@string/title_activity_web" />
+        <activity
+            android:name=".ui.activity.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".ui.activity.base.BaseActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.activity.base.BaseActivity" />
+        </activity>
     </application>
 
 </manifest>
