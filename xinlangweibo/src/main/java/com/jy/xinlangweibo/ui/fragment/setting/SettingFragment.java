@@ -5,8 +5,9 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 
-import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.AppSetting;
+import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 
 public class SettingFragment extends PreferenceFragment implements Preference.OnPreferenceClickListener {
     private static final String ARG_PARAM1 = "param1";
@@ -48,6 +49,11 @@ public class SettingFragment extends PreferenceFragment implements Preference.On
         pTheme = (Preference) findPreference("pTheme");
         pTheme.setOnPreferenceClickListener(this);
         pTheme.setSummary(getResources().getStringArray(R.array.mdColorNames)[AppSetting.getThemeColor()]);
+
+        BaseActivity activity = (BaseActivity) getActivity();
+        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        activity.getSupportActionBar().setDisplayShowHomeEnabled(false);
+        activity.getSupportActionBar().setTitle(R.string.title_settings);
     }
 
     @Override

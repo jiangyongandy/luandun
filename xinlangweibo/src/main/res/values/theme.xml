@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <!--
+            Base application theme, dependent on API level. This theme is replaced
+            by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+        -->
+        <style name="WeiboBaseTheme" parent="Theme.AppCompat.Light.NoActionBar"></style>
+
+        <!-- Application theme. -->
+
+        <style name="appTheme" parent="WeiboBaseTheme">
+            <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+            <item name="themeColor">@color/orange</item>
+            <item name="themeStatusbarColor">@color/orange_dark</item>
+            <item name="colorPrimary">?attr/themeColor</item>
+            <item name="colorPrimaryDark">?attr/themeStatusbarColor</item>
+            <item name="colorAccent">?attr/themeColor</item>
+        </style>
+</resources>

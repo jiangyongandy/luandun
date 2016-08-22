@@ -40,7 +40,6 @@
         <activity android:name="com.jy.xinlangweibo.ui.activity.StatusDetailsActivity" />
         <activity
             android:name="com.jy.xinlangweibo.ui.activity.WriteStatusActivity"
-            android:theme="@style/appTheme"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name="com.jy.xinlangweibo.ui.activity.ImageBrowseActivity"

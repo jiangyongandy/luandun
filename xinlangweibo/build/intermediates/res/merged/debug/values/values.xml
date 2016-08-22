@@ -732,6 +732,7 @@
     <integer name="cancel_button_image_alpha">127</integer>
     <integer name="design_snackbar_text_max_lines">2</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
+    <string name="CONTINUE_REFRASH">继续刷新看看</string>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
     <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
@@ -791,6 +792,7 @@
     <string name="pull_to_refresh_from_bottom_release_label">放开以刷新…</string>
     <string name="settings_md_colors">主题颜色</string>
     <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="statuses_loading">微博加载中...</string>
     <string name="tab_discover">发现</string>
     <string name="tab_message">消息</string>
     <string name="tab_profile">我</string>
@@ -798,6 +800,7 @@
     <string name="title_activity_image_browse">ImageBrowseActivity</string>
     <string name="title_activity_settings">Settings</string>
     <string name="title_activity_web">WebActivity</string>
+    <string name="title_settings">设置</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
@@ -2201,7 +2204,7 @@
     <style name="ThemeOverlay.AppCompat.Dialog" parent="Base.ThemeOverlay.AppCompat.Dialog"/>
     <style name="ThemeOverlay.AppCompat.Dialog.Alert" parent="Base.ThemeOverlay.AppCompat.Dialog.Alert"/>
     <style name="ThemeOverlay.AppCompat.Light" parent="Base.ThemeOverlay.AppCompat.Light"/>
-    <style name="WeiboBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar"/>
+    <style name="WeiboBaseTheme" parent="Theme.AppCompat.Light.NoActionBar"/>
     <style name="Widget.AppCompat.ActionBar" parent="Base.Widget.AppCompat.ActionBar">
     </style>
     <style name="Widget.AppCompat.ActionBar.Solid" parent="Base.Widget.AppCompat.ActionBar.Solid">
@@ -2402,13 +2405,13 @@
         <item name="android:maxHeight">14dp</item>
     </style>
     <style name="appTheme" parent="WeiboBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-        <item name="themeColor">@color/orange</item>
-        <item name="themeStatusbarColor">@color/orange_dark</item>
-        <item name="colorPrimary">?attr/themeColor</item>
-        <item name="colorPrimaryDark">?attr/themeStatusbarColor</item>
-        <item name="colorAccent">?attr/themeColor</item>
-    </style>
+            <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+            <item name="themeColor">@color/orange</item>
+            <item name="themeStatusbarColor">@color/orange_dark</item>
+            <item name="colorPrimary">?attr/themeColor</item>
+            <item name="colorPrimaryDark">?attr/themeStatusbarColor</item>
+            <item name="colorAccent">?attr/themeColor</item>
+        </style>
     <style name="appTheme.Amber">
         <item name="themeColor">@color/md_amber_500</item>
         <item name="themeStatusbarColor">@color/md_amber_700</item>

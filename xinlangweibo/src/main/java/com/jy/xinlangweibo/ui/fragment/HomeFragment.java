@@ -19,11 +19,12 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.ui.adapter.StatusesAdapter;
 import com.jy.xinlangweibo.api.MyWeiboapi;
 import com.jy.xinlangweibo.api.SimpleRequestlistener;
 import com.jy.xinlangweibo.constant.AccessTokenKeeper;
 import com.jy.xinlangweibo.constant.Constants;
+import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
+import com.jy.xinlangweibo.ui.adapter.StatusesAdapter;
 import com.jy.xinlangweibo.ui.fragment.base.BaseFragment;
 import com.jy.xinlangweibo.utils.Logger;
 import com.jy.xinlangweibo.utils.TitleBuilder;
@@ -59,8 +60,8 @@ public class HomeFragment extends BaseFragment {
 	public void onPause() {
 		super.onPause();
 		mCache.clear();
+//		缓存数据（IO操作，新开线程）耗时操作
 		mCache.put("STATUES", statusList);
-		System.out.println("缓存首页微博");
 	}
 
 	private void initView() {
@@ -76,7 +77,7 @@ public class HomeFragment extends BaseFragment {
 
 	private void showProgressDialog() {
 		progressDialog = new ProgressDialog(getActivity());
-		progressDialog.setMessage("微博加载中...");
+		progressDialog.setMessage(activity.getString(R.string.statuses_loading));
 		progressDialog.show();
 	}
 
@@ -229,15 +230,19 @@ public class HomeFragment extends BaseFragment {
 		}
 		curPage = page;
 		StatusList list = StatusList.parse(response);
-		for (Status sta : list.statusList) {
-			statusList.add(sta);
-		}
-		adapter.notifyDataSetChanged();
-		ListView refreshableView = lv.getRefreshableView();
-		if (curPage < list.total_number) {
-			addFootView(refreshableView);
+		if(null != list) {
+			for (Status sta : list.statusList) {
+				statusList.add(sta);
+			}
+			adapter.notifyDataSetChanged();
+			ListView refreshableView = lv.getRefreshableView();
+			if (curPage < list.total_number) {
+				addFootView(refreshableView);
+			} else {
+				removeFootView(refreshableView);
+			}
 		} else {
-			removeFootView(refreshableView);
+			((BaseActivity)getActivity()).showToast(activity.getString(R.string.CONTINUE_REFRASH));
 		}
 	}
 

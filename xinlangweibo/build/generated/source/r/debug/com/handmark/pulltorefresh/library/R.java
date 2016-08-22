@@ -74,9 +74,9 @@ public final class R {
 		public static final int pull_to_refresh_header_vertical = 0x7f030064;
 	}
 	public static final class string {
-		public static final int pull_to_refresh_from_bottom_pull_label = 0x7f06003d;
-		public static final int pull_to_refresh_from_bottom_refreshing_label = 0x7f06003e;
-		public static final int pull_to_refresh_from_bottom_release_label = 0x7f06003f;
+		public static final int pull_to_refresh_from_bottom_pull_label = 0x7f06003e;
+		public static final int pull_to_refresh_from_bottom_refreshing_label = 0x7f06003f;
+		public static final int pull_to_refresh_from_bottom_release_label = 0x7f060040;
 	}
 	public static final class styleable {
 		public static final int[] PullToRefresh = { 0x7f010115, 0x7f010116, 0x7f010117, 0x7f010118, 0x7f010119, 0x7f01011a, 0x7f01011b, 0x7f01011c, 0x7f01011d, 0x7f01011e, 0x7f01011f, 0x7f010120, 0x7f010121, 0x7f010122, 0x7f010123, 0x7f010124, 0x7f010125, 0x7f010126, 0x7f010127 };

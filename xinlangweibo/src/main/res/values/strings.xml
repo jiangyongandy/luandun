@@ -20,6 +20,9 @@
     <string name="category_color_theme_item">主题</string>
     <string name="settings_md_colors">主题颜色</string>
     <string name="cancel">取消</string>
+    <string name="CONTINUE_REFRASH">继续刷新看看</string>
+    <string name="statuses_loading">微博加载中...</string>
+    <string name="title_settings">设置</string>
 
     <string-array name="mdColorNames">
         <item>Red</item>

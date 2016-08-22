@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MenuItem;
 
 import com.jy.xinlangweibo.R;
 
@@ -112,6 +113,18 @@ public class FragmentActivity extends BaseActivity  {
 
         outState.putInt("contentId", contentId);
         outState.putInt("overrideTheme", overrideTheme);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+//            toolbar最右边图片按钮点击事件
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 }

@@ -1,29 +1,28 @@
 package com.jy.xinlangweibo.ui.activity;
 
 import android.app.Fragment;
-import android.content.pm.ActivityInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
+import com.jy.xinlangweibo.ui.activity.base.FragmentActivity;
 import com.jy.xinlangweibo.ui.fragment.DiscoverFragment;
 import com.jy.xinlangweibo.ui.fragment.FragmentController;
 import com.jy.xinlangweibo.ui.fragment.HomeFragment;
 import com.jy.xinlangweibo.ui.fragment.MessageFragment;
 import com.jy.xinlangweibo.ui.fragment.ProfileFragment;
 import com.jy.xinlangweibo.ui.fragment.setting.SettingFragment;
-import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
-import com.jy.xinlangweibo.ui.activity.base.FragmentActivity;
-import com.jy.xinlangweibo.utils.Logger;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity implements OnCheckedChangeListener, NavigationView.OnNavigationItemSelectedListener {
@@ -42,10 +41,13 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Logger.showLog("mainactivity oncreate", tag);
+        //使得侧边栏顶端不被statusbar覆盖  这里的写法是让状态栏透明  只对主页面这样处理
+        // 其他activity这样处理会使状态栏设置颜色无效，但是主页面设置颜色则有效。具体原因待分析
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+			WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
+			localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
+		}
         setContentView(R.layout.activity_main);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        ButterKnife.bind(this);
         initView();
     }
 
@@ -59,11 +61,20 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
 
     @Override
     protected void onDestroy() {
-        Logger.showLog("mainactivity ondestroy", "com.jy.xinlangweibo");
-        FragmentController.onDestroy();
         super.onDestroy();
+        FragmentController.onDestroy();
     }
 
+//    因为FragmentController为单例模式 finish以后ondestroy（验证是新activity oncreate后执行）
+//    并不会立即执行，所以在oncreate 之前需要将FragmentController instance置为空,保证FragmentController
+//    与activity的生命周期一致
+    @Override
+    public void finish() {
+        super.finish();
+        FragmentController.onDestroy();
+    }
+
+    //    这里捕获分发事件产生的一个异常（为messagefragment view的侧滑 产生）
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         try {
@@ -99,6 +110,7 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
         fragmentController.show(0);
 //		底部按钮初始化
         rg.setOnCheckedChangeListener(this);
+        rg.setBackgroundColor(0xffffff);
         navgationview.setNavigationItemSelectedListener(this);
 
     }

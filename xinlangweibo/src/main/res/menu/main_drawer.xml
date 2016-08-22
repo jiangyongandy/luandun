@@ -31,13 +31,13 @@
                 android:checkable="true"
                 android:icon="@drawable/avatar_default"
                 android:title="xxxx"
-                app:itemTextColor="?attr/themeColor" />
+                app:itemTextColor="@color/orange" />
             <item
                 android:id="@+id/navigation_sub_item2"
                 android:checkable="true"
                 android:icon="@drawable/avatar_default"
                 android:title="xxxx"
-                app:itemBackground="?attr/themeColor" />
+                app:itemBackground="?attr/statusBarBackground" />
             <item
                 android:id="@+id/navigation_sub_item3"
                 android:checkable="true"

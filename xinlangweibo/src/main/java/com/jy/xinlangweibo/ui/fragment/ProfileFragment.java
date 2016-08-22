@@ -3,6 +3,7 @@ package com.jy.xinlangweibo.ui.fragment;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
@@ -19,12 +20,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.constant.CustomConstant;
 import com.jy.xinlangweibo.ui.activity.StatusDetailsActivity;
 import com.jy.xinlangweibo.ui.adapter.GridIvAdapter;
 import com.jy.xinlangweibo.ui.adapter.ParallaxRecyclerAdapter;
 import com.jy.xinlangweibo.ui.adapter.ParallaxRecyclerAdapter.OnParallaxScroll;
 import com.jy.xinlangweibo.ui.adapter.RecyleViewHolder;
-import com.jy.xinlangweibo.constant.CustomConstant;
 import com.jy.xinlangweibo.ui.fragment.base.BaseFragment;
 import com.jy.xinlangweibo.utils.DateUtils;
 import com.jy.xinlangweibo.utils.ImageLoadeOptions;
@@ -41,6 +42,7 @@ public class ProfileFragment extends BaseFragment {
 	private RecyclerView mRecyclerView;
 	private TitleBuilder titleBuilder;
 	private CustomActBar actbar;
+	private ContextThemeWrapper context;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,

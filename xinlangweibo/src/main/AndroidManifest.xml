@@ -40,7 +40,6 @@
         <activity android:name=".ui.activity.StatusDetailsActivity" />
         <activity
             android:name=".ui.activity.WriteStatusActivity"
-            android:theme="@style/appTheme"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.activity.ImageBrowseActivity"

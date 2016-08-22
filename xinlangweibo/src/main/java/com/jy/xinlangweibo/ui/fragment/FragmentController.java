@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.util.Log;
 
 //单例设计模式
 public class FragmentController {
@@ -12,7 +11,6 @@ public class FragmentController {
 	private FragmentManager fm;
 	private int containerId;
 	private Fragment[] fragments;
-	private int last;
 
 
 	private FragmentController(Activity activity,int id,Fragment[] fragments) {
@@ -85,7 +83,9 @@ public class FragmentController {
 			ft.hide(fg);
 			}
 		}
-		ft.commit();
+		if (ft != null) {
+			ft.commit();
+		}
 	}
 	public void show (int position) {
 		FragmentTransaction ft = fm.beginTransaction();
@@ -100,20 +100,5 @@ public class FragmentController {
 		hide();
 		ft.show(fg);
 		ft.commit();
-		switch (position) {
-			case 0:
-				if (fragments[2].isVisible()) {
-					Log.i("show", "222   visible------------------");
-				} else
-					Log.i("show","222    invisible----------------");
-				break;
-			case 1:
-				if (fragments[2].isVisible()) {
-					Log.i("show","222    visible------------------");
-				} else
-					Log.i("show","222     invisible----------------");
-				break;
-		}
-		last = position;
 	}
 }

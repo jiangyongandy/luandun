@@ -371,8 +371,13 @@ public class ACache {
 	 * @param value
 	 *            保存的value
 	 */
-	public void put(String key, Serializable value) {
-		put(key, value, -1);
+	public void put(final String key, final Serializable value) {
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				put(key, value, -1);
+			}
+		}).start();
 	}
 
 	/**
