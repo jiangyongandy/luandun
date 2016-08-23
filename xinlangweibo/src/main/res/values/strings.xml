@@ -24,6 +24,16 @@
     <string name="statuses_loading">微博加载中...</string>
     <string name="title_settings">设置</string>
 
+    <string name="xlistview_header_hint_normal">下拉刷新</string>
+    <string name="xlistview_header_hint_ready">松开刷新数据</string>
+    <string name="xlistview_header_hint_loading">正在加载…</string>
+    <string name="xlistview_header_last_time">上次更新时间：</string>
+    <string name="xlistview_footer_hint_normal">查看更多</string>
+    <string name="xlistview_footer_hint_ready">松开载入更多</string>
+    <string name="please_wait">微博加载中...</string>
+    <string name="draw_open">打开</string>
+    <string name="draw_close">关闭</string>
+
     <string-array name="mdColorNames">
         <item>Red</item>
         <item>Pink</item>

@@ -9,6 +9,9 @@
         <item name="colorPrimary">?attr/themeColor</item>
         <item name="colorPrimaryDark">?attr/themeStatusbarColor</item>
         <item name="android:windowIsTranslucent">true</item>
+<!--toolbar空白部分-->
+<!--        <item name="contentInsetStart">0dp</item>
+        <item name="contentInsetEnd">0dp</item>-->
     </style>
 
     <style name="appTheme.Main">

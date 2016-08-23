@@ -30,19 +30,19 @@ public class TitleBuilder {
 		this.context = context.getContext();
 		rl_titlebar = (RelativeLayout) context.findViewById(R.id.rl_titlebar);
 		leftText = (TextView) context.findViewById(R.id.nav_left_text);
-		leftImage = (ImageView) context.findViewById(R.id.nav_left__iv);
+		leftImage = (ImageView) context.findViewById(R.id.nav_left_iv);
 		title = (TextView) context.findViewById(R.id.nav_title);
 		rightImage = (ImageView) context
-				.findViewById(R.id.nav_right__iv);
+				.findViewById(R.id.nav_right_iv);
 		rightButton = (Button) context.findViewById(R.id.nav_right_text);
 	}
 	public TitleBuilder(Activity context) {
 		this.context = context;
 		leftText = (TextView) context.findViewById(R.id.nav_left_text);
-		leftImage = (ImageView) context.findViewById(R.id.nav_left__iv);
+		leftImage = (ImageView) context.findViewById(R.id.nav_left_iv);
 		title = (TextView) context.findViewById(R.id.nav_title);
 		rightImage = (ImageView) context
-				.findViewById(R.id.nav_right__iv);
+				.findViewById(R.id.nav_right_iv);
 		rightButton = (Button) context.findViewById(R.id.nav_right_text);
 	}
 

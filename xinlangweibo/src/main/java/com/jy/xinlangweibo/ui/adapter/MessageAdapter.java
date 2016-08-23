@@ -53,6 +53,7 @@ public class MessageAdapter extends BaseAdapter {
 		}
 
 		View messageItem = vh.getView(R.id.item_message_layout);
+		messageItem.setBackgroundColor(context.getResources().getColor(R.color.white));
 		TextView nickName = vh.getView(R.id.tv_pubname);
 		TextView messageText = vh.getView(R.id.tv_from);
 		ImageView headIv = vh.getView(R.id.iv_head);

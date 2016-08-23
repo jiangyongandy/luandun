@@ -23,7 +23,7 @@ public class BaseActivity extends AppCompatActivity {
 	protected String tag;
 	protected ACache mCache;
 	protected int theme;
-	private Toolbar mToolbar;
+	protected Toolbar mToolbar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +64,14 @@ public class BaseActivity extends AppCompatActivity {
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		ButterKnife.bind(this);
 	}
+
+	public Toolbar getToolbar() {
+		return this.mToolbar;
+	}
+
 	public void reload() {
 		Intent intent = this.getIntent();
+//		重启activity,取消activity切换动画，平滑过渡
 		this.overridePendingTransition(0, 0);
 //		FLAG_ACTIVITY_NO_ANIMATION
 		intent.addFlags(65536);
@@ -86,6 +92,7 @@ public class BaseActivity extends AppCompatActivity {
 	public void showToast(String text) {
 		ToastUtils.show(this, text, Toast.LENGTH_SHORT);
 	}
+
 	public void showLog(String msg) {
 		Logger.showLog(msg, tag);
 	}

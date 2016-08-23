@@ -1,22 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_gray"
-    android:orientation="vertical" >
-    <include layout="@layout/include_actbar" />
+    android:orientation="vertical">
 
-    <com.handmark.pulltorefresh.library.PullToRefreshListView  xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    <android.support.v7.widget.Toolbar
+
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        tools:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        tools:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <TextView
+            android:id="@+id/nav_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:text="这是中间标题"
+            android:textColor="@drawable/navbar_textcolor_bla2ora_sel"
+            android:textSize="20sp"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/nav_right_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="right"
+            android:paddingRight="16dp"
+            android:src="@drawable/icon_navbarhomeright_gra2ora_sel"
+            android:visibility="visible" />
+    </android.support.v7.widget.Toolbar>
+
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView xmlns:ptr="http://schemas.android.com/apk/res-auto"
         android:id="@+id/lv_status"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:cacheColorHint="@color/transparent"
         android:listSelector="@color/transparent"
         android:scrollbars="none"
-        ptr:ptrDrawable="@drawable/tableview_pull_refresh_arrow_up"
         ptr:ptrAnimationStyle="flip"
-        ptr:ptrShowIndicator="false"
-        >
-    </com.handmark.pulltorefresh.library.PullToRefreshListView>
+        ptr:ptrDrawable="@drawable/tableview_pull_refresh_arrow_up"
+        ptr:ptrShowIndicator="false"></com.handmark.pulltorefresh.library.PullToRefreshListView>
 
 </LinearLayout>

@@ -17,7 +17,7 @@
         android:layout_alignTop="@+id/iv_head"
         android:layout_marginLeft="14dp"
         android:layout_toRightOf="@+id/iv_head"
-        android:textColor="@color/orange"
+        android:textColor="?attr/themeColor"
         android:text="吴彦祖"
         style="@style/middle_gray_text"/>
 

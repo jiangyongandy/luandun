@@ -2,9 +2,9 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/item_message_layout"
-    android:descendantFocusability="blocksDescendants"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/white"
     android:orientation="vertical" >
 
     <RelativeLayout
@@ -41,7 +41,7 @@
             android:clickable="false"
             android:singleLine="true"
             android:maxLines="1"
-            android:maxLength="17"
+            android:maxLength="25"
             android:textSize="13sp" />
 
     </RelativeLayout>

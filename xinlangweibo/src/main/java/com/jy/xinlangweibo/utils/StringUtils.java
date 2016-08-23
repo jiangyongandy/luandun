@@ -15,7 +15,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.ui.activity.WebActivity;
 
 import java.util.regex.Matcher;
@@ -158,7 +157,7 @@ public class StringUtils {
 
 		@Override
 		public void updateDrawState(TextPaint ds) {
-			ds.setColor(context.getResources().getColor(R.color.txt_at_blue));
+			ds.setColor(ThemeUtils.getThemeColor());
 			ds.setUnderlineText(false);
 		}
 	}

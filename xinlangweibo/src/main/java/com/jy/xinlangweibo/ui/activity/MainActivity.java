@@ -4,11 +4,14 @@ import android.app.Fragment;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
@@ -37,18 +40,23 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
     DrawerLayout drawer;
     protected FragmentController fragmentController;
     private Fragment[] fragments = new Fragment[4];
+    private PopupWindow pw;
+    private ActionBarDrawerToggle drawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //使得侧边栏顶端不被statusbar覆盖  这里的写法是让状态栏透明  只对主页面这样处理
         // 其他activity这样处理会使状态栏设置颜色无效，但是主页面设置颜色则有效。具体原因待分析
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-			WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
-			localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
-		}
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
+            localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
+        }
         setContentView(R.layout.activity_main);
         initView();
+
+        HomeFragment fragment = (HomeFragment) fragments[0];
+        drawerToggle = fragment.getDrawerToggle();
     }
 
     /**
@@ -65,7 +73,7 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
         FragmentController.onDestroy();
     }
 
-//    因为FragmentController为单例模式 finish以后ondestroy（验证是新activity oncreate后执行）
+    //    因为FragmentController为单例模式 finish以后ondestroy（验证是新activity oncreate后执行）
 //    并不会立即执行，所以在oncreate 之前需要将FragmentController instance置为空,保证FragmentController
 //    与activity的生命周期一致
     @Override
@@ -98,11 +106,24 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (drawerToggle != null && drawerToggle.onOptionsItemSelected(item))
+            return true;
+        switch (item.getItemId()) {
+//            toolbar最右边图片按钮点击事件
+            case android.R.id.home:
+                if (drawer.isDrawerVisible(GravityCompat.START))
+                    drawer.closeDrawers();
+                else
+                    drawer.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressWarnings("ResourceType")
     private void initView() {
-////		自定义actiobar初始化
-//	       View actionbarLayout = LayoutInflater.from(this).inflate(  
-//	               R.layout.custom_actbar, null);  
-//	       TitleBuilder.setCustomActionBar(this, actionbarLayout);
 //     Fragment 初始化。
         fragmentController = FragmentController.getInstance(this,
                 R.id.contentframe, fragments);
@@ -110,9 +131,9 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
         fragmentController.show(0);
 //		底部按钮初始化
         rg.setOnCheckedChangeListener(this);
-        rg.setBackgroundColor(0xffffff);
+        rg.setBackgroundColor(getResources().getColor(R.color.white));
         navgationview.setNavigationItemSelectedListener(this);
-
+        navgationview.setBackgroundColor(getResources().getColor(R.color.white));
     }
 
     @Override
@@ -136,6 +157,7 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
                 break;
         }
     }
+
     @OnClick(R.id.tabcenterid)
     public void onClick() {
         MainActivity.this.intent2Activity(WriteStatusActivity.class);
@@ -149,5 +171,9 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
                 FragmentActivity.launch(this, SettingFragment.class);
         }
         return true;
+    }
+
+    public DrawerLayout getDrawer() {
+        return drawer;
     }
 }

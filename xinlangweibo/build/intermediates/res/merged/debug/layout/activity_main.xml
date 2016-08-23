@@ -14,8 +14,7 @@
             android:id="@+id/contentframe"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="@color/bg_gray"/>
+            android:layout_weight="1" />
 
         <View
             android:layout_width="fill_parent"
@@ -67,10 +66,12 @@
     </LinearLayout>
 
     <android.support.design.widget.NavigationView
+        android:background="@color/white"
         android:id="@+id/navgationview"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        app:elevation="2dp"
         app:headerLayout="@layout/nv_header"
         app:menu="@menu/main_drawer"/>
 
