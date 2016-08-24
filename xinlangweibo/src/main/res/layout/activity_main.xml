@@ -5,74 +5,82 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <LinearLayout
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/mainmenu"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="vertical">
+        android:background="@color/white"
+        android:foreground="@drawable/shape_window_dim">
 
-        <FrameLayout
-            android:id="@+id/contentframe"
+        <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
 
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:background="@color/divider_gray" />
+            <FrameLayout
+                android:id="@+id/contentframe"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
-        <RadioGroup
-            android:id="@+id/rg"
-            android:layout_width="fill_parent"
-            android:layout_height="48dp"
-            android:background="@color/white"
-            android:orientation="horizontal">
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider_gray" />
 
-            <RadioButton
-                android:id="@+id/tabhomeid"
-                style="@style/tabbar"
-                android:checked="true"
-                android:drawableTop="@drawable/icon_tabbarhome_gra2ora_sel"
-                android:text="@string/tablebar_home" />
+            <RadioGroup
+                android:id="@+id/rg"
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:background="@color/white"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/tabmessageid"
-                style="@style/tabbar"
-                android:drawableTop="@drawable/icon_tabbarmessage_gra2ora_sel"
-                android:text="@string/tab_message" />
+                <RadioButton
+                    android:id="@+id/tabhomeid"
+                    style="@style/tabbar"
+                    android:checked="true"
+                    android:drawableTop="@drawable/icon_tabbarhome_gra2ora_sel"
+                    android:text="@string/tablebar_home" />
 
-            <ImageView
-                android:id="@+id/tabcenterid"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/backgro_tabbarcenter_gra2ora_sel"
-                android:gravity="center"
-                android:src="@drawable/icon_tabbarcenter_gra2ora_sel" />
+                <RadioButton
+                    android:id="@+id/tabmessageid"
+                    style="@style/tabbar"
+                    android:drawableTop="@drawable/icon_tabbarmessage_gra2ora_sel"
+                    android:text="@string/tab_message" />
 
-            <RadioButton
-                android:id="@+id/tabdiscoverid"
-                style="@style/tabbar"
-                android:drawableTop="@drawable/icon_tabbardiscover_gra2ora_sel"
-                android:text="@string/tab_discover" />
+                <ImageView
+                    android:id="@+id/tabcenterid"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/backgro_tabbarcenter_gra2ora_sel"
+                    android:gravity="center"
+                    android:src="@drawable/icon_tabbarcenter_gra2ora_sel" />
 
-            <RadioButton
-                android:id="@+id/tabprofileid"
-                style="@style/tabbar"
-                android:drawableTop="@drawable/icon_tabbarprofile_gra2ora_sel"
-                android:text="@string/tab_profile" />
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/tabdiscoverid"
+                    style="@style/tabbar"
+                    android:drawableTop="@drawable/icon_tabbardiscover_gra2ora_sel"
+                    android:text="@string/tab_discover" />
 
-    </LinearLayout>
+                <RadioButton
+                    android:id="@+id/tabprofileid"
+                    style="@style/tabbar"
+                    android:drawableTop="@drawable/icon_tabbarprofile_gra2ora_sel"
+                    android:text="@string/tab_profile" />
+            </RadioGroup>
+
+        </LinearLayout>
+    </FrameLayout>
 
     <android.support.design.widget.NavigationView
-        android:background="@color/white"
         android:id="@+id/navgationview"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@color/white"
         app:elevation="2dp"
         app:headerLayout="@layout/nv_header"
-        app:menu="@menu/main_drawer"/>
+        app:menu="@menu/main_drawer" />
 
 </android.support.v4.widget.DrawerLayout>

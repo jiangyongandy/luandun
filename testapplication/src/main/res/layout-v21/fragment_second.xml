@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+     android:background="@color/colorAccent"  android:fitsSystemWindows="true"
+    android:layout_height="match_parent" tools:context=".SecondFragment">
+
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        app:ico_color="@color/icon"
+        app:ico_icon="gmd_place"
+        app:ico_size="48dp" />
+
+    <Button
+        android:text="第二个Fragment"
+        android:id="@+id/plus_one_button" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"  />
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/image"
+        android:background="?android:attr/selectableItemBackground"
+        android:src="@drawable/icon"
+        android:tint="@color/icon"
+        android:clickable="true"
+        />
+</LinearLayout>

@@ -54,7 +54,7 @@ public class MessageFragment extends BaseFragment implements PullToRefreshSwipeM
 		mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				System.out.println("onitemclick----------------------");
+				System.out.println("onitemclick----------------------"+position);
 			}
 		});
 		// test item long click

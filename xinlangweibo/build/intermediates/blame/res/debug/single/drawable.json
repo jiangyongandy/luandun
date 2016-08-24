@@ -252,6 +252,10 @@
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable\\btn_insert_emotion.xml"
     },
     {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\shape_window_dim.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable\\shape_window_dim.xml"
+    },
+    {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_tabbarcenter_gra2ora_sel.xml",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable\\icon_tabbarcenter_gra2ora_sel.xml"
     },

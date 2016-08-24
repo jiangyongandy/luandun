@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -26,8 +27,6 @@ import com.jy.xinlangweibo.constant.Constants;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.ui.adapter.StatusesAdapter;
 import com.jy.xinlangweibo.ui.fragment.base.BaseFragment;
-import com.jy.xinlangweibo.utils.Logger;
-import com.jy.xinlangweibo.utils.TitleBuilder;
 import com.jy.xinlangweibo.utils.Utils;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.exception.WeiboException;
@@ -38,12 +37,17 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class HomeFragment extends BaseFragment {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.lv_status)
     PullToRefreshListView lvStatus;
+    @BindView(R.id.nav_title)
+    TextView navTitle;
+    @BindView(R.id.nav_right_iv)
+    ImageView navRightIv;
     private View view;
     private View footView;
     private View tvLoad;
@@ -52,7 +56,6 @@ public class HomeFragment extends BaseFragment {
     private StatusesAdapter adapter;
     private int curPage;
     private PopupWindow pw;
-    private String ip;
     private MaterialDialog materialDialog;
     private ActionBarDrawerToggle drawerToggle;
 
@@ -73,6 +76,8 @@ public class HomeFragment extends BaseFragment {
         mCache.put("STATUES", statusList);
     }
 
+    //    fragment中的toolbar要实现 与drawlayout绑定状态
+//    需要在适当的fragment生命周期进行同步（即与activity中onPostCreate 中同步是类似的）
     @Override
     public void onResume() {
         super.onResume();
@@ -85,14 +90,8 @@ public class HomeFragment extends BaseFragment {
         showProgressDialog();
         loadData(1);
         initPlv();
-//        initTitle();
+        initToolbar();
         initPop();
-        activity.setSupportActionBar(toolbar);
-        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        activity.getSupportActionBar().setDisplayShowHomeEnabled(false);
-        activity.getSupportActionBar().setTitle(null);
-//        将actionbar 与drawlayout关联 具体效果为actionbar最左边的图标的变换
-        setupDrawer();
     }
 
     private void showProgressDialog() {
@@ -124,28 +123,14 @@ public class HomeFragment extends BaseFragment {
     /**
      *
      */
-    private void initTitle() {
-        new TitleBuilder(view)
-                .setTitle("首页")
-                .setRightOnclickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (!pw.isShowing()) {
-                            Logger.showLog("屏幕宽度：" + Utils.getDisplayWidthPixels(activity) + "弹窗宽度:" + View.MeasureSpec.getSize(pw.getWidth()), "计算弹窗偏移量");
-                            pw.showAsDropDown(activity.findViewById(R.id.rl_titlebar), Utils.getDisplayWidthPixels(activity) - View.MeasureSpec.getSize(pw.getWidth()) - Utils.dip2px(activity, 10), 0);
-                            backgroundAlpha(0.8f);
-                        } else {
-                            pw.dismiss();
-                        }
-
-                    }
-                })
-                .setLeftOnclickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                    }
-                });
+    private void initToolbar() {
+        navTitle.setText("首页");
+        activity.setSupportActionBar(toolbar);
+        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        activity.getSupportActionBar().setDisplayShowHomeEnabled(false);
+        activity.getSupportActionBar().setTitle(null);
+//        将actionbar 与drawlayout关联 具体效果为actionbar最左边的图标的变换
+        setupDrawer();
     }
 
     /**
@@ -155,9 +140,7 @@ public class HomeFragment extends BaseFragment {
         View popView = LayoutInflater.from(activity).inflate(
                 R.layout.pop_mainact_navright, null);
         pw = new PopupWindow(popView, Utils.dip2px(activity, 115),
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-        // 使其聚焦
-        pw.setFocusable(true);
+                LinearLayout.LayoutParams.WRAP_CONTENT,true);
         // 设置允许在外点击消失
         pw.setOutsideTouchable(true);
         // 刷新状态
@@ -166,11 +149,9 @@ public class HomeFragment extends BaseFragment {
         pw.setBackgroundDrawable(getResources().getDrawable(
                 R.drawable.conversation_options_bg));
         pw.setOnDismissListener(new PopupWindow.OnDismissListener() {
-
             @Override
             public void onDismiss() {
-                // TODO Auto-generated method stub
-                backgroundAlpha(1f);
+                activity.getMainmenu().getForeground().setAlpha( 0); // restore
             }
         });
     }
@@ -317,5 +298,17 @@ public class HomeFragment extends BaseFragment {
 
     public ActionBarDrawerToggle getDrawerToggle() {
         return drawerToggle;
+    }
+
+    @OnClick(R.id.nav_right_iv)
+    public void onClick() {
+        if (!pw.isShowing()) {
+//            Logger.showLog("屏幕宽度：" + Utils.getDisplayWidthPixels(activity) + "弹窗宽度:" + View.MeasureSpec.getSize(pw.getWidth()), "计算弹窗偏移量");
+            activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+            pw.showAsDropDown(toolbar, Utils.getDisplayWidthPixels(activity) - View.MeasureSpec.getSize(pw.getWidth()) - Utils.dip2px(activity, 10), 0);
+            activity.getMainmenu().getForeground().setAlpha(50); // dim
+        } else {
+            pw.dismiss();
+        }
     }
 }

@@ -4,7 +4,9 @@
     android:id="@+id/item_message_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:backgroundTint="@color/icon"
+    android:background="?android:attr/selectableItemBackground"
+    android:descendantFocusability="blocksDescendants"
     android:orientation="vertical" >
 
     <RelativeLayout

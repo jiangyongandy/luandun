@@ -53,7 +53,8 @@ public class MessageAdapter extends BaseAdapter {
 		}
 
 		View messageItem = vh.getView(R.id.item_message_layout);
-		messageItem.setBackgroundColor(context.getResources().getColor(R.color.white));
+//		messageItem.setBackgroundColor(context.getResources().getColor(R.color.white));
+		messageItem.setBackgroundTintList(messageItem.getResources().getColorStateList(R.color.icon));
 		TextView nickName = vh.getView(R.id.tv_pubname);
 		TextView messageText = vh.getView(R.id.tv_from);
 		ImageView headIv = vh.getView(R.id.iv_head);
@@ -63,13 +64,6 @@ public class MessageAdapter extends BaseAdapter {
 		messageText.setText(StringUtils.getOnlyImageSpan(context, status.text, messageText));
 		imageLoader.displayImage(status.user.avatar_hd, headIv,
 				ImageLoadeOptions.getIvHeadOption());
-
-//		messageItem.setOnClickListener(new View.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-////				System.out.println("messageItem  onclick--------------");
-//			}
-//		});
 		return vh.getMconvertView();
 	}
 

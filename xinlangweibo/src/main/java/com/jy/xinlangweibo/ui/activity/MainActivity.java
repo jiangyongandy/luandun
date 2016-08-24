@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.WindowManager;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RadioGroup;
@@ -26,6 +27,7 @@ import com.jy.xinlangweibo.ui.fragment.ProfileFragment;
 import com.jy.xinlangweibo.ui.fragment.setting.SettingFragment;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity implements OnCheckedChangeListener, NavigationView.OnNavigationItemSelectedListener {
@@ -39,6 +41,8 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
     @BindView(R.id.drawer)
     DrawerLayout drawer;
     protected FragmentController fragmentController;
+    @BindView(R.id.mainmenu)
+    FrameLayout mainmenu;
     private Fragment[] fragments = new Fragment[4];
     private PopupWindow pw;
     private ActionBarDrawerToggle drawerToggle;
@@ -53,6 +57,11 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
             localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
         }
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+//  这里是为了设置popupwindow 背景半透明
+        mainmenu = (FrameLayout) findViewById(R.id.mainmenu);
+        mainmenu.getForeground().setAlpha(0);
+
         initView();
 
         HomeFragment fragment = (HomeFragment) fragments[0];
@@ -175,5 +184,9 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
 
     public DrawerLayout getDrawer() {
         return drawer;
+    }
+
+    public FrameLayout getMainmenu() {
+        return mainmenu;
     }
 }

@@ -18,7 +18,6 @@ import android.widget.Scroller;
 import android.widget.TextView;
 
 import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.utils.Logger;
 import com.jy.xinlangweibo.widget.pulltorefresh.PullToRefreshListFooter;
 import com.jy.xinlangweibo.widget.pulltorefresh.PullToRefreshListHeader;
 import com.jy.xinlangweibo.widget.swipemenulistview.SwipeMenu;
@@ -303,7 +302,6 @@ public class PullToRefreshSwipeMenuListView extends ListView implements OnScroll
 			}
 			break;
 		case MotionEvent.ACTION_UP:
-			Logger.showLog("松开手--------------","up");
 			mLastY = -1; // reset
 			if (mEnablePullLoad && mFooterView.getHeight()>0 && mFooterView.getBottomMargin() > PULL_LOAD_MORE_DELTA) {  //到底上拉释放
 				startLoadMore();
@@ -334,6 +332,7 @@ public class PullToRefreshSwipeMenuListView extends ListView implements OnScroll
 				}
 //				取消对UP事件的处理  即itemonclick失效
 				ev.setAction(MotionEvent.ACTION_CANCEL);
+//				Logger.showLog("松开手--------------取消up事件处理","up");
 				super.onTouchEvent(ev);
 				return true;
 			}
