@@ -1,6 +1,5 @@
 package com.jy.xinlangweibo.ui.adapter;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.text.Html;
@@ -20,9 +19,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.constant.CustomConstant;
 import com.jy.xinlangweibo.ui.activity.ImageBrowseActivity;
 import com.jy.xinlangweibo.ui.activity.StatusDetailsActivity;
-import com.jy.xinlangweibo.constant.CustomConstant;
+import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.utils.DateUtils;
 import com.jy.xinlangweibo.utils.ImageLoadeOptions;
 import com.jy.xinlangweibo.utils.StringUtils;
@@ -39,7 +39,7 @@ import java.util.ArrayList;
 public class StatusesAdapter extends BaseAdapter {
 	private ArrayList<Status> list;
 	private ImageLoader imageLoader;
-	private Context context;
+	private BaseActivity context;
 	private final int MAXIMAGE = 250;
 
 	public StatusesAdapter(ArrayList<Status> list) {
@@ -64,7 +64,7 @@ public class StatusesAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, final ViewGroup parent) {
-		context = parent.getContext();
+		context = (BaseActivity) parent.getContext();
 		ViewHolder vh;
 		if (convertView == null) {
 			convertView = View.inflate(context, R.layout.item_status, null);
@@ -106,7 +106,7 @@ public class StatusesAdapter extends BaseAdapter {
 		final Status status = getItem(position);
 		User user = status.user;
 
-		View itemStatus = vh.getView(R.id.ll_item_status);
+		LinearLayout itemStatus = vh.getView(R.id.ll_item_status);
 		itemStatus.setOnClickListener(new OnClickListener() {
 
 			@Override

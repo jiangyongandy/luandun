@@ -1,6 +1,5 @@
 package com.jy.xinlangweibo.ui.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -14,6 +13,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.utils.ImageLoadeOptions;
 import com.jy.xinlangweibo.widget.PhotoView.PhotoView;
 import com.jy.xinlangweibo.widget.PhotoView.PhotoViewAttacher;
@@ -22,7 +22,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
 
-public class ImageBrowseActivity extends Activity {
+public class ImageBrowseActivity extends BaseActivity {
 
 	private ViewPager vp_imagebrowse;
 	private ArrayList<Object> pic_urls ;

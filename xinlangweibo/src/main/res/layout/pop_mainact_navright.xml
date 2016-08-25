@@ -15,6 +15,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:tint="?attr/themeColor"
             android:src="@drawable/tabbar_discover_highlighted" />
 
         <TextView
@@ -22,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="发现"
-            android:textColor="@color/orange" />
+            android:textColor="?attr/themeColor" />
     </LinearLayout>
 
     <LinearLayout
@@ -35,6 +36,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:tint="?attr/themeColor"
             android:src="@drawable/navigationbar_pop_highlighted" />
 
         <TextView
@@ -42,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="扫一扫"
-            android:textColor="@color/orange" />
+            android:textColor="?attr/themeColor" />
     </LinearLayout>
 
 </LinearLayout>

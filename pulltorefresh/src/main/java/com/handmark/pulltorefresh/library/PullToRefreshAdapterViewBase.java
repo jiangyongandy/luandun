@@ -208,6 +208,10 @@ public abstract class PullToRefreshAdapterViewBase<T extends AbsListView> extend
 		mRefreshableView.setOnItemClickListener(listener);
 	}
 
+	public T getmRefreshableView() {
+		return  mRefreshableView;
+	}
+
 	public final void setOnLastItemVisibleListener(OnLastItemVisibleListener listener) {
 		mOnLastItemVisibleListener = listener;
 	}

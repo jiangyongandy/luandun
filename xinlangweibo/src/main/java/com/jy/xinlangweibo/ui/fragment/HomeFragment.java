@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -177,12 +178,13 @@ public class HomeFragment extends BaseFragment {
 
             }
         });
-        // lv.setOnLastItemVisibleListener(new OnLastItemVisibleListener(){
-        //
-        // @Override
-        // public void onLastItemVisible() {
-        //
-        // }} );
+        lvStatus.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                activity.showToast("onItemclick-----------"+position);
+                System.out.println("onItemclick-----------"+position);
+            }
+        });
         adapter = new StatusesAdapter(statusList);
         lvStatus.setAdapter(adapter);
     }
@@ -256,19 +258,6 @@ public class HomeFragment extends BaseFragment {
         } else {
             ((BaseActivity) getActivity()).showToast(activity.getString(R.string.CONTINUE_REFRASH));
         }
-    }
-
-
-    /**
-     * 设置添加屏幕的背景透明度
-     *
-     * @param bgAlpha
-     */
-    public void backgroundAlpha(float bgAlpha) {
-        WindowManager.LayoutParams lp = activity.getWindow()
-                .getAttributes();
-        lp.alpha = bgAlpha; // 0.0-1.0
-        activity.getWindow().setAttributes(lp);
     }
 
     private void removeFootView(ListView refreshableView) {

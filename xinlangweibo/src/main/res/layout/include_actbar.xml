@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
+        android:tint="@color/icon"
         android:paddingLeft="16dp"
         android:src="@drawable/icon_navbarhomeleft_gra2ora_sel" />
 
@@ -40,6 +41,7 @@
         android:id="@+id/nav_right_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:tint="@color/icon"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:paddingRight="16dp"

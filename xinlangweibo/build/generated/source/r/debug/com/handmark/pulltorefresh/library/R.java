@@ -45,9 +45,9 @@ public final class R {
 		public static final int common_loading = 0x7f02005b;
 		public static final int default_ptr_flip = 0x7f0200ad;
 		public static final int default_ptr_rotate = 0x7f0200ae;
-		public static final int indicator_arrow = 0x7f020122;
-		public static final int indicator_bg_bottom = 0x7f020123;
-		public static final int indicator_bg_top = 0x7f020124;
+		public static final int indicator_arrow = 0x7f020123;
+		public static final int indicator_bg_bottom = 0x7f020124;
+		public static final int indicator_bg_top = 0x7f020125;
 	}
 	public static final class id {
 		public static final int both = 0x7f0d003f;

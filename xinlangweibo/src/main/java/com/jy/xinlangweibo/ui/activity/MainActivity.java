@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
@@ -40,9 +41,17 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
     NavigationView navgationview;
     @BindView(R.id.drawer)
     DrawerLayout drawer;
-    protected FragmentController fragmentController;
     @BindView(R.id.mainmenu)
     FrameLayout mainmenu;
+    @BindView(R.id.tabhomeid)
+    RadioButton tabhomeid;
+    @BindView(R.id.tabmessageid)
+    RadioButton tabmessageid;
+    @BindView(R.id.tabdiscoverid)
+    RadioButton tabdiscoverid;
+    @BindView(R.id.tabprofileid)
+    RadioButton tabprofileid;
+    protected FragmentController fragmentController;
     private Fragment[] fragments = new Fragment[4];
     private PopupWindow pw;
     private ActionBarDrawerToggle drawerToggle;
@@ -140,9 +149,7 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
         fragmentController.show(0);
 //		底部按钮初始化
         rg.setOnCheckedChangeListener(this);
-        rg.setBackgroundColor(getResources().getColor(R.color.white));
         navgationview.setNavigationItemSelectedListener(this);
-        navgationview.setBackgroundColor(getResources().getColor(R.color.white));
     }
 
     @Override

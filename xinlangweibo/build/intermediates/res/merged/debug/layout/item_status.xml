@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white"
-    android:orientation="vertical" >
+    android:layout_height="wrap_content">
 
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/ll_item_status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/backgro_status_whi2gra_sel"
+        android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
-        android:orientation="vertical" >
+        android:descendantFocusability="blocksDescendants"
+        android:focusable="true"
+        android:orientation="vertical">
 
         <include layout="@layout/include_publisher" />
 
         <include layout="@layout/include_statuscontent" />
 
         <include layout="@layout/include_retweeted_statuscontent" />
+
+        <include layout="@layout/include_item_status_bottom" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="8dp"
+            android:background="@color/bg_gray"
+            android:focusable="false" />
     </LinearLayout>
-
-    <include layout="@layout/include_item_status_bottom" />
-
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="8dp"
-        android:background="@color/bg_gray" />
-</LinearLayout>
+</FrameLayout>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="match_parent"
-	android:layout_height="match_parent" android:gravity="center" xmlns:app="http://schemas.android.com/apk/res-auto"> 
+	android:layout_height="match_parent" android:gravity="center" xmlns:app="http://schemas.android.com/apk/res-auto" >
 
     <com.jy.xinlangweibo.widget.CircleImageView android:id="@+id/imgColor" android:layout_width="40dip" android:layout_height="40dip"
         app:border_width="0dp" app:border_color="@color/comm_white" android:layout_centerInParent="true"/>

@@ -3,10 +3,11 @@
     android:id="@+id/ll_retweeted"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/bg_agray"
     android:orientation="vertical"
     android:padding="10dp"
+    android:focusable="false"
     android:visibility="visible" >
+    <!--android:background="@color/bg_agray"-->
 
     <TextView
         android:id="@+id/tv_retweeted_content"

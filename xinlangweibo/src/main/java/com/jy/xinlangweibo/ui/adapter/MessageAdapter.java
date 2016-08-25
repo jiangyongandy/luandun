@@ -1,6 +1,6 @@
 package com.jy.xinlangweibo.ui.adapter;
 
-import android.content.Context;
+import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class MessageAdapter extends BaseAdapter {
 	private ArrayList<Status> list;
 	private ImageLoader imageLoader;
-	private Context context;
+	private Activity context;
 
 	public MessageAdapter(ArrayList<Status> list) {
 		this.list = list;
@@ -42,19 +42,16 @@ public class MessageAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, final ViewGroup parent) {
-		context = parent.getContext();
+		context = (Activity) parent.getContext();
 		ViewHolder vh;
 		if (convertView == null) {
-			convertView = View.inflate(context, R.layout.item_message, null);
+			convertView = context.getLayoutInflater().inflate( R.layout.item_message, null);
 			vh = ViewHolder.getViewHolder(convertView);
 			convertView.setTag(vh);
 		} else {
 			vh = (ViewHolder) convertView.getTag();
 		}
 
-		View messageItem = vh.getView(R.id.item_message_layout);
-//		messageItem.setBackgroundColor(context.getResources().getColor(R.color.white));
-		messageItem.setBackgroundTintList(messageItem.getResources().getColorStateList(R.color.icon));
 		TextView nickName = vh.getView(R.id.tv_pubname);
 		TextView messageText = vh.getView(R.id.tv_from);
 		ImageView headIv = vh.getView(R.id.iv_head);

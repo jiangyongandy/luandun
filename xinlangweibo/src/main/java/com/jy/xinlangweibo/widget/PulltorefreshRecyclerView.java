@@ -92,6 +92,11 @@ public class PulltorefreshRecyclerView extends RecyclerView {
 	}
 
 	@Override
+	public boolean onInterceptTouchEvent(MotionEvent e) {
+		return super.onInterceptTouchEvent(e);
+	}
+
+	@Override
 	public boolean onTouchEvent(MotionEvent ev) {
 		if (mLastY == -1) {
 			mLastY = ev.getRawY();
@@ -116,18 +121,12 @@ public class PulltorefreshRecyclerView extends RecyclerView {
 			if (Math.pow(dx, 2) / Math.pow(dy, 2) <= 3) { // 满足条件判断为// y方向上的滑动
 				manager = (LinearLayoutManager) this.getLayoutManager();
 				if (manager.findFirstVisibleItemPosition() == 0&& (mheadView.getLayoutParams().height >= mHeaderViewHeight || deltaY>0)) {
-					// the first item is showing, header has shown or pull down.
 					// 即判断为到顶下拉
 					updateHeaderHeight(deltaY * OFFSET_RADIO);
-				} else if ((mFooterView.getBottomMargin() > 0 || deltaY < 0)) {
-					if(mFooterView.getBottomMargin() > 0 ) {
-						System.out.println("footview 底 间距大于零");
-					} else if(deltaY < 0) {
-						System.out.println("deltay 小于零  deltay  值为：" +deltaY+"findFirstVisibleItemPosition值为："+manager.findFirstVisibleItemPosition());
-					}
+				} else if ((mFooterView.getBottomMargin() > 0 && deltaY < 0)) {
 					// last item, already pulled up or want to pull up. 即判断为到底上拉
 					// updateFooterHeight(-deltaY / 1.8f);
-					System.out.println("到底上拉。。。。。。。。。。");
+					System.out.println("到底上拉。。。。。。。。。。"+mFooterView.getBottomMargin());
 				}
 			}
 			if (mTouchState == TOUCH_STATE_NONE) { // 还未确定方向
@@ -142,7 +141,6 @@ public class PulltorefreshRecyclerView extends RecyclerView {
 			if (mEnablePullLoad && mFooterView.getHeight() > 0
 					&& mFooterView.getBottomMargin() > PULL_LOAD_MORE_DELTA) { // 到底上拉释放
 				System.out.println("到底上拉释放。。。。。。");
-				System.out.println("加载更多。。。。。。");
 				startLoadMore();
 				resetFooterHeight();
 				new ResetHeaderHeightTask().execute();
