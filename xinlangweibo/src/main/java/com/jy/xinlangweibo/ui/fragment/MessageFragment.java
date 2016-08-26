@@ -11,6 +11,7 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Toast;
 
 import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.ui.activity.MainActivity;
 import com.jy.xinlangweibo.ui.adapter.MessageAdapter;
 import com.jy.xinlangweibo.ui.fragment.base.BaseFragment;
 import com.jy.xinlangweibo.utils.TitleBuilder;
@@ -32,9 +33,19 @@ public class MessageFragment extends BaseFragment implements PullToRefreshSwipeM
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		view = View.inflate(activity, R.layout.fragment_message, null);
-		initTitle();
+//		initTitle();
 		initLv();
 		return view;
+	}
+
+	@Override
+	public void onHiddenChanged(boolean hidden) {
+		super.onHiddenChanged(hidden);
+		if(!hidden) {
+			((MainActivity)activity).getToolbar().setVisibility(View.VISIBLE);
+			((MainActivity)activity).getNavTitle().setText("消息");
+			((MainActivity)activity).getNavRightIv().setOnClickListener(null);
+		}
 	}
 
 	private void initLv() {

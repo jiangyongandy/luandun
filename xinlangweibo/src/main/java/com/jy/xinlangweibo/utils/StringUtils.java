@@ -15,7 +15,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jy.xinlangweibo.ui.activity.WebActivity;
+import com.jy.xinlangweibo.ui.activity.base.FragmentToolbarActivity;
+import com.jy.xinlangweibo.ui.fragment.WebFragment;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -79,9 +80,9 @@ public class StringUtils {
 					public void onClick(View arg0) {
 //						点击进入WEBVIEW显示网页
 						ToastUtils.show(context, "链接："+htt, Toast.LENGTH_SHORT);
-						Intent intent = new Intent(arg0.getContext(),WebActivity.class);
+						Intent intent = new Intent(arg0.getContext(),FragmentToolbarActivity.class);
 						intent.putExtra("Website",htt );
-						arg0.getContext().startActivity(intent);
+						FragmentToolbarActivity.launch(arg0.getContext(), WebFragment.class,intent);
 					}
 				}, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 			}

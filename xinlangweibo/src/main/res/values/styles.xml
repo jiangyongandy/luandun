@@ -59,6 +59,14 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="mProgress_horizontal">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/progressbar_horizontal_1</item><!-- progress_horizontal -->
+        <item name="android:indeterminateDrawable">@android:drawable/progress_indeterminate_horizontal</item>
+        <item name="android:minHeight">20dip</item>
+        <item name="android:maxHeight">20dip</item>
+    </style>
+
     <style name="appTheme.Main">
         <item name="android:windowIsTranslucent">false</item>
     </style>
@@ -468,4 +476,5 @@
         <item name="themeColor">@color/md_blue_grey_500</item>
         <item name="themeStatusbarColor">@color/md_blue_grey_700</item>
     </style>
+
 </resources>

@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.ui.activity.MainActivity;
 import com.jy.xinlangweibo.ui.adapter.StaggeredHomeAdapter;
 import com.jy.xinlangweibo.ui.adapter.StaggeredHomeAdapter.OnItemClickLitener;
 import com.jy.xinlangweibo.api.MyWeiboapi;
@@ -50,6 +51,14 @@ public class DiscoverFragment extends BaseFragment {
         init();
 
         return view;
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if(!hidden) {
+            ((MainActivity)activity).getToolbar().setVisibility(View.GONE);
+        }
     }
 
     private void init() {

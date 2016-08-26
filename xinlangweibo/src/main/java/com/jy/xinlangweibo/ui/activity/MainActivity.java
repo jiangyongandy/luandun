@@ -3,32 +3,35 @@ package com.jy.xinlangweibo.ui.activity;
 import android.app.Fragment;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.TextView;
 
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
-import com.jy.xinlangweibo.ui.activity.base.FragmentActivity;
+import com.jy.xinlangweibo.ui.activity.base.FragmentToolbarActivity;
 import com.jy.xinlangweibo.ui.fragment.DiscoverFragment;
 import com.jy.xinlangweibo.ui.fragment.FragmentController;
 import com.jy.xinlangweibo.ui.fragment.HomeFragment;
 import com.jy.xinlangweibo.ui.fragment.MessageFragment;
 import com.jy.xinlangweibo.ui.fragment.ProfileFragment;
 import com.jy.xinlangweibo.ui.fragment.setting.SettingFragment;
+import com.jy.xinlangweibo.utils.ACache;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity implements OnCheckedChangeListener, NavigationView.OnNavigationItemSelectedListener {
@@ -52,8 +55,13 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
     @BindView(R.id.tabprofileid)
     RadioButton tabprofileid;
     protected FragmentController fragmentController;
+    @BindView(R.id.nav_title)
+    TextView navTitle;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.nav_right_iv)
+    ImageView navRightIv;
     private Fragment[] fragments = new Fragment[4];
-    private PopupWindow pw;
     private ActionBarDrawerToggle drawerToggle;
 
     @Override
@@ -66,15 +74,12 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
             localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
         }
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
-//  这里是为了设置popupwindow 背景半透明
+        //  这里是为了设置popupwindow 背景半透明
         mainmenu = (FrameLayout) findViewById(R.id.mainmenu);
         mainmenu.getForeground().setAlpha(0);
-
+        //		得到缓存
+        mCache = ACache.get(this);
         initView();
-
-        HomeFragment fragment = (HomeFragment) fragments[0];
-        drawerToggle = fragment.getDrawerToggle();
     }
 
     /**
@@ -91,7 +96,7 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
         FragmentController.onDestroy();
     }
 
-    //    因为FragmentController为单例模式 finish以后ondestroy（验证是新activity oncreate后执行）
+//    因为FragmentController为单例模式 finish以后ondestroy（验证是新activity oncreate后执行）
 //    并不会立即执行，所以在oncreate 之前需要将FragmentController instance置为空,保证FragmentController
 //    与activity的生命周期一致
     @Override
@@ -140,7 +145,14 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("ResourceType")
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        if (drawerToggle != null)
+            drawerToggle.syncState();
+    }
+
+
     private void initView() {
 //     Fragment 初始化。
         fragmentController = FragmentController.getInstance(this,
@@ -150,6 +162,32 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
 //		底部按钮初始化
         rg.setOnCheckedChangeListener(this);
         navgationview.setNavigationItemSelectedListener(this);
+        initToolbar();
+    }
+
+    private void initToolbar() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(false);
+        getSupportActionBar().setTitle(null);
+        setupDrawer();
+    }
+
+    private void setupDrawer() {
+        drawerToggle = new ActionBarDrawerToggle(this, drawer,
+                toolbar, R.string.draw_open, R.string.draw_close) {
+
+            public void onDrawerClosed(View view) {
+                super.onDrawerClosed(view);
+
+            }
+
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+            }
+
+        };
+        drawer.addDrawerListener(drawerToggle);
     }
 
     @Override
@@ -184,7 +222,7 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
         int itemId = menuItem.getItemId();
         switch (itemId) {
             case R.id.navigation_sub_item3:
-                FragmentActivity.launch(this, SettingFragment.class);
+                FragmentToolbarActivity.launch(this, SettingFragment.class);
         }
         return true;
     }
@@ -195,5 +233,18 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
 
     public FrameLayout getMainmenu() {
         return mainmenu;
+    }
+
+    public TextView getNavTitle() {
+        return navTitle;
+    }
+
+    public ImageView getNavRightIv() {
+        return navRightIv;
+    }
+
+    @Override
+    public Toolbar getToolbar() {
+        return toolbar;
     }
 }

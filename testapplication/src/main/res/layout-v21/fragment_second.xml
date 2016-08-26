@@ -5,13 +5,13 @@
      android:background="@color/colorAccent"  android:fitsSystemWindows="true"
     android:layout_height="match_parent" tools:context=".SecondFragment">
 
-    <ImageView
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="?android:attr/selectableItemBackgroundBorderless"
-        app:ico_color="@color/icon"
-        app:ico_icon="gmd_place"
-        app:ico_size="48dp" />
+    <!--<ImageView-->
+        <!--android:layout_width="48dp"-->
+        <!--android:layout_height="48dp"-->
+        <!--android:background="?android:attr/selectableItemBackgroundBorderless"-->
+        <!--app:ico_color="@color/icon"-->
+        <!--app:ico_icon="gmd_place"-->
+        <!--app:ico_size="48dp" />-->
 
     <Button
         android:text="第二个Fragment"
@@ -28,4 +28,11 @@
         android:tint="@color/icon"
         android:clickable="true"
         />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>

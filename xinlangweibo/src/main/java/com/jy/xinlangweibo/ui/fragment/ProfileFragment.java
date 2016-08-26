@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.constant.CustomConstant;
+import com.jy.xinlangweibo.ui.activity.MainActivity;
 import com.jy.xinlangweibo.ui.activity.StatusDetailsActivity;
 import com.jy.xinlangweibo.ui.adapter.GridIvAdapter;
 import com.jy.xinlangweibo.ui.adapter.ParallaxRecyclerAdapter;
@@ -46,6 +47,14 @@ public class ProfileFragment extends BaseFragment {
         view = View.inflate(activity, R.layout.fragment_profile, null);
         init();
         return view;
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if(!hidden) {
+            ((MainActivity)activity).getToolbar().setVisibility(View.GONE);
+        }
     }
 
     private void init() {
@@ -215,7 +224,7 @@ public class ProfileFragment extends BaseFragment {
         adapter.setOnClickEvent(new ParallaxRecyclerAdapter.OnClickEvent() {
             @Override
             public void onClick(View v, int position) {
-                activity.showToast("card  终于 被点击了——————————");
+                ((MainActivity)activity).showToast("card  终于 被点击了——————————");
                 System.out.println("profile item onclick---------------" + position);
             }
         });

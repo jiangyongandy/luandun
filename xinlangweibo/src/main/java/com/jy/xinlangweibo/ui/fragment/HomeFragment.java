@@ -1,8 +1,6 @@
 package com.jy.xinlangweibo.ui.fragment;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
-import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -25,6 +22,7 @@ import com.jy.xinlangweibo.api.MyWeiboapi;
 import com.jy.xinlangweibo.api.SimpleRequestlistener;
 import com.jy.xinlangweibo.constant.AccessTokenKeeper;
 import com.jy.xinlangweibo.constant.Constants;
+import com.jy.xinlangweibo.ui.activity.MainActivity;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.ui.adapter.StatusesAdapter;
 import com.jy.xinlangweibo.ui.fragment.base.BaseFragment;
@@ -38,17 +36,10 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
-public class HomeFragment extends BaseFragment {
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
+public class HomeFragment extends BaseFragment implements View.OnClickListener {
     @BindView(R.id.lv_status)
     PullToRefreshListView lvStatus;
-    @BindView(R.id.nav_title)
-    TextView navTitle;
-    @BindView(R.id.nav_right_iv)
-    ImageView navRightIv;
     private View view;
     private View footView;
     private View tvLoad;
@@ -58,7 +49,6 @@ public class HomeFragment extends BaseFragment {
     private int curPage;
     private PopupWindow pw;
     private MaterialDialog materialDialog;
-    private ActionBarDrawerToggle drawerToggle;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -70,6 +60,16 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if(!hidden) {
+            ((MainActivity)activity).getToolbar().setVisibility(View.VISIBLE);
+            ((MainActivity)activity).getNavTitle().setText("首页");
+            ((MainActivity)activity).getNavRightIv().setOnClickListener(this);
+        }
+    }
+
+    @Override
     public void onPause() {
         super.onPause();
         mCache.clear();
@@ -77,21 +77,10 @@ public class HomeFragment extends BaseFragment {
         mCache.put("STATUES", statusList);
     }
 
-    //    fragment中的toolbar要实现 与drawlayout绑定状态
-//    需要在适当的fragment生命周期进行同步（即与activity中onPostCreate 中同步是类似的）
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        if (drawerToggle != null)
-            drawerToggle.syncState();
-    }
-
     private void initView() {
         showProgressDialog();
         loadData(1);
         initPlv();
-        initToolbar();
         initPop();
     }
 
@@ -102,36 +91,6 @@ public class HomeFragment extends BaseFragment {
                 .progress(true, 0)
                 .progressIndeterminateStyle(true)
                 .show();
-    }
-
-    private void setupDrawer() {
-        drawerToggle = new ActionBarDrawerToggle(activity, activity.getDrawer(),
-                toolbar, R.string.draw_open, R.string.draw_close) {
-
-            public void onDrawerClosed(View view) {
-                super.onDrawerClosed(view);
-
-            }
-
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-            }
-
-        };
-        activity.getDrawer().addDrawerListener(drawerToggle);
-    }
-
-    /**
-     *
-     */
-    private void initToolbar() {
-        navTitle.setText("首页");
-        activity.setSupportActionBar(toolbar);
-        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        activity.getSupportActionBar().setDisplayShowHomeEnabled(false);
-        activity.getSupportActionBar().setTitle(null);
-//        将actionbar 与drawlayout关联 具体效果为actionbar最左边的图标的变换
-        setupDrawer();
     }
 
     /**
@@ -152,7 +111,7 @@ public class HomeFragment extends BaseFragment {
         pw.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
-                activity.getMainmenu().getForeground().setAlpha( 0); // restore
+                ((MainActivity)activity).getMainmenu().getForeground().setAlpha( 0); // restore
             }
         });
     }
@@ -181,7 +140,7 @@ public class HomeFragment extends BaseFragment {
         lvStatus.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                activity.showToast("onItemclick-----------"+position);
+                ((MainActivity)activity).showToast("onItemclick-----------"+position);
                 System.out.println("onItemclick-----------"+position);
             }
         });
@@ -285,19 +244,18 @@ public class HomeFragment extends BaseFragment {
         }
     }
 
-    public ActionBarDrawerToggle getDrawerToggle() {
-        return drawerToggle;
-    }
-
-    @OnClick(R.id.nav_right_iv)
-    public void onClick() {
-        if (!pw.isShowing()) {
-//            Logger.showLog("屏幕宽度：" + Utils.getDisplayWidthPixels(activity) + "弹窗宽度:" + View.MeasureSpec.getSize(pw.getWidth()), "计算弹窗偏移量");
-            activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-            pw.showAsDropDown(toolbar, Utils.getDisplayWidthPixels(activity) - View.MeasureSpec.getSize(pw.getWidth()) - Utils.dip2px(activity, 10), 0);
-            activity.getMainmenu().getForeground().setAlpha(50); // dim
-        } else {
-            pw.dismiss();
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case  R.id.nav_right_iv:
+                if (!pw.isShowing()) {
+        //            Logger.showLog("屏幕宽度：" + Utils.getDisplayWidthPixels(activity) + "弹窗宽度:" + View.MeasureSpec.getSize(pw.getWidth()), "计算弹窗偏移量");
+                    activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+                    pw.showAsDropDown(((MainActivity)activity).getToolbar(), Utils.getDisplayWidthPixels(activity) - View.MeasureSpec.getSize(pw.getWidth()) - Utils.dip2px(activity, 10), 0);
+                    ((MainActivity)activity).getMainmenu().getForeground().setAlpha(50); // dim
+                } else {
+                    pw.dismiss();
+                }
         }
     }
 }

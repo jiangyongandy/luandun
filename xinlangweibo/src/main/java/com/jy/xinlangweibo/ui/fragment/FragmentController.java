@@ -5,15 +5,19 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 
+import com.jy.xinlangweibo.ui.activity.MainActivity;
+
 //单例设计模式
 public class FragmentController {
 	private static FragmentController controller;
 	private FragmentManager fm;
 	private int containerId;
+	private MainActivity mainActivity;
 	private Fragment[] fragments;
 
 
 	private FragmentController(Activity activity,int id,Fragment[] fragments) {
+		mainActivity = (MainActivity) activity;
 		fm = activity.getFragmentManager();
 		this.containerId = id;
 		this.fragments = fragments;
@@ -89,13 +93,6 @@ public class FragmentController {
 	}
 	public void show (int position) {
 		FragmentTransaction ft = fm.beginTransaction();
-//		if (last == 2 && position != 2) {
-//			DiscoverFragment fg = (DiscoverFragment) fragments[2];
-//			SwipeRefreshLayout swipeRefreshLayout = fg.getmSwip();
-//			if (swipeRefreshLayout.isRefreshing()) {
-//				swipeRefreshLayout.setRefreshing(false);
-//			}
-//		}
 		Fragment fg = fragments[position];
 		hide();
 		ft.show(fg);

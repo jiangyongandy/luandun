@@ -195,10 +195,10 @@ activity#com.jy.xinlangweibo.ui.activity.LoginActivity
 ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:37:9-63
 	android:name
 		ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:37:19-60
-activity#com.jy.xinlangweibo.ui.activity.base.FragmentActivity
-ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:38:9-71
+activity#com.jy.xinlangweibo.ui.activity.base.FragmentToolbarActivity
+ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:38:9-78
 	android:name
-		ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:38:19-68
+		ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:38:19-75
 activity#com.jy.xinlangweibo.ui.activity.MainActivity
 ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:39:9-62
 	android:name

@@ -29,13 +29,10 @@ public class BaseActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		tag = this.getClass().getSimpleName();
-//		得到缓存
-		mCache = ACache.get(this);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		setTheme(ThemeUtils.themeArr[AppSetting.getThemeColor()][0]);
 		this.theme = AppSetting.getThemeColor();
 	}
-
 
 	@Override
 	protected void onResume() {
@@ -60,6 +57,8 @@ public class BaseActivity extends AppCompatActivity {
 		this.mToolbar = (Toolbar)this.findViewById(R.id.toolbar);
 		if(this.mToolbar != null) {
 			this.setSupportActionBar(this.mToolbar);
+			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+			getSupportActionBar().setDisplayShowHomeEnabled(false);
 		}
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		ButterKnife.bind(this);

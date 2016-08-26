@@ -1,5 +1,4 @@
-include ':testapplication', ':library'
+include ':library'
 include ':weiboSDK1'
 include ':pulltorefresh'
 include ':xinlangweibo'
-include ':retrofitsample'
