@@ -17,18 +17,15 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+
 import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.api.MyWeiboapi;
-import com.jy.xinlangweibo.api.SimpleRequestlistener;
-import com.jy.xinlangweibo.constant.AccessTokenKeeper;
-import com.jy.xinlangweibo.constant.Constants;
+import com.jy.xinlangweibo.presenter.StatusPresenter;
+import com.jy.xinlangweibo.ui.IView.HomeFragmentView;
 import com.jy.xinlangweibo.ui.activity.MainActivity;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.ui.adapter.StatusesAdapter;
 import com.jy.xinlangweibo.ui.fragment.base.BaseFragment;
 import com.jy.xinlangweibo.utils.Utils;
-import com.sina.weibo.sdk.auth.Oauth2AccessToken;
-import com.sina.weibo.sdk.exception.WeiboException;
 import com.sina.weibo.sdk.openapi.models.Status;
 import com.sina.weibo.sdk.openapi.models.StatusList;
 
@@ -37,7 +34,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class HomeFragment extends BaseFragment implements View.OnClickListener {
+public class HomeFragment extends BaseFragment implements View.OnClickListener,HomeFragmentView {
     @BindView(R.id.lv_status)
     PullToRefreshListView lvStatus;
     private View view;
@@ -49,6 +46,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private int curPage;
     private PopupWindow pw;
     private MaterialDialog materialDialog;
+    private StatusPresenter presenter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -79,18 +77,24 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     private void initView() {
         showProgressDialog();
-        loadData(1);
+        presenter = new StatusPresenter(activity,this);
+        presenter.getHomeTimeline(1);
         initPlv();
         initPop();
     }
 
-    private void showProgressDialog() {
-
+    @Override
+    public void showProgressDialog() {
         materialDialog = new MaterialDialog.Builder(activity)
                 .content(R.string.please_wait)
                 .progress(true, 0)
                 .progressIndeterminateStyle(true)
                 .show();
+    }
+
+    @Override
+    public void dimissProgressDialog() {
+        materialDialog.dismiss();
     }
 
     /**
@@ -130,7 +134,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-                loadData(1);
+                presenter.getHomeTimeline(1);
             }
 
             private void loadCaheData() {
@@ -148,55 +152,33 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         lvStatus.setAdapter(adapter);
     }
 
-
-    private void loadData(final int page) {
-        Oauth2AccessToken readAccessToken = AccessTokenKeeper
-                .readAccessToken(activity);
-        MyWeiboapi api = new MyWeiboapi(activity, Constants.APP_KEY,
-                readAccessToken);
-        api.statuses_home_timeline(page, new SimpleRequestlistener(activity,
-                materialDialog) {
-            @Override
-            public void onComplete(String response) {
-                super.onComplete(response);
-                // Statuses fromJson = new Gson().fromJson(response,
-                // Statuses.class);
-                addData(page, response);
-                onAllDone();
-                tvLoad.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onWeiboException(WeiboException arg0) {
-                super.onWeiboException(arg0);
-                System.out.println("请求缓存");
-                ArrayList<Status> statuses = (ArrayList<Status>) mCache
-                        .getAsObject("STATUES");
-                if (statuses != null) {
-                    for (Status sta : statuses) {
-                        statusList.add(sta);
-                        if (statusList.size() == 50)
-                            break;
-                    }
-                    adapter.notifyDataSetChanged();
-                }
-                onAllDone();
-                tvLoad.setVisibility(View.GONE);
-            }
-
-            @Override
-            protected void onAllDone() {
-                super.onAllDone();
-                ivLoad.setVisibility(View.GONE);
-                if (footView.getAnimation() != null) {
-                    footView.getAnimation().cancel();
-                }
-                lvStatus.onRefreshComplete();
-            }
-        });
+    @Override
+    public void onGetTimeLineDone() {
+        ivLoad.setVisibility(View.GONE);
+        if (footView.getAnimation() != null) {
+            footView.getAnimation().cancel();
+        }
+        lvStatus.onRefreshComplete();
     }
 
-    private void addData(final int page, String response) {
+    @Override
+    public void onExecptionComplete() {
+        System.out.println("请求缓存");
+        ArrayList<Status> statuses = (ArrayList<Status>) mCache
+                .getAsObject("STATUES");
+        if (statuses != null) {
+            for (Status sta : statuses) {
+                statusList.add(sta);
+                if (statusList.size() == 50)
+                    break;
+            }
+            adapter.notifyDataSetChanged();
+        }
+        tvLoad.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void updateHomeTimelineList(final int page, String response) {
         if (page == 1) {
             statusList.clear();
             curPage = 1;
@@ -217,6 +199,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         } else {
             ((BaseActivity) getActivity()).showToast(activity.getString(R.string.CONTINUE_REFRASH));
         }
+        tvLoad.setVisibility(View.VISIBLE);
     }
 
     private void removeFootView(ListView refreshableView) {
@@ -238,7 +221,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                     ivLoad.setVisibility(View.VISIBLE);
                     ivLoad.startAnimation(AnimationUtils.loadAnimation(
                             activity, R.anim.ra_loading));
-                    loadData(curPage + 1);
+                    presenter.getHomeTimeline(curPage + 1);
                 }
             });
         }
@@ -248,14 +231,18 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case  R.id.nav_right_iv:
-                if (!pw.isShowing()) {
-        //            Logger.showLog("屏幕宽度：" + Utils.getDisplayWidthPixels(activity) + "弹窗宽度:" + View.MeasureSpec.getSize(pw.getWidth()), "计算弹窗偏移量");
-                    activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-                    pw.showAsDropDown(((MainActivity)activity).getToolbar(), Utils.getDisplayWidthPixels(activity) - View.MeasureSpec.getSize(pw.getWidth()) - Utils.dip2px(activity, 10), 0);
-                    ((MainActivity)activity).getMainmenu().getForeground().setAlpha(50); // dim
-                } else {
-                    pw.dismiss();
-                }
+                showPopupWindow();
+        }
+    }
+
+    public void showPopupWindow() {
+        if (!pw.isShowing()) {
+//            Logger.showLog("屏幕宽度：" + Utils.getDisplayWidthPixels(activity) + "弹窗宽度:" + View.MeasureSpec.getSize(pw.getWidth()), "计算弹窗偏移量");
+            activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+            pw.showAsDropDown(((MainActivity)activity).getToolbar(), Utils.getDisplayWidthPixels(activity) - View.MeasureSpec.getSize(pw.getWidth()) - Utils.dip2px(activity, 10), 0);
+            ((MainActivity)activity).getMainmenu().getForeground().setAlpha(50); // dim
+        } else {
+            pw.dismiss();
         }
     }
 }

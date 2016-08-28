@@ -20,11 +20,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
-import com.jy.xinlangweibo.api.MyWeiboapi;
 import com.jy.xinlangweibo.api.SimpleRequestlistener;
 import com.jy.xinlangweibo.constant.AccessTokenKeeper;
-import com.jy.xinlangweibo.constant.Constants;
+import com.jy.xinlangweibo.interaction.StatusesInteraction;
+import com.jy.xinlangweibo.interaction.impl.StatusesInteractionImpl;
+import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.utils.EmoticonsUtils;
 import com.jy.xinlangweibo.utils.TitleBuilder;
 import com.jy.xinlangweibo.utils.ToastUtils;
@@ -218,8 +218,7 @@ public class WriteStatusActivity extends BaseActivity implements
 			if (!TextUtils.isEmpty(et_content.getText().toString())) {
 				Oauth2AccessToken readAccessToken = AccessTokenKeeper
 						.readAccessToken(this);
-				MyWeiboapi api = new MyWeiboapi(this, Constants.APP_KEY,
-						readAccessToken);
+				StatusesInteraction api = new StatusesInteractionImpl(this, readAccessToken);
 				progressDialog.show();
 				api.update(et_content.getText().toString(), null, null,
 						new SimpleRequestlistener(this, progressDialog) {

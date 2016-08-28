@@ -13,10 +13,10 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import java.util.ArrayList;
 
 public class GridIvAdapter extends BaseAdapter {
-	private ArrayList<Object> pic_ids;
+	private ArrayList<String> pic_ids;
 	private ImageLoader imageLoader;
 
-	public GridIvAdapter(ArrayList<Object> pic_ids) {
+	public GridIvAdapter(ArrayList<String> pic_ids) {
 		this.pic_ids = pic_ids;
 		imageLoader = ImageLoader.getInstance();
 	}

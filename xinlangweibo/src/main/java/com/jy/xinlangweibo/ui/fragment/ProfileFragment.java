@@ -191,7 +191,7 @@ public class ProfileFragment extends BaseFragment {
             }
 
             private void setImage(Status status, ImageView iv, GridView gv) {
-                ArrayList<Object> pic_ids = status.pic_urls;
+                ArrayList<String> pic_ids = status.pic_urls;
                 String thumbnail_pic = status.original_pic;
                 // 多图处理
                 if (pic_ids != null && pic_ids.size() > 1) {

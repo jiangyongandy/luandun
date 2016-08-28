@@ -20,14 +20,14 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase.OnLastItemVisibleLis
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.api.SimpleRequestlistener;
+import com.jy.xinlangweibo.constant.AccessTokenKeeper;
+import com.jy.xinlangweibo.interaction.StatusesInteraction;
+import com.jy.xinlangweibo.interaction.impl.StatusesInteractionImpl;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.ui.adapter.CommentsStatusAdapter;
 import com.jy.xinlangweibo.ui.adapter.GridIvAdapter;
 import com.jy.xinlangweibo.ui.adapter.ViewHolder;
-import com.jy.xinlangweibo.api.MyWeiboapi;
-import com.jy.xinlangweibo.api.SimpleRequestlistener;
-import com.jy.xinlangweibo.constant.AccessTokenKeeper;
-import com.jy.xinlangweibo.constant.Constants;
 import com.jy.xinlangweibo.utils.DateUtils;
 import com.jy.xinlangweibo.utils.ImageLoadeOptions;
 import com.jy.xinlangweibo.utils.Logger;
@@ -89,8 +89,7 @@ public class StatusDetailsActivity extends BaseActivity {
 		moreComments();
 		Oauth2AccessToken readAccessToken = AccessTokenKeeper
 				.readAccessToken(this);
-		MyWeiboapi api = new MyWeiboapi(this, Constants.APP_KEY,
-				readAccessToken);
+		StatusesInteraction api = new StatusesInteractionImpl(this, readAccessToken);
 		api.showComments(page, id, new SimpleRequestlistener(this, null) {
 			@Override
 			public void onComplete(String response) {
@@ -349,7 +348,7 @@ public class StatusDetailsActivity extends BaseActivity {
 	}
 
 	private void setImage(Status status, ImageView iv, GridView gv) {
-		ArrayList<Object> pic_ids = status.pic_urls;
+		ArrayList<String> pic_ids = status.pic_urls;
 		String thumbnail_pic = status.original_pic;
 		// 多图处理
 		if (pic_ids != null && pic_ids.size() > 1) {

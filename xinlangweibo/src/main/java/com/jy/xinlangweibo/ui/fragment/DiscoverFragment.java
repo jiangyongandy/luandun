@@ -14,13 +14,13 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.api.SimpleRequestlistener;
+import com.jy.xinlangweibo.constant.AccessTokenKeeper;
+import com.jy.xinlangweibo.interaction.StatusesInteraction;
+import com.jy.xinlangweibo.interaction.impl.StatusesInteractionImpl;
 import com.jy.xinlangweibo.ui.activity.MainActivity;
 import com.jy.xinlangweibo.ui.adapter.StaggeredHomeAdapter;
 import com.jy.xinlangweibo.ui.adapter.StaggeredHomeAdapter.OnItemClickLitener;
-import com.jy.xinlangweibo.api.MyWeiboapi;
-import com.jy.xinlangweibo.api.SimpleRequestlistener;
-import com.jy.xinlangweibo.constant.AccessTokenKeeper;
-import com.jy.xinlangweibo.constant.Constants;
 import com.jy.xinlangweibo.ui.fragment.base.BaseFragment;
 import com.jy.xinlangweibo.utils.InternetConnectUtils;
 import com.jy.xinlangweibo.widget.AdvertizeView;
@@ -108,8 +108,7 @@ public class DiscoverFragment extends BaseFragment {
                 if (!TextUtils.isEmpty(ip)) {
                     Oauth2AccessToken readAccessToken = AccessTokenKeeper
                             .readAccessToken(activity);
-                    final MyWeiboapi api = new MyWeiboapi(activity,
-                            Constants.APP_KEY, readAccessToken);
+                    final StatusesInteraction api = new StatusesInteractionImpl(activity, readAccessToken);
                     api.ip2Geo(ip, new SimpleRequestlistener(activity, null) {
                         @Override
                         public void onComplete(String arg0) {
