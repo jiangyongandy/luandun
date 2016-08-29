@@ -15,12 +15,12 @@ import android.widget.TextView;
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.utils.ImageLoadeOptions;
-import com.jy.xinlangweibo.widget.PhotoView.PhotoView;
-import com.jy.xinlangweibo.widget.PhotoView.PhotoViewAttacher;
-import com.jy.xinlangweibo.widget.PhotoView.PhotoViewAttacher.OnViewTapListener;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
+
+import uk.co.senab.photoview.PhotoView;
+import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class ImageBrowseActivity extends BaseActivity {
 
@@ -57,6 +57,7 @@ public class ImageBrowseActivity extends BaseActivity {
 		showOrHide();
 		vp_imagebrowse.setAdapter(new ImageBrowseAdapter());
 		vp_imagebrowse.setCurrentItem(position);
+		tv_ivbrowse.setText(position+1+"/"+(pic_urls.size()));
 		vp_imagebrowse.addOnPageChangeListener(new OnPageChangeListener() {
 			
 			@Override
@@ -104,16 +105,13 @@ public class ImageBrowseActivity extends BaseActivity {
 		@Override
 		public Object instantiateItem(ViewGroup container, int position) {
 			// TODO Auto-generated method stub
-			PhotoView imageView = new PhotoView(ImageBrowseActivity.this.getBaseContext());
-			mAttacher = new PhotoViewAttacher(imageView);
-			mAttacher.setOnViewTapListener(new OnViewTapListener() {
-				
+			PhotoView imageView = new PhotoView(ImageBrowseActivity.this);
+			imageView.setOnViewTapListener(new PhotoViewAttacher.OnViewTapListener() {
 				@Override
 				public void onViewTap(View view, float x, float y) {
 					showOrHide();
 				}
 			});
-//			imageView.setScaleType( ImageView.ScaleType.CENTER_INSIDE);
 			imageLoader.displayImage((String) pic_urls.get(position), imageView, ImageLoadeOptions.getDefaultIvOption(ImageBrowseActivity.this.getBaseContext()));
 			container.addView(imageView,new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT) );
 			return imageView;

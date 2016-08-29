@@ -24,7 +24,6 @@ import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.utils.DateUtils;
 import com.jy.xinlangweibo.utils.ImageLoadeOptions;
 import com.jy.xinlangweibo.utils.ImageUtils;
-import com.jy.xinlangweibo.utils.Logger;
 import com.jy.xinlangweibo.utils.StringUtils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
@@ -168,102 +167,103 @@ public class StatusesAdapter extends BaseAdapter {
 
     private void setImage(final Status status, final ImageView iv, GridView gv, final TextView picText, final TextView tv_retweeted_pic) {
         final ArrayList<String> pic_ids = status.pic_urls;
-        Logger.showLog("" + pic_ids, "status.pic_urls 原始");
-        String original_pic = status.original_pic;
         tv_retweeted_pic.setVisibility(View.GONE);
         picText.setVisibility(View.GONE);
-        // 多图处理
-        if (pic_ids != null && pic_ids.size() > 1) {
+        if (pic_ids != null) {
             for (int i = 0; i < pic_ids.size(); i++) {
-                pic_ids.set(i,pic_ids.get(i).replace("thumbnail", "bmiddle"));
+                pic_ids.set(i, pic_ids.get(i).replace("thumbnail", "bmiddle"));
             }
-//            Logger.showLog("" + pic_ids, "pic_ids");
-            iv.setVisibility(View.GONE);
-            gv.setVisibility(View.VISIBLE);
-            gv.setOnItemClickListener(new OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view,
-                                        int position, long id) {
+            // 多图处理
+            if (pic_ids.size() > 1) {
+                iv.setVisibility(View.GONE);
+                gv.setVisibility(View.VISIBLE);
+                gv.setOnItemClickListener(new OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view,
+                                            int position, long id) {
 //					前往图片浏览器
-                    Intent intent = new Intent(context, ImageBrowseActivity.class);
-                    intent.putExtra("Pic_urls", pic_ids);
-                    intent.putExtra("Position", position);
-                    context.startActivity(intent);
-                }
-            });
-            gv.setAdapter(new GridIvAdapter(pic_ids));
-        }
-        // 单图处理 此处判断的thumbnail_pic为空字符串，并非空引用！所以不能使用thumbnail_pic！=null来判断
-        else if (!TextUtils.isEmpty(original_pic)) {
-            gv.setVisibility(View.GONE);
-            iv.setVisibility(View.VISIBLE);
-            if (!TextUtils.isEmpty(original_pic) && original_pic.toLowerCase().endsWith(".gif")) {
-                switch (iv.getId()) {
-                    case R.id.iv_statuses_singlecontent:
-                        picText.setVisibility(View.VISIBLE);
-                        picText.setText("GIF");
-                    case R.id.iv_retweeted_singlecontent:
-                        tv_retweeted_pic.setVisibility(View.VISIBLE);
-                        tv_retweeted_pic.setText("GIF");
-                }
+                        Intent intent = new Intent(context, ImageBrowseActivity.class);
+                        intent.putExtra("Pic_urls", pic_ids);
+                        intent.putExtra("Position", position);
+                        context.startActivity(intent);
+                    }
+                });
+                gv.setAdapter(new GridIvAdapter(pic_ids));
             }
-            imageLoader.displayImage(original_pic, iv, ImageLoadeOptions
-                            .getCommonIvOption(CustomConstant.getContext()),
-                    new ImageLoadingListener() {
+            // 单图处理 此处判断的thumbnail_pic为空字符串，并非空引用！所以不能使用thumbnail_pic！=null来判断
+            else if (pic_ids.size() == 1) {
+                pic_ids.set(0, pic_ids.get(0).replace("bmiddle", "large"));
+                gv.setVisibility(View.GONE);
+                iv.setVisibility(View.VISIBLE);
+                if (!TextUtils.isEmpty(status.pic_urls.get(0)) && status.pic_urls.get(0).toLowerCase().endsWith(".gif")) {
+                    switch (iv.getId()) {
+                        case R.id.iv_statuses_singlecontent:
+                            picText.setVisibility(View.VISIBLE);
+                            picText.setText("GIF");
+                        case R.id.iv_retweeted_singlecontent:
+                            tv_retweeted_pic.setVisibility(View.VISIBLE);
+                            tv_retweeted_pic.setText("GIF");
+                    }
+                }
+                imageLoader.displayImage(status.pic_urls.get(0), iv, ImageLoadeOptions
+                                .getCommonIvOption(CustomConstant.getContext()),
+                        new ImageLoadingListener() {
 
-                        @Override
-                        public void onLoadingStarted(String imageUri, View view) {
-                            // TODO Auto-generated method stub
+                            @Override
+                            public void onLoadingStarted(String imageUri, View view) {
+                                // TODO Auto-generated method stub
 
-                        }
+                            }
 
-                        @Override
-                        public void onLoadingFailed(String imageUri, View view,
-                                                    FailReason failReason) {
-                            // TODO Auto-generated method stub
+                            @Override
+                            public void onLoadingFailed(String imageUri, View view,
+                                                        FailReason failReason) {
+                                // TODO Auto-generated method stub
 
-                        }
+                            }
 
-                        @Override
-                        public void onLoadingComplete(String imageUri,
-                                                      View view, Bitmap loadedImage) {
-                            if (ImageUtils.matchView2Bitmap(view, loadedImage, MAXIMAGE) == 1) {
-                                switch (view.getId()) {
-                                    case R.id.iv_statuses_singlecontent:
-                                        picText.setVisibility(View.VISIBLE);
-                                        picText.setText("长图");
-                                    case R.id.iv_retweeted_singlecontent:
-                                        tv_retweeted_pic.setVisibility(View.VISIBLE);
-                                        tv_retweeted_pic.setText("长图");
+                            @Override
+                            public void onLoadingComplete(String imageUri,
+                                                          View view, Bitmap loadedImage) {
+                                if (ImageUtils.matchView2Bitmap(status.pic_urls.get(0),view, loadedImage, MAXIMAGE, imageLoader) == 1) {
+                                    switch (view.getId()) {
+                                        case R.id.iv_statuses_singlecontent:
+                                            picText.setVisibility(View.VISIBLE);
+                                            picText.setText("长图");
+                                        case R.id.iv_retweeted_singlecontent:
+                                            tv_retweeted_pic.setVisibility(View.VISIBLE);
+                                            tv_retweeted_pic.setText("长图");
+                                    }
                                 }
                             }
-                        }
 
-                        @Override
-                        public void onLoadingCancelled(String imageUri,
-                                                       View view) {
-                            // TODO Auto-generated method stub
+                            @Override
+                            public void onLoadingCancelled(String imageUri,
+                                                           View view) {
+                                // TODO Auto-generated method stub
 
-                        }
-                    }, new ImageLoadingProgressListener() {
+                            }
+                        }, new ImageLoadingProgressListener() {
 
-                        @Override
-                        public void onProgressUpdate(String imageUri,
-                                                     View view, int current, int total) {
-                            // TODO Auto-generated method stub
+                            @Override
+                            public void onProgressUpdate(String imageUri,
+                                                         View view, int current, int total) {
+                                // TODO Auto-generated method stub
 
-                        }
-                    });
-            iv.setOnClickListener(new OnClickListener() {
+                            }
+                        });
+                iv.setOnClickListener(new OnClickListener() {
 
-                //				点击跳转至图片浏览器
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(context, ImageBrowseActivity.class);
-                    intent.putExtra("Pic_urls", status.pic_urls);
-                    context.startActivity(intent);
-                }
-            });
+                    //				点击跳转至图片浏览器
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(context, ImageBrowseActivity.class);
+                        intent.putExtra("Pic_urls", status.pic_urls);
+                        intent.putExtra("Position", 0);
+                        context.startActivity(intent);
+                    }
+                });
+            }
         }
         // 没图处理
         else {

@@ -36,7 +36,7 @@ public class StatusPresenter {
                 super.onComplete(response);
                 // Statuses fromJson = new Gson().fromJson(response,
                 // Statuses.class);
-                homeFragmentView.updateHomeTimelineList(1,response);
+                homeFragmentView.updateHomeTimelineList(page,response);
                 onAllDone();
             }
 

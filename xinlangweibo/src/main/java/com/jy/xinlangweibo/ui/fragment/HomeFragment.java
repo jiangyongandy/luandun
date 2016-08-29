@@ -25,6 +25,7 @@ import com.jy.xinlangweibo.ui.activity.MainActivity;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.ui.adapter.StatusesAdapter;
 import com.jy.xinlangweibo.ui.fragment.base.BaseFragment;
+import com.jy.xinlangweibo.utils.Logger;
 import com.jy.xinlangweibo.utils.Utils;
 import com.sina.weibo.sdk.openapi.models.Status;
 import com.sina.weibo.sdk.openapi.models.StatusList;
@@ -185,13 +186,14 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,H
         }
         curPage = page;
         StatusList list = StatusList.parse(response);
+        Logger.showLog("list.total_number----"+list.total_number+"list.statusList.size()---------"+list.statusList.size(),"statuslist");
         if (null != list.statusList) {
             for (Status sta : list.statusList) {
                 statusList.add(sta);
             }
             adapter.notifyDataSetChanged();
             ListView refreshableView = lvStatus.getRefreshableView();
-            if (curPage < list.total_number) {
+            if (list.statusList.size() < list.total_number) {
                 addFootView(refreshableView);
             } else {
                 removeFootView(refreshableView);
