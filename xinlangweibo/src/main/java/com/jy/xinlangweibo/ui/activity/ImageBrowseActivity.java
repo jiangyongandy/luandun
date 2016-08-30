@@ -1,5 +1,6 @@
 package com.jy.xinlangweibo.ui.activity;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -10,22 +11,27 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.utils.ImageLoadeOptions;
+import com.jy.xinlangweibo.utils.ImageUtils;
+import com.jy.xinlangweibo.utils.Logger;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import java.util.ArrayList;
 
 import uk.co.senab.photoview.PhotoView;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
-public class ImageBrowseActivity extends BaseActivity {
+public class ImageBrowseActivity extends BaseActivity implements ImageLoadingListener {
 
 	private ViewPager vp_imagebrowse;
-	private ArrayList<Object> pic_urls ;
+	private ArrayList<String> pic_urls ;
 	private ImageLoader imageLoader;
 	private View mTopView;
 	private View mBottomView;
@@ -41,7 +47,10 @@ public class ImageBrowseActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_image_browse);
-		pic_urls = (ArrayList) getIntent().getSerializableExtra("Pic_urls");
+		pic_urls = (ArrayList<String>) getIntent().getSerializableExtra("Pic_urls");
+		for (int i = 0; i < pic_urls.size(); i++) {
+			pic_urls.set(i, pic_urls.get(i).replace("bmiddle", "large"));
+		}
 		position = getIntent().getIntExtra("Position",0);
 		imageLoader = ImageLoader.getInstance();
 		
@@ -85,26 +94,56 @@ public class ImageBrowseActivity extends BaseActivity {
 			}
 		});
 	}
-	
+
+	@Override
+	public void onLoadingStarted(String s, View view) {
+
+	}
+
+	@Override
+	public void onLoadingFailed(String s, View view, FailReason failReason) {
+	}
+
+	@Override
+	public void onLoadingComplete(String s, View view, Bitmap bitmap) {
+		if(ImageUtils.isLargeImage(bitmap) == 1) {
+			Logger.showLog(""+bitmap.getHeight(),"onLoadingComplete");
+			((ImageView)view).setScaleType(ImageView.ScaleType.CENTER_CROP);
+//			Matrix mSuppMatrix = new Matrix();
+//			float scale;
+//			scale = Utils.getDisplayWidthPixels(view.getContext())/ bitmap.getWidth();
+//			mSuppMatrix.postScale(scale,scale);
+//			((ImageView)view).setImageMatrix(mSuppMatrix);
+		} else if(ImageUtils.isLargeScreenImage(bitmap,view.getContext()) == 2) {
+//			Matrix mSuppMatrix = new Matrix();
+//			float scale;
+//			scale = Utils.getDisplayWidthPixels(view.getContext())/ bitmap.getWidth();
+//			mSuppMatrix.postScale(scale,scale);
+//			((ImageView)view).setImageMatrix(mSuppMatrix);
+		}
+	}
+
+	@Override
+	public void onLoadingCancelled(String s, View view) {
+
+	}
+
 	class ImageBrowseAdapter extends PagerAdapter {
 
 		private PhotoViewAttacher mAttacher;
 
 		@Override
 		public int getCount() {
-			// TODO Auto-generated method stub
 			return pic_urls.size();
 		}
 
 		@Override
 		public boolean isViewFromObject(View arg0, Object arg1) {
-			// TODO Auto-generated method stub
 			return arg0 == arg1;
 		}
 		
 		@Override
 		public Object instantiateItem(ViewGroup container, int position) {
-			// TODO Auto-generated method stub
 			PhotoView imageView = new PhotoView(ImageBrowseActivity.this);
 			imageView.setOnViewTapListener(new PhotoViewAttacher.OnViewTapListener() {
 				@Override
@@ -112,14 +151,13 @@ public class ImageBrowseActivity extends BaseActivity {
 					showOrHide();
 				}
 			});
-			imageLoader.displayImage((String) pic_urls.get(position), imageView, ImageLoadeOptions.getDefaultIvOption(ImageBrowseActivity.this.getBaseContext()));
+			imageLoader.displayImage( pic_urls.get(position), imageView, ImageLoadeOptions.getDefaultIvOption(imageView.getContext()),ImageBrowseActivity.this);
 			container.addView(imageView,new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT) );
 			return imageView;
 		}
 		
 		@Override
 		public void destroyItem(ViewGroup container, int position, Object object) {
-			// TODO Auto-generated method stub
 			container.removeView((View) object);
 		}
 	}

@@ -72,6 +72,15 @@ public class Utils {
         }
         return DisplayWidthPixels;
     }
+    public static int getDisplayHeightPixelsPixels(Context context) {
+        if (context == null) {
+            return -1;
+        }
+        if (DisplayheightPixels == 0) {
+            getDisplayMetrics(context);
+        }
+        return DisplayheightPixels;
+    }
 
     public static int dip2px(Context context, float dipValue) {
         final float scale = context.getResources().getDisplayMetrics().density;

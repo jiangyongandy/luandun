@@ -6,9 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="15dp"
-    android:clickable="true"
-    android:descendantFocusability="blocksDescendants"
-    android:focusable="true"
     android:foreground="?attr/selectableItemBackground"
     card_view:cardCornerRadius="4dp">
     <!-- card_view:cardBackgroundColor="#ffb7f0ff" -->
@@ -18,7 +15,6 @@
         android:id="@+id/ll_item_status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:descendantFocusability="blocksDescendants"
         android:orientation="vertical">
 
         <include layout="@layout/include_publisher" />

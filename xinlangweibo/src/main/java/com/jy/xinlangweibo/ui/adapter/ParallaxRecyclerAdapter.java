@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.constant.CustomConstant;
 import com.jy.xinlangweibo.utils.Utils;
 import com.jy.xinlangweibo.widget.PulltorefreshRecyclerView;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -96,7 +95,7 @@ public abstract class ParallaxRecyclerAdapter<T> extends
 			if (holder != null) {
 				left = Math
 						.min(1,
-								((ofCalculated) / ((mHeader.getHeight()-Utils.dip2px(CustomConstant.getContext(), 48)) * mScrollMultiplier)));
+								((ofCalculated) / ((mHeader.getHeight()-Utils.dip2px(context, 48)) * mScrollMultiplier)));
 			} else {
 				left = 1;
 			}

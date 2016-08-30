@@ -17,9 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.constant.CustomConstant;
 import com.jy.xinlangweibo.ui.activity.ImageBrowseActivity;
-import com.jy.xinlangweibo.ui.activity.StatusDetailsActivity;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.utils.DateUtils;
 import com.jy.xinlangweibo.utils.ImageLoadeOptions;
@@ -71,17 +69,22 @@ public class StatusesAdapter extends BaseAdapter {
         } else {
             vh = (ViewHolder) convertView.getTag();
         }
-
+        //publisher
         TextView statusName = vh.getView(R.id.tv_pubname);
         TextView sourceText = vh.getView(R.id.tv_from);
         ImageView headIv = vh.getView(R.id.iv_head);
-
+        //content
         TextView statusText = vh.getView(R.id.tv_statuses_content);
         TextView picText = vh.getView(R.id.tv_pic);
         TextView tv_retweeted_pic = vh.getView(R.id.tv_retweeted_pic);
         ImageView statusIv = vh.getView(R.id.iv_statuses_singlecontent);
         GridView statusGv = vh.getView(R.id.gv_statuses_contents);
-
+        //retweed
+        LinearLayout retweeted = vh.getView(R.id.ll_retweeted);
+        TextView retweetedText = vh.getView(R.id.tv_retweeted_content);
+        ImageView retweetedIv = vh.getView(R.id.iv_retweeted_singlecontent);
+        GridView retweetedGv = vh.getView(R.id.gv_retweeted_contents);
+        //bottomTab
         TextView bottomretweetedText = vh
                 .getView(R.id.tv_statuses_bottom_reweet);
         TextView bottomcommentText = vh
@@ -105,29 +108,18 @@ public class StatusesAdapter extends BaseAdapter {
         final Status status = getItem(position);
         User user = status.user;
 
-        LinearLayout itemStatus = vh.getView(R.id.ll_item_status);
-        itemStatus.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-//				前往微博详情界面
-                Intent intent = new Intent(context, StatusDetailsActivity.class);
-                intent.putExtra("Status", status);
-                context.startActivity(intent);
-            }
-        });
-
+        //bind publisher
         imageLoader.displayImage(user.avatar_hd, headIv,
                 ImageLoadeOptions.getIvHeadOption());
         String from = DateUtils.getDate(status.created_at) + " 来自  "
                 + Html.fromHtml(status.source);
         sourceText.setText(StringUtils.get2KeyText(context, from, sourceText));
         statusName.setText(user.screen_name);
-
+        //bind content
         statusText.setText(StringUtils.getKeyText(context, status.text,
                 statusText));
         setImage(status, statusIv, statusGv, picText, tv_retweeted_pic);
-
+        //bind bottomTab
         bottomretweetedText
                 .setText((CharSequence) (status.reposts_count > 0 ? ""
                         + status.reposts_count : "转发"));
@@ -137,12 +129,8 @@ public class StatusesAdapter extends BaseAdapter {
         bottomunlikeText
                 .setText((CharSequence) (status.attitudes_count > 0 ? ""
                         + status.attitudes_count : "赞"));
-
+        //bind retweeted_status
         if (status.retweeted_status != null) {
-            LinearLayout retweeted = vh.getView(R.id.ll_retweeted);
-            TextView retweetedText = vh.getView(R.id.tv_retweeted_content);
-            ImageView retweetedIv = vh.getView(R.id.iv_retweeted_singlecontent);
-            GridView retweetedGv = vh.getView(R.id.gv_retweeted_contents);
 
             retweeted.setVisibility(View.VISIBLE);
             String retweetedname = "作者已删除该微博";
@@ -158,7 +146,6 @@ public class StatusesAdapter extends BaseAdapter {
                     retweetedText));
             setImage(status.retweeted_status, retweetedIv, retweetedGv, picText, tv_retweeted_pic);
         } else {
-            LinearLayout retweeted = vh.getView(R.id.ll_retweeted);
             retweeted.setVisibility(View.GONE);
         }
 
@@ -192,7 +179,6 @@ public class StatusesAdapter extends BaseAdapter {
             }
             // 单图处理 此处判断的thumbnail_pic为空字符串，并非空引用！所以不能使用thumbnail_pic！=null来判断
             else if (pic_ids.size() == 1) {
-                pic_ids.set(0, pic_ids.get(0).replace("bmiddle", "large"));
                 gv.setVisibility(View.GONE);
                 iv.setVisibility(View.VISIBLE);
                 if (!TextUtils.isEmpty(status.pic_urls.get(0)) && status.pic_urls.get(0).toLowerCase().endsWith(".gif")) {
@@ -206,19 +192,17 @@ public class StatusesAdapter extends BaseAdapter {
                     }
                 }
                 imageLoader.displayImage(status.pic_urls.get(0), iv, ImageLoadeOptions
-                                .getCommonIvOption(CustomConstant.getContext()),
+                                .getCommonIvOption(iv.getContext()),
                         new ImageLoadingListener() {
 
                             @Override
                             public void onLoadingStarted(String imageUri, View view) {
-                                // TODO Auto-generated method stub
 
                             }
 
                             @Override
                             public void onLoadingFailed(String imageUri, View view,
                                                         FailReason failReason) {
-                                // TODO Auto-generated method stub
 
                             }
 
@@ -240,7 +224,6 @@ public class StatusesAdapter extends BaseAdapter {
                             @Override
                             public void onLoadingCancelled(String imageUri,
                                                            View view) {
-                                // TODO Auto-generated method stub
 
                             }
                         }, new ImageLoadingProgressListener() {
@@ -248,7 +231,6 @@ public class StatusesAdapter extends BaseAdapter {
                             @Override
                             public void onProgressUpdate(String imageUri,
                                                          View view, int current, int total) {
-                                // TODO Auto-generated method stub
 
                             }
                         });

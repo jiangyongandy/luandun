@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.jiang.library.ui.adapter;
+package com.jiang.library.ui.adapter.listviewadapter;
 
 import java.util.ArrayList;
 

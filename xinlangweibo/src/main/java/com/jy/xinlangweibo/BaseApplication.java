@@ -3,7 +3,6 @@ package com.jy.xinlangweibo;
 import android.app.Application;
 import android.content.Context;
 
-import com.jy.xinlangweibo.constant.CustomConstant;
 import com.jy.xinlangweibo.utils.ImageLoadeOptions;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -25,7 +24,6 @@ public class BaseApplication extends Application {
 	public void onCreate() {
 		super.onCreate();
 		File cacheDir = StorageUtils.getOwnCacheDirectory(getApplicationContext(), "imageloader/Cache");  
-		CustomConstant.setContext(getApplicationContext());
 		application = this;
 		initImageLoader(this);
 	}

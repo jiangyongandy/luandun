@@ -1,5 +1,6 @@
 package com.jy.xinlangweibo.utils;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.View;
@@ -15,14 +16,23 @@ import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListene
  */
 public class ImageUtils {
 
+    /**
+     * 使VIEW的宽度或高度不超过maxImage，并且保持原图宽高比例
+     * @param url
+     * @param mview
+     * @param loadedImage
+     * @param maxImage
+     * @param imageLoader
+     * @return
+     */
     public static int matchView2Bitmap(String url, final View mview, Bitmap loadedImage, int maxImage, ImageLoader imageLoader) {
-        int CHANGTU = 1;
-        ViewGroup.LayoutParams lp = mview.getLayoutParams();
         Log.i("statusadapter",
                 "宽度：" + String.valueOf(loadedImage.getWidth()));
         Log.i("statusadapter",
                 "高度：" + String.valueOf(loadedImage.getHeight()));
-        if(loadedImage.getHeight()/loadedImage.getWidth() >= 4) {
+        int CHANGTU = 1;
+        ViewGroup.LayoutParams lp = mview.getLayoutParams();
+        if(loadedImage.getHeight()>1024||loadedImage.getWidth() > 1024) {
             float scale = 1.5f;
             lp.width = Utils.dip2px(mview.getContext(), maxImage);
             lp.height = (int) (Utils.dip2px(mview.getContext(), maxImage)*scale+0.5f);
@@ -51,6 +61,26 @@ public class ImageUtils {
         } else {
             lp.height = loadedImage.getHeight();
             lp.width = loadedImage.getWidth();
+        }
+        return 0;
+    }
+
+    public static int isLargeImage(Bitmap loadedImage) {
+        int CHANGTU = 1;
+        if(loadedImage.getHeight()>1024||loadedImage.getWidth() > 1024) {
+            return CHANGTU;
+        }
+        return 0;
+    }
+
+    public static int isLargeScreenImage(Bitmap loadedImage, Context context) {
+        int largeHeight = 1;
+        int largeWidth = 2;
+        if(loadedImage.getHeight()> Utils.getDisplayHeightPixelsPixels(context)) {
+            Logger.showLog(""+loadedImage.getHeight()+"      "+Utils.getDisplayHeightPixelsPixels(context),"onLoadingComplete");
+            return largeHeight;
+        }else if(loadedImage.getWidth() > Utils.getDisplayWidthPixels(context)) {
+            return largeWidth;
         }
         return 0;
     }

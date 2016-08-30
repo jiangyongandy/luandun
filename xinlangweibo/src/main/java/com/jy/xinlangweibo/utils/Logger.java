@@ -2,11 +2,12 @@ package com.jy.xinlangweibo.utils;
 
 import android.util.Log;
 
-import com.jy.xinlangweibo.constant.CustomConstant;
+import com.jy.xinlangweibo.AppSetting;
+
 
 public class Logger {
 	public static void showLog(String msg, String tag) {
-		if (!CustomConstant.ifShowLog) {
+		if (!AppSetting.ifShowLog) {
 			return;
 		}
 		show(msg, Log.INFO, tag);

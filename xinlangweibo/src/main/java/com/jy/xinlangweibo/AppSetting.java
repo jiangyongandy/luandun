@@ -8,6 +8,8 @@ import com.jy.xinlangweibo.utils.PreferencesUtil;
  */
 public class AppSetting {
 
+    public static final boolean ifShowLog = true;
+
     public static int getThemeColor() {
        return PreferencesUtil.getIntShareData("ThemeColorIndex",0);
     }

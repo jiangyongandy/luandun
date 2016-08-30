@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.jiang.library.ui.adapter;
+package com.jiang.library.ui.adapter.listviewadapter;
 
 /**
  * A interface that defines what a View Holder Creator should do.

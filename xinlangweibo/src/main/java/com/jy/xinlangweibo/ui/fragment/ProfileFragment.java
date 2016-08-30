@@ -3,7 +3,6 @@ package com.jy.xinlangweibo.ui.fragment;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
@@ -19,7 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.constant.CustomConstant;
 import com.jy.xinlangweibo.ui.activity.MainActivity;
 import com.jy.xinlangweibo.ui.activity.StatusDetailsActivity;
 import com.jy.xinlangweibo.ui.adapter.GridIvAdapter;
@@ -81,8 +79,6 @@ public class ProfileFragment extends BaseFragment {
                     final ParallaxRecyclerAdapter<Status> adapter, int i) {
                 RecyleViewHolder vh = (RecyleViewHolder) viewHolder;
 
-                CardView card = vh.getView(R.id.card);
-
                 TextView statusName = vh.getView(R.id.tv_pubname);
                 TextView sourceText = vh.getView(R.id.tv_from);
                 ImageView headIv = vh.getView(R.id.iv_head);
@@ -115,17 +111,6 @@ public class ProfileFragment extends BaseFragment {
                 // bind data
                 final Status status = adapter.getData().get(i);
                 User user = status.user;
-
-                card.setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(activity,
-                                StatusDetailsActivity.class);
-                        intent.putExtra("Status", status);
-                        activity.startActivity(intent);
-                    }
-                });
-
                 imageLoader.displayImage(user.avatar_hd, headIv,
                         ImageLoadeOptions.getIvHeadOption());
                 String from = DateUtils.getDate(status.created_at) + " 来自  "
@@ -203,7 +188,7 @@ public class ProfileFragment extends BaseFragment {
                 else if (!TextUtils.isEmpty(thumbnail_pic)) {
                     gv.setVisibility(View.GONE);
                     iv.setVisibility(View.VISIBLE);
-                    imageLoader.displayImage(thumbnail_pic, iv, ImageLoadeOptions.getCommonIvOption(CustomConstant.getContext()));
+                    imageLoader.displayImage(thumbnail_pic, iv, ImageLoadeOptions.getCommonIvOption(iv.getContext()));
                 }
                 // 没图处理
                 else {
@@ -224,8 +209,10 @@ public class ProfileFragment extends BaseFragment {
         adapter.setOnClickEvent(new ParallaxRecyclerAdapter.OnClickEvent() {
             @Override
             public void onClick(View v, int position) {
-                ((MainActivity)activity).showToast("card  终于 被点击了——————————");
-                System.out.println("profile item onclick---------------" + position);
+                Intent intent = new Intent(activity,
+                        StatusDetailsActivity.class);
+                intent.putExtra("Status", statuses.get(position));
+                activity.startActivity(intent);
             }
         });
         adapter.setOnParallaxScroll(new OnParallaxScroll() {

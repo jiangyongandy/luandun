@@ -1,5 +1,6 @@
 package com.jy.xinlangweibo.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,11 +18,11 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
-
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.presenter.StatusPresenter;
 import com.jy.xinlangweibo.ui.IView.HomeFragmentView;
 import com.jy.xinlangweibo.ui.activity.MainActivity;
+import com.jy.xinlangweibo.ui.activity.StatusDetailsActivity;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.ui.adapter.StatusesAdapter;
 import com.jy.xinlangweibo.ui.fragment.base.BaseFragment;
@@ -77,11 +78,11 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,H
     }
 
     private void initView() {
-        showProgressDialog();
         presenter = new StatusPresenter(activity,this);
-        presenter.getHomeTimeline(1);
         initPlv();
         initPop();
+        showProgressDialog();
+        presenter.getHomeTimeline(1);
     }
 
     @Override
@@ -130,9 +131,20 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,H
                 null);
         ivLoad = (ImageView) footView.findViewById(R.id.iv_status_loading);
         tvLoad = footView.findViewById(R.id.tv_status_loading);
-        lvStatus = (PullToRefreshListView) view.findViewById(R.id.lv_status);
-        lvStatus.setOnRefreshListener(new OnRefreshListener<ListView>() {
 
+        adapter = new StatusesAdapter(statusList);
+        lvStatus.setAdapter(adapter);
+        lvStatus.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //前往微博详情界面
+                Intent intent = new Intent(parent.getContext(), StatusDetailsActivity.class);
+                //这里的position是从1开始
+                intent.putExtra("Status", statusList.get(position-1));
+                parent.getContext().startActivity(intent);
+            }
+        });
+        lvStatus.setOnRefreshListener(new OnRefreshListener<ListView>() {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
                 presenter.getHomeTimeline(1);
@@ -142,23 +154,14 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,H
 
             }
         });
-        lvStatus.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ((MainActivity)activity).showToast("onItemclick-----------"+position);
-                System.out.println("onItemclick-----------"+position);
-            }
-        });
-        adapter = new StatusesAdapter(statusList);
-        lvStatus.setAdapter(adapter);
     }
 
     @Override
     public void onGetTimeLineDone() {
-        ivLoad.setVisibility(View.GONE);
         if (footView.getAnimation() != null) {
             footView.getAnimation().cancel();
         }
+        ivLoad.setVisibility(View.GONE);
         lvStatus.onRefreshComplete();
     }
 
