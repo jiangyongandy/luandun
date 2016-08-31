@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <ImageView
+        <com.jy.xinlangweibo.widget.CutImageView
             android:id="@+id/iv_statuses_singlecontent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

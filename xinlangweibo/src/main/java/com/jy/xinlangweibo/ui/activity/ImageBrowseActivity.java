@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jy.xinlangweibo.R;
@@ -76,14 +75,12 @@ public class ImageBrowseActivity extends BaseActivity implements ImageLoadingLis
 			
 			@Override
 			public void onPageScrolled(int arg0, float arg1, int arg2) {
-				// TODO Auto-generated method stub
-				
+
 			}
 			
 			@Override
 			public void onPageScrollStateChanged(int arg0) {
-				// TODO Auto-generated method stub
-				
+
 			}
 		});
 		iv_back.setOnClickListener(new OnClickListener() {
@@ -107,8 +104,10 @@ public class ImageBrowseActivity extends BaseActivity implements ImageLoadingLis
 	@Override
 	public void onLoadingComplete(String s, View view, Bitmap bitmap) {
 		if(ImageUtils.isLargeImage(bitmap) == 1) {
-			Logger.showLog(""+bitmap.getHeight(),"onLoadingComplete");
-			((ImageView)view).setScaleType(ImageView.ScaleType.CENTER_CROP);
+			Logger.showLog(""+bitmap.getHeight()+s,"onLoadingComplete");
+//			ViewGroup.LayoutParams layoutParams = ((ImageView) view).getLayoutParams();
+//			layoutParams.height = bitmap.getHeight();
+//			((ImageView)view).setLayoutParams(layoutParams);
 //			Matrix mSuppMatrix = new Matrix();
 //			float scale;
 //			scale = Utils.getDisplayWidthPixels(view.getContext())/ bitmap.getWidth();

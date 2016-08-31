@@ -189,6 +189,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,H
         }
         curPage = page;
         StatusList list = StatusList.parse(response);
+        if(list == null){
+            Logger.showLog("list null","updatehometimeline faliure");
+            return;
+        }
         Logger.showLog("list.total_number----"+list.total_number+"list.statusList.size()---------"+list.statusList.size(),"statuslist");
         if (null != list.statusList) {
             for (Status sta : list.statusList) {

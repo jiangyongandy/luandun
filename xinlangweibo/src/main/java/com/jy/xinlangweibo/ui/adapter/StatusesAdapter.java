@@ -192,7 +192,7 @@ public class StatusesAdapter extends BaseAdapter {
                     }
                 }
                 imageLoader.displayImage(status.pic_urls.get(0), iv, ImageLoadeOptions
-                                .getCommonIvOption(iv.getContext()),
+                                .getNoDownScalingIvOption(iv.getContext()),
                         new ImageLoadingListener() {
 
                             @Override

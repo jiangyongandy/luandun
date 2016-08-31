@@ -1,15 +1,21 @@
 package com.jy.xinlangweibo.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapRegionDecoder;
+import android.graphics.Rect;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.jy.xinlangweibo.R;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.ImageSize;
-import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 
 /**
  * Created by JIANG on 2016/8/28.
@@ -25,28 +31,43 @@ public class ImageUtils {
      * @param imageLoader
      * @return
      */
-    public static int matchView2Bitmap(String url, final View mview, Bitmap loadedImage, int maxImage, ImageLoader imageLoader) {
+    public static int matchView2Bitmap(String url, final View mview, final Bitmap loadedImage, int maxImage, ImageLoader imageLoader) {
         Log.i("statusadapter",
                 "宽度：" + String.valueOf(loadedImage.getWidth()));
         Log.i("statusadapter",
                 "高度：" + String.valueOf(loadedImage.getHeight()));
         int CHANGTU = 1;
-        ViewGroup.LayoutParams lp = mview.getLayoutParams();
+        final ViewGroup.LayoutParams lp = mview.getLayoutParams();
         if(loadedImage.getHeight()>1024||loadedImage.getWidth() > 1024) {
             float scale = 1.5f;
             lp.width = Utils.dip2px(mview.getContext(), maxImage);
             lp.height = (int) (Utils.dip2px(mview.getContext(), maxImage)*scale+0.5f);
-            ImageSize mImageSize = new ImageSize(loadedImage.getWidth(), (int)(loadedImage.getWidth()*scale+0.5f));
-            ImageLoader.getInstance().loadImage(url, mImageSize, new SimpleImageLoadingListener(){
+            ((ImageView)mview).setImageResource(R.drawable.timeline_image_loading);
 
-                @Override
-                public void onLoadingComplete(String imageUri, View view,
-                                              Bitmap loadedImage) {
-                    super.onLoadingComplete(imageUri, view, loadedImage);
-                    ((ImageView)mview).setImageBitmap(loadedImage);
+            new Thread() {
+                public void run() {
+                    try {
+                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                        loadedImage.compress(Bitmap.CompressFormat.PNG, 100, baos);
+                        InputStream isBm = new ByteArrayInputStream(baos.toByteArray());
+                        BitmapRegionDecoder mDecoder = BitmapRegionDecoder.newInstance(isBm, true);
+                        Rect bsrc = new Rect();
+                        bsrc.left = 0;
+                        bsrc.top = 0;
+                        bsrc.right = loadedImage.getWidth();
+                        bsrc.bottom = loadedImage.getWidth()*lp.height/lp.width;
+                        final Bitmap bmp = mDecoder.decodeRegion(bsrc, null);
+                        ((Activity)mview.getContext()).runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ((ImageView)mview).setImageBitmap(bmp);
+                            }
+                        });
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
-
-            });
+            }.start();
             return CHANGTU;
         }
         int max = Math.max(loadedImage.getWidth(),  loadedImage.getHeight());
