@@ -31,7 +31,7 @@ import com.jy.xinlangweibo.ui.adapter.ViewHolder;
 import com.jy.xinlangweibo.utils.DateUtils;
 import com.jy.xinlangweibo.utils.ImageLoadeOptions;
 import com.jy.xinlangweibo.utils.Logger;
-import com.jy.xinlangweibo.utils.StringUtils;
+import com.jy.xinlangweibo.utils.WeiboStringUtils;
 import com.jy.xinlangweibo.utils.TitleBuilder;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
@@ -279,7 +279,7 @@ public class StatusDetailsActivity extends BaseActivity {
 				+ Html.fromHtml(status.source));
 		statusName.setText(user.screen_name);
 
-		statusText.setText(StringUtils
+		statusText.setText(WeiboStringUtils
 				.getKeyText(this, status.text, statusText));
 		setImage(status, statusIv, statusGv);
 
@@ -326,7 +326,7 @@ public class StatusDetailsActivity extends BaseActivity {
 			}
 			String tempString = "@" + retweetedname + ":"
 					+ status.retweeted_status.text;
-			retweetedText.setText(StringUtils.getKeyText(this, tempString,
+			retweetedText.setText(WeiboStringUtils.getKeyText(this, tempString,
 					retweetedText));
 			setImage(status.retweeted_status, retweetedIv, retweetedGv);
 		} else {

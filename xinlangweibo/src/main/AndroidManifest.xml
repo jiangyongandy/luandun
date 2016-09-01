@@ -41,9 +41,9 @@
         <activity
             android:name=".ui.activity.WriteStatusActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity
+<!--        <activity
             android:name=".ui.activity.ImageBrowseActivity"
-            android:label="@string/title_activity_image_browse" />
+            android:label="@string/title_activity_image_browse" />-->
         <activity
             android:name=".ui.activity.WebActivity"
             android:hardwareAccelerated="true"

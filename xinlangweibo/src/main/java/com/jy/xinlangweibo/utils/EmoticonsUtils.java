@@ -68,7 +68,7 @@ public class EmoticonsUtils {
                      */
                     String filePath = Environment.getExternalStorageDirectory() + "/wxemoticons";
                     try {
-                        FileUtils.unzip(context.getAssets().open("wxemoticons.zip"), filePath);
+                        common.FileUtils.unzip(context.getAssets().open("wxemoticons.zip"), filePath);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

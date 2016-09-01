@@ -16,6 +16,7 @@ import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.ui.fragment.base.BaseFragment;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by JIANG on 2016/8/26.
@@ -50,6 +51,7 @@ public class WebFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        ButterKnife.bind(this,rootView);
         setWebView();
         wv.loadUrl(website);
         return rootView;

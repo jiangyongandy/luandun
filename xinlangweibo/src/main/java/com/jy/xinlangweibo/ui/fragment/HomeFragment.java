@@ -25,7 +25,7 @@ import com.jy.xinlangweibo.ui.activity.MainActivity;
 import com.jy.xinlangweibo.ui.activity.StatusDetailsActivity;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.ui.adapter.StatusesAdapter;
-import com.jy.xinlangweibo.ui.fragment.base.BaseFragment;
+import com.jy.xinlangweibo.ui.fragment.base.BaseCacheFragment;
 import com.jy.xinlangweibo.utils.Logger;
 import com.jy.xinlangweibo.utils.Utils;
 import com.sina.weibo.sdk.openapi.models.Status;
@@ -36,7 +36,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class HomeFragment extends BaseFragment implements View.OnClickListener,HomeFragmentView {
+public class HomeFragment extends BaseCacheFragment implements View.OnClickListener,HomeFragmentView {
     @BindView(R.id.lv_status)
     PullToRefreshListView lvStatus;
     private View view;
@@ -48,7 +48,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,H
     private int curPage;
     private PopupWindow pw;
     private MaterialDialog materialDialog;
-    private StatusPresenter presenter;
+    private StatusPresenter statusPresenter;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -79,10 +80,11 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,H
 
     private void initView() {
         presenter = new StatusPresenter(activity,this);
+        statusPresenter = (StatusPresenter)presenter;
         initPlv();
         initPop();
         showProgressDialog();
-        presenter.getHomeTimeline(1);
+        statusPresenter.getHomeTimeline(1);
     }
 
     @Override
@@ -147,7 +149,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,H
         lvStatus.setOnRefreshListener(new OnRefreshListener<ListView>() {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-                presenter.getHomeTimeline(1);
+                statusPresenter.getHomeTimeline(1);
             }
 
             private void loadCaheData() {
@@ -230,7 +232,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener,H
                     ivLoad.setVisibility(View.VISIBLE);
                     ivLoad.startAnimation(AnimationUtils.loadAnimation(
                             activity, R.anim.ra_loading));
-                    presenter.getHomeTimeline(curPage + 1);
+                    statusPresenter.getHomeTimeline(curPage + 1);
                 }
             });
         }

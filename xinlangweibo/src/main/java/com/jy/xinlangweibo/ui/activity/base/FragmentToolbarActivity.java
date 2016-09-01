@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.MenuItem;
 
 import com.jiang.library.R;
+import com.jy.xinlangweibo.utils.Logger;
 
 import java.lang.reflect.Method;
 
@@ -20,11 +21,18 @@ public class FragmentToolbarActivity extends BaseActivity  {
     private int overrideTheme = -1;
 
     /**
-     * 启动一个带fragment的activity
+     * 启动一个带fragment和toolbar的activity
      *
      * @param activity
      * @param clazz
+     * @param isToolbarActivity
      */
+    public static void launch(Activity activity, Class<? extends Fragment> clazz,Boolean isToolbarActivity) {
+        Intent intent = new Intent(activity, FragmentToolbarActivity.class);
+        intent.putExtra("className", clazz.getName());
+        intent.putExtra("isToolbarActivity",isToolbarActivity);
+        activity.startActivity(intent);
+    }
     public static void launch(Activity activity, Class<? extends Fragment> clazz) {
         Intent intent = new Intent(activity, FragmentToolbarActivity.class);
         intent.putExtra("className", clazz.getName());
@@ -33,6 +41,11 @@ public class FragmentToolbarActivity extends BaseActivity  {
 
     public static void launch(Context activity, Class<? extends Fragment> clazz, Intent intent) {
         intent.putExtra("className", clazz.getName());
+        activity.startActivity(intent);
+    }
+    public static void launch(Context activity, Class<? extends Fragment> clazz, Intent intent,Boolean isToolbarActivity) {
+        intent.putExtra("className", clazz.getName());
+        intent.putExtra("isToolbarActivity",isToolbarActivity);
         activity.startActivity(intent);
     }
 
@@ -59,6 +72,9 @@ public class FragmentToolbarActivity extends BaseActivity  {
                                                : savedInstanceState.getInt("contentId");
         overrideTheme = savedInstanceState == null ? -1
                                                    : savedInstanceState.getInt("overrideTheme");
+        if(!getIntent().getBooleanExtra("isToolbarActivity",true)) {
+            contentId = R.layout.comm_ui_fragment_notoolbar_container;
+        }
 
         Fragment fragment = null;
         if (savedInstanceState == null) {

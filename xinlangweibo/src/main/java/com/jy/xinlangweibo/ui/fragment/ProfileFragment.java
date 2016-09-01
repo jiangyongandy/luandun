@@ -24,17 +24,17 @@ import com.jy.xinlangweibo.ui.adapter.GridIvAdapter;
 import com.jy.xinlangweibo.ui.adapter.ParallaxRecyclerAdapter;
 import com.jy.xinlangweibo.ui.adapter.ParallaxRecyclerAdapter.OnParallaxScroll;
 import com.jy.xinlangweibo.ui.adapter.RecyleViewHolder;
-import com.jy.xinlangweibo.ui.fragment.base.BaseFragment;
+import com.jy.xinlangweibo.ui.fragment.base.BaseCacheFragment;
 import com.jy.xinlangweibo.utils.DateUtils;
 import com.jy.xinlangweibo.utils.ImageLoadeOptions;
-import com.jy.xinlangweibo.utils.StringUtils;
+import com.jy.xinlangweibo.utils.WeiboStringUtils;
 import com.jy.xinlangweibo.widget.CustomActBar;
 import com.sina.weibo.sdk.openapi.models.Status;
 import com.sina.weibo.sdk.openapi.models.User;
 
 import java.util.ArrayList;
 
-public class ProfileFragment extends BaseFragment {
+public class ProfileFragment extends BaseCacheFragment {
     private View view;
     private RecyclerView mRecyclerView;
     private CustomActBar actbar;
@@ -115,11 +115,11 @@ public class ProfileFragment extends BaseFragment {
                         ImageLoadeOptions.getIvHeadOption());
                 String from = DateUtils.getDate(status.created_at) + " 来自  "
                         + Html.fromHtml(status.source);
-                sourceText.setText(StringUtils.get2KeyText(activity, from,
+                sourceText.setText(WeiboStringUtils.get2KeyText(activity, from,
                         sourceText));
                 statusName.setText(user.screen_name);
 
-                statusText.setText(StringUtils.getKeyText(activity,
+                statusText.setText(WeiboStringUtils.getKeyText(activity,
                         status.text, statusText));
                 setImage(status, statusIv, statusGv);
 
@@ -153,7 +153,7 @@ public class ProfileFragment extends BaseFragment {
                     }
                     String tempString = "@" + retweetedname + ":"
                             + status.retweeted_status.text;
-                    retweetedText.setText(StringUtils.getKeyText(activity,
+                    retweetedText.setText(WeiboStringUtils.getKeyText(activity,
                             tempString, retweetedText));
                     setImage(status.retweeted_status, retweetedIv, retweetedGv);
                 } else {

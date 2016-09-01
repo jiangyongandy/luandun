@@ -17,12 +17,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.ui.activity.ImageBrowseActivity;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
+import com.jy.xinlangweibo.ui.activity.base.FragmentToolbarActivity;
+import com.jy.xinlangweibo.ui.fragment.ImageBrowserFragment;
 import com.jy.xinlangweibo.utils.DateUtils;
 import com.jy.xinlangweibo.utils.ImageLoadeOptions;
 import com.jy.xinlangweibo.utils.ImageUtils;
-import com.jy.xinlangweibo.utils.StringUtils;
+import com.jy.xinlangweibo.utils.WeiboStringUtils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
@@ -113,10 +114,10 @@ public class StatusesAdapter extends BaseAdapter {
                 ImageLoadeOptions.getIvHeadOption());
         String from = DateUtils.getDate(status.created_at) + " 来自  "
                 + Html.fromHtml(status.source);
-        sourceText.setText(StringUtils.get2KeyText(context, from, sourceText));
+        sourceText.setText(WeiboStringUtils.get2KeyText(context, from, sourceText));
         statusName.setText(user.screen_name);
         //bind content
-        statusText.setText(StringUtils.getKeyText(context, status.text,
+        statusText.setText(WeiboStringUtils.getKeyText(context, status.text,
                 statusText));
         setImage(status, statusIv, statusGv, picText, tv_retweeted_pic);
         //bind bottomTab
@@ -142,7 +143,7 @@ public class StatusesAdapter extends BaseAdapter {
             }
             String tempString = "@" + retweetedname + ":"
                     + status.retweeted_status.text;
-            retweetedText.setText(StringUtils.getKeyText(context, tempString,
+            retweetedText.setText(WeiboStringUtils.getKeyText(context, tempString,
                     retweetedText));
             setImage(status.retweeted_status, retweetedIv, retweetedGv, picText, tv_retweeted_pic);
         } else {
@@ -169,15 +170,15 @@ public class StatusesAdapter extends BaseAdapter {
                     public void onItemClick(AdapterView<?> parent, View view,
                                             int position, long id) {
 //					前往图片浏览器
-                        Intent intent = new Intent(context, ImageBrowseActivity.class);
+                        Intent intent = new Intent(context, FragmentToolbarActivity.class);
                         intent.putExtra("Pic_urls", pic_ids);
                         intent.putExtra("Position", position);
-                        context.startActivity(intent);
+                        FragmentToolbarActivity.launch(context, ImageBrowserFragment.class,intent,false);
                     }
                 });
                 gv.setAdapter(new GridIvAdapter(pic_ids));
             }
-            // 单图处理 此处判断的thumbnail_pic为空字符串，并非空引用！所以不能使用thumbnail_pic！=null来判断
+            // 单图处理
             else if (pic_ids.size() == 1) {
                 gv.setVisibility(View.GONE);
                 iv.setVisibility(View.VISIBLE);
@@ -239,10 +240,10 @@ public class StatusesAdapter extends BaseAdapter {
                     //				点击跳转至图片浏览器
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(context, ImageBrowseActivity.class);
+                        Intent intent = new Intent(context, FragmentToolbarActivity.class);
                         intent.putExtra("Pic_urls", status.pic_urls);
                         intent.putExtra("Position", 0);
-                        context.startActivity(intent);
+                        FragmentToolbarActivity.launch(context, ImageBrowserFragment.class,intent,false);
                     }
                 });
             }

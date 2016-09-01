@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.ui.activity.MainActivity;
 import com.jy.xinlangweibo.ui.adapter.MessageAdapter;
-import com.jy.xinlangweibo.ui.fragment.base.BaseFragment;
+import com.jy.xinlangweibo.ui.fragment.base.BaseCacheFragment;
 import com.jy.xinlangweibo.utils.TitleBuilder;
 import com.jy.xinlangweibo.utils.Utils;
 import com.jy.xinlangweibo.widget.pulltorefreshswipemenulistviewsample.PullToRefreshSwipeMenuListView;
@@ -24,7 +24,7 @@ import com.sina.weibo.sdk.openapi.models.Status;
 
 import java.util.ArrayList;
 
-public class MessageFragment extends BaseFragment implements PullToRefreshSwipeMenuListView.IXListViewListener {
+public class MessageFragment extends BaseCacheFragment implements PullToRefreshSwipeMenuListView.IXListViewListener {
 	private View view;
 	private PullToRefreshSwipeMenuListView mListView;
 	private MessageAdapter adapter;

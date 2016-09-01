@@ -3,7 +3,7 @@ package com.jy.xinlangweibo.ui.IView;
 /**
  * Created by JIANG on 2016/8/27.
  */
-public interface HomeFragmentView {
+public interface HomeFragmentView extends BaseIView {
 
     void showProgressDialog();
 

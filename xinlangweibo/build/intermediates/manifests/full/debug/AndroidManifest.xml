@@ -41,9 +41,11 @@
         <activity
             android:name="com.jy.xinlangweibo.ui.activity.WriteStatusActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name="com.jy.xinlangweibo.ui.activity.ImageBrowseActivity"
+        <!--
+            <activity
+            android:name=".ui.activity.ImageBrowseActivity"
             android:label="@string/title_activity_image_browse" />
+        -->
         <activity
             android:name="com.jy.xinlangweibo.ui.activity.WebActivity"
             android:hardwareAccelerated="true"

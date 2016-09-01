@@ -13,15 +13,14 @@ import com.sina.weibo.sdk.exception.WeiboException;
 /**
  * Created by JIANG on 2016/8/27.
  */
-public class StatusPresenter {
+public class StatusPresenter extends BasePresenter{
 
-    private final Activity activity;
-    private  HomeFragmentView homeFragmentView;
+    private final HomeFragmentView homeFragmentView;
     private  StatusesInteraction api;
 
 
     public StatusPresenter(Activity activity,HomeFragmentView homeFragmentView) {
-        this.activity = activity;
+        super(activity);
         this.homeFragmentView = homeFragmentView;
         Oauth2AccessToken readAccessToken = AccessTokenKeeper
                 .readAccessToken(activity);

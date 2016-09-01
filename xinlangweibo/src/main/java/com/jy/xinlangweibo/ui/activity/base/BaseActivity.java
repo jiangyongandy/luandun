@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.jy.xinlangweibo.AppSetting;
 import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.presenter.BasePresenter;
 import com.jy.xinlangweibo.utils.ACache;
 import com.jy.xinlangweibo.utils.Logger;
 import com.jy.xinlangweibo.utils.ThemeUtils;
@@ -24,6 +25,7 @@ public class BaseActivity extends AppCompatActivity {
 	protected ACache mCache;
 	protected int theme;
 	protected Toolbar mToolbar;
+	protected BasePresenter presenter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,8 @@ public class BaseActivity extends AppCompatActivity {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
+		if(presenter != null)
+			presenter.onDestroy();
 	}
 
 	@Override

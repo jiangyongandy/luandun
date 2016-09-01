@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.utils.ImageLoadeOptions;
-import com.jy.xinlangweibo.utils.StringUtils;
+import com.jy.xinlangweibo.utils.WeiboStringUtils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.sina.weibo.sdk.openapi.models.Status;
 
@@ -58,7 +58,7 @@ public class MessageAdapter extends BaseAdapter {
 
 		Status status = getItem(position);
 		nickName.setText(status.user.screen_name);
-		messageText.setText(StringUtils.getOnlyImageSpan(context, status.text, messageText));
+		messageText.setText(WeiboStringUtils.getOnlyImageSpan(context, status.text, messageText));
 		imageLoader.displayImage(status.user.avatar_hd, headIv,
 				ImageLoadeOptions.getIvHeadOption());
 		return vh.getMconvertView();

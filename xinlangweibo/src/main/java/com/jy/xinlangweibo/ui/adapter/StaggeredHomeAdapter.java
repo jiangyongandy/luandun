@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.utils.ImageLoadeOptions;
-import com.jy.xinlangweibo.utils.StringUtils;
+import com.jy.xinlangweibo.utils.WeiboStringUtils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.sina.weibo.sdk.openapi.models.Status;
 
@@ -64,7 +64,7 @@ public class StaggeredHomeAdapter extends
 //			lp.height = mHeights.get(position);
 //			
 //			holder.ll_status.setLayoutParams(lp);
-			holder.tv_content.setText(StringUtils.getKeyText(context, mDatas.get(position).text, holder.tv_content));
+			holder.tv_content.setText(WeiboStringUtils.getKeyText(context, mDatas.get(position).text, holder.tv_content));
 			imageLoader.displayImage(mDatas.get(position).user.avatar_hd,
 					holder.iv_head, ImageLoadeOptions.getIvHeadOption());
 			// 如果设置了回调，则设置点击事件

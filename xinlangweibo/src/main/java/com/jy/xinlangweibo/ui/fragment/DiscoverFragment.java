@@ -21,7 +21,7 @@ import com.jy.xinlangweibo.interaction.impl.StatusesInteractionImpl;
 import com.jy.xinlangweibo.ui.activity.MainActivity;
 import com.jy.xinlangweibo.ui.adapter.StaggeredHomeAdapter;
 import com.jy.xinlangweibo.ui.adapter.StaggeredHomeAdapter.OnItemClickLitener;
-import com.jy.xinlangweibo.ui.fragment.base.BaseFragment;
+import com.jy.xinlangweibo.ui.fragment.base.BaseCacheFragment;
 import com.jy.xinlangweibo.utils.InternetConnectUtils;
 import com.jy.xinlangweibo.widget.AdvertizeView;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
@@ -32,7 +32,7 @@ import com.sina.weibo.sdk.openapi.models.StatusList;
 
 import java.util.ArrayList;
 
-public class DiscoverFragment extends BaseFragment {
+public class DiscoverFragment extends BaseCacheFragment {
     private View view;
     private SwipeRefreshLayout mSwip;
     private ArrayList<Status> mDatas = new ArrayList<Status>();
