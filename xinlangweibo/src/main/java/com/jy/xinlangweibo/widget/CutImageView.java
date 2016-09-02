@@ -50,6 +50,11 @@ public class CutImageView extends ImageView {
     @Override
     public void setImageDrawable(final Drawable drawable) {
             Logger.showLog("------------"+drawable.getIntrinsicHeight(),"setImageDrawable");
+//            if(drawable.getIntrinsicHeight() == -1) {
+//                RuntimeException here = new RuntimeException("here");
+//                here.fillInStackTrace();
+//                Log.i("setImageDrawable", "call statck is", here);
+//            }
             super.setImageDrawable(drawable);
     }
 

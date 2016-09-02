@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.jy.xinlangweibo.R;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -28,10 +27,9 @@ public class ImageUtils {
      * @param mview
      * @param loadedImage
      * @param maxImage
-     * @param imageLoader
      * @return
      */
-    public static int matchView2Bitmap(String url, final View mview, final Bitmap loadedImage, int maxImage, ImageLoader imageLoader) {
+    public static int matchView2Bitmap(String url, final View mview, final Bitmap loadedImage, int maxImage) {
         Log.i("statusadapter",
                 "宽度：" + String.valueOf(loadedImage.getWidth()));
         Log.i("statusadapter",
@@ -86,6 +84,11 @@ public class ImageUtils {
         return 0;
     }
 
+    /**
+     * 判断是否首页长图
+     * @param loadedImage
+     * @return
+     */
     public static int isLargeImage(Bitmap loadedImage) {
         int CHANGTU = 1;
         if(loadedImage.getHeight()>1024||loadedImage.getWidth() > 1024) {
@@ -94,11 +97,17 @@ public class ImageUtils {
         return 0;
     }
 
+    /**
+     * 图片浏览判断是否是大图
+     * @param loadedImage
+     * @param context
+     * @return
+     */
     public static int isLargeScreenImage(Bitmap loadedImage, Context context) {
         int largeHeight = 1;
         int largeWidth = 2;
         if(loadedImage.getHeight()> Utils.getDisplayHeightPixelsPixels(context)) {
-            Logger.showLog(""+loadedImage.getHeight()+"      "+Utils.getDisplayHeightPixelsPixels(context),"onLoadingComplete");
+            Logger.showLog(""+loadedImage.getHeight()+"      "+Utils.getDisplayHeightPixelsPixels(context),"isLargeScreenImage");
             return largeHeight;
         }else if(loadedImage.getWidth() > Utils.getDisplayWidthPixels(context)) {
             return largeWidth;

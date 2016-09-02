@@ -18,14 +18,14 @@ import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.utils.ImageLoadeOptions;
 import com.jy.xinlangweibo.utils.ImageUtils;
 import com.jy.xinlangweibo.utils.Logger;
+import com.jy.xinlangweibo.widget.photoview.PhotoView;
+import com.jy.xinlangweibo.widget.photoview.PhotoViewAttacher;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import java.util.ArrayList;
 
-import uk.co.senab.photoview.PhotoView;
-import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class ImageBrowseActivity extends BaseActivity implements ImageLoadingListener {
 

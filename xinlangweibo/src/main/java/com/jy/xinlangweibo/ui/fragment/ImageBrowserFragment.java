@@ -24,6 +24,8 @@ import com.jy.xinlangweibo.ui.fragment.base.BaseFragment;
 import com.jy.xinlangweibo.utils.ImageLoadeOptions;
 import com.jy.xinlangweibo.utils.Logger;
 import com.jy.xinlangweibo.widget.FitViewPager;
+import com.jy.xinlangweibo.widget.photoview.PhotoView;
+import com.jy.xinlangweibo.widget.photoview.PhotoViewAttacher;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
@@ -40,8 +42,6 @@ import rx.Observer;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
-import uk.co.senab.photoview.PhotoView;
-import uk.co.senab.photoview.PhotoViewAttacher;
 
 /**
  * Created by JIANG on 2016/9/1.
@@ -140,7 +140,6 @@ public class ImageBrowserFragment extends BaseFragment implements ImageLoadingLi
                     if(!FileUtils.isFileExists(basePath)) {
                         File file = new File(basePath);
                         file.mkdir();
-                        Logger.showLog(""+file.getName(),"文件目录");
                     }
                     File file = new File(basePath,pic_urls.get(vpImagebrowse.getCurrentItem()).split("/")[4]);
                     file.createNewFile();
@@ -191,7 +190,7 @@ public class ImageBrowserFragment extends BaseFragment implements ImageLoadingLi
                     showOrHide();
                 }
             });
-            imageLoader.displayImage(pic_urls.get(position), imageView, ImageLoadeOptions.getDefaultIvOption(imageView.getContext()), ImageBrowserFragment.this);
+            imageLoader.displayImage(pic_urls.get(position), imageView, ImageLoadeOptions.getNoDownScalingIvOption(imageView.getContext()), ImageBrowserFragment.this);
             container.addView(imageView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             return imageView;
         }
@@ -279,22 +278,12 @@ public class ImageBrowserFragment extends BaseFragment implements ImageLoadingLi
 
     @Override
     public void onLoadingComplete(String s, View view, Bitmap bitmap) {
-        if (com.jy.xinlangweibo.utils.ImageUtils.isLargeImage(bitmap) == 1) {
-            Logger.showLog("" + bitmap.getHeight() + s, "onLoadingComplete");
-//			ViewGroup.LayoutParams layoutParams = ((ImageView) view).getLayoutParams();
-//			layoutParams.height = bitmap.getHeight();
-//			((ImageView)view).setLayoutParams(layoutParams);
-//			Matrix mSuppMatrix = new Matrix();
-//			float scale;
-//			scale = Utils.getDisplayWidthPixels(view.getContext())/ bitmap.getWidth();
-//			mSuppMatrix.postScale(scale,scale);
-//			((ImageView)view).setImageMatrix(mSuppMatrix);
+        if (com.jy.xinlangweibo.utils.ImageUtils.isLargeScreenImage(bitmap,view.getContext()) == 1) {
+            Logger.showLog("" + bitmap.getHeight()+"------"+bitmap.getWidth(), "ImageBrowserFragment--onLoadingComplete");
+            ((ImageView)view).setImageResource(R.drawable.timeline_image_loading);
+            ((PhotoView)view).setLongBitmap(bitmap);
         } else if (com.jy.xinlangweibo.utils.ImageUtils.isLargeScreenImage(bitmap, view.getContext()) == 2) {
-//			Matrix mSuppMatrix = new Matrix();
-//			float scale;
-//			scale = Utils.getDisplayWidthPixels(view.getContext())/ bitmap.getWidth();
-//			mSuppMatrix.postScale(scale,scale);
-//			((ImageView)view).setImageMatrix(mSuppMatrix);
+
         }
     }
 

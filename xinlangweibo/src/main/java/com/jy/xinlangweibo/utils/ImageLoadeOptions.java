@@ -35,12 +35,22 @@ public class ImageLoadeOptions {
 		return option;
 	}
 
-	public static DisplayImageOptions getNoDownScalingIvOption(Context context) {
+	public static DisplayImageOptions getNoDownScalingRoundIvOption(Context context) {
 		DisplayImageOptions option = new DisplayImageOptions.Builder()
 				.cacheInMemory().cacheOnDisc()
 				.bitmapConfig(Bitmap.Config.RGB_565)
 				.imageScaleType(ImageScaleType.NONE)
 				.displayer(new RoundedBitmapDisplayer(Utils.dip2px(context, 4)))
+				.showImageForEmptyUri(R.drawable.timeline_image_failure)
+				.showStubImage(R.drawable.timeline_image_loading)
+				.showImageOnFail(R.drawable.timeline_image_failure).build();
+		return option;
+	}
+	public static DisplayImageOptions getNoDownScalingIvOption(Context context) {
+		DisplayImageOptions option = new DisplayImageOptions.Builder()
+				.cacheInMemory().cacheOnDisc()
+				.bitmapConfig(Bitmap.Config.RGB_565)
+				.imageScaleType(ImageScaleType.NONE)
 				.showImageForEmptyUri(R.drawable.timeline_image_failure)
 				.showStubImage(R.drawable.timeline_image_loading)
 				.showImageOnFail(R.drawable.timeline_image_failure).build();

@@ -193,7 +193,7 @@ public class StatusesAdapter extends BaseAdapter {
                     }
                 }
                 imageLoader.displayImage(status.pic_urls.get(0), iv, ImageLoadeOptions
-                                .getNoDownScalingIvOption(iv.getContext()),
+                                .getNoDownScalingRoundIvOption(iv.getContext()),
                         new ImageLoadingListener() {
 
                             @Override
@@ -210,7 +210,7 @@ public class StatusesAdapter extends BaseAdapter {
                             @Override
                             public void onLoadingComplete(String imageUri,
                                                           View view, Bitmap loadedImage) {
-                                if (ImageUtils.matchView2Bitmap(status.pic_urls.get(0),view, loadedImage, MAXIMAGE, imageLoader) == 1) {
+                                if (ImageUtils.matchView2Bitmap(status.pic_urls.get(0),view, loadedImage, MAXIMAGE) == 1) {
                                     switch (view.getId()) {
                                         case R.id.iv_statuses_singlecontent:
                                             picText.setVisibility(View.VISIBLE);
