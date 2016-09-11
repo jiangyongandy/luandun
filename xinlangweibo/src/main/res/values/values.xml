@@ -320,4 +320,5 @@
     <style name="LoadingProgressBar">
         android:indeterminateDrawable="@drawable/loading_bar1
     </style>
+    <declare-styleable name="BGAImageView"><attr name="android:src"/><attr format="boolean" name="bga_iv_isCircle"/><attr format="reference|dimension" name="bga_iv_cornerRadius"/><attr format="boolean" name="bga_iv_isSquare"/><attr format="reference|dimension" name="bga_iv_borderWidth"/><attr format="reference|color" name="bga_iv_borderColor"/></declare-styleable>
 </resources>

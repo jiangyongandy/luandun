@@ -29,14 +29,14 @@ public class ImageUtils {
      * @param maxImage
      * @return
      */
-    public static int matchView2Bitmap(String url, final View mview, final Bitmap loadedImage, int maxImage) {
+    public static int matchView2Bitmap(final String url, final View mview, final Bitmap loadedImage, int maxImage, final CutImageFinishListenner cutImageFinishListenner) {
         Log.i("statusadapter",
                 "宽度：" + String.valueOf(loadedImage.getWidth()));
         Log.i("statusadapter",
                 "高度：" + String.valueOf(loadedImage.getHeight()));
         int CHANGTU = 1;
         final ViewGroup.LayoutParams lp = mview.getLayoutParams();
-        if(loadedImage.getHeight()>1024||loadedImage.getWidth() > 1024) {
+        if(loadedImage.getHeight()>1024) {
             float scale = 1.5f;
             lp.width = Utils.dip2px(mview.getContext(), maxImage);
             lp.height = (int) (Utils.dip2px(mview.getContext(), maxImage)*scale+0.5f);
@@ -46,19 +46,32 @@ public class ImageUtils {
                 public void run() {
                     try {
                         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                        loadedImage.compress(Bitmap.CompressFormat.PNG, 100, baos);
-                        InputStream isBm = new ByteArrayInputStream(baos.toByteArray());
-                        BitmapRegionDecoder mDecoder = BitmapRegionDecoder.newInstance(isBm, true);
                         Rect bsrc = new Rect();
                         bsrc.left = 0;
                         bsrc.top = 0;
-                        bsrc.right = loadedImage.getWidth();
-                        bsrc.bottom = loadedImage.getWidth()*lp.height/lp.width;
+                        BitmapRegionDecoder mDecoder = null;
+                        if(loadedImage.getWidth() > 1024) {
+                            float zoom = 1024*1.0f / loadedImage.getWidth();
+                            Bitmap result = Bitmap.createBitmap(loadedImage, 0, 0, (int)(loadedImage.getWidth()*zoom), (int)(loadedImage.getHeight()*zoom), null, true);
+                            bsrc.right = result.getWidth();
+                            bsrc.bottom = result.getWidth()*lp.height/lp.width;
+                            result.compress(Bitmap.CompressFormat.PNG, 100, baos);
+                            InputStream isBm = new ByteArrayInputStream(baos.toByteArray());
+                            mDecoder = BitmapRegionDecoder.newInstance(isBm, true);
+                        }else {
+                            loadedImage.compress(Bitmap.CompressFormat.PNG, 100, baos);
+                            InputStream isBm = new ByteArrayInputStream(baos.toByteArray());
+                            mDecoder = BitmapRegionDecoder.newInstance(isBm, true);
+                            bsrc.right = loadedImage.getWidth();
+                            bsrc.bottom = loadedImage.getWidth()*lp.height/lp.width;
+                        }
                         final Bitmap bmp = mDecoder.decodeRegion(bsrc, null);
                         ((Activity)mview.getContext()).runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 ((ImageView)mview).setImageBitmap(bmp);
+                                mview.setTag("changtu");
+                                cutImageFinishListenner.cutImageFinish(bmp,url,mview);
                             }
                         });
                     } catch (Exception e) {
@@ -66,6 +79,9 @@ public class ImageUtils {
                     }
                 }
             }.start();
+            return CHANGTU;
+        }
+        if(mview.getTag() == "changtu") {
             return CHANGTU;
         }
         int max = Math.max(loadedImage.getWidth(),  loadedImage.getHeight());
@@ -83,6 +99,12 @@ public class ImageUtils {
         }
         return 0;
     }
+
+
+    public interface CutImageFinishListenner {
+        void cutImageFinish(Bitmap bitmap, String s, View imageView);
+    }
+
 
     /**
      * 判断是否首页长图

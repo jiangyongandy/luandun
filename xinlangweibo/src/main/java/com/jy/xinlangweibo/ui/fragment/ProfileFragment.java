@@ -26,7 +26,7 @@ import com.jy.xinlangweibo.ui.adapter.ParallaxRecyclerAdapter.OnParallaxScroll;
 import com.jy.xinlangweibo.ui.adapter.RecyleViewHolder;
 import com.jy.xinlangweibo.ui.fragment.base.BaseCacheFragment;
 import com.jy.xinlangweibo.utils.DateUtils;
-import com.jy.xinlangweibo.utils.ImageLoadeOptions;
+import com.jy.xinlangweibo.utils.CommonImageLoader.ImageLoadeOptions;
 import com.jy.xinlangweibo.utils.WeiboStringUtils;
 import com.jy.xinlangweibo.widget.CustomActBar;
 import com.sina.weibo.sdk.openapi.models.Status;

@@ -7,7 +7,7 @@ import android.text.TextUtils;
 import com.jy.xinlangweibo.bean.EmoticonBean;
 import com.jy.xinlangweibo.bean.EmoticonSetBean;
 import com.jy.xinlangweibo.db.DBHelper;
-import com.jy.xinlangweibo.utils.imageloader.ImageBase;
+import com.jy.xinlangweibo.utils.emotionimageloader.ImageBase;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -68,7 +68,7 @@ public class EmoticonsUtils {
                      */
                     String filePath = Environment.getExternalStorageDirectory() + "/wxemoticons";
                     try {
-                        common.FileUtils.unzip(context.getAssets().open("wxemoticons.zip"), filePath);
+                        com.jiang.library.common.FileUtils.unzip(context.getAssets().open("wxemoticons.zip"), filePath);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

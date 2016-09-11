@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
-import com.jy.xinlangweibo.utils.ImageLoadeOptions;
+import com.jy.xinlangweibo.utils.CommonImageLoader.ImageLoadeOptions;
 import com.jy.xinlangweibo.utils.ImageUtils;
 import com.jy.xinlangweibo.utils.Logger;
 import com.jy.xinlangweibo.widget.photoview.PhotoView;

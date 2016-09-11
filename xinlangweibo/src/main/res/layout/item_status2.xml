@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_item_status"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:background="?android:attr/selectableItemBackground"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_publisher" />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_statuses_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            tools:text="油坊桥从前有个人，后来他成吴彦祖！！！！" />
+
+        <com.jy.xinlangweibo.widget.ninephoto.BGANinePhotoLayout
+            android:id="@+id/timeline_photos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_statuses_content"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/ll_retweeted"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:visibility="visible">
+        <!--android:background="@color/bg_agray"-->
+
+        <TextView
+            android:id="@+id/tv_retweeted_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="油坊桥从前有个人，后来他成shsiis了吴彦祖睡觉睡觉时间就是"
+            android:textColor="@color/txt_gray"
+            android:textSize="16sp" />
+
+        <com.jy.xinlangweibo.widget.ninephoto.BGANinePhotoLayout
+            android:id="@+id/retweeted_timeline_photos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_retweeted_content"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+    <include layout="@layout/include_item_status_bottom" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="8dp"
+        android:background="@color/bg_gray"
+        android:focusable="false" />
+</LinearLayout>

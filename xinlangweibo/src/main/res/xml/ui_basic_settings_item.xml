@@ -83,18 +83,15 @@
     &lt;!&ndash;android:summary="@string/settings_list_anim_summary" />&ndash;&gt;
 
 
-    &lt;!&ndash;</PreferenceCategory>&ndash;&gt;
+    &lt;!&ndash;</PreferenceCategory>&ndash;&gt;-->
 
-    <PreferenceCategory android:title="@string/category_other">
+    <PreferenceCategory android:title="其它设置">
         <Preference
             android:key="pPicSavePath" android:summary="/sdcard/"
-            android:title="@string/settings_pic_path"/>
+            android:title="图片储存路径"/>
 
         <Preference
-            android:key="pClearRecentMention" android:title="@string/settings_mention_history"/>
-
-        <Preference
-            android:key="pClearCache" android:title="@string/settings_clear_cache"/>
-    </PreferenceCategory>-->
+            android:key="pClearCache" android:title="清除图片缓存"/>
+    </PreferenceCategory>
 
 </PreferenceScreen>

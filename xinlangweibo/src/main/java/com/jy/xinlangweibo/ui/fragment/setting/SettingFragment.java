@@ -4,10 +4,13 @@ package com.jy.xinlangweibo.ui.fragment.setting;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
+import android.widget.Toast;
 
 import com.jy.xinlangweibo.AppSetting;
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
+import com.jy.xinlangweibo.utils.ToastUtils;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class SettingFragment extends PreferenceFragment implements Preference.OnPreferenceClickListener {
     private static final String ARG_PARAM1 = "param1";
@@ -50,6 +53,9 @@ public class SettingFragment extends PreferenceFragment implements Preference.On
         pTheme.setOnPreferenceClickListener(this);
         pTheme.setSummary(getResources().getStringArray(R.array.mdColorNames)[AppSetting.getThemeColor()]);
 
+        // 缓存
+        pTheme = (Preference) findPreference("pClearCache");
+        pTheme.setOnPreferenceClickListener(this);
         initTitle();
     }
 
@@ -63,7 +69,10 @@ public class SettingFragment extends PreferenceFragment implements Preference.On
         switch (preference.getKey()) {
             case "pTheme":
                 MDColorsDialogFragment.launch(getActivity());
-
+            case "pClearCache":
+                ImageLoader.getInstance().clearMemoryCache();
+                ImageLoader.getInstance().clearDiskCache();
+                ToastUtils.show(getActivity(),"已经清除",Toast.LENGTH_SHORT);
         }
         return true;
     }

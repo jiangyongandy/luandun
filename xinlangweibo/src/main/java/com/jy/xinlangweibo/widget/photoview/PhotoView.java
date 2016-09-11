@@ -32,6 +32,12 @@ public class PhotoView extends ImageView implements IPhotoView {
 
     private ScaleType mPendingScaleType;
 
+    private Bitmap cutbitmap;
+
+    public Bitmap getCutbitmap() {
+        return ((LongPhotoViewAttacher)mAttacher).getCutbitmap();
+    }
+
     public PhotoView(Context context) {
         this(context, null);
     }
@@ -57,8 +63,12 @@ public class PhotoView extends ImageView implements IPhotoView {
         }
     }
 
-    public void setLongBitmap(final Bitmap longBitmap) {
-        ((LongPhotoViewAttacher)mAttacher).setLongBitmap(longBitmap);
+    public void setLongBitmap(final Bitmap longBitmap, String s) {
+        ((LongPhotoViewAttacher)mAttacher).setLongBitmap(longBitmap,s);
+    }
+
+    public void setCutImageFinishListenner(LongPhotoViewAttacher.CutImageFinishListenner listenner) {
+        ((LongPhotoViewAttacher)mAttacher).setCutImageFinishListenner(listenner);
     }
 
     @Override

@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.utils.DateUtils;
-import com.jy.xinlangweibo.utils.ImageLoadeOptions;
+import com.jy.xinlangweibo.utils.CommonImageLoader.ImageLoadeOptions;
 import com.jy.xinlangweibo.utils.WeiboStringUtils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.sina.weibo.sdk.openapi.models.Comment;

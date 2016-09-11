@@ -25,7 +25,7 @@ import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.ui.activity.base.FragmentToolbarActivity;
 import com.jy.xinlangweibo.ui.fragment.DiscoverFragment;
 import com.jy.xinlangweibo.ui.fragment.FragmentController;
-import com.jy.xinlangweibo.ui.fragment.HomeFragment;
+import com.jy.xinlangweibo.ui.fragment.Home2Fragment;
 import com.jy.xinlangweibo.ui.fragment.MessageFragment;
 import com.jy.xinlangweibo.ui.fragment.ProfileFragment;
 import com.jy.xinlangweibo.ui.fragment.setting.SettingFragment;
@@ -118,7 +118,7 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
     @Override
     public void onAttachFragment(Fragment fragment) {
         super.onAttachFragment(fragment);
-        if (fragment instanceof HomeFragment) {
+        if (fragment instanceof Home2Fragment) {
             fragments[0] = fragment;
         } else if (fragment instanceof MessageFragment) {
             fragments[1] = fragment;

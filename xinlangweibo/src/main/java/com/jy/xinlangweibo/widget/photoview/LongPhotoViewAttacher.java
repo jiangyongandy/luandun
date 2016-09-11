@@ -24,14 +24,18 @@ import java.lang.ref.WeakReference;
 public class LongPhotoViewAttacher extends PhotoViewAttacher {
 
     private final WeakReference<ImageView> mImageView;
-    private Bitmap longBitmap;
     private PointF downPoint = new PointF();
     private PointF lastMovePoint = new PointF();
-    private float deltay;
     private Rect bsrc = new Rect();
     private BitmapRegionDecoder mDecoder;
+    private float deltay;
     private float imageScale;
+    private Bitmap longBitmap;
+    private Bitmap cutbitmap;
 
+    public Bitmap getCutbitmap() {
+        return cutbitmap;
+    }
     public LongPhotoViewAttacher(ImageView imageView) {
         super(imageView);
         mImageView = new WeakReference<>(imageView);
@@ -75,7 +79,7 @@ public class LongPhotoViewAttacher extends PhotoViewAttacher {
         return mDecoder.decodeRegion(bsrc, null);
     }
 
-    public void setLongBitmap(final Bitmap longBitmap) {
+    public void  setLongBitmap(final Bitmap longBitmap, final String s) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -97,13 +101,25 @@ public class LongPhotoViewAttacher extends PhotoViewAttacher {
                 imageScale = mImageView.get().getHeight()*1.0f/mImageView.get().getWidth();
                 bsrc.bottom = Math.round(longBitmap.getWidth() *imageScale);
                 final BitmapRegionDecoder finalMDecoder = mDecoder;
+                cutbitmap = finalMDecoder.decodeRegion(bsrc, null);
                 ((Activity)mImageView.get().getContext()).runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        mImageView.get().setImageBitmap(finalMDecoder.decodeRegion(bsrc, null));
+                        mImageView.get().setImageBitmap(cutbitmap);
+//                        cutImageFinishListenner.cutImageFinish(cutbitmap,s,LongPhotoViewAttacher.this.mImageView.get());
                     }
                 });
             }
         }).start();
+    }
+
+    private CutImageFinishListenner cutImageFinishListenner;
+
+    public interface CutImageFinishListenner {
+        void cutImageFinish(Bitmap bitmap, String s, ImageView imageView);
+    }
+
+    public void setCutImageFinishListenner(CutImageFinishListenner cutImageFinishListenner) {
+        this.cutImageFinishListenner = cutImageFinishListenner;
     }
 }

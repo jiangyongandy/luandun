@@ -29,7 +29,7 @@ import com.jy.xinlangweibo.ui.adapter.CommentsStatusAdapter;
 import com.jy.xinlangweibo.ui.adapter.GridIvAdapter;
 import com.jy.xinlangweibo.ui.adapter.ViewHolder;
 import com.jy.xinlangweibo.utils.DateUtils;
-import com.jy.xinlangweibo.utils.ImageLoadeOptions;
+import com.jy.xinlangweibo.utils.CommonImageLoader.ImageLoadeOptions;
 import com.jy.xinlangweibo.utils.Logger;
 import com.jy.xinlangweibo.utils.WeiboStringUtils;
 import com.jy.xinlangweibo.utils.TitleBuilder;

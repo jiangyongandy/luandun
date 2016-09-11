@@ -46,7 +46,7 @@ public class CommonAPI extends AbsOpenAPI {
         super(context, appKey, accessToken);
     }
 
-    private static final String SERVER_URL_PRIX = API_SERVER + "/common";
+    private static final String SERVER_URL_PRIX = API_SERVER + "/com.jiang.library.common";
 
     /**
      * 获取城市列表。

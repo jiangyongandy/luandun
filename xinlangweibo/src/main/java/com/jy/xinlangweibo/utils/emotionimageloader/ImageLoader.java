@@ -1,4 +1,4 @@
-package com.jy.xinlangweibo.utils.imageloader;
+package com.jy.xinlangweibo.utils.emotionimageloader;
 
 import android.content.ContentResolver;
 import android.content.Context;

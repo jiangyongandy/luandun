@@ -3,7 +3,7 @@ package com.jy.xinlangweibo;
 import android.app.Application;
 import android.content.Context;
 
-import com.jy.xinlangweibo.utils.ImageLoadeOptions;
+import com.jy.xinlangweibo.utils.CommonImageLoader.ImageLoadeOptions;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -39,9 +39,10 @@ public class BaseApplication extends Application {
 				.threadPriority(Thread.NORM_PRIORITY - 2)
 				.discCacheFileNameGenerator(new Md5FileNameGenerator())
 				.tasksProcessingOrder(QueueProcessingType.LIFO)
+				.diskCacheFileCount(300)
 				.defaultDisplayImageOptions(ImageLoadeOptions.getDefaultIvOption(getApplicationContext()))
 				.build();
-		// Initialize ImageLoader with configuration.
+		// Initialize CustomImageLoader with configuration.
 		ImageLoader.getInstance().init(config);
 	}
 

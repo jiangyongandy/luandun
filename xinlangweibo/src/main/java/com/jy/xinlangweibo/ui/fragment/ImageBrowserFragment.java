@@ -2,6 +2,7 @@ package com.jy.xinlangweibo.ui.fragment;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
@@ -21,14 +22,19 @@ import com.blankj.utilcode.utils.ImageUtils;
 import com.blankj.utilcode.utils.SDCardUtils;
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.ui.fragment.base.BaseFragment;
-import com.jy.xinlangweibo.utils.ImageLoadeOptions;
+import com.jy.xinlangweibo.utils.CommonImageLoader.CustomImageLoader;
 import com.jy.xinlangweibo.utils.Logger;
+import com.jy.xinlangweibo.utils.Utils;
 import com.jy.xinlangweibo.widget.FitViewPager;
+import com.jy.xinlangweibo.widget.ninephoto.BGABrowserPhotoViewAttacher;
+import com.jy.xinlangweibo.widget.ninephoto.BGAImageView;
+import com.jy.xinlangweibo.widget.photoview.LongPhotoViewAttacher;
 import com.jy.xinlangweibo.widget.photoview.PhotoView;
-import com.jy.xinlangweibo.widget.photoview.PhotoViewAttacher;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.assist.ImageSize;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+import com.nostra13.universalimageloader.utils.MemoryCacheUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -46,7 +52,7 @@ import rx.schedulers.Schedulers;
 /**
  * Created by JIANG on 2016/9/1.
  */
-public class ImageBrowserFragment extends BaseFragment implements ImageLoadingListener {
+public class ImageBrowserFragment extends BaseFragment implements ImageLoadingListener,LongPhotoViewAttacher.CutImageFinishListenner{
     private int layout = R.layout.activity_image_browse;
     @BindView(R.id.iv_save)
     ImageView ivSave;
@@ -163,10 +169,21 @@ public class ImageBrowserFragment extends BaseFragment implements ImageLoadingLi
 
             @Override
             public void onError(Throwable e) {
+                Logger.showLog(""+e,"RXJAVA 接受事件出错");
                 Toast.makeText(activity, "Error!", Toast.LENGTH_SHORT).show();
             }
         });
 
+    }
+
+    @Override
+    public void cutImageFinish(Bitmap bitmap, String s, ImageView imageView) {
+        imageLoader.getMemoryCache().put(MemoryCacheUtils.generateKey(s,new ImageSize(imageView.getWidth(),imageView.getHeight())),bitmap);
+        try {
+            imageLoader.getDiskCache().save(s,bitmap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     class ImageBrowseAdapter extends PagerAdapter {
@@ -183,15 +200,28 @@ public class ImageBrowserFragment extends BaseFragment implements ImageLoadingLi
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
-            PhotoView imageView = new PhotoView(activity);
-            imageView.setOnViewTapListener(new PhotoViewAttacher.OnViewTapListener() {
+            final BGAImageView imageView = new BGAImageView(container.getContext());
+//            imageLoader.displayImage(pic_urls.get(position), imageView, ImageLoadeOptions.getNoDownScalingIvOption(imageView.getContext()), ImageBrowserFragment.this);
+            container.addView(imageView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+            final BGABrowserPhotoViewAttacher photoViewAttacher = new BGABrowserPhotoViewAttacher(imageView);
+            photoViewAttacher.setOnViewTapListener(new uk.co.senab.photoview.PhotoViewAttacher.OnViewTapListener() {
                 @Override
                 public void onViewTap(View view, float x, float y) {
                     showOrHide();
                 }
             });
-            imageLoader.displayImage(pic_urls.get(position), imageView, ImageLoadeOptions.getNoDownScalingIvOption(imageView.getContext()), ImageBrowserFragment.this);
-            container.addView(imageView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+            imageView.setDelegate(new BGAImageView.Delegate() {
+                @Override
+                public void onDrawableChanged(Drawable drawable) {
+                    if (drawable != null && drawable.getIntrinsicHeight() > drawable.getIntrinsicWidth() && drawable.getIntrinsicHeight() > Utils.getDisplayHeightPixelsPixels(imageView.getContext())) {
+                        photoViewAttacher.setIsSetTopCrop(true);
+                        photoViewAttacher.setUpdateBaseMatrix();
+                    } else {
+                        photoViewAttacher.update();
+                    }
+                }
+            });
+            CustomImageLoader.displayImage(activity, imageView, pic_urls.get(position), R.drawable.timeline_image_loading,R.drawable.timeline_image_failure, Utils.getDisplayWidthPixels(activity),Utils.getDisplayHeightPixelsPixels(activity));
             return imageView;
         }
 
@@ -281,7 +311,8 @@ public class ImageBrowserFragment extends BaseFragment implements ImageLoadingLi
         if (com.jy.xinlangweibo.utils.ImageUtils.isLargeScreenImage(bitmap,view.getContext()) == 1) {
             Logger.showLog("" + bitmap.getHeight()+"------"+bitmap.getWidth(), "ImageBrowserFragment--onLoadingComplete");
             ((ImageView)view).setImageResource(R.drawable.timeline_image_loading);
-            ((PhotoView)view).setLongBitmap(bitmap);
+            ((PhotoView)view).setLongBitmap(bitmap,s);
+            ((PhotoView)view).setCutImageFinishListenner(ImageBrowserFragment.this);
         } else if (com.jy.xinlangweibo.utils.ImageUtils.isLargeScreenImage(bitmap, view.getContext()) == 2) {
 
         }

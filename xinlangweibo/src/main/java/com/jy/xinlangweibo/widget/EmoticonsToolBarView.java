@@ -13,7 +13,7 @@ import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.bean.EmoticonSetBean;
 import com.jy.xinlangweibo.utils.EmoticonsKeyboardBuilder;
 import com.jy.xinlangweibo.utils.Utils;
-import com.jy.xinlangweibo.utils.imageloader.ImageLoader;
+import com.jy.xinlangweibo.utils.emotionimageloader.ImageLoader;
 import com.jy.xinlangweibo.widget.I.IEmoticonsKeyboard;
 import com.nineoldandroids.view.ViewHelper;
 

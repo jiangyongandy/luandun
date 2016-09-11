@@ -33,8 +33,8 @@ public class FragmentController {
 			for (int i = 0;i<4;i++) {
 					switch (i) {
 					case 0:
-						if (!(fragments[0] instanceof HomeFragment)) {
-							fragments[0] = new HomeFragment();
+						if (!(fragments[0] instanceof Home2Fragment)) {
+							fragments[0] = new Home2Fragment();
 							ft.add(containerId, fragments[0]);
 						}
 						break;

@@ -21,19 +21,22 @@ import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.ui.activity.base.FragmentToolbarActivity;
 import com.jy.xinlangweibo.ui.fragment.ImageBrowserFragment;
 import com.jy.xinlangweibo.utils.DateUtils;
-import com.jy.xinlangweibo.utils.ImageLoadeOptions;
+import com.jy.xinlangweibo.utils.CommonImageLoader.ImageLoadeOptions;
 import com.jy.xinlangweibo.utils.ImageUtils;
 import com.jy.xinlangweibo.utils.WeiboStringUtils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.assist.ImageSize;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
+import com.nostra13.universalimageloader.utils.MemoryCacheUtils;
 import com.sina.weibo.sdk.openapi.models.Status;
 import com.sina.weibo.sdk.openapi.models.User;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
-public class StatusesAdapter extends BaseAdapter {
+public class StatusesAdapter extends BaseAdapter implements ImageUtils.CutImageFinishListenner {
     private ArrayList<Status> list;
     private ImageLoader imageLoader;
     private BaseActivity context;
@@ -210,7 +213,7 @@ public class StatusesAdapter extends BaseAdapter {
                             @Override
                             public void onLoadingComplete(String imageUri,
                                                           View view, Bitmap loadedImage) {
-                                if (ImageUtils.matchView2Bitmap(status.pic_urls.get(0),view, loadedImage, MAXIMAGE) == 1) {
+                                if (ImageUtils.matchView2Bitmap(status.pic_urls.get(0),view, loadedImage, MAXIMAGE,StatusesAdapter.this) == 1) {
                                     switch (view.getId()) {
                                         case R.id.iv_statuses_singlecontent:
                                             picText.setVisibility(View.VISIBLE);
@@ -252,6 +255,16 @@ public class StatusesAdapter extends BaseAdapter {
         else {
             iv.setVisibility(View.GONE);
             gv.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void cutImageFinish(Bitmap bitmap, String s, View imageView) {
+        imageLoader.getMemoryCache().put(MemoryCacheUtils.generateKey(s,new ImageSize(imageView.getWidth(),imageView.getHeight())),bitmap);
+        try {
+            imageLoader.getDiskCache().save(s,bitmap);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

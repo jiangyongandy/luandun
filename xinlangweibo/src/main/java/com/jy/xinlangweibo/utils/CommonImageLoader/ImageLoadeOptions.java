@@ -1,10 +1,11 @@
-package com.jy.xinlangweibo.utils;
+package com.jy.xinlangweibo.utils.CommonImageLoader;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 
 import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.utils.Utils;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.LoadedFrom;
@@ -16,7 +17,7 @@ import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
 public class ImageLoadeOptions {
 	public static DisplayImageOptions getIvHeadOption() {
 		DisplayImageOptions option = new DisplayImageOptions.Builder()
-				.cacheInMemory().cacheOnDisc()
+				.cacheInMemory(true).cacheOnDisk(true)
 				.bitmapConfig(Bitmap.Config.RGB_565)
 				.showImageForEmptyUri(R.drawable.avatar_default)
 				.showStubImage(R.drawable.avatar_default)
@@ -27,7 +28,7 @@ public class ImageLoadeOptions {
 
 	public static DisplayImageOptions getDefaultIvOption(Context context) {
 		DisplayImageOptions option = new DisplayImageOptions.Builder()
-				.cacheInMemory().cacheOnDisc()
+				.cacheInMemory(true).cacheOnDisk(true)
 				.bitmapConfig(Bitmap.Config.RGB_565)
 				.showImageForEmptyUri(R.drawable.timeline_image_failure)
 				.showStubImage(R.drawable.timeline_image_loading)
@@ -37,7 +38,7 @@ public class ImageLoadeOptions {
 
 	public static DisplayImageOptions getNoDownScalingRoundIvOption(Context context) {
 		DisplayImageOptions option = new DisplayImageOptions.Builder()
-				.cacheInMemory().cacheOnDisc()
+				.cacheInMemory(true).cacheOnDisk(true)
 				.bitmapConfig(Bitmap.Config.RGB_565)
 				.imageScaleType(ImageScaleType.NONE)
 				.displayer(new RoundedBitmapDisplayer(Utils.dip2px(context, 4)))
@@ -48,7 +49,7 @@ public class ImageLoadeOptions {
 	}
 	public static DisplayImageOptions getNoDownScalingIvOption(Context context) {
 		DisplayImageOptions option = new DisplayImageOptions.Builder()
-				.cacheInMemory().cacheOnDisc()
+				.cacheInMemory(true).cacheOnDisk(true)
 				.bitmapConfig(Bitmap.Config.RGB_565)
 				.imageScaleType(ImageScaleType.NONE)
 				.showImageForEmptyUri(R.drawable.timeline_image_failure)
@@ -59,8 +60,8 @@ public class ImageLoadeOptions {
 
 	public static DisplayImageOptions getCommonIvOption(Context context) {
 		DisplayImageOptions option = new DisplayImageOptions.Builder()
-				.cacheInMemory()
-				.cacheOnDisc()
+				.cacheInMemory(true)
+				.cacheOnDisk(true)
 				.bitmapConfig(Bitmap.Config.RGB_565)
 				.showImageForEmptyUri(R.drawable.timeline_image_failure)
 				.showStubImage(R.drawable.timeline_image_loading)
