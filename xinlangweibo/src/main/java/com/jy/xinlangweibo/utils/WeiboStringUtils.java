@@ -71,6 +71,7 @@ public class WeiboStringUtils {
 					decodeResource = Bitmap.createScaledBitmap(decodeResource, size, size, true);
 				}
 				spannableString.setSpan(new ImageSpan(context, decodeResource), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+				decodeResource = null;
 			}
 			if (!TextUtils.isEmpty(htt)) {
 				int start = matcher.start(4);

@@ -57,4 +57,7 @@ public class ThemeUtils {
         public static int getThemeColor() {
                 return BaseApplication.getInstance().getResources().getColor(themeColorArr[AppSetting.getThemeColor()][0]);
         }
+        public static int getSecondThemeColor() {
+                return BaseApplication.getInstance().getResources().getColor(themeColorArr[AppSetting.getThemeColor()][1]);
+        }
 }

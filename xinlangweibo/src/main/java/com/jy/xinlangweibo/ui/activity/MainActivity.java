@@ -73,6 +73,7 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
             WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
             localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
         }
+        getSwipeBackLayout().setEnableGesture(false);
         setContentView(R.layout.activity_main);
         //  这里是为了设置popupwindow 背景半透明
         mainmenu = (FrameLayout) findViewById(R.id.mainmenu);

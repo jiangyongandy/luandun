@@ -31,6 +31,10 @@ public class ViewHolder {
 		return mvh;
 	}
 
+	public static void clearViewHolder() {
+		mvh = null;
+	}
+
 	/**
 	 * 使用该方法减少代码行数，但使用条件为ConvertView的ViewID 要唯一
 	 * 

@@ -10,7 +10,6 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.jy.xinlangweibo.R;
@@ -23,7 +22,6 @@ import com.jy.xinlangweibo.ui.adapter.StaggeredHomeAdapter;
 import com.jy.xinlangweibo.ui.adapter.StaggeredHomeAdapter.OnItemClickLitener;
 import com.jy.xinlangweibo.ui.fragment.base.BaseCacheFragment;
 import com.jy.xinlangweibo.utils.InternetConnectUtils;
-import com.jy.xinlangweibo.widget.AdvertizeView;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.exception.WeiboException;
 import com.sina.weibo.sdk.openapi.models.GeoList;
@@ -86,14 +84,14 @@ public class DiscoverFragment extends BaseCacheFragment {
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         initEvent();
 
-        AdvertizeView ad = (AdvertizeView) view.findViewById(R.id.ad);
+/*        AdvertizeView ad = (AdvertizeView) view.findViewById(R.id.ad);
         ArrayList<View> views = new ArrayList<View>();
         for (int i = 0; i < 4; i++) {
             ImageView imageView = new ImageView(getActivity());
             imageView.setImageResource(images[i]);
             views.add(imageView);
         }
-        ad.setDataSource(views);
+        ad.setDataSource(views);*/
 
         loadData(1);
     }

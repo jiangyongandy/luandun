@@ -3,15 +3,23 @@
     <style name="appTheme" parent="WeiboBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
         <item name="themeColor">@color/orange</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="colorAccent">?attr/themeColor</item>
         <item name="themeStatusbarColor">@color/orange_dark</item>
+        <item name="colorAccent">?attr/themeColor</item>
         <item name="colorPrimary">?attr/themeColor</item>
         <item name="colorPrimaryDark">?attr/themeStatusbarColor</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:windowIsTranslucent">true</item>
 <!--toolbar空白部分-->
 <!--        <item name="contentInsetStart">0dp</item>
         <item name="contentInsetEnd">0dp</item>-->
+    </style>
+
+    <!-- 单独为MainActivity设置不透明，解决SwipeBackLayout返回时显示桌面而不是上一层的Bug -->
+    <style name="AppThemeNotTranslucent" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">false</item>
+    </style>
+    <style name="AppThemeTranslucentStatusBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 
     <style name="appTheme.Main">

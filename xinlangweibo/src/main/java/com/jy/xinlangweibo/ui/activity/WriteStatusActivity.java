@@ -28,9 +28,9 @@ import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.utils.EmoticonsUtils;
 import com.jy.xinlangweibo.utils.TitleBuilder;
 import com.jy.xinlangweibo.utils.ToastUtils;
-import com.jy.xinlangweibo.widget.EmoticonsEditText;
-import com.jy.xinlangweibo.widget.EmoticonsEditText.OnTextChangedInterface;
-import com.jy.xinlangweibo.widget.EmoticonsKeyBoardBar;
+import com.jy.xinlangweibo.widget.emotionkeyboard.EmoticonsEditText;
+import com.jy.xinlangweibo.widget.emotionkeyboard.EmoticonsEditText.OnTextChangedInterface;
+import com.jy.xinlangweibo.widget.emotionkeyboard.EmoticonsKeyBoardBar;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.openapi.models.Status;
 
@@ -57,7 +57,6 @@ public class WriteStatusActivity extends BaseActivity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		setContentView(R.layout.activity_writestatus);
 
 		// 获得转发原微博内容

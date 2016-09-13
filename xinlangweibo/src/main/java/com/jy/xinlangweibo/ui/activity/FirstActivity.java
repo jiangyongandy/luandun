@@ -1,9 +1,11 @@
 package com.jy.xinlangweibo.ui.activity;
 
 
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.WindowManager;
 
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
@@ -43,6 +45,10 @@ public class FirstActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+			WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
+			localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
+		}
 		setContentView(R.layout.activity_first);
 		
 //		初始化表情数据库（把表情包创建成表存储在数据库中）这个操作只会执行一次 除非清空数据（shareference）

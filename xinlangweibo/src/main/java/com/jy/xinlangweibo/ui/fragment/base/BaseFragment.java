@@ -9,8 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.jy.xinlangweibo.BaseApplication;
 import com.jy.xinlangweibo.presenter.BasePresenter;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
+import com.squareup.leakcanary.RefWatcher;
 
 public class BaseFragment extends Fragment {
 	protected BaseActivity activity;
@@ -33,6 +35,8 @@ public class BaseFragment extends Fragment {
 		super.onDestroy();
 		if(presenter != null)
 			presenter.onDestroy();
+		RefWatcher refWatcher = BaseApplication.getRefWatcher(getActivity());
+		refWatcher.watch(this);
 	}
 
 	protected int CreateView() {

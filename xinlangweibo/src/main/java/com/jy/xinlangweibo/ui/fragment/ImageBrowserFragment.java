@@ -1,7 +1,6 @@
 package com.jy.xinlangweibo.ui.fragment;
 
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,9 +19,12 @@ import android.widget.Toast;
 import com.blankj.utilcode.utils.FileUtils;
 import com.blankj.utilcode.utils.ImageUtils;
 import com.blankj.utilcode.utils.SDCardUtils;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.ui.fragment.base.BaseFragment;
 import com.jy.xinlangweibo.utils.CommonImageLoader.CustomImageLoader;
+import com.jy.xinlangweibo.utils.CommonImageLoader.GlideImageLoaderLoader;
 import com.jy.xinlangweibo.utils.Logger;
 import com.jy.xinlangweibo.utils.Utils;
 import com.jy.xinlangweibo.widget.FitViewPager;
@@ -48,6 +50,7 @@ import rx.Observer;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
+import uk.co.senab.photoview.PhotoViewAttacher;
 
 /**
  * Created by JIANG on 2016/9/1.
@@ -134,46 +137,49 @@ public class ImageBrowserFragment extends BaseFragment implements ImageLoadingLi
             activity.showToast("SD CARD NO EXIT!");
             return;
         }
-        Observable.create(new Observable.OnSubscribe<Boolean>() {
+        ((GlideImageLoaderLoader)CustomImageLoader.getImageLoader()).downloadImage(activity, pic_urls.get(vpImagebrowse.getCurrentItem()), new SimpleTarget<Bitmap>() {
             @Override
-            public void call(Subscriber<? super Boolean> subscriber) {
+            public void onResourceReady(final Bitmap resource, GlideAnimation glideAnimation) {
+                final String path ;
+                basePath = SDCardUtils.getSDCardPath() + "luandunFile/";
+                path = basePath+pic_urls.get(vpImagebrowse.getCurrentItem()).split("/")[4];
+                Logger.showLog(""+path,"文件路径");
+                if(!FileUtils.isFileExists(basePath)) {
+                    File file = new File(basePath);
+                    file.mkdir();
+                }
+                File file = new File(basePath,pic_urls.get(vpImagebrowse.getCurrentItem()).split("/")[4]);
                 try {
-                    ImageView view = (ImageView) vpImagebrowse.getChildAt(vpImagebrowse.getCurrentItem());
-                    Bitmap bitmap = ((BitmapDrawable)view.getDrawable()).getBitmap();
-                    basePath = SDCardUtils.getSDCardPath() + "luandunFile/";
-                    String path = basePath+pic_urls.get(vpImagebrowse.getCurrentItem()).split("/")[4];
-                    Logger.showLog(""+path,"文件路径");
-                    if(!FileUtils.isFileExists(basePath)) {
-                        File file = new File(basePath);
-                        file.mkdir();
-                    }
-                    File file = new File(basePath,pic_urls.get(vpImagebrowse.getCurrentItem()).split("/")[4]);
                     file.createNewFile();
-                    subscriber.onNext(ImageUtils.save(bitmap,path, Bitmap.CompressFormat.JPEG));
-                    subscriber.onCompleted();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Boolean>() {
-            @Override
-            public void onNext(Boolean isSuccess) {
-                if(isSuccess) {
-                    activity.showToast("保存成功路径："+basePath);
-                }
-            }
+                Observable.create(new Observable.OnSubscribe<Boolean>() {
+                    @Override
+                    public void call(final Subscriber<? super Boolean> subscriber) {
+                        subscriber.onNext(ImageUtils.save(resource,path, Bitmap.CompressFormat.JPEG));
+                        subscriber.onCompleted();
+                    }
+                }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Boolean>() {
+                    @Override
+                    public void onNext(Boolean isSuccess) {
+                        if(isSuccess) {
+                            activity.showToast("保存成功路径："+basePath);
+                        }
+                    }
 
-            @Override
-            public void onCompleted() {
-            }
+                    @Override
+                    public void onCompleted() {
+                    }
 
-            @Override
-            public void onError(Throwable e) {
-                Logger.showLog(""+e,"RXJAVA 接受事件出错");
-                Toast.makeText(activity, "Error!", Toast.LENGTH_SHORT).show();
+                    @Override
+                    public void onError(Throwable e) {
+                        Logger.showLog(""+e,"RXJAVA 接受事件出错");
+                        Toast.makeText(activity, "Error!", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
-
     }
 
     @Override
@@ -204,7 +210,7 @@ public class ImageBrowserFragment extends BaseFragment implements ImageLoadingLi
 //            imageLoader.displayImage(pic_urls.get(position), imageView, ImageLoadeOptions.getNoDownScalingIvOption(imageView.getContext()), ImageBrowserFragment.this);
             container.addView(imageView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             final BGABrowserPhotoViewAttacher photoViewAttacher = new BGABrowserPhotoViewAttacher(imageView);
-            photoViewAttacher.setOnViewTapListener(new uk.co.senab.photoview.PhotoViewAttacher.OnViewTapListener() {
+            photoViewAttacher.setOnViewTapListener(new PhotoViewAttacher.OnViewTapListener() {
                 @Override
                 public void onViewTap(View view, float x, float y) {
                     showOrHide();
@@ -221,7 +227,7 @@ public class ImageBrowserFragment extends BaseFragment implements ImageLoadingLi
                     }
                 }
             });
-            CustomImageLoader.displayImage(activity, imageView, pic_urls.get(position), R.drawable.timeline_image_loading,R.drawable.timeline_image_failure, Utils.getDisplayWidthPixels(activity),Utils.getDisplayHeightPixelsPixels(activity));
+            ((GlideImageLoaderLoader)CustomImageLoader.getImageLoader()).displayGifImage(activity, imageView, pic_urls.get(position), R.drawable.timeline_image_loading,R.drawable.timeline_image_failure, Utils.getDisplayWidthPixels(activity),Utils.getDisplayHeightPixelsPixels(activity));
             return imageView;
         }
 

@@ -9,6 +9,8 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.utils.StorageUtils;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 
 import java.io.File;
 
@@ -20,12 +22,20 @@ public class BaseApplication extends Application {
 		return application;
 	}
 
+	public static RefWatcher getRefWatcher(Context context) {
+		BaseApplication application = (BaseApplication) context.getApplicationContext();
+		return application.refWatcher;
+	}
+
+	private RefWatcher refWatcher;
+
 	@Override
 	public void onCreate() {
 		super.onCreate();
 		File cacheDir = StorageUtils.getOwnCacheDirectory(getApplicationContext(), "imageloader/Cache");  
 		application = this;
 		initImageLoader(this);
+		refWatcher = LeakCanary.install(this);
 	}
 	
 	// 初始化图片处理

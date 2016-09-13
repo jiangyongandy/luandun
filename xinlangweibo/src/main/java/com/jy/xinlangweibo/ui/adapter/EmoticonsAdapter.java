@@ -13,7 +13,7 @@ import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.bean.EmoticonBean;
 import com.jy.xinlangweibo.utils.emotionimageloader.ImageBase;
 import com.jy.xinlangweibo.utils.emotionimageloader.ImageLoader;
-import com.jy.xinlangweibo.widget.I.IView;
+import com.jy.xinlangweibo.widget.emotionkeyboard.I.IView;
 
 import java.io.IOException;
 import java.util.List;

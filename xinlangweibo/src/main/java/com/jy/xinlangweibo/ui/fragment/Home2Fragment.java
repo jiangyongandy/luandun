@@ -30,6 +30,7 @@ import com.jy.xinlangweibo.ui.activity.MainActivity;
 import com.jy.xinlangweibo.ui.activity.StatusDetailsActivity;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.ui.activity.base.FragmentToolbarActivity;
+import com.jy.xinlangweibo.ui.adapter.RecyleViewHolder;
 import com.jy.xinlangweibo.ui.fragment.base.BaseCacheFragment;
 import com.jy.xinlangweibo.utils.CommonImageLoader.ImageLoadeOptions;
 import com.jy.xinlangweibo.utils.DateUtils;
@@ -87,6 +88,12 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
         mCache.clear();
 //		缓存数据（IO操作，新开线程）耗时操作
         mCache.put("STATUES", statusList);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        RecyleViewHolder.clearViewHolder();
     }
 
     private void initView() {

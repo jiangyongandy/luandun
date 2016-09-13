@@ -22,7 +22,7 @@
 
                 <!-- 编辑框 -->
 
-                <com.jy.xinlangweibo.widget.EmoticonsEditText
+                <com.jy.xinlangweibo.widget.emotionkeyboard.EmoticonsEditText
                     android:id="@+id/et_content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -54,11 +54,11 @@
         
         <include layout="@layout/include_writestatus_bottom" />
 
-        <com.jy.xinlangweibo.widget.EmoticonsKeyBoardBar
+        <com.jy.xinlangweibo.widget.emotionkeyboard.EmoticonsKeyBoardBar
             android:id="@+id/EmoticonsKeyBoardBar"
             android:layout_width="match_parent"
             android:layout_height="230dp"
             android:visibility="gone" >
-        </com.jy.xinlangweibo.widget.EmoticonsKeyBoardBar>
+        </com.jy.xinlangweibo.widget.emotionkeyboard.EmoticonsKeyBoardBar>
         
     </LinearLayout>

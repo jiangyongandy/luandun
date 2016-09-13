@@ -12,7 +12,7 @@
         android:layout_alignParentTop="true"
         layout="@layout/ic_spitview_horizontal" />
 
-    <com.jy.xinlangweibo.widget.EmoticonsPageView
+    <com.jy.xinlangweibo.widget.emotionkeyboard.EmoticonsPageView
         android:id="@+id/view_epv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
         android:layout_below="@+id/view_spit1"
         android:orientation="vertical" />
 
-    <com.jy.xinlangweibo.widget.EmoticonsIndicatorView
+    <com.jy.xinlangweibo.widget.emotionkeyboard.EmoticonsIndicatorView
         android:id="@+id/view_eiv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingBottom="@dimen/indicator_margin" >
-    </com.jy.xinlangweibo.widget.EmoticonsIndicatorView>
+    </com.jy.xinlangweibo.widget.emotionkeyboard.EmoticonsIndicatorView>
 
     <include
         android:id="@+id/view_spit2"
@@ -37,7 +37,7 @@
         android:layout_above="@+id/view_etv"
         layout="@layout/ic_spitview_horizontal" />
 
-    <com.jy.xinlangweibo.widget.EmoticonsToolBarView
+    <com.jy.xinlangweibo.widget.emotionkeyboard.EmoticonsToolBarView
         android:id="@+id/view_etv"
         android:layout_width="match_parent"
         android:layout_height="@dimen/bar_height"

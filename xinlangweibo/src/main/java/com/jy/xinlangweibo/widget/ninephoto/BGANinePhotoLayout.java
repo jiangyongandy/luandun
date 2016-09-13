@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.jiang.library.ui.adapter.listviewadapter.ListViewDataAdapter;
 import com.jiang.library.ui.adapter.listviewadapter.ViewHolderBase;
@@ -29,6 +30,7 @@ import butterknife.ButterKnife;
  * 描述:
  */
 public class BGANinePhotoLayout extends FrameLayout implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener, View.OnClickListener, View.OnLongClickListener {
+    private final TextView mPhotoTv;
     private ListViewDataAdapter<String> mPhotoAdapter;
     private ImageView mPhotoIv;
     private BGAHeightWrapGridView mPhotoGv;
@@ -65,8 +67,14 @@ public class BGANinePhotoLayout extends FrameLayout implements AdapterView.OnIte
         });
         mPhotoGv.setAdapter(mPhotoAdapter);
 
+        mPhotoTv = new TextView(context);
+        mPhotoTv.setBackgroundColor(0xff5677fc);
+        mPhotoTv.setText("GIF");
+        mPhotoTv.setVisibility(View.GONE);
+
         addView(mPhotoIv, new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         addView(mPhotoGv);
+        addView(mPhotoTv,new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
     }
 
     @Override
@@ -127,7 +135,11 @@ public class BGANinePhotoLayout extends FrameLayout implements AdapterView.OnIte
 
             mPhotoIv.setMaxWidth(itemWidth * 3);
             mPhotoIv.setMaxHeight(itemWidth * 3);
-
+            if(photos.get(0).toLowerCase().endsWith(".gif")) {
+                mPhotoTv.setVisibility(View.VISIBLE);
+            }else {
+                mPhotoTv.setVisibility(View.GONE);
+            }
             CustomImageLoader.displayImage(mActivity, mPhotoIv, photos.get(0), R.drawable.timeline_image_loading,R.drawable.timeline_image_failure, itemWidth * 2, itemWidth * 2);
         } else {
             setVisibility(VISIBLE);

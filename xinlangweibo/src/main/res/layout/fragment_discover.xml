@@ -3,10 +3,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.jy.xinlangweibo.widget.AdvertizeView
+<!--    <com.jy.xinlangweibo.widget.AdvertizeView
         android:id="@+id/ad"
         android:layout_width="match_parent"
-        android:layout_height="100dp"></com.jy.xinlangweibo.widget.AdvertizeView>
+        android:layout_height="100dp"></com.jy.xinlangweibo.widget.AdvertizeView>-->
 
     <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/swiprefresh"

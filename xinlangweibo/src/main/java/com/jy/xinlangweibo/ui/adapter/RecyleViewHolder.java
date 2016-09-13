@@ -24,6 +24,10 @@ public class RecyleViewHolder extends RecyclerView.ViewHolder {
 		mvh = new RecyleViewHolder(convertView);
 		return mvh;
 	}
+
+	public static void clearViewHolder () {
+		mvh = null;
+	}
 	
 	/**
 	 * 使用该方法减少代码行数，但使用条件为ConvertView的ViewID 要唯一

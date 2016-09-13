@@ -1,6 +1,5 @@
 package com.jy.xinlangweibo.ui.activity;
 
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
@@ -28,11 +27,11 @@ import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.ui.adapter.CommentsStatusAdapter;
 import com.jy.xinlangweibo.ui.adapter.GridIvAdapter;
 import com.jy.xinlangweibo.ui.adapter.ViewHolder;
-import com.jy.xinlangweibo.utils.DateUtils;
 import com.jy.xinlangweibo.utils.CommonImageLoader.ImageLoadeOptions;
+import com.jy.xinlangweibo.utils.DateUtils;
 import com.jy.xinlangweibo.utils.Logger;
-import com.jy.xinlangweibo.utils.WeiboStringUtils;
 import com.jy.xinlangweibo.utils.TitleBuilder;
+import com.jy.xinlangweibo.utils.WeiboStringUtils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.openapi.models.Comment;
@@ -74,7 +73,6 @@ public class StatusDetailsActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_status_details);
-		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		status = (Status) getIntent().getSerializableExtra("Status");
 		id = Long.parseLong(status.id);
 		vh = ViewHolder.getViewHolder(this);
@@ -83,6 +81,12 @@ public class StatusDetailsActivity extends BaseActivity {
 		initView();
 		// 加载评论
 		loadData(1, id);
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		ViewHolder.clearViewHolder();
 	}
 
 	private void loadData(final int page, long id) {
@@ -369,5 +373,4 @@ public class StatusDetailsActivity extends BaseActivity {
 
 		}
 	}
-
 }
