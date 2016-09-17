@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:2:1-62:12
+ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:2:1-64:12
 	package
 		ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:3:5-34
 		INJECTED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml
@@ -18,66 +18,69 @@ ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:2:1-62:12
 uses-sdk
 ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:7:5-9:41
 MERGED from [Xinlangweibo1:pulltorefresh:unspecified] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\Xinlangweibo1\pulltorefresh\unspecified\AndroidManifest.xml:7:5-9:40
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
 MERGED from [Xinlangweibo1:weiboSDK1:unspecified] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\Xinlangweibo1\weiboSDK1\unspecified\AndroidManifest.xml:7:5-9:40
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
 MERGED from [Xinlangweibo1:library:unspecified] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\Xinlangweibo1\library\unspecified\AndroidManifest.xml:7:5-9:41
-MERGED from [com.android.support:appcompat-v7:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.1.1\AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:animated-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.1.1\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.1.1\AndroidManifest.xml:21:5-43
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.1.1\AndroidManifest.xml:21:5-43
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:21:5-23:54
+MERGED from [com.jakewharton:butterknife:8.2.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.jakewharton\butterknife\8.2.1\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:appcompat-v7:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:5:5-44
+MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:recyclerview-v7:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.4.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:cardview-v7:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.4.0\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:design:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\design\23.4.0\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:recyclerview-v7:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.4.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:appcompat-v7:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.1.1\AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:animated-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.1.1\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.1.1\AndroidManifest.xml:21:5-43
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.1.1\AndroidManifest.xml:21:5-43
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:appcompat-v7:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.1.1\AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:animated-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.1.1\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.1.1\AndroidManifest.xml:21:5-43
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.1.1\AndroidManifest.xml:21:5-43
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:5:5-44
+MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:5:5-44
+MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
 MERGED from [com.jakewharton:butterknife:8.2.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.jakewharton\butterknife\8.2.1\AndroidManifest.xml:5:5-43
 MERGED from [com.github.afollestad.material-dialogs:core:0.8.5.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.github.afollestad.material-dialogs\core\0.8.5.1\AndroidManifest.xml:8:5-11:75
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
 MERGED from [me.zhanghai.android.materialprogressbar:library:1.1.4] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\me.zhanghai.android.materialprogressbar\library\1.1.4\AndroidManifest.xml:11:5-13:41
-MERGED from [com.android.support:appcompat-v7:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.1.1\AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:animated-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.1.1\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.1.1\AndroidManifest.xml:21:5-43
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.1.1\AndroidManifest.xml:21:5-43
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:appcompat-v7:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.1.1\AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:animated-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.1.1\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.1.1\AndroidManifest.xml:21:5-43
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.1.1\AndroidManifest.xml:21:5-43
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:appcompat-v7:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:5:5-44
+MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:5:5-44
+MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:recyclerview-v7:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.4.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
 MERGED from [io.reactivex:rxandroid:1.1.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\io.reactivex\rxandroid\1.1.0\AndroidManifest.xml:19:5-43
 MERGED from [com.blankj:utilcode:1.1.5] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.blankj\utilcode\1.1.5\AndroidManifest.xml:7:5-9:41
 MERGED from [me.imid.swipebacklayout.lib:library:1.0.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\me.imid.swipebacklayout.lib\library\1.0.0\AndroidManifest.xml:7:5-9:41
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
 MERGED from [com.squareup.leakcanary:leakcanary-android:1.3] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.squareup.leakcanary\leakcanary-android\1.3\AndroidManifest.xml:20:5-22:41
 	tools:overrideLibrary
-		ADDED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:23:9-51
+		ADDED from [com.android.support:appcompat-v7:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:23:9-75
 	android:targetSdkVersion
 		ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:9:9-38
 		INJECTED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml
@@ -111,58 +114,59 @@ ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:17:5-80
 	android:name
 		ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:17:22-77
 application
-ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:19:5-60:19
+ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:19:5-62:19
 MERGED from [Xinlangweibo1:pulltorefresh:unspecified] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\Xinlangweibo1\pulltorefresh\unspecified\AndroidManifest.xml:11:5-20
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
 MERGED from [Xinlangweibo1:library:unspecified] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\Xinlangweibo1\library\unspecified\AndroidManifest.xml:11:5-15:19
-MERGED from [com.android.support:appcompat-v7:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:animated-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.1.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.1.1\AndroidManifest.xml:23:5-20
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.1.1\AndroidManifest.xml:23:5-20
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:appcompat-v7:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:cardview-v7:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.4.0\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:design:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\design\23.4.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:appcompat-v7:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:animated-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.1.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.1.1\AndroidManifest.xml:23:5-20
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.1.1\AndroidManifest.xml:23:5-20
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:appcompat-v7:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:animated-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.1.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.1.1\AndroidManifest.xml:23:5-20
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.1.1\AndroidManifest.xml:23:5-20
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
 MERGED from [com.github.afollestad.material-dialogs:core:0.8.5.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.github.afollestad.material-dialogs\core\0.8.5.1\AndroidManifest.xml:13:5-20
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:appcompat-v7:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:animated-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.1.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.1.1\AndroidManifest.xml:23:5-20
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.1.1\AndroidManifest.xml:23:5-20
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:appcompat-v7:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:animated-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.1.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.1.1\AndroidManifest.xml:23:5-20
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-vector-drawable:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.1.1\AndroidManifest.xml:23:5-20
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
 MERGED from [com.blankj:utilcode:1.1.5] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.blankj\utilcode\1.1.5\AndroidManifest.xml:11:5-15:19
 MERGED from [me.imid.swipebacklayout.lib:library:1.0.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\me.imid.swipebacklayout.lib\library\1.0.0\AndroidManifest.xml:11:5-20
-MERGED from [com.android.support:support-v4:24.1.1] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
 MERGED from [com.squareup.leakcanary:leakcanary-android:1.3] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.squareup.leakcanary\leakcanary-android\1.3\AndroidManifest.xml:24:5-46:19
 	android:label
 		ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:23:9-41
@@ -226,20 +230,28 @@ activity#com.jy.xinlangweibo.ui.activity.StatusDetailsActivity
 ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:49:9-71
 	android:name
 		ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:49:19-68
+activity#com.jy.xinlangweibo.ui.activity.BGAPhotoPickerActivity
+ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:50:9-72
+	android:name
+		ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:50:19-69
+activity#com.jy.xinlangweibo.ui.activity.BGAPhotoPickerPreviewActivity
+ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:51:9-79
+	android:name
+		ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:51:19-76
 activity#com.jy.xinlangweibo.ui.activity.WriteStatusActivity
-ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:50:9-52:58
+ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:52:9-54:70
 	android:windowSoftInputMode
-		ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:52:13-55
+		ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:54:13-67
 	android:name
-		ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:51:13-60
+		ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:53:13-60
 activity#com.jy.xinlangweibo.ui.activity.WebActivity
-ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:56:9-59:58
+ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:58:9-61:58
 	android:label
-		ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:59:13-55
+		ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:61:13-55
 	android:hardwareAccelerated
-		ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:58:13-47
+		ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:60:13-47
 	android:name
-		ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:57:13-52
+		ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:59:13-52
 service#com.squareup.leakcanary.internal.HeapAnalyzerService
 ADDED from [com.squareup.leakcanary:leakcanary-android:1.3] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.squareup.leakcanary\leakcanary-android\1.3\AndroidManifest.xml:25:9-28:45
 	android:enabled

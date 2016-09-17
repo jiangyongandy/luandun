@@ -34,4 +34,14 @@ public class GlideImageLoaderLoader extends ImageLoader {
         final String finalPath = getPath(path);
         Glide.with(context.getApplicationContext()).load(finalPath).asBitmap().into(target);
     }
+
+    @Override
+    public void pause(Activity activity) {
+        Glide.with(activity).pauseRequests();
+    }
+
+    @Override
+    public void resume(Activity activity) {
+        Glide.with(activity).resumeRequestsRecursive();
+    }
 }

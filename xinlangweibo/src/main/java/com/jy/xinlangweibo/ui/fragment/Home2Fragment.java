@@ -357,6 +357,19 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
             tvStatusesBottomUnlike
                     .setText((CharSequence) (status.attitudes_count > 0 ? ""
                             + status.attitudes_count : "赞"));
+
+            // 点赞的特殊处理
+            llStatusUnlike.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    statusUnlikebtn
+                            .setImageResource(R.drawable.timeline_icon_like);
+                    statusUnlikebtn.startAnimation(AnimationUtils.loadAnimation(
+                            activity, R.anim.scale_unlike));
+                }
+            });
+
             //bind retweeted_status
             if (status.retweeted_status != null) {
 

@@ -46,9 +46,11 @@
         <activity android:name="com.jy.xinlangweibo.ui.activity.LoginActivity" />
         <activity android:name="com.jy.xinlangweibo.ui.activity.base.FragmentToolbarActivity" />
         <activity android:name="com.jy.xinlangweibo.ui.activity.StatusDetailsActivity" />
+        <activity android:name="com.jy.xinlangweibo.ui.activity.BGAPhotoPickerActivity" />
+        <activity android:name="com.jy.xinlangweibo.ui.activity.BGAPhotoPickerPreviewActivity" />
         <activity
             android:name="com.jy.xinlangweibo.ui.activity.WriteStatusActivity"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <!--
                     <activity
                     android:name=".ui.activity.ImageBrowseActivity"

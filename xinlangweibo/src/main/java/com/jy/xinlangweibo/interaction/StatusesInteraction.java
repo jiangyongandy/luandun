@@ -17,4 +17,10 @@ public interface StatusesInteraction {
     void nearby_timeline(Double longtitude, Double latitude, RequestListener listener);
 
     void nearby_timeline(int page, String lat, String lon, RequestListener listener);
+
+    void repostStatuses(int userId,RequestListener listener);
+
+    void createComments(int userId,String commentContent,RequestListener listener);
+
+    void usersShow(int userId,RequestListener listener);
 }

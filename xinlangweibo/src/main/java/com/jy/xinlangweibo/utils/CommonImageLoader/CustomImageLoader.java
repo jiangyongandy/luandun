@@ -28,4 +28,12 @@ public class CustomImageLoader {
     public static void downloadImage(Context context, String path) {
         getImageLoader().downloadImage(context, path);
     }
+
+    public static void pause(Activity activity) {
+        getImageLoader().pause(activity);
+    }
+
+    public static void resume(Activity activity) {
+        getImageLoader().resume(activity);
+    }
 }

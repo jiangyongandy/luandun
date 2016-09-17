@@ -32,6 +32,12 @@
     <color name="toolbar_btn_select">#D9D9D9</color>
     <color name="toolbar_btn_nomal">@color/white</color>
 
+    <color name="bga_pp_photo_selected_mask">#4D000000</color>
+    <color name="bga_pp_btn_confirm_disabled">#8017C7D1</color>
+    <color name="bga_pp_btn_confirm_enabled">#17C7D1</color>
+    <color name="bga_pp_btn_confirm_pressed">#CC17C7D1</color>
+    <color name="bga_pp_activity_bg">#1A1A1A</color>
+
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#3F51B5</color>

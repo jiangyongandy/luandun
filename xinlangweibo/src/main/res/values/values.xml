@@ -302,8 +302,6 @@
     <color name="md_yellow_a400">#ffea00</color>
     <color name="md_yellow_a700">#ffd600</color>
 
-    <declare-styleable name="CircleImageView"><attr format="dimension" name="border_width"/><attr format="color" name="border_color"/></declare-styleable>
-
     <string name="comm_error_noneNetwork">没有网络连接</string>
     <string name="comm_error_resultIllegal">数据解析出错</string>
     <string name="comm_error_timeout">网络不给力</string>
@@ -320,5 +318,8 @@
     <style name="LoadingProgressBar">
         android:indeterminateDrawable="@drawable/loading_bar1
     </style>
+
+    <declare-styleable name="CircleImageView"><attr format="dimension" name="border_width"/><attr format="color" name="border_color"/></declare-styleable>
     <declare-styleable name="BGAImageView"><attr name="android:src"/><attr format="boolean" name="bga_iv_isCircle"/><attr format="reference|dimension" name="bga_iv_cornerRadius"/><attr format="boolean" name="bga_iv_isSquare"/><attr format="reference|dimension" name="bga_iv_borderWidth"/><attr format="reference|color" name="bga_iv_borderColor"/></declare-styleable>
+    <declare-styleable name="BGASortableNinePhotoLayout"><attr format="boolean" name="bga_snpl_isPlusSwitchOpened"/><attr format="boolean" name="bga_snpl_isSortable"/></declare-styleable>
 </resources>

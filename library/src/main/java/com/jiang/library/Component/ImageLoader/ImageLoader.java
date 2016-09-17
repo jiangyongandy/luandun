@@ -26,5 +26,7 @@ public abstract class ImageLoader {
 
     public abstract void downloadImage(Context context, String path);
 
+    public abstract void pause(Activity activity);
 
+    public abstract void resume(Activity activity);
 }

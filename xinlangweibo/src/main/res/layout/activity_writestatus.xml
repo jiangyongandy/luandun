@@ -13,6 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:backgroundTint="@color/white"
             android:background="@color/white" >
 
             <LinearLayout
@@ -30,16 +31,17 @@
                     android:layout_marginTop="15dp"
                     android:background="@null"
                     android:hint="分享新鲜事..."
+                    android:lines="4"
                     android:textColor="@color/txt_light_gray"
                     android:textSize="16sp" />
 
                 <!-- 图片编辑框 -->
 
-                <com.jy.xinlangweibo.widget.WrapHeightGridView
-                    android:id="@+id/gv_writestatus"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="visible" />
+                <com.jy.xinlangweibo.widget.ninephoto.BGASortableNinePhotoLayout
+                    android:id="@+id/snpl_moment_add_photos"
+                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_margin="10dp" />
 
                 <!-- 转发微博内容（卡片） -->
 

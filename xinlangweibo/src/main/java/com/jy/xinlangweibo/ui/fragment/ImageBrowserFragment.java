@@ -30,13 +30,7 @@ import com.jy.xinlangweibo.utils.Utils;
 import com.jy.xinlangweibo.widget.FitViewPager;
 import com.jy.xinlangweibo.widget.ninephoto.BGABrowserPhotoViewAttacher;
 import com.jy.xinlangweibo.widget.ninephoto.BGAImageView;
-import com.jy.xinlangweibo.widget.photoview.LongPhotoViewAttacher;
-import com.jy.xinlangweibo.widget.photoview.PhotoView;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.assist.ImageSize;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
-import com.nostra13.universalimageloader.utils.MemoryCacheUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -55,7 +49,7 @@ import uk.co.senab.photoview.PhotoViewAttacher;
 /**
  * Created by JIANG on 2016/9/1.
  */
-public class ImageBrowserFragment extends BaseFragment implements ImageLoadingListener,LongPhotoViewAttacher.CutImageFinishListenner{
+public class ImageBrowserFragment extends BaseFragment {
     private int layout = R.layout.activity_image_browse;
     @BindView(R.id.iv_save)
     ImageView ivSave;
@@ -182,16 +176,6 @@ public class ImageBrowserFragment extends BaseFragment implements ImageLoadingLi
         });
     }
 
-    @Override
-    public void cutImageFinish(Bitmap bitmap, String s, ImageView imageView) {
-        imageLoader.getMemoryCache().put(MemoryCacheUtils.generateKey(s,new ImageSize(imageView.getWidth(),imageView.getHeight())),bitmap);
-        try {
-            imageLoader.getDiskCache().save(s,bitmap);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     class ImageBrowseAdapter extends PagerAdapter {
 
         @Override
@@ -301,32 +285,6 @@ public class ImageBrowserFragment extends BaseFragment implements ImageLoadingLi
                     R.anim.option_entry_from_bottom);
             imagebrowseBottom.startAnimation(animation1);
         }
-    }
-
-    @Override
-    public void onLoadingStarted(String s, View view) {
-
-    }
-
-    @Override
-    public void onLoadingFailed(String s, View view, FailReason failReason) {
-    }
-
-    @Override
-    public void onLoadingComplete(String s, View view, Bitmap bitmap) {
-        if (com.jy.xinlangweibo.utils.ImageUtils.isLargeScreenImage(bitmap,view.getContext()) == 1) {
-            Logger.showLog("" + bitmap.getHeight()+"------"+bitmap.getWidth(), "ImageBrowserFragment--onLoadingComplete");
-            ((ImageView)view).setImageResource(R.drawable.timeline_image_loading);
-            ((PhotoView)view).setLongBitmap(bitmap,s);
-            ((PhotoView)view).setCutImageFinishListenner(ImageBrowserFragment.this);
-        } else if (com.jy.xinlangweibo.utils.ImageUtils.isLargeScreenImage(bitmap, view.getContext()) == 2) {
-
-        }
-    }
-
-    @Override
-    public void onLoadingCancelled(String s, View view) {
-
     }
 
     private class AnimationImp implements Animation.AnimationListener {

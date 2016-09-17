@@ -47,9 +47,11 @@
         <activity android:name=".ui.activity.LoginActivity" />
         <activity android:name=".ui.activity.base.FragmentToolbarActivity" />
         <activity android:name=".ui.activity.StatusDetailsActivity" />
+        <activity android:name=".ui.activity.BGAPhotoPickerActivity" />
+        <activity android:name=".ui.activity.BGAPhotoPickerPreviewActivity" />
         <activity
             android:name=".ui.activity.WriteStatusActivity"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <!--        <activity
                     android:name=".ui.activity.ImageBrowseActivity"
                     android:label="@string/title_activity_image_browse" />-->

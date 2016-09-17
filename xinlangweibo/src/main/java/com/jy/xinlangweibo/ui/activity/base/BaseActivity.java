@@ -65,6 +65,7 @@ public class BaseActivity extends SwipeBackActivity {
 		ToastUtils.clearToast();
 		if(presenter != null)
 			presenter.onDestroy();
+		Logger.showLog(""+this,"activity onDestroy");
 	}
 
 	@Override
@@ -81,6 +82,8 @@ public class BaseActivity extends SwipeBackActivity {
 			getSupportActionBar().setDisplayShowHomeEnabled(false);
 		}
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+		if(layoutResID == R.layout.bga_pp_toolbar_viewstub)
+			return;
 		ButterKnife.bind(this);
 	}
 
