@@ -1,6 +1,7 @@
 package com.jy.xinlangweibo.interaction.impl;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.text.TextUtils;
 
 import com.jy.xinlangweibo.constant.Constants;
@@ -18,6 +19,8 @@ public class StatusesInteractionImpl extends AbsOpenAPI implements StatusesInter
         String STATUES_HOMETIMELINE_URL = BASE_URL+"statuses/home_timeline.json";
         String SHOWCOMMENTS_URL = BASE_URL+"comments/show.json";
         String UPDATE_URL = BASE_URL+"statuses/update.json";
+        String UPLOADE_URL = BASE_URL+"statuses/upload.json";
+        String UPLOADE_URL_TEXT_URL = BASE_URL+"statuses/upload_url_text.json";
         String ip_to_geo_URL = BASE_URL+"location/geo/ip_to_geo.json";
         String place_nearby_timeline_URL= BASE_URL+"place/nearby_timeline.json";
         String user_show_url = "https://api.weibo.com/2/users/show.json";
@@ -59,7 +62,14 @@ public class StatusesInteractionImpl extends AbsOpenAPI implements StatusesInter
         WeiboParameters params = buildUpdateParams(content, lat, lon);
         requestAsync(URL_Constant.UPDATE_URL , params, HTTPMETHOD_POST, listener);
     }
-    
+
+    @Override
+    public void updateTextAImage(String content, Bitmap bitmap, RequestListener listener) {
+        WeiboParameters parameters = new WeiboParameters(mAppKey);
+        parameters.put("",bitmap);
+        requestAsync(URL_Constant.UPLOADE_URL , parameters, HTTPMETHOD_POST, listener);
+    }
+
     /**
      * 根据IP请求地理经纬度
      * @param ip

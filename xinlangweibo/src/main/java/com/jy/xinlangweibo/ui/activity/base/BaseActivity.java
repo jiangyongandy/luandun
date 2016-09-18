@@ -14,11 +14,13 @@ import android.widget.Toast;
 
 import com.jy.xinlangweibo.AppSetting;
 import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.constant.AccessTokenKeeper;
 import com.jy.xinlangweibo.presenter.BasePresenter;
 import com.jy.xinlangweibo.utils.ACache;
 import com.jy.xinlangweibo.utils.Logger;
 import com.jy.xinlangweibo.utils.ThemeUtils;
 import com.jy.xinlangweibo.utils.ToastUtils;
+import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 
 import butterknife.ButterKnife;
 
@@ -29,6 +31,7 @@ public class BaseActivity extends SwipeBackActivity {
 	protected int theme;
 	protected Toolbar mToolbar;
 	protected BasePresenter presenter;
+	protected Oauth2AccessToken accessToken;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +103,11 @@ public class BaseActivity extends SwipeBackActivity {
 		this.finish();
 		this.overridePendingTransition(0, 0);
 		this.startActivity(intent);
+	}
+
+	protected Oauth2AccessToken getAccessAccessToken(){
+		accessToken = AccessTokenKeeper.readAccessToken(this);
+		return accessToken;
 	}
 
 	/**

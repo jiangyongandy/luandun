@@ -1,6 +1,5 @@
 package com.jy.xinlangweibo.ui.activity;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,7 +22,6 @@ import android.widget.Toast;
 
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.api.SimpleRequestlistener;
-import com.jy.xinlangweibo.constant.AccessTokenKeeper;
 import com.jy.xinlangweibo.interaction.StatusesInteraction;
 import com.jy.xinlangweibo.interaction.impl.StatusesInteractionImpl;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
@@ -34,7 +32,6 @@ import com.jy.xinlangweibo.widget.emotionkeyboard.EmoticonsEditText;
 import com.jy.xinlangweibo.widget.emotionkeyboard.EmoticonsEditText.OnTextChangedInterface;
 import com.jy.xinlangweibo.widget.emotionkeyboard.EmoticonsKeyBoardBar;
 import com.jy.xinlangweibo.widget.ninephoto.BGASortableNinePhotoLayout;
-import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.openapi.models.Status;
 
 import java.io.File;
@@ -68,7 +65,6 @@ public class WriteStatusActivity extends BaseActivity implements
     private EmoticonsEditText et_content;
     private EmoticonsKeyBoardBar EmoticonsKeyBoardBar;
     private TitleBuilder titleBuilder;
-    private ProgressDialog progressDialog;
     private View mContentView;
     private Handler handler = new Handler();
 
@@ -100,8 +96,6 @@ public class WriteStatusActivity extends BaseActivity implements
     }
 
     private void initView() {
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("微博发表中...");
         initTitle();
 
         initWeiboContent();
@@ -238,12 +232,9 @@ public class WriteStatusActivity extends BaseActivity implements
                 break;
             case R.id.nav_right_text:
                 if (!TextUtils.isEmpty(et_content.getText().toString())) {
-                    Oauth2AccessToken readAccessToken = AccessTokenKeeper
-                            .readAccessToken(this);
-                    StatusesInteraction api = new StatusesInteractionImpl(this, readAccessToken);
-                    progressDialog.show();
+                    StatusesInteraction api = new StatusesInteractionImpl(this, getAccessAccessToken());
                     api.update(et_content.getText().toString(), null, null,
-                            new SimpleRequestlistener(this, progressDialog) {
+                            new SimpleRequestlistener(this, null) {
                                 @Override
                                 public void onComplete(String arg0) {
                                     super.onComplete(arg0);

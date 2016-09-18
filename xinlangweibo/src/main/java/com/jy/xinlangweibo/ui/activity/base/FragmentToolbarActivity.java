@@ -9,7 +9,6 @@ import android.text.TextUtils;
 import android.view.MenuItem;
 
 import com.jiang.library.R;
-import com.jy.xinlangweibo.utils.Logger;
 
 import java.lang.reflect.Method;
 

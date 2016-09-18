@@ -31,6 +31,8 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends Adapter {
             IITemView itemView = (IITemView) v.getTag(R.id.itemview);
             if (BasicRecycleViewAdapter.this.onItemClickListener != null && itemView != null) {
                 BasicRecycleViewAdapter.this.onItemClickListener.onItemClick((AdapterView) null, itemView.getConvertView(), itemView.itemPosition(), BasicRecycleViewAdapter.this.getItemId(itemView.itemPosition()));
+            }else if(BasicRecycleViewAdapter.this.onItemClickListener != null && itemView == null) {
+
             }
         }
     };
@@ -141,18 +143,16 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends Adapter {
             }else{
                 itemView.onBindData(itemView.getConvertView(), null, realPosition);
             }
-            if(position != getItemCount()-1) {
-                if (this.onItemClickListener != null) {
-                    itemView.getConvertView().setOnClickListener(this.innerOnClickListener);
-                } else {
-                    itemView.getConvertView().setOnClickListener((View.OnClickListener) null);
-                }
+            if (this.onItemClickListener != null) {
+                itemView.getConvertView().setOnClickListener(this.innerOnClickListener);
+            } else {
+                itemView.getConvertView().setOnClickListener((View.OnClickListener) null);
+            }
 
-                if (this.onItemLongClickListener != null) {
-                    itemView.getConvertView().setOnLongClickListener(this.innerOnLongClickListener);
-                } else {
-                    itemView.getConvertView().setOnLongClickListener((View.OnLongClickListener) null);
-                }
+            if (this.onItemLongClickListener != null) {
+                itemView.getConvertView().setOnLongClickListener(this.innerOnLongClickListener);
+            } else {
+                itemView.getConvertView().setOnLongClickListener((View.OnLongClickListener) null);
             }
         }
 

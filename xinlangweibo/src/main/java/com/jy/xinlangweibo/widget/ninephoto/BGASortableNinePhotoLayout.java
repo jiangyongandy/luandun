@@ -34,8 +34,9 @@ import butterknife.BindView;
  * 描述:
  */
 public class BGASortableNinePhotoLayout extends RecyclerView implements AdapterView.OnItemClickListener {
-    private static final int MAX_ITEM_COUNT = 9;
+    public static final int MAX_ITEM_COUNT = 9;
     private static final int MAX_SPAN_COUNT = 3;
+
     private PhotoAdapter<String> mPhotoAdapter;
     private ItemTouchHelper mItemTouchHelper;
     private Delegate mDelegate;
@@ -43,6 +44,10 @@ public class BGASortableNinePhotoLayout extends RecyclerView implements AdapterV
     private boolean mIsPlusSwitchOpened = true;
     private boolean mIsSortable = true;
     private Activity mActivity;
+
+    public PhotoAdapter<String> getmPhotoAdapter() {
+        return mPhotoAdapter;
+    }
 
     public BGASortableNinePhotoLayout(Context context) {
         this(context, null);
@@ -78,32 +83,6 @@ public class BGASortableNinePhotoLayout extends RecyclerView implements AdapterV
             }
         }, null);
         mPhotoAdapter.setOnItemClickListener(this);
-
-        final View footView = ((Activity) this.getContext()).getLayoutInflater().inflate(R.layout.bga_pp_item_nine_photo,BGASortableNinePhotoLayout.this,false);
-        footView.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mDelegate != null) {
-                    mDelegate.onClickAddNinePhotoItem(BGASortableNinePhotoLayout.this, v, 0, (ArrayList<String>) mPhotoAdapter.getDatas());
-                }
-            }
-        });
-
-        mPhotoAdapter.addFooterView(new ARecycleViewItemView<String>(mActivity,footView) {
-            @Override
-            public void onBindData(View convertView, String model, int position) {
-                View ivItemNinePhotoFlag = footView.findViewById(R.id.iv_item_nine_photo_flag);
-                ImageView ivItemNinePhotoPhoto = (ImageView) footView.findViewById(R.id.iv_item_nine_photo_photo);
-                ivItemNinePhotoFlag.setVisibility(View.GONE);
-                ivItemNinePhotoPhoto.setImageResource(R.drawable.bga_pp_ic_plus);
-            }
-
-            @Override
-            public View getConvertView() {
-                return super.getConvertView();
-            }
-        });
-
         setAdapter(mPhotoAdapter);
     }
 
@@ -210,8 +189,14 @@ public class BGASortableNinePhotoLayout extends RecyclerView implements AdapterV
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        if (mDelegate != null && ViewCompat.getScaleX(view) <= 1.0f) {
-            mDelegate.onClickNinePhotoItem(this, view, position, mPhotoAdapter.getItem(position), (ArrayList<String>) mPhotoAdapter.getDatas());
+        if (mPhotoAdapter.isPlusItem(position)) {
+            if (mDelegate != null) {
+                mDelegate.onClickAddNinePhotoItem(this, view, position, (ArrayList<String>) mPhotoAdapter.getDatas());
+            }
+        } else {
+            if (mDelegate != null && ViewCompat.getScaleX(view) <= 1.0f) {
+                mDelegate.onClickNinePhotoItem(this, view, position, mPhotoAdapter.getItem(position), (ArrayList<String>) mPhotoAdapter.getDatas());
+            }
         }
     }
 
@@ -222,7 +207,30 @@ public class BGASortableNinePhotoLayout extends RecyclerView implements AdapterV
         }
 
         public boolean isPlusItem(int position) {
-            return mIsPlusSwitchOpened && super.getItemCount() < MAX_ITEM_COUNT && (position == getItemCount() - 1 || getItemCount() == 0);
+            return mIsPlusSwitchOpened && super.getItemCount() < MAX_ITEM_COUNT && position == getItemCount() - 1;
+        }
+
+        @Override
+        public int getItemViewType(int position) {
+            return 0;
+        }
+
+        @Override
+        public int getItemCount() {
+            if (mIsPlusSwitchOpened && super.getItemCount() < MAX_ITEM_COUNT) {
+                return super.getItemCount() + 1;
+            }
+
+            return super.getItemCount();
+        }
+
+        @Override
+        public Y getItem(int position) {
+            if (isPlusItem(position)) {
+                return null;
+            }
+
+            return super.getItem(position);
         }
 
         public class SortableNinePhotoItem<T extends String> extends ARecycleViewItemView<T> {
@@ -241,8 +249,13 @@ public class BGASortableNinePhotoLayout extends RecyclerView implements AdapterV
 
             @Override
             public void onBindData(View convertView, final T model, final int position) {
-                ivItemNinePhotoFlag.setVisibility(View.VISIBLE);
-                CustomImageLoader.displayImage(mActivity, ivItemNinePhotoPhoto, model, R.drawable.bga_pp_ic_holder_light, R.drawable.bga_pp_ic_holder_light, mImageWidth, mImageHeight);
+                if (isPlusItem(position)) {
+                    ivItemNinePhotoFlag.setVisibility(View.GONE);
+                    ivItemNinePhotoPhoto.setImageResource(R.drawable.bga_pp_ic_plus);
+                }else {
+                    ivItemNinePhotoFlag.setVisibility(View.VISIBLE);
+                    CustomImageLoader.displayImage(mActivity, ivItemNinePhotoPhoto, model, R.drawable.bga_pp_ic_holder_light, R.drawable.bga_pp_ic_holder_light, mImageWidth, mImageHeight);
+                }
                 ivItemNinePhotoFlag.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {

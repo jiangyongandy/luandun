@@ -1,5 +1,7 @@
 package com.jy.xinlangweibo.interaction;
 
+import android.graphics.Bitmap;
+
 import com.sina.weibo.sdk.net.RequestListener;
 
 /**
@@ -11,6 +13,8 @@ public interface StatusesInteraction {
     void showComments(int page, long id, RequestListener listener);
 
     void update(String content, String lat, String lon, RequestListener listener);
+
+    void updateTextAImage(String content, Bitmap bitmap, RequestListener listener);
 
     void ip2Geo(String ip, RequestListener listener);
 
