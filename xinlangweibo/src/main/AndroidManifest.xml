@@ -59,6 +59,10 @@
             android:name=".ui.activity.WebActivity"
             android:hardwareAccelerated="true"
             android:label="@string/title_activity_web" />
+
+        <!-- 发布服务 -->
+        <service android:name=".models.service.publish.PublishService"/>
+
     </application>
 
 </manifest>

@@ -20,10 +20,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jy.xinlangweibo.BaseApplication;
 import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.api.SimpleRequestlistener;
-import com.jy.xinlangweibo.interaction.StatusesInteraction;
-import com.jy.xinlangweibo.interaction.impl.StatusesInteractionImpl;
+import com.jy.xinlangweibo.models.retrofitservice.StatusInteraction;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.utils.EmoticonsUtils;
 import com.jy.xinlangweibo.utils.TitleBuilder;
@@ -232,17 +231,23 @@ public class WriteStatusActivity extends BaseActivity implements
                 break;
             case R.id.nav_right_text:
                 if (!TextUtils.isEmpty(et_content.getText().toString())) {
-                    StatusesInteraction api = new StatusesInteractionImpl(this, getAccessAccessToken());
-                    api.update(et_content.getText().toString(), null, null,
-                            new SimpleRequestlistener(this, null) {
-                                @Override
-                                public void onComplete(String arg0) {
-                                    super.onComplete(arg0);
-                                    ToastUtils.show(WriteStatusActivity.this,
-                                            "发表微博成功", Toast.LENGTH_SHORT);
-                                    WriteStatusActivity.this.finish();
-                                }
-                            });
+                    if(snplMomentAddPhotos.getData().size() == 1) {
+                        StatusInteraction.getInstance().uploadFile(
+                                BaseApplication.getInstance().getAccessAccessToken().getToken(),
+                                et_content.getText().toString(),
+                                snplMomentAddPhotos.getData().get(0));
+                    }else if(snplMomentAddPhotos.getData().size() > 1){
+//                       多图暂时只上传第一张图
+                        StatusInteraction.getInstance().uploadFile(
+                                BaseApplication.getInstance().getAccessAccessToken().getToken(),
+                                et_content.getText().toString(),
+                                snplMomentAddPhotos.getData().get(0));
+                    }else if(snplMomentAddPhotos.getData().size() == 0){
+                        StatusInteraction.getInstance().update(
+                                BaseApplication.getInstance().getAccessAccessToken().getToken(),
+                                et_content.getText().toString());
+                    }
+
                 } else {
                     ToastUtils.show(this, "发送内容不能为空", Toast.LENGTH_SHORT);
                 }

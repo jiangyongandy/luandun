@@ -17,9 +17,10 @@ public class ToolbarActivity extends BaseActivity {
     public void setContentView(int layoutResID) {
         super.setContentView(R.layout.bga_pp_toolbar_viewstub);
         viewStub = (ViewStubCompat) findViewById(R.id.viewStub);
-        RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) viewStub.getLayoutParams();
-        lp.addRule(RelativeLayout.BELOW, R.id.toolbar);
-
+        if(layoutResID != R.layout.bga_pp_activity_photo_picker_preview) {
+            RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) viewStub.getLayoutParams();
+            lp.addRule(RelativeLayout.BELOW, R.id.toolbar);
+        }
         viewStub.setLayoutResource(layoutResID);
         viewStub.inflate();
     }

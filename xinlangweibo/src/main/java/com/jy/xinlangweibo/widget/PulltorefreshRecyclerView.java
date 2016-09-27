@@ -109,8 +109,8 @@ public class PulltorefreshRecyclerView extends RecyclerView {
 			mDownX = ev.getX();
 			mDownY = ev.getY();
 			mTouchState = TOUCH_STATE_NONE;
-
 			break;
+
 		case MotionEvent.ACTION_MOVE:
 			final float deltaY = ev.getRawY() - mLastY;
 

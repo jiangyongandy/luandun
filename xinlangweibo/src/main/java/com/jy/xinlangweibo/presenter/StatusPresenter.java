@@ -4,8 +4,8 @@ import android.app.Activity;
 
 import com.jy.xinlangweibo.api.SimpleRequestlistener;
 import com.jy.xinlangweibo.constant.AccessTokenKeeper;
-import com.jy.xinlangweibo.interaction.StatusesInteraction;
-import com.jy.xinlangweibo.interaction.impl.StatusesInteractionImpl;
+import com.jy.xinlangweibo.models.StatusesInteraction;
+import com.jy.xinlangweibo.models.impl.StatusesInteractionImpl;
 import com.jy.xinlangweibo.ui.IView.HomeFragmentView;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.exception.WeiboException;

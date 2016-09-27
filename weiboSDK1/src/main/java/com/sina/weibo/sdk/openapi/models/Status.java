@@ -143,4 +143,33 @@ public class Status extends BaseSerial{
         
         return status;
     }
+
+    @Override
+    public String toString() {
+        return "Status{" +
+                "created_at='" + created_at + '\'' +
+                ", id='" + id + '\'' +
+                ", mid='" + mid + '\'' +
+                ", idstr='" + idstr + '\'' +
+                ", text='" + text + '\'' +
+                ", source='" + source + '\'' +
+                ", favorited=" + favorited +
+                ", truncated=" + truncated +
+                ", in_reply_to_status_id='" + in_reply_to_status_id + '\'' +
+                ", in_reply_to_user_id='" + in_reply_to_user_id + '\'' +
+                ", in_reply_to_screen_name='" + in_reply_to_screen_name + '\'' +
+                ", thumbnail_pic='" + thumbnail_pic + '\'' +
+                ", bmiddle_pic='" + bmiddle_pic + '\'' +
+                ", original_pic='" + original_pic + '\'' +
+                ", geo=" + geo +
+                ", user=" + user +
+                ", retweeted_status=" + retweeted_status +
+                ", reposts_count=" + reposts_count +
+                ", comments_count=" + comments_count +
+                ", attitudes_count=" + attitudes_count +
+                ", mlevel=" + mlevel +
+                ", visible=" + visible +
+                ", pic_urls=" + pic_urls +
+                '}';
+    }
 }

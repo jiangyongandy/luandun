@@ -61,6 +61,8 @@
             android:hardwareAccelerated="true"
             android:label="@string/title_activity_web" />
 
+        <!-- 发布服务 -->
+        <service android:name="com.jy.xinlangweibo.models.service.publish.PublishService" />
         <service
             android:name="com.squareup.leakcanary.internal.HeapAnalyzerService"
             android:enabled="false"

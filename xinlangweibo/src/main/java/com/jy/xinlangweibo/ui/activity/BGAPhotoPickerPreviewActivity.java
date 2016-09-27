@@ -111,6 +111,8 @@ public class BGAPhotoPickerPreviewActivity extends ToolbarActivity  implements V
         setContentView(R.layout.bga_pp_activity_photo_picker_preview);
         ButterKnife.bind(this);
 
+        setSwipeBackEnable(false);
+
         mChooseTv.setOnClickListener(this);
 
         mContentHvp.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {

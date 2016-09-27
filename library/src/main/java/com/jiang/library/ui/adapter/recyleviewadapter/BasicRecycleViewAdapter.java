@@ -2,6 +2,7 @@ package com.jiang.library.ui.adapter.recyleviewadapter;
 
 
 import android.app.Activity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.LayoutParams;
 import android.support.v7.widget.RecyclerView.ViewHolder;
@@ -30,7 +31,7 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends Adapter {
         public void onClick(View v) {
             IITemView itemView = (IITemView) v.getTag(R.id.itemview);
             if (BasicRecycleViewAdapter.this.onItemClickListener != null && itemView != null) {
-                BasicRecycleViewAdapter.this.onItemClickListener.onItemClick((AdapterView) null, itemView.getConvertView(), itemView.itemPosition(), BasicRecycleViewAdapter.this.getItemId(itemView.itemPosition()));
+                BasicRecycleViewAdapter.this.onItemClickListener.onItemClick((AdapterView) null, itemView.getConvertView(), ((RecyclerView)itemView.getConvertView().getParent()).getChildAdapterPosition(itemView.getConvertView()) , BasicRecycleViewAdapter.this.getItemId(itemView.itemPosition()));
             }else if(BasicRecycleViewAdapter.this.onItemClickListener != null && itemView == null) {
 
             }

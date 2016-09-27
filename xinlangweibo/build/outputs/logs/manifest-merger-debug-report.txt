@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:2:1-64:12
+ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:2:1-68:12
 	package
 		ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:3:5-34
 		INJECTED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml
@@ -114,7 +114,7 @@ ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:17:5-80
 	android:name
 		ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:17:22-77
 application
-ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:19:5-62:19
+ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:19:5-66:19
 MERGED from [Xinlangweibo1:pulltorefresh:unspecified] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\Xinlangweibo1\pulltorefresh\unspecified\AndroidManifest.xml:11:5-20
 MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.4.0] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
@@ -252,6 +252,10 @@ ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:58:9-61:58
 		ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:60:13-47
 	android:name
 		ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:59:13-52
+service#com.jy.xinlangweibo.models.service.publish.PublishService
+ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:64:9-73
+	android:name
+		ADDED from D:\Xinlangweibo1\xinlangweibo\src\main\AndroidManifest.xml:64:18-71
 service#com.squareup.leakcanary.internal.HeapAnalyzerService
 ADDED from [com.squareup.leakcanary:leakcanary-android:1.3] D:\Xinlangweibo1\xinlangweibo\build\intermediates\exploded-aar\com.squareup.leakcanary\leakcanary-android\1.3\AndroidManifest.xml:25:9-28:45
 	android:enabled
