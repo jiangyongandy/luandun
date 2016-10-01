@@ -23,7 +23,7 @@ import java.util.List;
 public class BasicRecycleViewAdapter<T extends Serializable> extends Adapter {
     private IItemViewCreator<T> itemViewCreator;
     private List<T> datas;
-    private IITemView<T> footerItemView;
+    private IITemView footerItemView;
     private AHeaderItemViewCreator headerItemViewCreator;
     private int[][] headerItemTypes;
     private AdapterView.OnItemClickListener onItemClickListener;
@@ -54,7 +54,7 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends Adapter {
         this.datas = datas;
     }
 
-    public void addFooterView(IITemView<T> footerItemView) {
+    public <Y extends Serializable> void addFooterView(IITemView<Y> footerItemView) {
         if(footerItemView == null){
             this.footerItemView = null;
             return;
@@ -145,7 +145,7 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends Adapter {
             int realPosition = position - headerCount;
             itemView.reset(this.datas.size(), realPosition);
             if (realPosition < this.datas.size()) {
-                itemView.onBindData(itemView.getConvertView(), (Serializable) this.datas.get(realPosition), realPosition);
+                itemView.onBindData(itemView.getConvertView(),this.datas.get(realPosition), realPosition);
             }else{
                 itemView.onBindData(itemView.getConvertView(), null, realPosition);
             }

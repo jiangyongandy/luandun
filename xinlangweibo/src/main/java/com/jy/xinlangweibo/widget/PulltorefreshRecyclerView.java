@@ -13,7 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.Scroller;
 import android.widget.TextView;
 
-import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.utils.Logger;
 import com.jy.xinlangweibo.widget.pulltorefresh.PullToRefreshListFooter;
 
 public class PulltorefreshRecyclerView extends RecyclerView {
@@ -40,7 +40,7 @@ public class PulltorefreshRecyclerView extends RecyclerView {
 	// -- header view
 	private View mheadBackground;
 	private View mheadView;
-	private int mHeaderViewHeight; // header view's height
+	private int mDefHeaderViewHeight; // header view's height
 	private int mHeadeBackgroundMAXHeight; // mheadBackground's MAXheight
 	
 	private boolean mEnablePullRefresh = true;
@@ -81,15 +81,9 @@ public class PulltorefreshRecyclerView extends RecyclerView {
 //		default linearLayout
 		setLayoutManager(new LinearLayoutManager(getContext()));
 		mScroller = new Scroller(context, new DecelerateInterpolator());
-		// init header view
-		mheadBackground = findViewById(R.id.headBackground);
-
-		// init footer view
-		mFooterView = new PullToRefreshListFooter(context);
-
 		MAX_Y = dp2px(MAX_Y);
 		mTouchState = TOUCH_STATE_NONE;
-		mHeaderViewHeight = dp2px(DEFHeaderViewHeight);
+		mDefHeaderViewHeight = dp2px(DEFHeaderViewHeight);
 		mHeadeBackgroundMAXHeight = dp2px(DEFHeaderBACKViewHeight);
 	}
 
@@ -122,12 +116,14 @@ public class PulltorefreshRecyclerView extends RecyclerView {
 
 			if (Math.pow(dx, 2) / Math.pow(dy, 2) <= 3) { // 满足条件判断为// y方向上的滑动
 				manager = (LinearLayoutManager) this.getLayoutManager();
-				if (manager.findFirstVisibleItemPosition() == 0&& (mheadView.getLayoutParams().height >= mHeaderViewHeight || deltaY>0)) {
+				if (manager.findFirstVisibleItemPosition() == 0&& (mheadView.getLayoutParams().height >= mDefHeaderViewHeight || deltaY>0)) {
 					// 即判断为到顶下拉
-					updateHeaderHeight(deltaY * OFFSET_RADIO);
-				} else if ((mFooterView.getBottomMargin() > 0 && deltaY < 0)) {
+					updateHeaderHeight(deltaY * ((mDefHeaderViewHeight*0.5f - mheadView.getLayoutParams().height + mDefHeaderViewHeight)/
+													mDefHeaderViewHeight*0.5f));
+				} else if ((mFooterView.getBottomMargin() >= 0 && deltaY < 0)) {
 					// last item, already pulled up or want to pull up. 即判断为到底上拉
-					// updateFooterHeight(-deltaY / 1.8f);
+					 updateFooterHeight(-deltaY *0.3f*((PULL_LOAD_MORE_DELTA+200 - mFooterView.getBottomMargin())*1.0f/
+							 											(PULL_LOAD_MORE_DELTA+200)));
 					System.out.println("到底上拉。。。。。。。。。。"+mFooterView.getBottomMargin());
 				}
 			}
@@ -144,17 +140,17 @@ public class PulltorefreshRecyclerView extends RecyclerView {
 					&& mFooterView.getBottomMargin() > PULL_LOAD_MORE_DELTA) { // 到底上拉释放
 				System.out.println("到底上拉释放。。。。。。");
 				startLoadMore();
-				resetFooterHeight();
 				new ResetHeaderHeightTask().execute();
+				resetFooterHeight();
 			} else if (manager.findFirstVisibleItemPosition() == 0) { // 到顶下拉释放
 				System.out.println("到顶下拉释放。。。。。。");
 				// invoke refresh
 				if (mEnablePullRefresh
-						&& mheadView.getLayoutParams().height - mHeaderViewHeight > dp2px(60)) {
+						&& mheadView.getLayoutParams().height - mDefHeaderViewHeight > dp2px(60)) {
 					System.out.println("刷新。。。。。。。。。");
 					mPullRefreshing = true;
 					if (mListViewListener != null) {
-						mListViewListener.onRefresh(); // 注意这里为异步操作
+						mListViewListener.onRefresh();
 					}
 				}
 				resetHeaderHeight();
@@ -175,20 +171,12 @@ public class PulltorefreshRecyclerView extends RecyclerView {
 		}
 
 		protected void onPostExecute(Void result) {
-			mPullRefreshing = false;
-			// mHeaderView.setState(PullToRefreshListHeader.STATE_NORMAL);
-			resetHeaderHeight();
-
+			stopLoadMore();
 		}
 	}
 
 	public void setPullRefreshEnable(boolean enable) {
 		mEnablePullRefresh = enable;
-		if (!mEnablePullRefresh) { // disable, hide the content
-			mHeaderViewContent.setVisibility(View.INVISIBLE);
-		} else {
-			mHeaderViewContent.setVisibility(View.VISIBLE);
-		}
 	}
 
 	/**
@@ -261,30 +249,34 @@ public class PulltorefreshRecyclerView extends RecyclerView {
 		mheadView.setLayoutParams(layoutParams);
 	}
 
-	/**
-	 * reset header view's height.
-	 */
-	private void resetHeaderHeight() {
-		int height = mheadView.getLayoutParams().height;
-		mScrollBack = SCROLLBACK_HEADER;
-		mScroller.startScroll(0, height, 0, mHeaderViewHeight - height,
-				SCROLL_DURATION);
-		System.out.println("开始滚动");
-		// trigger computeScroll
-		invalidate();
-	}
-
 	private void updateFooterHeight(float delta) {
+		Logger.showLog("======"+delta,"updateFooterHeight");
 		int height = mFooterView.getBottomMargin() + (int) delta;
+		//上拉边界
+		if(height >= PULL_LOAD_MORE_DELTA+100)
+			return;
 		if (mEnablePullLoad && !mPullLoading) {
 			if (height > PULL_LOAD_MORE_DELTA) { // height enough to invoke load
-													// more.
+				// more.
 				mFooterView.setState(PullToRefreshListFooter.STATE_READY);
 			} else {
 				mFooterView.setState(PullToRefreshListFooter.STATE_NORMAL);
 			}
 		}
 		mFooterView.setBottomMargin(height);
+	}
+
+	/**
+	 * reset header view's height.
+	 */
+	private void resetHeaderHeight() {
+		int height = mheadView.getLayoutParams().height;
+		mScrollBack = SCROLLBACK_HEADER;
+		mScroller.startScroll(0, height, 0, mDefHeaderViewHeight - height,
+				SCROLL_DURATION);
+		System.out.println("开始滚动");
+		// trigger computeScroll
+		invalidate();
 	}
 
 	private void resetFooterHeight() {
@@ -344,6 +336,10 @@ public class PulltorefreshRecyclerView extends RecyclerView {
 
 	public void setMheadView(View mheadView) {
 		this.mheadView = mheadView;
+	}
+
+	public void setmFooterView(PullToRefreshListFooter mFooterView) {
+		this.mFooterView = mFooterView;
 	}
 
 	/**

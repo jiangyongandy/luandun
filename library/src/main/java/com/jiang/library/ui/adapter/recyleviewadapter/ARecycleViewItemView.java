@@ -11,7 +11,7 @@ import butterknife.ButterKnife;
 /**
  * Created by JIANG on 2016/9/14.
  */
-public abstract class ARecycleViewItemView<T extends Serializable> extends RecyclerView.ViewHolder implements IITemView<T> {
+public  class ARecycleViewItemView<T extends Serializable> extends RecyclerView.ViewHolder implements IITemView<T> {
     private int size;
     private int position;
     private View convertView;
@@ -26,6 +26,11 @@ public abstract class ARecycleViewItemView<T extends Serializable> extends Recyc
     public void onBindView(View convertView) {
 //        InjectUtility.initInjectedView(this.getContext(), this, convertView);
         ButterKnife.bind(this,convertView);
+    }
+
+    @Override
+    public void onBindData(View convertView, T model, int position) {
+
     }
 
     public void reset(int size, int position) {

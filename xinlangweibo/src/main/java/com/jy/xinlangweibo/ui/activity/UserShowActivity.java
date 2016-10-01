@@ -39,6 +39,7 @@ import com.jy.xinlangweibo.utils.Utils;
 import com.jy.xinlangweibo.utils.WeiboStringUtils;
 import com.jy.xinlangweibo.widget.PulltorefreshRecyclerView;
 import com.jy.xinlangweibo.widget.ninephoto.BGANinePhotoLayout;
+import com.jy.xinlangweibo.widget.pulltorefresh.PullToRefreshListFooter;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.sina.weibo.sdk.openapi.models.User;
 
@@ -99,7 +100,21 @@ public class UserShowActivity extends BaseActivity {
                 return headerItemView = new ProfileTimelineHeaderItemView(UserShowActivity.this, convertView);
             }
         });
+        adapter.addFooterView(new ProfileTimeLineFooterItemView(UserShowActivity.this,new PullToRefreshListFooter(UserShowActivity.this)));
+        mRecyclerView.setPullLoadEnable(true);
+        mRecyclerView.setPullRefreshEnable(true);
         mRecyclerView.setAdapter(adapter);
+        mRecyclerView.setXListViewListener(new PulltorefreshRecyclerView.IXListViewListener() {
+            @Override
+            public void onRefresh() {
+                Logger.showLog("下拉刷新","下拉");
+            }
+
+            @Override
+            public void onLoadMore() {
+                Logger.showLog("上拉加载","加载");
+            }
+        });
         StatusInteraction.getInstance().userShow(getAccessAccessToken().getToken(), screen_name, new Observer<UsersShowBean>() {
             @Override
             public void onCompleted() {
@@ -311,6 +326,13 @@ public class UserShowActivity extends BaseActivity {
             tvScreenName.setText(model.getScreen_name());
             tvLocation.setText(model.getLocation());
             tvCreatedAt.setText(model.getCreated_at());
+        }
+    }
+
+    public class ProfileTimeLineFooterItemView extends ARecycleViewItemView {
+        public ProfileTimeLineFooterItemView(Context context, View itemView) {
+            super(context, itemView);
+            mRecyclerView.setmFooterView((PullToRefreshListFooter)itemView);
         }
     }
 
