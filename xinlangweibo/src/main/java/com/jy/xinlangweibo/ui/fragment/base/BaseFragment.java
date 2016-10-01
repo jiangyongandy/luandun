@@ -27,6 +27,7 @@ public class BaseFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View rootView = inflater.inflate(CreateView(),container,false);
+		initViewAndEvent(rootView);
 		return rootView;
 	}
 
@@ -41,6 +42,9 @@ public class BaseFragment extends Fragment {
 
 	protected int CreateView() {
 		return 0;
+	}
+
+	protected void initViewAndEvent(View rootView) {
 	}
 
 	protected void intent2Activity(Class<? extends BaseActivity> tarActivity) {

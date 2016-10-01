@@ -27,7 +27,7 @@ import com.jy.xinlangweibo.ui.fragment.DiscoverFragment;
 import com.jy.xinlangweibo.ui.fragment.FragmentController;
 import com.jy.xinlangweibo.ui.fragment.Home2Fragment;
 import com.jy.xinlangweibo.ui.fragment.MessageFragment;
-import com.jy.xinlangweibo.ui.fragment.ProfileFragment;
+import com.jy.xinlangweibo.ui.fragment.Profile2Fragment;
 import com.jy.xinlangweibo.ui.fragment.setting.SettingFragment;
 import com.jy.xinlangweibo.utils.ACache;
 
@@ -125,7 +125,7 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
             fragments[1] = fragment;
         } else if (fragment instanceof DiscoverFragment) {
             fragments[2] = fragment;
-        } else if (fragment instanceof ProfileFragment) {
+        } else if (fragment instanceof Profile2Fragment) {
             fragments[3] = fragment;
         }
     }

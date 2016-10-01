@@ -51,8 +51,8 @@ public class FragmentController {
 						}
 						break;
 					case 3:
-						if (!(fragments[3] instanceof ProfileFragment)) {
-							fragments[3] = new ProfileFragment();
+						if (!(fragments[3] instanceof Profile2Fragment)) {
+							fragments[3] = new Profile2Fragment();
 							ft.add(containerId, fragments[3]);
 						}
 						break;

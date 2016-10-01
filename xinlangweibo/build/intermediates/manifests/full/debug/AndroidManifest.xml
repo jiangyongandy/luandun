@@ -25,7 +25,7 @@
         <meta-data
             android:name="com.jy.xinlangweibo.utils.CommonImageLoader.MyGlideModule"
             android:value="GlideModule" />
-
+        <!-- splash activity -->
         <activity
             android:name="com.jy.xinlangweibo.ui.activity.FirstActivity"
             android:theme="@style/AppThemeTranslucentStatusBar" >
@@ -35,19 +35,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- 主页 -->
         <activity
             android:name="com.jy.xinlangweibo.ui.activity.MainActivity"
             android:theme="@style/AppThemeNotTranslucent" />
+        <!-- 新浪微博浏览器页 -->
         <activity
             android:name="com.sina.weibo.sdk.component.WeiboSdkBrowser"
             android:configChanges="keyboardHidden|orientation"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+        <!-- 登陆页 -->
         <activity android:name="com.jy.xinlangweibo.ui.activity.LoginActivity" />
+        <!-- 带fragment和toolbar的页面 -->
         <activity android:name="com.jy.xinlangweibo.ui.activity.base.FragmentToolbarActivity" />
+        <!-- 详情页 -->
         <activity android:name="com.jy.xinlangweibo.ui.activity.StatusDetailsActivity" />
+        <!-- 照片选择页 -->
         <activity android:name="com.jy.xinlangweibo.ui.activity.BGAPhotoPickerActivity" />
+        <!-- 照片选择预览页 -->
         <activity android:name="com.jy.xinlangweibo.ui.activity.BGAPhotoPickerPreviewActivity" />
+        <!-- 微博发布页 -->
         <activity
             android:name="com.jy.xinlangweibo.ui.activity.WriteStatusActivity"
             android:windowSoftInputMode="stateHidden|adjustResize" />
@@ -56,11 +64,23 @@
                     android:name=".ui.activity.ImageBrowseActivity"
                     android:label="@string/title_activity_image_browse" />
         -->
+        <!-- 浏览器页 -->
         <activity
             android:name="com.jy.xinlangweibo.ui.activity.WebActivity"
             android:hardwareAccelerated="true"
             android:label="@string/title_activity_web" />
+        <!-- 用户信息显示页 -->
+        <activity
+            android:name="com.jy.xinlangweibo.ui.activity.UserShowActivity"
+            android:theme="@style/UserShowActivityTheme" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
 
+                <action android:name="android.intent.action.VIEW" />
+
+                <data android:scheme="com.jy.xinlangweibo.usershow" />
+            </intent-filter>
+        </activity>
         <!-- 发布服务 -->
         <service android:name="com.jy.xinlangweibo.models.service.publish.PublishService" />
         <service

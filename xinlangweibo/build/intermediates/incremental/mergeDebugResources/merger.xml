@@ -2067,12 +2067,20 @@
     </style><style name="NoActonBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
         <item name="themeColor">@color/orange</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="colorAccent">?attr/themeColor</item>
         <item name="themeStatusbarColor">@color/orange_dark</item>
         <item name="colorPrimary">?attr/themeColor</item>
         <item name="colorPrimaryDark">?attr/themeStatusbarColor</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style><style name="AppThemeTranslucentStatusBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+    </style><style name="UserShowActivityTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="themeColor">@color/orange</item>
+        <item name="colorAccent">?attr/themeColor</item>
+        <item name="themeStatusbarColor">@color/orange_dark</item>
+        <item name="colorPrimary">?attr/themeColor</item>
+        <item name="colorPrimaryDark">?attr/themeStatusbarColor</item>
         <item name="android:windowIsTranslucent">true</item>
     </style><style name="appTheme" parent="WeiboBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->

@@ -27,5 +27,8 @@ public abstract class AHeaderItemViewCreator<T extends Serializable> implements 
         return null;
     }
 
+    /**
+     * @return 返回头布局的[资源ID,HeadType]
+     */
     public abstract int[][] createHeaders();
 }

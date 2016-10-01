@@ -1,7 +1,6 @@
 package com.jy.xinlangweibo.ui.fragment;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,11 +21,10 @@ import com.jy.xinlangweibo.ui.activity.MainActivity;
 import com.jy.xinlangweibo.ui.activity.StatusDetailsActivity;
 import com.jy.xinlangweibo.ui.adapter.GridIvAdapter;
 import com.jy.xinlangweibo.ui.adapter.ParallaxRecyclerAdapter;
-import com.jy.xinlangweibo.ui.adapter.ParallaxRecyclerAdapter.OnParallaxScroll;
 import com.jy.xinlangweibo.ui.adapter.RecyleViewHolder;
 import com.jy.xinlangweibo.ui.fragment.base.BaseCacheFragment;
-import com.jy.xinlangweibo.utils.DateUtils;
 import com.jy.xinlangweibo.utils.CommonImageLoader.ImageLoadeOptions;
+import com.jy.xinlangweibo.utils.DateUtils;
 import com.jy.xinlangweibo.utils.WeiboStringUtils;
 import com.jy.xinlangweibo.widget.CustomActBar;
 import com.sina.weibo.sdk.openapi.models.Status;
@@ -62,7 +60,7 @@ public class ProfileFragment extends BaseCacheFragment {
     }
 
     private void initTitle() {
-        actbar = (CustomActBar) view.findViewById(R.id.profile_actbar);
+//        actbar = (CustomActBar) view.findViewById(R.id.profile_actbar);
     }
 
     private void createCardAdapter(RecyclerView recyclerView) {
@@ -215,7 +213,7 @@ public class ProfileFragment extends BaseCacheFragment {
                 activity.startActivity(intent);
             }
         });
-        adapter.setOnParallaxScroll(new OnParallaxScroll() {
+/*        adapter.setOnParallaxScroll(new OnParallaxScroll() {
 
             @Override
             public void onParallaxScroll(float percentage, float offset,
@@ -232,7 +230,7 @@ public class ProfileFragment extends BaseCacheFragment {
                     actbar.getRightImage().setImageResource(R.drawable.userinfo_buttonicon_more);
                 }
             }
-        });
+        });*/
         recyclerView.setAdapter(adapter);
     }
 

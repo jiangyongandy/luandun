@@ -15,7 +15,7 @@ public abstract class ARecycleViewItemView<T extends Serializable> extends Recyc
     private int size;
     private int position;
     private View convertView;
-    private Context context;
+    protected Context context;
 
     public ARecycleViewItemView(Context context, View itemView) {
         super(itemView);

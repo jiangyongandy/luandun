@@ -78,6 +78,8 @@ public class PulltorefreshRecyclerView extends RecyclerView {
 	}
 
 	private void init(Context context) {
+//		default linearLayout
+		setLayoutManager(new LinearLayoutManager(getContext()));
 		mScroller = new Scroller(context, new DecelerateInterpolator());
 		// init header view
 		mheadBackground = findViewById(R.id.headBackground);

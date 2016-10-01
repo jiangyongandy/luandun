@@ -2,6 +2,8 @@ package com.jy.xinlangweibo.models.retrofitservice;
 
 import com.blankj.utilcode.utils.FileUtils;
 import com.google.gson.Gson;
+import com.jy.xinlangweibo.models.retrofitservice.bean.StatusListBean;
+import com.jy.xinlangweibo.models.retrofitservice.bean.UsersShowBean;
 import com.sina.weibo.sdk.openapi.models.Status;
 
 import java.io.File;
@@ -16,6 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -52,6 +55,22 @@ public class StatusInteraction {
                 .client(client).build();
 
         service = retrofit.create(StatusService.class);
+    }
+
+    /**
+     * 用来统一处理Http的resultCode,并将HttpResult的Data部分剥离出来返回给subscriber
+     *
+     * @param <T> Subscriber真正需要的数据类型，也就是Data部分的数据类型
+     */
+    private class HttpResultFunc<T> implements Func1<HttpResult<T>, T> {
+
+        @Override
+        public T call(HttpResult<T> httpResult) {
+            if (httpResult.getResultCode() != 0) {
+                throw new ApiException(httpResult.getResultCode());
+            }
+            return httpResult.getData();
+        }
     }
 
     public String uploadImageForPicId(String access_token,String fileUri) {
@@ -111,7 +130,7 @@ public class StatusInteraction {
 
     public void update(String access_token,String status) {
         // finally, execute the request
-        Observable<HttpResult<Status>> observable =  service.update(access_token,"1",status);
+        Observable<HttpResult<Status>> observable =  service.update(access_token,"0",status);
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<HttpResult<Status>>() {
             @Override
             public void onCompleted() {
@@ -142,5 +161,15 @@ public class StatusInteraction {
             }
         });*/
 
+    }
+
+    public void userShow(String access_token,String screen_name,Observer<UsersShowBean > observer) {
+        Observable<UsersShowBean> observable =  service.userShow(access_token,screen_name);
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+    public void statusesUser_timeline(String access_token,String screen_name,Observer<StatusListBean  > observer) {
+        Observable<StatusListBean> observable =  service.statusesUser_timeline(access_token,screen_name);
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 }

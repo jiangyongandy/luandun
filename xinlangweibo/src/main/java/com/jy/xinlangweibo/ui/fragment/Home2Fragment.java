@@ -1,5 +1,7 @@
 package com.jy.xinlangweibo.ui.fragment;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
@@ -28,6 +30,7 @@ import com.jy.xinlangweibo.presenter.StatusPresenter;
 import com.jy.xinlangweibo.ui.IView.HomeFragmentView;
 import com.jy.xinlangweibo.ui.activity.MainActivity;
 import com.jy.xinlangweibo.ui.activity.StatusDetailsActivity;
+import com.jy.xinlangweibo.ui.activity.UserShowActivity;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.ui.activity.base.FragmentToolbarActivity;
 import com.jy.xinlangweibo.ui.adapter.RecyleViewHolder;
@@ -280,7 +283,7 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
         }
     });
 
-    public class TimeLineItemViewHolderBase extends ViewHolderBase<Status> implements BGANinePhotoLayout.Delegate{
+    public static class TimeLineItemViewHolderBase extends ViewHolderBase<Status> implements BGANinePhotoLayout.Delegate{
 
         @BindView(R.id.iv_head)
         ImageView ivHead;
@@ -311,11 +314,13 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
         @BindView(R.id.retweeted_timeline_photos)
         BGANinePhotoLayout retweetedTimelinePhotos;
         private ImageLoader imageLoader = ImageLoader.getInstance();
+        private Context context;
 
         @Override
         public View createView(LayoutInflater layoutInflater) {
             View rootView = layoutInflater.inflate(R.layout.item_status2, null);
             ButterKnife.bind(this, rootView);
+            context = rootView.getContext();
             return rootView;
         }
 
@@ -323,19 +328,25 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
         public void showData(int position, Status status) {
             if(status == null)
                 return;
-            User user = status.user;
+            final User user = status.user;
 
             //bind publisher
             imageLoader.displayImage(user.avatar_hd, ivHead,
                     ImageLoadeOptions.getIvHeadOption());
             String from = DateUtils.getDate(status.created_at) + " 来自  "
                     + Html.fromHtml(status.source);
-            tvFrom.setText(WeiboStringUtils.get2KeyText(activity, from, tvFrom));
+            tvFrom.setText(WeiboStringUtils.get2KeyText(context, from, tvFrom));
             tvPubname.setText(user.screen_name);
+            ivHead.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    UserShowActivity.launch(context,user.screen_name);
+                }
+            });
             //bind content
-            tvStatusesContent.setText(WeiboStringUtils.getKeyText(activity, status.text,
+            tvStatusesContent.setText(WeiboStringUtils.getKeyText(context, status.text,
                     tvStatusesContent));
-            timelinePhotos.init(activity);
+            timelinePhotos.init((Activity) context);
             if (status.pic_urls != null) {
                 for (int i = 0; i < status.pic_urls.size(); i++) {
                     status.pic_urls.set(i, status.pic_urls.get(i).replace("thumbnail", "bmiddle"));
@@ -346,7 +357,6 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
                 ArrayList<String> strings = new ArrayList<>();
                 timelinePhotos.setData(strings);
             }
-//            setImage(status, statusIv, statusGv, picText, tv_retweeted_pic);
             //bind bottomTab
             tvStatusesBottomReweet
                     .setText((CharSequence) (status.reposts_count > 0 ? ""
@@ -366,7 +376,7 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
                     statusUnlikebtn
                             .setImageResource(R.drawable.timeline_icon_like);
                     statusUnlikebtn.startAnimation(AnimationUtils.loadAnimation(
-                            activity, R.anim.scale_unlike));
+                            context, R.anim.scale_unlike));
                 }
             });
 
@@ -383,9 +393,9 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
                 }
                 String tempString = "@" + retweetedname + ":"
                         + status.retweeted_status.text;
-                tvRetweetedContent.setText(WeiboStringUtils.getKeyText(activity, tempString,
+                tvRetweetedContent.setText(WeiboStringUtils.getKeyText(context, tempString,
                         tvRetweetedContent));
-                retweetedTimelinePhotos.init(activity);
+                retweetedTimelinePhotos.init((Activity) context);
                 if (status.retweeted_status.pic_urls != null) {
                     for (int i = 0; i < status.retweeted_status.pic_urls.size(); i++) {
                         status.retweeted_status.pic_urls.set(i, status.retweeted_status.pic_urls.get(i).replace("thumbnail", "bmiddle"));

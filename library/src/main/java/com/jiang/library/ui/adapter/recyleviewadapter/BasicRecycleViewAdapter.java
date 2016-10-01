@@ -14,6 +14,7 @@ import com.jiang.library.R;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -21,9 +22,9 @@ import java.util.ArrayList;
  */
 public class BasicRecycleViewAdapter<T extends Serializable> extends Adapter {
     private IItemViewCreator<T> itemViewCreator;
-    private ArrayList<T> datas;
+    private List<T> datas;
     private IITemView<T> footerItemView;
-    private AHeaderItemViewCreator<T> headerItemViewCreator;
+    private AHeaderItemViewCreator headerItemViewCreator;
     private int[][] headerItemTypes;
     private AdapterView.OnItemClickListener onItemClickListener;
     private AdapterView.OnItemLongClickListener onItemLongClickListener;
@@ -44,7 +45,7 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends Adapter {
         }
     };
 
-    public BasicRecycleViewAdapter(IItemViewCreator<T> itemViewCreator, ArrayList<T> datas) {
+    public BasicRecycleViewAdapter(IItemViewCreator<T> itemViewCreator, List<T> datas) {
         if (datas == null) {
             datas = new ArrayList();
         }
@@ -65,7 +66,11 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends Adapter {
 
     }
 
-    public void setHeaderItemViewCreator(AHeaderItemViewCreator<T> headerItemViewCreator) {
+    /**
+     * Set headLayout factory
+     * @param headerItemViewCreator
+     */
+    public  void setHeaderItemViewCreator(AHeaderItemViewCreator headerItemViewCreator) {
         this.headerItemViewCreator = headerItemViewCreator;
         this.headerItemTypes = headerItemViewCreator.createHeaders();
     }
@@ -178,7 +183,7 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends Adapter {
         return  datas.get(position);
     }
 
-    public ArrayList<T> getDatas() {
+    public List<T> getDatas() {
         return this.datas;
     }
 

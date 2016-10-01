@@ -417,7 +417,7 @@ public class BGAPhotoPickerActivity extends ToolbarActivity  implements AdapterV
 
         //					前往图片浏览器
         Intent intent = new Intent(this, FragmentToolbarActivity.class);
-        intent.putExtra("Pic_urls", mPicAdapter.getDatas());
+        intent.putExtra("Pic_urls", (ArrayList)mPicAdapter.getDatas());
         intent.putExtra("Position", position);
         FragmentToolbarActivity.launch(this, ImageBrowserFragment.class,intent,false);
     }

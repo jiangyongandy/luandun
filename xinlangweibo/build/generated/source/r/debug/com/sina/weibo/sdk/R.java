@@ -49,9 +49,9 @@ public final class R {
 		public static final int com_sina_weibo_sdk_logout = 0x7f060016;
 	}
 	public static final class style {
-		public static final int AppBaseTheme = 0x7f090097;
-		public static final int AppTheme = 0x7f090098;
-		public static final int com_sina_weibo_sdk_loginview_default_style = 0x7f0901c5;
-		public static final int com_sina_weibo_sdk_loginview_silver_style = 0x7f0901c6;
+		public static final int AppBaseTheme = 0x7f090098;
+		public static final int AppTheme = 0x7f090099;
+		public static final int com_sina_weibo_sdk_loginview_default_style = 0x7f0901c6;
+		public static final int com_sina_weibo_sdk_loginview_silver_style = 0x7f0901c7;
 	}
 }
