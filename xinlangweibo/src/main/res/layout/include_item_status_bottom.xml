@@ -16,6 +16,7 @@
         android:orientation="horizontal" >
 
         <LinearLayout
+            android:id="@+id/ll_btn_retweeted"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -43,6 +44,7 @@
             android:background="@color/divider_gray" />
 
         <LinearLayout
+            android:id="@+id/ll_btn_comment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

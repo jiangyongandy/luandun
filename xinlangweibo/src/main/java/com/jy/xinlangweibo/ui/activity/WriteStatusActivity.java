@@ -1,5 +1,6 @@
 package com.jy.xinlangweibo.ui.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,6 +18,7 @@ import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,9 +26,11 @@ import com.jy.xinlangweibo.BaseApplication;
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.models.retrofitservice.StatusInteraction;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
+import com.jy.xinlangweibo.utils.CommonImageLoader.CustomImageLoader;
 import com.jy.xinlangweibo.utils.EmoticonsUtils;
 import com.jy.xinlangweibo.utils.TitleBuilder;
 import com.jy.xinlangweibo.utils.ToastUtils;
+import com.jy.xinlangweibo.utils.WeiboStringUtils;
 import com.jy.xinlangweibo.widget.emotionkeyboard.EmoticonsEditText;
 import com.jy.xinlangweibo.widget.emotionkeyboard.EmoticonsEditText.OnTextChangedInterface;
 import com.jy.xinlangweibo.widget.emotionkeyboard.EmoticonsKeyBoardBar;
@@ -38,6 +42,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import rx.Observer;
 
 public class WriteStatusActivity extends BaseActivity implements
         OnClickListener, OnTextChangedInterface, BGASortableNinePhotoLayout.Delegate {
@@ -50,9 +55,32 @@ public class WriteStatusActivity extends BaseActivity implements
     private static final int REQUEST_CODE_PHOTO_PREVIEW = 2;
 
     private static final int MAX_PHOTO_COUNT = 9;
+    public static final int RESULT_UPDATE = 2;
+    public static final int RESULT_REPOST = 3;
+    public static final int RESULT_COMMENT = 4;
+    private PublishType publishType;
+    private ImageView iv_card_status;
+    private TextView tv_card_status;
+
+    public enum PublishType {
+
+        // 新微博
+        status,
+        // 新建评论
+        commentCreate,
+        // 回复评论
+        commentReply,
+        // 转发微博
+        statusRepost
+
+    }
 
     @BindView(R.id.snpl_moment_add_photos)
     BGASortableNinePhotoLayout snplMomentAddPhotos;
+    @BindView(R.id.et_content)
+    EmoticonsEditText et_content;
+    @BindView(R.id.rg_card_status)
+    RelativeLayout rg_card_status;
     private Status retweeted_status;
     private SharedPreferences sp;
     private InputMethodManager imm;
@@ -61,11 +89,30 @@ public class WriteStatusActivity extends BaseActivity implements
     private View iv_picture;
     private View iv_at;
     private View iv_topic;
-    private EmoticonsEditText et_content;
     private EmoticonsKeyBoardBar EmoticonsKeyBoardBar;
     private TitleBuilder titleBuilder;
     private View mContentView;
     private Handler handler = new Handler();
+
+    public static void intentToUpdate(Activity from ,int requestCode) {
+        Intent intent = new Intent(from, WriteStatusActivity.class);
+        intent.putExtra("publishType", PublishType.status);
+        from.startActivityForResult(intent,requestCode);
+    }
+
+    public static void intentToRepost(Activity from ,Status status,int requestCode) {
+        Intent intent = new Intent(from, WriteStatusActivity.class);
+        intent.putExtra("status",status);
+        intent.putExtra("publishType", PublishType.statusRepost);
+        from.startActivityForResult(intent,requestCode);
+    }
+
+    public static void intentToComment(Activity from ,Status status,int requestCode) {
+        Intent intent = new Intent(from, WriteStatusActivity.class);
+        intent.putExtra("status",status);
+        intent.putExtra("publishType", PublishType.commentCreate);
+        from.startActivityForResult(intent,requestCode);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,8 +120,38 @@ public class WriteStatusActivity extends BaseActivity implements
         setContentView(R.layout.activity_writestatus);
         ButterKnife.bind(this);
 
-        // 获得转发原微博内容
-        retweeted_status = (Status) getIntent().getSerializableExtra("status");
+        titleBuilder = new TitleBuilder(this);
+        iv_card_status = (ImageView) findViewById(R.id.iv_card_status);
+        tv_card_status = (TextView) findViewById(R.id.tv_card_status);
+        publishType = (PublishType) getIntent().getSerializableExtra("publishType");
+        if(publishType == null) {
+            showLog("获取参数错误");
+            showToast("获取参数错误");
+            finish();
+        }
+//        showLog("获取publishType==="+publishType.name()+"  "+publishType);
+        switch (publishType) {
+            case status:
+                titleBuilder.setTitle("发表微博");
+                et_content.setHint("分享有趣的事情......");
+                break;
+            case statusRepost:
+                titleBuilder.setTitle("转发");
+                et_content.setHint("输入内容......");
+                rg_card_status.setVisibility(View.GONE);
+                // 获得原微博内容
+                retweeted_status = (Status) getIntent().getSerializableExtra("status");
+                break;
+            case commentCreate:
+                titleBuilder.setTitle("评论");
+                et_content.setHint("输入内容......");
+                rg_card_status.setVisibility(View.GONE);
+                // 获得原微博内容
+                retweeted_status = (Status) getIntent().getSerializableExtra("status");
+                break;
+            case commentReply:
+        }
+
 
         imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
@@ -128,38 +205,39 @@ public class WriteStatusActivity extends BaseActivity implements
     }
 
     private void initWeiboContent() {
-        et_content = (EmoticonsEditText) findViewById(R.id.et_content);
-
         snplMomentAddPhotos.setDelegate(this);
         snplMomentAddPhotos.init(this);
         et_content.setOnTextChangedInterface(this);
         et_content.setOnClickListener(this);
 
         if (retweeted_status != null) {
-            View rg_card_status = findViewById(R.id.rg_card_status);
             rg_card_status.setVisibility(View.VISIBLE);
-            ImageView iv_card_status = (ImageView) findViewById(R.id.iv_card_status);
+            snplMomentAddPhotos.setVisibility(View.GONE);
             if (TextUtils.isEmpty(retweeted_status.thumbnail_pic)) {
                 iv_card_status.setVisibility(View.GONE);
+            }else {
+                CustomImageLoader.displayImage(this,
+                        iv_card_status,
+                        retweeted_status.thumbnail_pic,
+                        R.drawable.timeline_image_loading,
+                        R.drawable.timeline_image_failure,0,0);
             }
-            TextView tv_card_status = (TextView) findViewById(R.id.tv_card_status);
-            tv_card_status.setText(retweeted_status.text);
+            tv_card_status.setText(WeiboStringUtils.getOnlyImageSpan(this,retweeted_status.text,tv_card_status));
         }
     }
 
     private void initTitle() {
-        titleBuilder = new TitleBuilder(this)
-                .setTitle("发表微博")
-                .setLeftimg(R.drawable.icon_navbarback_gra2ora_sel)
-                .setrightButton("发送", R.drawable.timeline_card_small_button,
-                        R.color.bg_gray_pressed).setRightOnclickListener(this)
-                .setLeftOnclickListener(new OnClickListener() {
+        titleBuilder
+        .setLeftimg(R.drawable.icon_navbarback_gra2ora_sel)
+        .setrightButton("发送", R.drawable.timeline_card_small_button,
+                R.color.bg_gray_pressed).setRightOnclickListener(this)
+        .setLeftOnclickListener(new OnClickListener() {
 
-                    @Override
-                    public void onClick(View v) {
-                        WriteStatusActivity.this.finish();
-                    }
-                });
+            @Override
+            public void onClick(View v) {
+                WriteStatusActivity.this.finish();
+            }
+        });
     }
 
     @Override
@@ -180,78 +258,135 @@ public class WriteStatusActivity extends BaseActivity implements
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.iv_picture:
+        case R.id.iv_picture:
 
-                break;
-            case R.id.iv_at:
+            break;
+        case R.id.iv_at:
 
-                break;
-            case R.id.iv_topic:
+            break;
+        case R.id.iv_topic:
 
-                break;
-            case R.id.iv_emotions:
-                if (EmoticonsKeyBoardBar.getVisibility() == View.VISIBLE) {
-                    // 显示表情面板时点击,将按钮图片设为笑脸按钮,同时隐藏面板
-                    iv_emotions.setImageResource(R.drawable.btn_insert_emotion);
+            break;
+        case R.id.iv_emotions:
+            if (EmoticonsKeyBoardBar.getVisibility() == View.VISIBLE) {
+                // 显示表情面板时点击,将按钮图片设为笑脸按钮,同时隐藏面板
+                iv_emotions.setImageResource(R.drawable.btn_insert_emotion);
 //				EmoticonsKeyBoardBar.setVisibility(View.GONE);
 //				getWindow().setSoftInputMode(
 //						WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 //				imm.showSoftInput(et_content, InputMethodManager.SHOW_IMPLICIT);
 
-                    lockContentHeight();   //固定内容布局的位置  通过固定布局高度实现（键盘的RESIZE模式只对 内容布局不是固定高度有效？）
-                    hideEmotionLayout(true);
-                    unlockContentHeightDelayed();
+                lockContentHeight();   //固定内容布局的位置  通过固定布局高度实现（键盘的RESIZE模式只对 内容布局不是固定高度有效？）
+                hideEmotionLayout(true);
+                unlockContentHeightDelayed();
 
-                } else {
-                    // 未显示表情面板时点击,将按钮图片设为键盘,同时显示面板
-                    iv_emotions.setImageResource(R.drawable.btn_insert_keyboard);
+            } else {
+                // 未显示表情面板时点击,将按钮图片设为键盘,同时显示面板
+                iv_emotions.setImageResource(R.drawable.btn_insert_keyboard);
 //				getWindow().setSoftInputMode(
 //						WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 //				imm.hideSoftInputFromWindow(et_content.getWindowToken(),
 //						InputMethodManager.HIDE_NOT_ALWAYS); // 强制隐藏键盘
 //				EmoticonsKeyBoardBar.setVisibility(View.VISIBLE);
 
-                    if (isSoftInputShown()) {
-                        lockContentHeight();
-                        showEmotionLayout();
-                        unlockContentHeightDelayed();
-                    } else {
-                        showEmotionLayout();
-                    }
-
-                }
-                break;
-            case R.id.iv_add:
-
-                break;
-            case R.id.et_content:
-                if (EmoticonsKeyBoardBar.getVisibility() == View.VISIBLE) {
-                    EmoticonsKeyBoardBar.setVisibility(View.GONE);
-                }
-                break;
-            case R.id.nav_right_text:
-                if (!TextUtils.isEmpty(et_content.getText().toString())) {
-                    if(snplMomentAddPhotos.getData().size() == 1) {
-                        StatusInteraction.getInstance().uploadFile(
-                                BaseApplication.getInstance().getAccessAccessToken().getToken(),
-                                et_content.getText().toString(),
-                                snplMomentAddPhotos.getData().get(0));
-                    }else if(snplMomentAddPhotos.getData().size() > 1){
-//                       多图暂时只上传第一张图
-                        StatusInteraction.getInstance().uploadFile(
-                                BaseApplication.getInstance().getAccessAccessToken().getToken(),
-                                et_content.getText().toString(),
-                                snplMomentAddPhotos.getData().get(0));
-                    }else if(snplMomentAddPhotos.getData().size() == 0){
-                        StatusInteraction.getInstance().update(
-                                BaseApplication.getInstance().getAccessAccessToken().getToken(),
-                                et_content.getText().toString());
-                    }
-
+                if (isSoftInputShown()) {
+                    lockContentHeight();
+                    showEmotionLayout();
+                    unlockContentHeightDelayed();
                 } else {
-                    ToastUtils.show(this, "发送内容不能为空", Toast.LENGTH_SHORT);
+                    showEmotionLayout();
                 }
-                break;
+
+            }
+            break;
+        case R.id.iv_add:
+
+            break;
+        case R.id.et_content:
+            if (EmoticonsKeyBoardBar.getVisibility() == View.VISIBLE) {
+                EmoticonsKeyBoardBar.setVisibility(View.GONE);
+            }
+            break;
+        case R.id.nav_right_text:
+            if (!TextUtils.isEmpty(et_content.getText().toString())) {
+                if(snplMomentAddPhotos.getData().size() == 1) {
+                    StatusInteraction.getInstance().uploadFile(
+                            BaseApplication.getInstance().getAccessAccessToken().getToken(),
+                            et_content.getText().toString(),
+                            snplMomentAddPhotos.getData().get(0));
+                }
+                else if(snplMomentAddPhotos.getData().size() > 1){
+//                       多图暂时只上传第一张图
+                    StatusInteraction.getInstance().uploadFile(
+                            BaseApplication.getInstance().getAccessAccessToken().getToken(),
+                            et_content.getText().toString(),
+                            snplMomentAddPhotos.getData().get(0));
+                }
+                else if(snplMomentAddPhotos.getData().size() == 0){
+                    switch (publishType) {
+                    case status:
+                    StatusInteraction.getInstance().update(
+                    BaseApplication.getInstance().getAccessAccessToken().getToken(),
+                    et_content.getText().toString());
+                    finishForResult(RESULT_UPDATE);
+                    break;
+                    case statusRepost:
+                    StatusInteraction.getInstance().statusesRepost(
+                    BaseApplication.getInstance().getAccessAccessToken().getToken(),
+                    retweeted_status.id,
+                    et_content.getText().toString(),
+                    new Observer<Status>() {
+                        @Override
+                        public void onCompleted() {
+
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+
+                        }
+
+                        @Override
+                        public void onNext(Status status) {
+                            showLog("转发成功======="+status);
+                        }
+                    });
+                    finishForResult(RESULT_REPOST);
+                    break;
+                    case commentCreate:
+                    StatusInteraction.getInstance().commentsCreate(
+                            BaseApplication.getInstance().getAccessAccessToken().getToken(),
+                            retweeted_status.id,
+                            et_content.getText().toString(),
+                            new Observer<Status>() {
+                                @Override
+                                public void onCompleted() {
+
+                                }
+
+                                @Override
+                                public void onError(Throwable e) {
+
+                                }
+
+                                @Override
+                                public void onNext(Status status) {
+                                    showLog("评论成功======="+status);
+                                }
+                            });
+                    finishForResult(RESULT_COMMENT);
+                    break;
+                    case commentReply:
+                        finishForResult(RESULT_COMMENT);
+                    }
+                    break;
+                }
+                finishForResult(RESULT_UPDATE);
+
+            } else {
+                ToastUtils.show(this, "内容不能为空", Toast.LENGTH_SHORT);
+            }
+            break;
 
         }
     }

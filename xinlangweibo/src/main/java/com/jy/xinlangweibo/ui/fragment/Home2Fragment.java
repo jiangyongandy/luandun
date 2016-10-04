@@ -31,6 +31,7 @@ import com.jy.xinlangweibo.ui.IView.HomeFragmentView;
 import com.jy.xinlangweibo.ui.activity.MainActivity;
 import com.jy.xinlangweibo.ui.activity.StatusDetailsActivity;
 import com.jy.xinlangweibo.ui.activity.UserShowActivity;
+import com.jy.xinlangweibo.ui.activity.WriteStatusActivity;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.ui.activity.base.FragmentToolbarActivity;
 import com.jy.xinlangweibo.ui.adapter.RecyleViewHolder;
@@ -283,8 +284,10 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
         }
     });
 
-    public static class TimeLineItemViewHolderBase extends ViewHolderBase<Status> implements BGANinePhotoLayout.Delegate{
-
+    public static class TimeLineItemViewHolderBase extends ViewHolderBase<Status> implements BGANinePhotoLayout.Delegate {
+        //
+        private static final int REQUEST_REPOST = 1;
+        private static final int REQUEST_COMMENT = 2;
         @BindView(R.id.iv_head)
         ImageView ivHead;
         @BindView(R.id.tv_pubname)
@@ -313,6 +316,10 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
         BGANinePhotoLayout timelinePhotos;
         @BindView(R.id.retweeted_timeline_photos)
         BGANinePhotoLayout retweetedTimelinePhotos;
+        @BindView(R.id.ll_btn_retweeted)
+        LinearLayout llBtnRetweeted;
+        @BindView(R.id.ll_btn_comment)
+        LinearLayout llBtnComment;
         private ImageLoader imageLoader = ImageLoader.getInstance();
         private Context context;
 
@@ -325,8 +332,8 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
         }
 
         @Override
-        public void showData(int position, Status status) {
-            if(status == null)
+        public void showData(int position, final Status status) {
+            if (status == null)
                 return;
             final User user = status.user;
 
@@ -340,7 +347,7 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
             ivHead.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    UserShowActivity.launch(context,user.screen_name);
+                    UserShowActivity.launch(context, user.screen_name);
                 }
             });
             //bind content
@@ -353,7 +360,7 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
                 }
                 timelinePhotos.setData(status.pic_urls);
                 timelinePhotos.setDelegate(this);
-            }else {
+            } else {
                 ArrayList<String> strings = new ArrayList<>();
                 timelinePhotos.setData(strings);
             }
@@ -368,8 +375,22 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
                     .setText((CharSequence) (status.attitudes_count > 0 ? ""
                             + status.attitudes_count : "赞"));
 
+            llBtnRetweeted.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    WriteStatusActivity.intentToRepost((Activity) context, status, REQUEST_REPOST);
+                }
+            });
+
+            llBtnComment.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    WriteStatusActivity.intentToComment((Activity) context, status, REQUEST_COMMENT);
+                }
+            });
+
             // 点赞的特殊处理
-            llStatusUnlike.setOnClickListener(new View.OnClickListener() {
+            llStatusUnlike.setOnClickListener(new OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
@@ -402,7 +423,7 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
                     }
                     retweetedTimelinePhotos.setData(status.retweeted_status.pic_urls);
                     retweetedTimelinePhotos.setDelegate(this);
-                }else {
+                } else {
                     ArrayList<String> strings = new ArrayList<>();
                     retweetedTimelinePhotos.setData(strings);
                 }
@@ -417,9 +438,9 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
         public void onClickNinePhotoItem(BGANinePhotoLayout ninePhotoLayout, View view, int position, String model, List<String> models) {
             //					前往图片浏览器
             Intent intent = new Intent(view.getContext(), FragmentToolbarActivity.class);
-            intent.putExtra("Pic_urls", (ArrayList)models);
+            intent.putExtra("Pic_urls", (ArrayList) models);
             intent.putExtra("Position", position);
-            FragmentToolbarActivity.launch(view.getContext(), ImageBrowserFragment.class,intent,false);
+            FragmentToolbarActivity.launch(view.getContext(), ImageBrowserFragment.class, intent, false);
         }
 
         @Override

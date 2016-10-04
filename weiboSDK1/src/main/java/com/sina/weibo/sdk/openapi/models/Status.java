@@ -33,7 +33,7 @@ public class Status extends BaseSerial{
     /** 微博创建时间 */
     public String created_at;
     /** 微博ID */
-    public String id;
+    public long id;
     /** 微博MID */
     public String mid;
     /** 字符串型的微博ID */
@@ -101,7 +101,7 @@ public class Status extends BaseSerial{
         
         Status status = new Status();
         status.created_at       = jsonObject.optString("created_at");
-        status.id               = jsonObject.optString("id");
+        status.id               = jsonObject.optLong("id");
         status.mid              = jsonObject.optString("mid");
         status.idstr            = jsonObject.optString("idstr");
         status.text             = jsonObject.optString("text");

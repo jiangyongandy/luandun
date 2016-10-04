@@ -172,4 +172,14 @@ public class StatusInteraction {
         Observable<StatusListBean> observable =  service.statusesUser_timeline(access_token,screen_name);
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
+
+    public void statusesRepost(String access_token,long id,String status,Observer<Status > observer) {
+        Observable<Status> observable = service.statusesRepost(access_token, String.valueOf(id), status);
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+    public void commentsCreate(String access_token,long id,String comment,Observer<Status > observer) {
+        Observable<Status> observable = service.commentsCreate(access_token, String.valueOf(id), comment);
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
 }

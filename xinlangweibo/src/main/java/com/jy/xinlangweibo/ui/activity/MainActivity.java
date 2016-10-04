@@ -1,6 +1,7 @@
 package com.jy.xinlangweibo.ui.activity;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -36,6 +37,7 @@ import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity implements OnCheckedChangeListener, NavigationView.OnNavigationItemSelectedListener {
 
+    private static final int REQUSET_UPDATE = 1;
     @BindView(R.id.tabcenterid)
     ImageView tabcenterid;
     @BindView(R.id.rg)
@@ -153,6 +155,21 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
             drawerToggle.syncState();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (resultCode) {
+            case WriteStatusActivity.RESULT_UPDATE:
+                showToast("微博已发表");
+            break;
+            case WriteStatusActivity.RESULT_REPOST:
+                showToast("已转发");
+            break;
+            case WriteStatusActivity.RESULT_COMMENT:
+                showToast("已评论");
+            break;
+        }
+    }
 
     private void initView() {
 //     Fragment 初始化。
@@ -215,7 +232,7 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
 
     @OnClick(R.id.tabcenterid)
     public void onClick() {
-        MainActivity.this.intent2Activity(WriteStatusActivity.class);
+        WriteStatusActivity.intentToUpdate(this,REQUSET_UPDATE);
     }
 
     @Override

@@ -119,6 +119,16 @@ public class BaseActivity extends SwipeBackActivity {
 		startActivity(new Intent(this, tar));
 	}
 
+	public void startActivityForResult(Class<?extends Activity> tar,int requsetCode) {
+		startActivityForResult(new Intent(this,tar),requsetCode);
+	}
+
+	public void finishForResult(int resultCode) {
+		Intent intent = new Intent();
+		setResult(resultCode, intent);
+		finish();
+	}
+
 	public void showToast(String text) {
 		ToastUtils.show(this, text, Toast.LENGTH_SHORT);
 	}

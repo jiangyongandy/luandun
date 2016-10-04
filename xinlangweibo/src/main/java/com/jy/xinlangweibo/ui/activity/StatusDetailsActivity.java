@@ -74,7 +74,7 @@ public class StatusDetailsActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_status_details);
 		status = (Status) getIntent().getSerializableExtra("Status");
-		id = Long.parseLong(status.id);
+		id = status.id;
 		vh = ViewHolder.getViewHolder(this);
 		imageLoader = ImageLoader.getInstance();
 		// 初始化原文微博 及给 评论列表设置适配器

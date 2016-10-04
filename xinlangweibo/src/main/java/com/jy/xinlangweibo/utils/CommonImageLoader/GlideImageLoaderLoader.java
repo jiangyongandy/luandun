@@ -22,7 +22,10 @@ public class GlideImageLoaderLoader extends ImageLoader {
     public void displayImage(Activity activity, final ImageView imageView, String path, @DrawableRes int loadingResId, @DrawableRes int failResId, int width, int height) {
         final String finalPath = getPath(path);
         if(width == 0|| height == 0) {
-            Glide.with(activity).load(finalPath).asBitmap().diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder(loadingResId).error(failResId).listener(new RequestListener<String, Bitmap>() {
+            Glide.with(activity).load(finalPath).asBitmap().diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                    .placeholder(loadingResId).error(failResId)
+                    .override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
+                    .listener(new RequestListener<String, Bitmap>() {
                 @Override
                 public boolean onException(Exception e, String model, Target<Bitmap> target, boolean isFirstResource) {
                     Logger.showLog("图片加载异常","图片加载异常");
