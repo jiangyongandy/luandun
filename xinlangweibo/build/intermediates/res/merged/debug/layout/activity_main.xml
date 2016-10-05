@@ -118,8 +118,8 @@
         android:layout_gravity="start"
         android:backgroundTint="@color/white"
         android:background="@color/white"
-        app:elevation="2dp"
         app:headerLayout="@layout/nv_header"
+        app:elevation="2dp"
         app:menu="@menu/main_drawer" />
 
 </android.support.v4.widget.DrawerLayout>

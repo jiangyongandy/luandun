@@ -1959,6 +1959,12 @@
     </style><style name="appTheme.Search.LightBlue">
         <item name="themeColor">@color/md_light_blue_500</item>
         <item name="themeStatusbarColor">@color/md_light_blue_700</item>
+    </style><style name="navhead_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#FFF</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
     </style><style name="appTheme.Profile.Red">
         <item name="themeColor">@color/md_red_500</item>
         <item name="themeStatusbarColor">@color/md_red_700</item>

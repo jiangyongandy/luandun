@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -25,6 +24,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.jiang.library.ui.adapter.listviewadapter.ListViewDataAdapter;
 import com.jiang.library.ui.adapter.listviewadapter.ViewHolderBase;
 import com.jiang.library.ui.adapter.listviewadapter.ViewHolderCreator;
+import com.jiang.library.ui.widget.BasePopupWindow;
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.presenter.StatusPresenter;
 import com.jy.xinlangweibo.ui.IView.HomeFragmentView;
@@ -127,7 +127,7 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
      *
      */
     private void initPop() {
-        View popView = LayoutInflater.from(activity).inflate(
+/*        View popView = LayoutInflater.from(activity).inflate(
                 R.layout.pop_mainact_navright, null);
         pw = new PopupWindow(popView, Utils.dip2px(activity, 115),
                 LinearLayout.LayoutParams.WRAP_CONTENT, true);
@@ -143,7 +143,7 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
             public void onDismiss() {
                 ((MainActivity) activity).getMainmenu().getForeground().setAlpha(0); // restore
             }
-        });
+        });*/
     }
 
 
@@ -267,11 +267,16 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
     }
 
     public void showPopupWindow() {
-        if (!pw.isShowing()) {
 //            Logger.showLog("屏幕宽度：" + Utils.getDisplayWidthPixels(activity) + "弹窗宽度:" + View.MeasureSpec.getSize(pw.getWidth()), "计算弹窗偏移量");
-            activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        if(pw == null)
+            pw = new BasePopupWindow.Builder(activity)
+                    .setBackground(getResources().getDrawable(R.drawable.conversation_options_bg))
+                    .setPopupWindowView(R.layout.pop_mainact_navright)
+                    .setWidth(Utils.dip2px(activity, 115))
+                    .build();
+        if (!pw.isShowing()) {
             pw.showAsDropDown(((MainActivity) activity).getToolbar(), Utils.getDisplayWidthPixels(activity) - View.MeasureSpec.getSize(pw.getWidth()) - Utils.dip2px(activity, 10), 0);
-            ((MainActivity) activity).getMainmenu().getForeground().setAlpha(50); // dim
+//            ((MainActivity) activity).getMainmenu().getForeground().setAlpha(50); // dim
         } else {
             pw.dismiss();
         }

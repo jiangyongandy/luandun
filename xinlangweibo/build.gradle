@@ -39,7 +39,7 @@ dependencies {
 //butterknife相关依赖
     apt 'com.jakewharton:butterknife-compiler:8.2.1'
     compile 'com.jakewharton:butterknife:8.2.1'
-
+//material-dialogs
     compile('com.github.afollestad.material-dialogs:core:0.8.5.1@aar') {
         transitive = true
     }

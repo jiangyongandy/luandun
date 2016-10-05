@@ -3,8 +3,11 @@ package com.jy.xinlangweibo.models.retrofitservice;
 import com.blankj.utilcode.utils.FileUtils;
 import com.google.gson.Gson;
 import com.jy.xinlangweibo.models.retrofitservice.bean.StatusListBean;
+import com.jy.xinlangweibo.models.retrofitservice.bean.UidBean;
 import com.jy.xinlangweibo.models.retrofitservice.bean.UsersShowBean;
+import com.jy.xinlangweibo.utils.Logger;
 import com.sina.weibo.sdk.openapi.models.Status;
+import com.sina.weibo.sdk.openapi.models.User;
 
 import java.io.File;
 
@@ -168,6 +171,18 @@ public class StatusInteraction {
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
+    public void userShow(final String access_token, Observer<User > observer) {
+        Observable<UidBean> tokenObservable = service.accountGet_uid(access_token);
+        tokenObservable.flatMap(new Func1<UidBean, Observable<User>>() {
+            @Override
+            public Observable<User> call(UidBean uidBean) {
+                Logger.showLog("fun1================"+uidBean.uid,"flatmap");
+                // 返回 Observable<User>，先请求uid，并在响应后发送uid到usershow
+                return service.userShow2(access_token, String.valueOf(uidBean.uid));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
     public void statusesUser_timeline(String access_token,String screen_name,Observer<StatusListBean  > observer) {
         Observable<StatusListBean> observable =  service.statusesUser_timeline(access_token,screen_name);
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
@@ -182,4 +197,5 @@ public class StatusInteraction {
         Observable<Status> observable = service.commentsCreate(access_token, String.valueOf(id), comment);
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
+
 }

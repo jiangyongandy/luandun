@@ -28,7 +28,7 @@ import org.json.JSONObject;
 public class User extends BaseSerial  {
 
     /** 用户UID（int64） */
-    public String id;
+    public long id;
     /** 字符串型的用户 UID */
     public String idstr;
     /** 用户昵称 */
@@ -119,7 +119,7 @@ public class User extends BaseSerial  {
         }
         
         User user = new User();
-        user.id                 = jsonObject.optString("id", "");
+        user.id                 = jsonObject.optLong("id", -1);
         user.idstr              = jsonObject.optString("idstr", "");
         user.screen_name        = jsonObject.optString("screen_name", "");
         user.name               = jsonObject.optString("name", "");

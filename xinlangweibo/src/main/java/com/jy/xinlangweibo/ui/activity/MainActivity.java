@@ -1,6 +1,8 @@
 package com.jy.xinlangweibo.ui.activity;
 
+import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,7 +23,10 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 
+import com.jiang.library.ui.BaseViewHolder;
 import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.models.retrofitservice.BaseObserver;
+import com.jy.xinlangweibo.models.retrofitservice.StatusInteraction;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.ui.activity.base.FragmentToolbarActivity;
 import com.jy.xinlangweibo.ui.fragment.DiscoverFragment;
@@ -31,8 +36,11 @@ import com.jy.xinlangweibo.ui.fragment.MessageFragment;
 import com.jy.xinlangweibo.ui.fragment.Profile2Fragment;
 import com.jy.xinlangweibo.ui.fragment.setting.SettingFragment;
 import com.jy.xinlangweibo.utils.ACache;
+import com.jy.xinlangweibo.utils.CommonImageLoader.CustomImageLoader;
+import com.sina.weibo.sdk.openapi.models.User;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity implements OnCheckedChangeListener, NavigationView.OnNavigationItemSelectedListener {
@@ -99,7 +107,7 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
         FragmentController.onDestroy();
     }
 
-//    因为FragmentController为单例模式 finish以后ondestroy（验证是新activity oncreate后执行）
+    //    因为FragmentController为单例模式 finish以后ondestroy（验证是新activity oncreate后执行）
 //    并不会立即执行，所以在oncreate 之前需要将FragmentController instance置为空,保证FragmentController
 //    与activity的生命周期一致
     @Override
@@ -161,13 +169,13 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
         switch (resultCode) {
             case WriteStatusActivity.RESULT_UPDATE:
                 showToast("微博已发表");
-            break;
+                break;
             case WriteStatusActivity.RESULT_REPOST:
                 showToast("已转发");
-            break;
+                break;
             case WriteStatusActivity.RESULT_COMMENT:
                 showToast("已评论");
-            break;
+                break;
         }
     }
 
@@ -180,6 +188,15 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
 //		底部按钮初始化
         rg.setOnCheckedChangeListener(this);
         navgationview.setNavigationItemSelectedListener(this);
+        final BaseViewHolder<User> navHeadViewHolderHolder = new NavHeadViewHolder(this,navgationview.getHeaderView(0));
+        StatusInteraction.getInstance().userShow(getAccessAccessToken().getToken(),
+            new BaseObserver<User>() {
+            @Override
+            public void onNext(User user) {
+                super.onNext(user);
+                navHeadViewHolderHolder.bindData(user);
+            }
+        });
         initToolbar();
     }
 
@@ -232,7 +249,7 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
 
     @OnClick(R.id.tabcenterid)
     public void onClick() {
-        WriteStatusActivity.intentToUpdate(this,REQUSET_UPDATE);
+        WriteStatusActivity.intentToUpdate(this, REQUSET_UPDATE);
     }
 
     @Override
@@ -264,5 +281,50 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
     @Override
     public Toolbar getToolbar() {
         return toolbar;
+    }
+
+    class NavHeadViewHolder extends BaseViewHolder<User> {
+
+        @BindView(R.id.profile_image)
+        ImageView profileImage;
+        @BindView(R.id.tv_screen_name)
+        TextView tvScreenName;
+        @BindView(R.id.tv_location)
+        TextView tvLocation;
+        @BindView(R.id.tv_followers_count)
+        TextView tvFollowersCount;
+        @BindView(R.id.tv_friends_count)
+        TextView tvFriendsCount;
+
+        public NavHeadViewHolder(Context context,View convertView) {
+            super(context,convertView);
+        }
+
+        @Override
+        public int getLayout() {
+            return R.layout.nv_header;
+        }
+
+        @Override
+        public void onBindView(View convertView) {
+            ButterKnife.bind(this,convertView);
+        }
+
+        @Override
+        public void bindData(final User model) {
+            CustomImageLoader.displayImage((Activity) context,profileImage,model.avatar_large,
+                    R.drawable.avatar_default,
+                    R.drawable.avatar_default,0,0);
+            tvScreenName.setText("昵称："+model.screen_name);
+            tvFollowersCount.setText("粉丝："+String.valueOf(model.followers_count));
+            tvFriendsCount.setText("关注："+String.valueOf(model.friends_count));
+            tvLocation.setText("所在地："+model.location);
+            profileImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    UserShowActivity.launch(context, model.screen_name);
+                }
+            });
+        }
     }
 }

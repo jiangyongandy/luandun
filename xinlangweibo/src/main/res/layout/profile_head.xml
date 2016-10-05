@@ -1,66 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/head"
     android:layout_width="match_parent"
-    android:layout_height="270dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
     android:background="@color/bg_gray_dark"
-    android:gravity="bottom" >
-
-    <ImageView
-        android:id="@+id/headBackground"
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/beautifulrichu" />
+    card_view:cardCornerRadius="4dp">
 
     <RelativeLayout
-        android:id="@+id/xlistview_header_content"
-        android:layout_alignParentBottom="true"
+        android:id="@+id/head"
         android:layout_width="match_parent"
-        android:layout_height="270dp" >
+        android:layout_height="270dp"
+        android:gravity="bottom">
 
-        <com.jy.xinlangweibo.widget.CircleImageView
-            android:id="@+id/iv_head"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_centerInParent="true"
-            android:src="@drawable/avatar_default" />
+        <ImageView
+            android:id="@+id/headBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/beautifulrichu" />
 
-        <TextView
-            android:id="@+id/tv_screen_name"
-            android:layout_below="@id/iv_head"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="昵称：screen_name"
-            />
+        <RelativeLayout
+            android:id="@+id/xlistview_header_content"
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:layout_alignParentBottom="true">
 
-        <LinearLayout
-            android:layout_below="@id/tv_screen_name"
-            android:layout_marginTop="10dp"
-            android:layout_centerHorizontal="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            <com.jy.xinlangweibo.widget.CircleImageView
+                android:id="@+id/iv_head"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/avatar_default" />
+
             <TextView
-                android:id="@+id/tv_location"
+                android:id="@+id/tv_screen_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="地址：北京"
-                />
-            <TextView
-                android:id="@+id/tv_created_at"
-                android:layout_marginLeft="10dp"
+                android:layout_below="@id/iv_head"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                tools:text="昵称：screen_name" />
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="创建时间：2016/09/01"
-                />
-        </LinearLayout>
+                android:layout_below="@id/tv_screen_name"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="地址：北京" />
+
+                <TextView
+                    android:id="@+id/tv_created_at"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    tools:text="创建时间：2016/09/01" />
+            </LinearLayout>
+
+        </RelativeLayout>
 
     </RelativeLayout>
 
-</RelativeLayout>
+</android.support.v7.widget.CardView>
