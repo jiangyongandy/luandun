@@ -62,7 +62,7 @@ public class StatusListBean {
      * is_show_bulletin : 2
      */
 
-    private List<StatusesBean> statuses;
+    private List<StatusBean> statuses;
     private List<?> marks;
 
     public static StatusListBean objectFromData(String str, String key) {
@@ -118,11 +118,11 @@ public class StatusListBean {
         this.interval = interval;
     }
 
-    public List<StatusesBean> getStatuses() {
+    public List<StatusBean> getStatuses() {
         return statuses;
     }
 
-    public void setStatuses(List<StatusesBean> statuses) {
+    public void setStatuses(List<StatusBean> statuses) {
         this.statuses = statuses;
     }
 

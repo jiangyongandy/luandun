@@ -14116,9 +14116,9 @@
                     "startLine": 2780,
                     "startColumn": 4,
                     "startOffset": 190668,
-                    "endLine": 2786,
+                    "endLine": 2790,
                     "endColumn": 12,
-                    "endOffset": 190985
+                    "endOffset": 191188
                 },
                 "from": {
                     "file": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\values\\styles.xml",
@@ -14126,20 +14126,20 @@
                         "startLine": 479,
                         "startColumn": 4,
                         "startOffset": 17974,
-                        "endLine": 485,
+                        "endLine": 489,
                         "endColumn": 12,
-                        "endOffset": 18297
+                        "endOffset": 18504
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 2787,
+                    "startLine": 2791,
                     "startColumn": 4,
-                    "startOffset": 190990,
-                    "endLine": 2792,
+                    "startOffset": 191193,
+                    "endLine": 2796,
                     "endColumn": 12,
-                    "endOffset": 191270
+                    "endOffset": 191473
                 },
                 "from": {
                     "file": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\values\\styles.xml"
@@ -14147,12 +14147,12 @@
             },
             {
                 "to": {
-                    "startLine": 2793,
+                    "startLine": 2797,
                     "startColumn": 4,
-                    "startOffset": 191275,
-                    "endLine": 2802,
+                    "startOffset": 191478,
+                    "endLine": 2806,
                     "endColumn": 12,
-                    "endOffset": 191772
+                    "endOffset": 191975
                 },
                 "from": {
                     "file": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\values\\styles.xml"

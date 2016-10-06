@@ -3,9 +3,8 @@ package com.jy.xinlangweibo.models.retrofitservice;
 import com.jy.xinlangweibo.models.retrofitservice.bean.StatusListBean;
 import com.jy.xinlangweibo.models.retrofitservice.bean.UidBean;
 import com.jy.xinlangweibo.models.retrofitservice.bean.UploadPicResultBean;
-import com.jy.xinlangweibo.models.retrofitservice.bean.UsersShowBean;
+import com.jy.xinlangweibo.models.retrofitservice.bean.UserBean;
 import com.sina.weibo.sdk.openapi.models.Status;
-import com.sina.weibo.sdk.openapi.models.User;
 
 import java.util.Map;
 
@@ -74,23 +73,23 @@ public interface StatusService {
      * @return
      */
     @GET("users/show.json")
-    Observable<UsersShowBean> userShow(@Query("access_token" ) String access_token,
-                                                   @Query("screen_name") String screen_name);
+    Observable<UserBean> userShow(@Query("access_token" ) String access_token,
+                                  @Query("screen_name") String screen_name);
 
     /**
      * 展示用户信息
      * @return
      */
     @GET("users/show.json")
-    Observable<User> userShow(@QueryMap Map<String, String> params);
+    Observable<com.sina.weibo.sdk.openapi.models.User> userShow(@QueryMap Map<String, String> params);
 
     /**
      * 展示用户信息
      * @return
      */
     @GET("users/show.json")
-    Observable<User> userShow2(@Query("access_token" ) String access_token,
-                               @Query(value = "uid") String uid);
+    Observable<UserBean> userShow2(@Query("access_token" ) String access_token,
+                                   @Query(value = "uid") String uid);
 
     /**
      * 返回指定某个用户的微博

@@ -2,51 +2,70 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="250dp"
     android:background="@drawable/beautifulrichu"
+    android:paddingTop="25dp"
     android:orientation="vertical"
-    android:padding="16dp">
+    >
+
+    <ImageView
+        android:src="@drawable/profile_shadow"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_height="120dp" />
 
     <com.jy.xinlangweibo.widget.CircleImageView
         android:id="@+id/profile_image"
         android:layout_width="76dp"
         android:layout_height="76dp"
-        android:layout_marginTop="8dp"
+        android:layout_margin="8dp"
         android:background="@drawable/avatar_default" />
 
-    <TextView
-        android:id="@+id/tv_location"
-        style="@style/navhead_text"
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        tools:text="http" />
+        android:layout_alignLeft="@id/profile_image"
+        android:id="@+id/ll_user_show">
 
-    <TextView
-        android:id="@+id/tv_screen_name"
-        style="@style/navhead_text"
-        android:layout_above="@id/tv_location"
-        android:layout_marginBottom="19dp"
-        android:paddingBottom="4dp"
-        android:text="昵称：" />
+        <TextView
+            android:id="@+id/tv_screen_name"
+            style="@style/navhead_text"
+            android:textSize="24sp"
+            android:layout_marginBottom="19dp"
+            android:text="程序员" />
 
+        <TextView
+            android:id="@+id/tv_location"
+            style="@style/navhead_text"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"
+            tools:text="湖南岳阳" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="66dp"
-        android:layout_toRightOf="@id/tv_location"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/tv_followers_count"
-            style="@style/navhead_text"
-            tools:text="粉丝： 12" />
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginLeft="50dp"
+        android:layout_toRightOf="@id/ll_user_show"
+        android:layout_alignTop="@id/ll_user_show"
+        >
 
         <TextView
             android:id="@+id/tv_friends_count"
             style="@style/navhead_text"
-            android:layout_marginTop="20dp"
-            tools:text="朋友： 12" />
+            tools:text="关注：12" />
+
+        <TextView
+            android:id="@+id/tv_followers_count"
+            style="@style/navhead_text"
+            android:layout_marginTop="10dp"
+            tools:text="粉丝：12" />
     </LinearLayout>
 
 </RelativeLayout>

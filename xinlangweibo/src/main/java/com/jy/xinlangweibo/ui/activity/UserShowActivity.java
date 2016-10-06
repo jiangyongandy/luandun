@@ -24,9 +24,9 @@ import com.jiang.library.ui.adapter.recyleviewadapter.IITemView;
 import com.jiang.library.ui.adapter.recyleviewadapter.IItemViewCreator;
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.models.retrofitservice.StatusInteraction;
+import com.jy.xinlangweibo.models.retrofitservice.bean.StatusBean;
 import com.jy.xinlangweibo.models.retrofitservice.bean.StatusListBean;
-import com.jy.xinlangweibo.models.retrofitservice.bean.StatusesBean;
-import com.jy.xinlangweibo.models.retrofitservice.bean.UsersShowBean;
+import com.jy.xinlangweibo.models.retrofitservice.bean.UserBean;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.ui.activity.base.FragmentToolbarActivity;
 import com.jy.xinlangweibo.ui.fragment.ImageBrowserFragment;
@@ -41,7 +41,6 @@ import com.jy.xinlangweibo.widget.PulltorefreshRecyclerView;
 import com.jy.xinlangweibo.widget.ninephoto.BGANinePhotoLayout;
 import com.jy.xinlangweibo.widget.pulltorefresh.PullToRefreshListFooter;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.sina.weibo.sdk.openapi.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,8 +56,8 @@ public class UserShowActivity extends BaseActivity {
     private int layoutRes = R.layout.fragment_profile;
 
     private PulltorefreshRecyclerView mRecyclerView;
-    private BasicRecycleViewAdapter<StatusesBean> adapter;
-    private List<StatusesBean> timeLineDataList = new ArrayList<>();
+    private BasicRecycleViewAdapter<StatusBean> adapter;
+    private List<StatusBean> timeLineDataList = new ArrayList<>();
     private ProfileTimelineHeaderItemView headerItemView;
 
 
@@ -78,25 +77,25 @@ public class UserShowActivity extends BaseActivity {
             this.finish();
         }
         mRecyclerView = (PulltorefreshRecyclerView) findViewById(R.id.id_recyclerview);
-        adapter = new BasicRecycleViewAdapter<StatusesBean>(new IItemViewCreator<StatusesBean>() {
+        adapter = new BasicRecycleViewAdapter<StatusBean>(new IItemViewCreator<StatusBean>() {
             @Override
             public View newContentView(LayoutInflater layoutInflater, ViewGroup parent, int viewType) {
                 return layoutInflater.inflate(R.layout.item_card_profile, parent, false);
             }
 
             @Override
-            public IITemView<StatusesBean> newItemView(View convertView, int viewType) {
+            public IITemView<StatusBean> newItemView(View convertView, int viewType) {
                 return new ProfileTimeLineItemView(UserShowActivity.this, convertView);
             }
         }, timeLineDataList);
-        adapter.setHeaderItemViewCreator(new AHeaderItemViewCreator<UsersShowBean>() {
+        adapter.setHeaderItemViewCreator(new AHeaderItemViewCreator<UserBean>() {
             @Override
             public int[][] createHeaders() {
                 return new int[][]{{R.layout.profile_head, 100}};
             }
 
             @Override
-            public IITemView<UsersShowBean> newItemView(View convertView, int viewType) {
+            public IITemView<UserBean> newItemView(View convertView, int viewType) {
                 return headerItemView = new ProfileTimelineHeaderItemView(UserShowActivity.this, convertView);
             }
         });
@@ -115,7 +114,7 @@ public class UserShowActivity extends BaseActivity {
                 Logger.showLog("上拉加载","加载");
             }
         });
-        StatusInteraction.getInstance().userShow(getAccessAccessToken().getToken(), screen_name, new Observer<UsersShowBean>() {
+        StatusInteraction.getInstance().userShow(getAccessAccessToken().getToken(), screen_name, new Observer<UserBean>() {
             @Override
             public void onCompleted() {
 
@@ -128,9 +127,9 @@ public class UserShowActivity extends BaseActivity {
             }
 
             @Override
-            public void onNext(UsersShowBean usersShowBean) {
-                Logger.showLog("ON NEXT-------------"+new Gson().toJson(usersShowBean),"userShow");
-                headerItemView.onBindData(null,usersShowBean,0);
+            public void onNext(UserBean userBean) {
+                Logger.showLog("ON NEXT-------------"+new Gson().toJson(userBean),"userShow");
+                headerItemView.onBindData(null, userBean,0);
             }
         });
         StatusInteraction.getInstance().statusesUser_timeline(getAccessAccessToken().getToken(), screen_name, new Observer<StatusListBean>() {
@@ -151,7 +150,7 @@ public class UserShowActivity extends BaseActivity {
                 if(statusList == null)
                     return;
                 if(statusList.getStatuses() != null) {
-                    for (StatusesBean sta : statusList.getStatuses()) {
+                    for (StatusBean sta : statusList.getStatuses()) {
                         timeLineDataList.add(sta);
                     }
                     adapter.notifyDataSetChanged();
@@ -160,7 +159,7 @@ public class UserShowActivity extends BaseActivity {
         });
     }
 
-    public static class ProfileTimeLineItemView extends ARecycleViewItemView<StatusesBean> implements BGANinePhotoLayout.Delegate {
+    public static class ProfileTimeLineItemView extends ARecycleViewItemView<StatusBean> implements BGANinePhotoLayout.Delegate {
         @BindView(R.id.iv_head)
         ImageView ivHead;
         @BindView(R.id.tv_pubname)
@@ -198,10 +197,10 @@ public class UserShowActivity extends BaseActivity {
         }
 
         @Override
-        public void onBindData(View convertView, StatusesBean status, int position) {
+        public void onBindData(View convertView, StatusBean status, int position) {
             if (status == null)
                 return;
-            User user = status.user;
+            UserBean user = status.user;
 
             //bind publisher
             imageLoader.displayImage(user.avatar_hd, ivHead,
@@ -216,9 +215,9 @@ public class UserShowActivity extends BaseActivity {
             timelinePhotos.init((Activity) context);
             if (status.pic_urls != null) {
                 for (int i = 0; i < status.pic_urls.size(); i++) {
-                    status.pic_urls.set(i, status.pic_urls.get(i).replace("thumbnail", "bmiddle"));
+                    status.getPic_urls().set(i, status.getPic_urls().get(i).replace("thumbnail", "bmiddle"));
                 }
-                timelinePhotos.setData(status.pic_urls);
+                timelinePhotos.setData(status.getPic_urls());
                 timelinePhotos.setDelegate(this);
             } else {
                 ArrayList<String> strings = new ArrayList<>();
@@ -266,9 +265,9 @@ public class UserShowActivity extends BaseActivity {
                 retweetedTimelinePhotos.init((Activity) context);
                 if (status.retweeted_status.pic_urls != null) {
                     for (int i = 0; i < status.retweeted_status.pic_urls.size(); i++) {
-                        status.retweeted_status.pic_urls.set(i, status.retweeted_status.pic_urls.get(i).replace("thumbnail", "bmiddle"));
+                        status.retweeted_status.getPic_urls().set(i, status.retweeted_status.getPic_urls().get(i).replace("thumbnail", "bmiddle"));
                     }
-                    retweetedTimelinePhotos.setData(status.retweeted_status.pic_urls);
+                    retweetedTimelinePhotos.setData(status.retweeted_status.getPic_urls());
                     retweetedTimelinePhotos.setDelegate(this);
                 } else {
                     ArrayList<String> strings = new ArrayList<>();
@@ -295,7 +294,7 @@ public class UserShowActivity extends BaseActivity {
         }
     }
 
-    public class ProfileTimelineHeaderItemView extends ARecycleViewItemView<UsersShowBean> {
+    public class ProfileTimelineHeaderItemView extends ARecycleViewItemView<UserBean> {
         @BindView(R.id.iv_head)
         ImageView ivHead;
         @BindView(R.id.tv_screen_name)
@@ -316,7 +315,7 @@ public class UserShowActivity extends BaseActivity {
         }
 
         @Override
-        public void onBindData(View convertView, UsersShowBean model, int position) {
+        public void onBindData(View convertView, UserBean model, int position) {
             CustomImageLoader.displayImage(UserShowActivity.this,
             ivHead,
             model.getAvatar_large(),

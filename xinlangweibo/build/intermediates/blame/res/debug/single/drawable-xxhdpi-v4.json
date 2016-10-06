@@ -36,20 +36,20 @@
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\weiboSDK1\\unspecified\\res\\drawable-xxhdpi-v4\\ic_com_sina_weibo_sdk_login_button_with_frame_logo_focused.png"
     },
     {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\bga_pp_ic_holder_dark.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-xxhdpi\\bga_pp_ic_holder_dark.png"
-    },
-    {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\drawable-xxhdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png"
     },
     {
-        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\bga_pp_ic_gallery_camera.png",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-xxhdpi\\bga_pp_ic_gallery_camera.png"
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\bga_pp_ic_holder_dark.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-xxhdpi\\bga_pp_ic_holder_dark.png"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\lighthouse.jpg",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-xxhdpi\\lighthouse.jpg"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\bga_pp_ic_gallery_camera.png",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\drawable-xxhdpi\\bga_pp_ic_gallery_camera.png"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\abc_list_selector_disabled_holo_light.9.png",

@@ -27,6 +27,7 @@ import com.jiang.library.ui.BaseViewHolder;
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.models.retrofitservice.BaseObserver;
 import com.jy.xinlangweibo.models.retrofitservice.StatusInteraction;
+import com.jy.xinlangweibo.models.retrofitservice.bean.UserBean;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.ui.activity.base.FragmentToolbarActivity;
 import com.jy.xinlangweibo.ui.fragment.DiscoverFragment;
@@ -37,7 +38,6 @@ import com.jy.xinlangweibo.ui.fragment.Profile2Fragment;
 import com.jy.xinlangweibo.ui.fragment.setting.SettingFragment;
 import com.jy.xinlangweibo.utils.ACache;
 import com.jy.xinlangweibo.utils.CommonImageLoader.CustomImageLoader;
-import com.sina.weibo.sdk.openapi.models.User;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -188,13 +188,13 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
 //		底部按钮初始化
         rg.setOnCheckedChangeListener(this);
         navgationview.setNavigationItemSelectedListener(this);
-        final BaseViewHolder<User> navHeadViewHolderHolder = new NavHeadViewHolder(this,navgationview.getHeaderView(0));
+        final BaseViewHolder<UserBean> navHeadViewHolderHolder = new NavHeadViewHolder(this,navgationview.getHeaderView(0));
         StatusInteraction.getInstance().userShow(getAccessAccessToken().getToken(),
-            new BaseObserver<User>() {
+            new BaseObserver<UserBean>() {
             @Override
-            public void onNext(User user) {
-                super.onNext(user);
-                navHeadViewHolderHolder.bindData(user);
+            public void onNext(UserBean userBean) {
+                super.onNext(userBean);
+                navHeadViewHolderHolder.bindData(userBean);
             }
         });
         initToolbar();
@@ -283,7 +283,7 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
         return toolbar;
     }
 
-    class NavHeadViewHolder extends BaseViewHolder<User> {
+    class NavHeadViewHolder extends BaseViewHolder<UserBean> {
 
         @BindView(R.id.profile_image)
         ImageView profileImage;
@@ -311,14 +311,14 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
         }
 
         @Override
-        public void bindData(final User model) {
+        public void bindData(final UserBean model) {
             CustomImageLoader.displayImage((Activity) context,profileImage,model.avatar_large,
                     R.drawable.avatar_default,
                     R.drawable.avatar_default,0,0);
-            tvScreenName.setText("昵称："+model.screen_name);
+            tvScreenName.setText(model.screen_name);
             tvFollowersCount.setText("粉丝："+String.valueOf(model.followers_count));
             tvFriendsCount.setText("关注："+String.valueOf(model.friends_count));
-            tvLocation.setText("所在地："+model.location);
+            tvLocation.setText(model.location);
             profileImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

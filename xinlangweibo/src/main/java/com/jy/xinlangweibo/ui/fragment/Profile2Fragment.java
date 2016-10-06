@@ -19,7 +19,7 @@ import com.jiang.library.ui.adapter.recyleviewadapter.BasicRecycleViewAdapter;
 import com.jiang.library.ui.adapter.recyleviewadapter.IITemView;
 import com.jiang.library.ui.adapter.recyleviewadapter.IItemViewCreator;
 import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.models.retrofitservice.bean.UsersShowBean;
+import com.jy.xinlangweibo.models.retrofitservice.bean.UserBean;
 import com.jy.xinlangweibo.ui.activity.base.FragmentToolbarActivity;
 import com.jy.xinlangweibo.ui.fragment.base.BaseCacheFragment;
 import com.jy.xinlangweibo.utils.CommonImageLoader.ImageLoadeOptions;
@@ -29,7 +29,6 @@ import com.jy.xinlangweibo.widget.PulltorefreshRecyclerView;
 import com.jy.xinlangweibo.widget.ninephoto.BGANinePhotoLayout;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.sina.weibo.sdk.openapi.models.Status;
-import com.sina.weibo.sdk.openapi.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,14 +65,14 @@ public class Profile2Fragment extends BaseCacheFragment {
                 return new ProfileTimeLineItemView(activity, convertView);
             }
         }, timeLineDataList);
-        adapter.setHeaderItemViewCreator(new AHeaderItemViewCreator<UsersShowBean>() {
+        adapter.setHeaderItemViewCreator(new AHeaderItemViewCreator<UserBean>() {
             @Override
             public int[][] createHeaders() {
                 return  new int[][]{{R.layout.profile_head, 100}};
             }
 
             @Override
-            public IITemView<UsersShowBean> newItemView(View convertView, int viewType) {
+            public IITemView<UserBean> newItemView(View convertView, int viewType) {
                 return new ProfileTimelineHeaderItemView(activity, convertView);
             }
         });
@@ -122,7 +121,7 @@ public class Profile2Fragment extends BaseCacheFragment {
         public void onBindData(View convertView, Status status, int position) {
             if(status == null)
                 return;
-            User user = status.user;
+            com.sina.weibo.sdk.openapi.models.User user = status.user;
 
             //bind publisher
             imageLoader.displayImage(user.avatar_hd, ivHead,
@@ -216,7 +215,7 @@ public class Profile2Fragment extends BaseCacheFragment {
         }
     }
 
-    public  class ProfileTimelineHeaderItemView extends ARecycleViewItemView<UsersShowBean> {
+    public  class ProfileTimelineHeaderItemView extends ARecycleViewItemView<UserBean> {
         public ProfileTimelineHeaderItemView(Context context, View itemView) {
             super(context, itemView);
             View head = itemView.findViewById(R.id.head);
@@ -226,7 +225,7 @@ public class Profile2Fragment extends BaseCacheFragment {
         }
 
         @Override
-        public void onBindData(View convertView, UsersShowBean model, int position) {
+        public void onBindData(View convertView, UserBean model, int position) {
 
         }
     }
