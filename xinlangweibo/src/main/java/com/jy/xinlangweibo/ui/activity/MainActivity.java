@@ -36,7 +36,6 @@ import com.jy.xinlangweibo.ui.fragment.Home2Fragment;
 import com.jy.xinlangweibo.ui.fragment.MessageFragment;
 import com.jy.xinlangweibo.ui.fragment.Profile2Fragment;
 import com.jy.xinlangweibo.ui.fragment.setting.SettingFragment;
-import com.jy.xinlangweibo.utils.ACache;
 import com.jy.xinlangweibo.utils.CommonImageLoader.CustomImageLoader;
 
 import butterknife.BindView;
@@ -89,7 +88,6 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
         mainmenu = (FrameLayout) findViewById(R.id.mainmenu);
         mainmenu.getForeground().setAlpha(0);
         //		得到缓存
-        mCache = ACache.get(this);
         initView();
     }
 
@@ -289,7 +287,7 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
         ImageView profileImage;
         @BindView(R.id.tv_screen_name)
         TextView tvScreenName;
-        @BindView(R.id.tv_location)
+        @BindView(R.id.tv_description)
         TextView tvLocation;
         @BindView(R.id.tv_followers_count)
         TextView tvFollowersCount;

@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.blankj.utilcode.utils.NetworkUtils;
 import com.google.gson.Gson;
 import com.jiang.library.ui.adapter.recyleviewadapter.AHeaderItemViewCreator;
 import com.jiang.library.ui.adapter.recyleviewadapter.ARecycleViewItemView;
@@ -23,6 +24,7 @@ import com.jiang.library.ui.adapter.recyleviewadapter.BasicRecycleViewAdapter;
 import com.jiang.library.ui.adapter.recyleviewadapter.IITemView;
 import com.jiang.library.ui.adapter.recyleviewadapter.IItemViewCreator;
 import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.models.retrofitservice.BaseObserver;
 import com.jy.xinlangweibo.models.retrofitservice.StatusInteraction;
 import com.jy.xinlangweibo.models.retrofitservice.bean.StatusBean;
 import com.jy.xinlangweibo.models.retrofitservice.bean.StatusListBean;
@@ -35,7 +37,6 @@ import com.jy.xinlangweibo.utils.CommonImageLoader.ImageLoadeOptions;
 import com.jy.xinlangweibo.utils.DateUtils;
 import com.jy.xinlangweibo.utils.Logger;
 import com.jy.xinlangweibo.utils.ToastUtils;
-import com.jy.xinlangweibo.utils.Utils;
 import com.jy.xinlangweibo.utils.WeiboStringUtils;
 import com.jy.xinlangweibo.widget.PulltorefreshRecyclerView;
 import com.jy.xinlangweibo.widget.ninephoto.BGANinePhotoLayout;
@@ -43,6 +44,7 @@ import com.jy.xinlangweibo.widget.pulltorefresh.PullToRefreshListFooter;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -57,8 +59,9 @@ public class UserShowActivity extends BaseActivity {
 
     private PulltorefreshRecyclerView mRecyclerView;
     private BasicRecycleViewAdapter<StatusBean> adapter;
-    private List<StatusBean> timeLineDataList = new ArrayList<>();
+    private ArrayList<StatusBean> timeLineDataList = new ArrayList<>();
     private ProfileTimelineHeaderItemView headerItemView;
+    private int curPage;
 
 
     public static void launch(Context from, String screen_name) {
@@ -71,11 +74,21 @@ public class UserShowActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(layoutRes);
-        String screen_name = (String) getIntent().getSerializableExtra("screen_name");
+        final String screen_name = (String) getIntent().getSerializableExtra("screen_name");
         if (screen_name == null) {
             ToastUtils.show(this, "请求错误，在尝试一次", Toast.LENGTH_SHORT);
             this.finish();
         }
+
+         ArrayList<StatusBean> statuses = (ArrayList<StatusBean>) mCache
+                .getAsObject("statusesUser_timeline");
+        if(statuses == null) {
+            Logger.showLog("没有得到缓存statusesUser_timeline",""+this);
+        }else {
+            timeLineDataList = statuses;
+            Logger.showLog("得到缓存statusesUser_timeline",""+this);
+        }
+
         mRecyclerView = (PulltorefreshRecyclerView) findViewById(R.id.id_recyclerview);
         adapter = new BasicRecycleViewAdapter<StatusBean>(new IItemViewCreator<StatusBean>() {
             @Override
@@ -107,11 +120,44 @@ public class UserShowActivity extends BaseActivity {
             @Override
             public void onRefresh() {
                 Logger.showLog("下拉刷新","下拉");
+                if(!NetworkUtils.isConnected(UserShowActivity.this)){
+                    Logger.showLog("网络未连接", ""+this);
+                    return;
+                }
+                HashMap<String, String> mapParams = new HashMap<>();
+                mapParams.put("access_token",getAccessAccessToken().getToken());
+                mapParams.put("screen_name",screen_name);
+                mapParams.put("page", String.valueOf(1));
+                StatusInteraction.getInstance().statusesUser_timeline2(mapParams,
+                        new BaseObserver<StatusListBean>() {
+                            @Override
+                            public void onNext(StatusListBean models) {
+                                super.onNext(models);
+                                updateTimeList(1,models);
+                            }
+                        });
             }
 
             @Override
             public void onLoadMore() {
                 Logger.showLog("上拉加载","加载");
+                if(!NetworkUtils.isConnected(UserShowActivity.this)){
+                    Logger.showLog("网络未连接", ""+this);
+                    mRecyclerView.stopLoadMore();
+                    return;
+                }
+                HashMap<String, String> mapParams = new HashMap<>();
+                mapParams.put("access_token",getAccessAccessToken().getToken());
+                mapParams.put("screen_name",screen_name);
+                mapParams.put("page", String.valueOf(1 + curPage));
+                StatusInteraction.getInstance().statusesUser_timeline2(mapParams,
+                        new BaseObserver<StatusListBean>() {
+                            @Override
+                            public void onNext(StatusListBean models) {
+                                super.onNext(models);
+                                updateTimeList(1 + curPage,models);
+                            }
+                        });
             }
         });
         StatusInteraction.getInstance().userShow(getAccessAccessToken().getToken(), screen_name, new Observer<UserBean>() {
@@ -132,31 +178,57 @@ public class UserShowActivity extends BaseActivity {
                 headerItemView.onBindData(null, userBean,0);
             }
         });
-        StatusInteraction.getInstance().statusesUser_timeline(getAccessAccessToken().getToken(), screen_name, new Observer<StatusListBean>() {
-            @Override
-            public void onCompleted() {
+//        StatusInteraction.getInstance().statusesUser_timeline(getAccessAccessToken().getToken(), screen_name, new Observer<StatusListBean>() {
+//            @Override
+//            public void onCompleted() {
+//
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//                Logger.showLog("ON ERROR-------------"+e.toString(),"userShow");
+//                ToastUtils.show(UserShowActivity.this, "请求错误，在尝试一次", Toast.LENGTH_SHORT);
+//            }
+//
+//            @Override
+//            public void onNext(StatusListBean statusList) {
+//                Logger.showLog("ON NEXT-------------"+new Gson().toJson(statusList),"userShow");
+//                if(statusList == null)
+//                    return;
+//                if(statusList.getStatuses() != null) {
+//                    for (StatusBean sta : statusList.getStatuses()) {
+//                        timeLineDataList.add(sta);
+//                    }
+//                    adapter.notifyDataSetChanged();
+//                }
+//            }
+//        });
+    }
 
-            }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mCache.remove("statusesUser_timeline");
+        Logger.showLog("缓存statusesUser_timeline",""+this);
+        mCache.put("statusesUser_timeline", timeLineDataList);
+    }
 
-            @Override
-            public void onError(Throwable e) {
-                Logger.showLog("ON ERROR-------------"+e.toString(),"userShow");
-                ToastUtils.show(UserShowActivity.this, "请求错误，在尝试一次", Toast.LENGTH_SHORT);
+    private void updateTimeList(int page, StatusListBean statusList) {
+        curPage = page;
+        if(page == 1) {
+            timeLineDataList.clear();
+        }
+        if(statusList == null)
+            return;
+        if(statusList.getStatuses() != null) {
+            for (StatusBean sta : statusList.getStatuses()) {
+                timeLineDataList.add(sta);
             }
-
-            @Override
-            public void onNext(StatusListBean statusList) {
-                Logger.showLog("ON NEXT-------------"+new Gson().toJson(statusList),"userShow");
-                if(statusList == null)
-                    return;
-                if(statusList.getStatuses() != null) {
-                    for (StatusBean sta : statusList.getStatuses()) {
-                        timeLineDataList.add(sta);
-                    }
-                    adapter.notifyDataSetChanged();
-                }
-            }
-        });
+            adapter.notifyDataSetChanged();
+        }else {
+            showToast("没有更多数据了哦");
+        }
+        mRecyclerView.stopLoadMore();
     }
 
     public static class ProfileTimeLineItemView extends ARecycleViewItemView<StatusBean> implements BGANinePhotoLayout.Delegate {
@@ -295,12 +367,13 @@ public class UserShowActivity extends BaseActivity {
     }
 
     public class ProfileTimelineHeaderItemView extends ARecycleViewItemView<UserBean> {
+//        R.layout.profile_head
         @BindView(R.id.iv_head)
         ImageView ivHead;
         @BindView(R.id.tv_screen_name)
         TextView tvScreenName;
-        @BindView(R.id.tv_location)
-        TextView tvLocation;
+        @BindView(R.id.tv_description)
+        TextView tvDescription;
         @BindView(R.id.tv_created_at)
         TextView tvCreatedAt;
 
@@ -321,10 +394,10 @@ public class UserShowActivity extends BaseActivity {
             model.getAvatar_large(),
             R.drawable.avatar_default,
             R.drawable.avatar_default,
-            Utils.dip2px(UserShowActivity.this,50),Utils.dip2px(UserShowActivity.this,50));
+            0,0);
             tvScreenName.setText(model.getScreen_name());
-            tvLocation.setText(model.getLocation());
-            tvCreatedAt.setText(model.getCreated_at());
+            tvDescription.setText(model.getDescription());
+            tvCreatedAt.setText("注册时间："+DateUtils.formatDate(model.getCreated_at()));
         }
     }
 

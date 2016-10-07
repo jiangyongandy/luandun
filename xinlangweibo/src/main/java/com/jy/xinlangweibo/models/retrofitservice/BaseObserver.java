@@ -20,7 +20,7 @@ public class BaseObserver<T> implements Observer<T> {
     }
 
     @Override
-    public void onNext(T o) {
-        Logger.showLog("接受到事件序列================"+o,"onNext:"+this);
+    public void onNext(T models) {
+        Logger.showLog("接受到事件序列================"+models,"onNext:"+this);
     }
 }

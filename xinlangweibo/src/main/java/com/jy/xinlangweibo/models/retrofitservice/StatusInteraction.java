@@ -9,6 +9,7 @@ import com.jy.xinlangweibo.utils.Logger;
 import com.sina.weibo.sdk.openapi.models.Status;
 
 import java.io.File;
+import java.util.Map;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -93,8 +94,16 @@ public class StatusInteraction {
         // create upload service client
 
         File file = FileUtils.getFileByPath(fileUri);
-        RequestBody requestFile =
-                RequestBody.create(MediaType.parse("multipart/form-data"), file);
+        RequestBody requestFile;
+//        if( file.length() >= 5*1000000) {
+//            Logger.showLog("图片太大，压缩前的大小========"+file.length(),"图片压缩");
+//            Bitmap bitmap = ImageUtils.getBitmap(file); 获取位图不能直接用此方法，图片太大会导致00M.
+//            byte[] bytes = ImageUtils.bitmap2Bytes(ImageUtils.compressByQuality(bitmap, (long)5 * 1000000, true), Bitmap.CompressFormat.PNG);
+//            Logger.showLog("图片太大，压缩后的大小========"+bytes.length,"图片压缩");
+//            requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), bytes);
+//        }else {
+            requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+//        }
         MultipartBody.Part body =
                 MultipartBody.Part.createFormData("pic", file.getName(), requestFile);
 
@@ -105,7 +114,7 @@ public class StatusInteraction {
 
         RequestBody visibleBody =
                 RequestBody.create(
-                        MediaType.parse("multipart/form-data"), "2");
+                        MediaType.parse("multipart/form-data"), "0");
 
         RequestBody weiboBody =
                 RequestBody.create(
@@ -184,6 +193,11 @@ public class StatusInteraction {
 
     public void statusesUser_timeline(String access_token,String screen_name,Observer<StatusListBean  > observer) {
         Observable<StatusListBean> observable =  service.statusesUser_timeline(access_token,screen_name);
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+    public void statusesUser_timeline2(Map<String, String> params, Observer<StatusListBean  > observer) {
+        Observable<StatusListBean> observable =  service.statusesUser_timeline2(params);
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 

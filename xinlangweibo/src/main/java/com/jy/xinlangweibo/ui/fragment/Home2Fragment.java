@@ -89,9 +89,9 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
     @Override
     public void onPause() {
         super.onPause();
-        mCache.clear();
+        mCache.remove("HomeTimeline");
 //		缓存数据（IO操作，新开线程）耗时操作
-        mCache.put("STATUES", statusList);
+        mCache.put("HomeTimeline", statusList);
     }
 
     @Override

@@ -38,7 +38,7 @@
             android:text="程序员" />
 
         <TextView
-            android:id="@+id/tv_location"
+            android:id="@+id/tv_description"
             style="@style/navhead_text"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="30dp"

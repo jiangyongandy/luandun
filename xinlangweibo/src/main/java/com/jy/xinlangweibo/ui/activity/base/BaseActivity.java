@@ -37,6 +37,7 @@ public class BaseActivity extends SwipeBackActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		tag = this.getClass().getSimpleName();
+//		此段代码修复引入侧滑结束activity 状态栏主题换色的问题
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
 			Window window = getWindow();
@@ -52,6 +53,9 @@ public class BaseActivity extends SwipeBackActivity {
 
 		setTheme(ThemeUtils.themeArr[AppSetting.getThemeColor()][0]);
 		this.theme = AppSetting.getThemeColor();
+
+		//		得到缓存
+		mCache = ACache.get(this);
 	}
 
 	@Override

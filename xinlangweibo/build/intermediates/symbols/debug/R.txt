@@ -1632,6 +1632,7 @@ int id touch_outside 0x7f0d00b4
 int id tv_card_status 0x7f0d00c9
 int id tv_content 0x7f0d00f5
 int id tv_created_at 0x7f0d011a
+int id tv_description 0x7f0d0114
 int id tv_followers_count 0x7f0d0116
 int id tv_footview_nocomments 0x7f0d0124
 int id tv_friends_count 0x7f0d0115
@@ -1641,7 +1642,6 @@ int id tv_item_photo_folder_name 0x7f0d00ab
 int id tv_item_photo_picker_tip 0x7f0d00ae
 int id tv_ivbrowse 0x7f0d0085
 int id tv_loading 0x7f0d0122
-int id tv_location 0x7f0d0114
 int id tv_photo_picker_preview_choose 0x7f0d00a2
 int id tv_photo_picker_preview_submit 0x7f0d00a6
 int id tv_photo_picker_preview_title 0x7f0d00a7

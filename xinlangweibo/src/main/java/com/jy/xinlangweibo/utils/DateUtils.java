@@ -50,4 +50,17 @@ public class DateUtils {
 		else 
 		return false;
 	}
+
+	public static String formatDate(String creatTime) {
+		String str = "";
+		SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.US);
+		SimpleDateFormat bartDateFormat_1 = new SimpleDateFormat("yyyy-MM-dd" );
+		try {
+			Date cre = sdf.parse(creatTime);
+			str = bartDateFormat_1.format(cre);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return str;
+	}
 }

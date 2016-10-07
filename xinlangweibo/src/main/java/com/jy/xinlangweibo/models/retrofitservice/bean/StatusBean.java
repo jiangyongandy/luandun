@@ -77,7 +77,6 @@ public class StatusBean implements Serializable {
      * list_id : 0
      */
 
-    public VisibleBean visible;
     public long biz_feature;
     public int page_type;
     public int hasActionTypeCard;
@@ -113,16 +112,16 @@ public class StatusBean implements Serializable {
         return pic_urls2;
     }
 
-    public static class VisibleBean {
+    public static class VisibleBean implements Serializable{
         public int type;
         public int list_id;
     }
 
-    public static class PicUrlsBean {
+    public static class PicUrlsBean implements Serializable{
         public String thumbnail_pic;
     }
 
-    public static class AnnotationsBean {
+    public static class AnnotationsBean implements Serializable{
         public boolean mapi_request;
     }
 }

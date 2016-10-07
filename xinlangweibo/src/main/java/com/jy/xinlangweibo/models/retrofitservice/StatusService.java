@@ -102,6 +102,13 @@ public interface StatusService {
                                                              @Query("screen_name") String screen_name);
 
     /**
+     * 返回指定某个用户的微博
+     * @return
+     */
+    @GET("statuses/user_timeline.json")
+    Observable<StatusListBean>statusesUser_timeline2(@QueryMap Map<String, String> params);
+
+    /**
      * 转发微博
      * @param access_token
      * @param id

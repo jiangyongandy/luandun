@@ -3924,6 +3924,7 @@ containing a value of this type.
         public static final int tv_card_status=0x7f0d00c9;
         public static final int tv_content=0x7f0d00f5;
         public static final int tv_created_at=0x7f0d011a;
+        public static final int tv_description=0x7f0d0114;
         public static final int tv_followers_count=0x7f0d0116;
         public static final int tv_footview_nocomments=0x7f0d0124;
         public static final int tv_friends_count=0x7f0d0115;
@@ -3933,7 +3934,6 @@ containing a value of this type.
         public static final int tv_item_photo_picker_tip=0x7f0d00ae;
         public static final int tv_ivbrowse=0x7f0d0085;
         public static final int tv_loading=0x7f0d0122;
-        public static final int tv_location=0x7f0d0114;
         public static final int tv_photo_picker_preview_choose=0x7f0d00a2;
         public static final int tv_photo_picker_preview_submit=0x7f0d00a6;
         public static final int tv_photo_picker_preview_title=0x7f0d00a7;
