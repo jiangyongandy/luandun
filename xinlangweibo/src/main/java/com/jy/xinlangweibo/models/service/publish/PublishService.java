@@ -51,7 +51,7 @@ public class PublishService extends Service implements  InterfacePublisher{
 
     @Override
     public void publish(PublishBean data) {
-        new UploadImageTask(data).execute();
+        new UploadImageTask(data,getApplicationContext()).execute();
     }
 
     public class PublishBinder extends Binder {

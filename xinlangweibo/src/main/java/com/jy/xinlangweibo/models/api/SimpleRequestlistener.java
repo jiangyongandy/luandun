@@ -1,4 +1,4 @@
-package com.jy.xinlangweibo.api;
+package com.jy.xinlangweibo.models.api;
 
 import android.app.Activity;
 import android.app.Dialog;

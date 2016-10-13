@@ -24,11 +24,12 @@ import com.jiang.library.ui.adapter.recyleviewadapter.BasicRecycleViewAdapter;
 import com.jiang.library.ui.adapter.recyleviewadapter.IITemView;
 import com.jiang.library.ui.adapter.recyleviewadapter.IItemViewCreator;
 import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.db.StatusBeanDB;
+import com.jy.xinlangweibo.models.bean.StatusBean;
+import com.jy.xinlangweibo.models.bean.StatusListBean;
+import com.jy.xinlangweibo.models.bean.UserBean;
 import com.jy.xinlangweibo.models.retrofitservice.BaseObserver;
 import com.jy.xinlangweibo.models.retrofitservice.StatusInteraction;
-import com.jy.xinlangweibo.models.retrofitservice.bean.StatusBean;
-import com.jy.xinlangweibo.models.retrofitservice.bean.StatusListBean;
-import com.jy.xinlangweibo.models.retrofitservice.bean.UserBean;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.ui.activity.base.FragmentToolbarActivity;
 import com.jy.xinlangweibo.ui.fragment.ImageBrowserFragment;
@@ -62,6 +63,7 @@ public class UserShowActivity extends BaseActivity {
     private ArrayList<StatusBean> timeLineDataList = new ArrayList<>();
     private ProfileTimelineHeaderItemView headerItemView;
     private int curPage;
+    private String screen_name;
 
 
     public static void launch(Context from, String screen_name) {
@@ -74,14 +76,15 @@ public class UserShowActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(layoutRes);
-        final String screen_name = (String) getIntent().getSerializableExtra("screen_name");
+        screen_name = (String) getIntent().getSerializableExtra("screen_name");
         if (screen_name == null) {
             ToastUtils.show(this, "请求错误，在尝试一次", Toast.LENGTH_SHORT);
             this.finish();
         }
 
-         ArrayList<StatusBean> statuses = (ArrayList<StatusBean>) mCache
-                .getAsObject("statusesUser_timeline");
+//         ArrayList<StatusBean> statuses = (ArrayList<StatusBean>) mCache
+//                .getAsObject("statusesUser_timeline");
+        ArrayList<StatusBean> statuses = (ArrayList<StatusBean>) StatusBeanDB.getInstance(this).queryStatusBeanList(Long.valueOf(getAccessAccessToken().getUid()),StatusBeanDB.userTimelineCacheType);
         if(statuses == null) {
             Logger.showLog("没有得到缓存statusesUser_timeline",""+this);
         }else {
@@ -128,7 +131,7 @@ public class UserShowActivity extends BaseActivity {
                 mapParams.put("access_token",getAccessAccessToken().getToken());
                 mapParams.put("screen_name",screen_name);
                 mapParams.put("page", String.valueOf(1));
-                StatusInteraction.getInstance().statusesUser_timeline2(mapParams,
+                StatusInteraction.getInstance(UserShowActivity.this).statusesUser_timeline2(mapParams,
                         new BaseObserver<StatusListBean>() {
                             @Override
                             public void onNext(StatusListBean models) {
@@ -150,7 +153,7 @@ public class UserShowActivity extends BaseActivity {
                 mapParams.put("access_token",getAccessAccessToken().getToken());
                 mapParams.put("screen_name",screen_name);
                 mapParams.put("page", String.valueOf(1 + curPage));
-                StatusInteraction.getInstance().statusesUser_timeline2(mapParams,
+                StatusInteraction.getInstance(UserShowActivity.this).statusesUser_timeline2(mapParams,
                         new BaseObserver<StatusListBean>() {
                             @Override
                             public void onNext(StatusListBean models) {
@@ -160,7 +163,12 @@ public class UserShowActivity extends BaseActivity {
                         });
             }
         });
-        StatusInteraction.getInstance().userShow(getAccessAccessToken().getToken(), screen_name, new Observer<UserBean>() {
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        StatusInteraction.getInstance(UserShowActivity.this).userShow(getAccessAccessToken().getToken(), screen_name, new Observer<UserBean>() {
             @Override
             public void onCompleted() {
 
@@ -178,39 +186,16 @@ public class UserShowActivity extends BaseActivity {
                 headerItemView.onBindData(null, userBean,0);
             }
         });
-//        StatusInteraction.getInstance().statusesUser_timeline(getAccessAccessToken().getToken(), screen_name, new Observer<StatusListBean>() {
-//            @Override
-//            public void onCompleted() {
-//
-//            }
-//
-//            @Override
-//            public void onError(Throwable e) {
-//                Logger.showLog("ON ERROR-------------"+e.toString(),"userShow");
-//                ToastUtils.show(UserShowActivity.this, "请求错误，在尝试一次", Toast.LENGTH_SHORT);
-//            }
-//
-//            @Override
-//            public void onNext(StatusListBean statusList) {
-//                Logger.showLog("ON NEXT-------------"+new Gson().toJson(statusList),"userShow");
-//                if(statusList == null)
-//                    return;
-//                if(statusList.getStatuses() != null) {
-//                    for (StatusBean sta : statusList.getStatuses()) {
-//                        timeLineDataList.add(sta);
-//                    }
-//                    adapter.notifyDataSetChanged();
-//                }
-//            }
-//        });
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mCache.remove("statusesUser_timeline");
+//        mCache.remove("statusesUser_timeline");
+//        mCache.put("statusesUser_timeline", timeLineDataList);
+        StatusBeanDB.getInstance(this).deleteStatusBeanList(Long.valueOf(getAccessAccessToken().getUid()),StatusBeanDB.userTimelineCacheType);
         Logger.showLog("缓存statusesUser_timeline",""+this);
-        mCache.put("statusesUser_timeline", timeLineDataList);
+        StatusBeanDB.getInstance(this).insertStatusBeanList(timeLineDataList,Long.valueOf(getAccessAccessToken().getUid()),StatusBeanDB.userTimelineCacheType);
     }
 
     private void updateTimeList(int page, StatusListBean statusList) {
@@ -220,12 +205,12 @@ public class UserShowActivity extends BaseActivity {
         }
         if(statusList == null)
             return;
-        if(statusList.getStatuses() != null) {
+        if(statusList.getStatuses() != null && statusList.getStatuses().size() > 0) {
             for (StatusBean sta : statusList.getStatuses()) {
                 timeLineDataList.add(sta);
             }
             adapter.notifyDataSetChanged();
-        }else {
+        }else if(statusList.getStatuses().size() == 0){
             showToast("没有更多数据了哦");
         }
         mRecyclerView.stopLoadMore();
@@ -287,9 +272,9 @@ public class UserShowActivity extends BaseActivity {
             timelinePhotos.init((Activity) context);
             if (status.pic_urls != null) {
                 for (int i = 0; i < status.pic_urls.size(); i++) {
-                    status.getPic_urls().set(i, status.getPic_urls().get(i).replace("thumbnail", "bmiddle"));
+                    status.getPic_urls2().set(i, status.getPic_urls2().get(i).replace("thumbnail", "bmiddle"));
                 }
-                timelinePhotos.setData(status.getPic_urls());
+                timelinePhotos.setData(status.getPic_urls2());
                 timelinePhotos.setDelegate(this);
             } else {
                 ArrayList<String> strings = new ArrayList<>();
@@ -337,9 +322,9 @@ public class UserShowActivity extends BaseActivity {
                 retweetedTimelinePhotos.init((Activity) context);
                 if (status.retweeted_status.pic_urls != null) {
                     for (int i = 0; i < status.retweeted_status.pic_urls.size(); i++) {
-                        status.retweeted_status.getPic_urls().set(i, status.retweeted_status.getPic_urls().get(i).replace("thumbnail", "bmiddle"));
+                        status.retweeted_status.getPic_urls2().set(i, status.retweeted_status.getPic_urls2().get(i).replace("thumbnail", "bmiddle"));
                     }
-                    retweetedTimelinePhotos.setData(status.retweeted_status.getPic_urls());
+                    retweetedTimelinePhotos.setData(status.retweeted_status.getPic_urls2());
                     retweetedTimelinePhotos.setDelegate(this);
                 } else {
                     ArrayList<String> strings = new ArrayList<>();

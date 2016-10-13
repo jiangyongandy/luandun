@@ -1,11 +1,17 @@
 package com.jy.xinlangweibo.models.retrofitservice;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import com.blankj.utilcode.utils.FileUtils;
+import com.blankj.utilcode.utils.NetworkUtils;
 import com.google.gson.Gson;
-import com.jy.xinlangweibo.models.retrofitservice.bean.StatusListBean;
-import com.jy.xinlangweibo.models.retrofitservice.bean.UidBean;
-import com.jy.xinlangweibo.models.retrofitservice.bean.UserBean;
+import com.jy.xinlangweibo.models.bean.StatusBean;
+import com.jy.xinlangweibo.models.bean.StatusListBean;
+import com.jy.xinlangweibo.models.bean.UidBean;
+import com.jy.xinlangweibo.models.bean.UserBean;
 import com.jy.xinlangweibo.utils.Logger;
+import com.jy.xinlangweibo.utils.ToastUtils;
 import com.sina.weibo.sdk.openapi.models.Status;
 
 import java.io.File;
@@ -36,7 +42,10 @@ public class StatusInteraction {
     private final Retrofit retrofit;
     private final StatusService service;
 
-    public static StatusInteraction getInstance() {
+    public static StatusInteraction getInstance(Context context) {
+        if(!NetworkUtils.isAvailable(context)) {
+            ToastUtils.show(context,"网络似乎有问题", Toast.LENGTH_SHORT);
+        }
         synchronized (StatusInteraction.class) {
             if(instance == null) {
                 instance = new StatusInteraction();
@@ -201,13 +210,18 @@ public class StatusInteraction {
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
-    public void statusesRepost(String access_token,long id,String status,Observer<Status > observer) {
-        Observable<Status> observable = service.statusesRepost(access_token, String.valueOf(id), status);
+    public void statusesPublic_timeline(String access_token,String page,Observer<StatusListBean> observer) {
+        Observable<StatusListBean> observable =  service.statusesPublic_timeline(access_token,page);
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
-    public void commentsCreate(String access_token,long id,String comment,Observer<Status > observer) {
-        Observable<Status> observable = service.commentsCreate(access_token, String.valueOf(id), comment);
+    public void statusesRepost(String access_token,long id,String status,Observer<StatusBean> observer) {
+        Observable<StatusBean> observable = service.statusesRepost(access_token, String.valueOf(id), status);
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+    public void commentsCreate(String access_token,long id,String comment,Observer<StatusBean > observer) {
+        Observable<StatusBean> observable = service.commentsCreate(access_token, String.valueOf(id), comment);
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 

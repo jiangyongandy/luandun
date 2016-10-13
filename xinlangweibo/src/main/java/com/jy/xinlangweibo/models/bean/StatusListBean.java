@@ -1,4 +1,4 @@
-package com.jy.xinlangweibo.models.retrofitservice.bean;
+package com.jy.xinlangweibo.models.bean;
 
 import com.google.gson.Gson;
 
@@ -22,11 +22,11 @@ public class StatusListBean {
      * interval : 0
      */
 
-    private boolean hasvisible;
-    private int previous_cursor;
-    private int next_cursor;
-    private int total_number;
-    private int interval;
+    public boolean hasvisible;
+    public int previous_cursor;
+    public int next_cursor;
+    public int total_number;
+    public int interval;
     /**
      * created_at : Sat Oct 01 01:20:12 +0800 2016
      * id : 4025577838517527
@@ -62,8 +62,8 @@ public class StatusListBean {
      * is_show_bulletin : 2
      */
 
-    private List<StatusBean> statuses;
-    private List<?> marks;
+    public List<StatusBean> statuses;
+    public List<?> marks;
 
     public static StatusListBean objectFromData(String str, String key) {
 
@@ -134,5 +134,16 @@ public class StatusListBean {
         this.marks = marks;
     }
 
-
+    @Override
+    public String toString() {
+        return "StatusListBean{" +
+                "hasvisible=" + hasvisible +
+                ", previous_cursor=" + previous_cursor +
+                ", next_cursor=" + next_cursor +
+                ", total_number=" + total_number +
+                ", interval=" + interval +
+                ", statuses=" + statuses +
+                ", marks=" + marks +
+                '}';
+    }
 }

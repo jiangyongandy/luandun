@@ -1,4 +1,4 @@
-package com.jy.xinlangweibo.models.retrofitservice.bean;
+package com.jy.xinlangweibo.models.bean;
 
 /**
  * Created by JIANG on 2016/10/6.

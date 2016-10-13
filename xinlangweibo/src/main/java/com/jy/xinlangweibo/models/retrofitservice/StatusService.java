@@ -1,9 +1,10 @@
 package com.jy.xinlangweibo.models.retrofitservice;
 
-import com.jy.xinlangweibo.models.retrofitservice.bean.StatusListBean;
-import com.jy.xinlangweibo.models.retrofitservice.bean.UidBean;
-import com.jy.xinlangweibo.models.retrofitservice.bean.UploadPicResultBean;
-import com.jy.xinlangweibo.models.retrofitservice.bean.UserBean;
+import com.jy.xinlangweibo.models.bean.StatusBean;
+import com.jy.xinlangweibo.models.bean.StatusListBean;
+import com.jy.xinlangweibo.models.bean.UidBean;
+import com.jy.xinlangweibo.models.bean.UploadPicResultBean;
+import com.jy.xinlangweibo.models.bean.UserBean;
 import com.sina.weibo.sdk.openapi.models.Status;
 
 import java.util.Map;
@@ -98,7 +99,7 @@ public interface StatusService {
      * @return
      */
     @GET("statuses/user_timeline.json")
-    Observable<StatusListBean>statusesUser_timeline(@Query("access_token" ) String access_token,
+    Observable<StatusListBean> statusesUser_timeline(@Query("access_token" ) String access_token,
                                                              @Query("screen_name") String screen_name);
 
     /**
@@ -106,8 +107,16 @@ public interface StatusService {
      * @return
      */
     @GET("statuses/user_timeline.json")
-    Observable<StatusListBean>statusesUser_timeline2(@QueryMap Map<String, String> params);
+    Observable<StatusListBean> statusesUser_timeline2(@QueryMap Map<String, String> params);
 
+    /**
+     * 返回最新的公共微博
+     * @param access_token
+     * @return
+     */
+    @GET("statuses/public_timeline.json")
+    Observable<StatusListBean> statusesPublic_timeline(@Query("access_token" ) String access_token,
+                                                       @Query("page" ) String page);
     /**
      * 转发微博
      * @param access_token
@@ -117,7 +126,7 @@ public interface StatusService {
      */
     @FormUrlEncoded
     @POST("statuses/repost.json")
-    Observable<Status> statusesRepost(@Field("access_token" ) String access_token,
+    Observable<StatusBean> statusesRepost(@Field("access_token" ) String access_token,
                                           @Field(value = "id",encoded = true ) String id,
                                           @Field(value = "status",encoded = true) String status);
 
@@ -130,7 +139,7 @@ public interface StatusService {
      */
     @FormUrlEncoded
     @POST("comments/create.json")
-    Observable<Status> commentsCreate(@Field("access_token" ) String access_token,
+    Observable<StatusBean> commentsCreate(@Field("access_token" ) String access_token,
                                           @Field(value = "id",encoded = true ) String id,
                                           @Field(value = "comment",encoded = true) String comment);
 

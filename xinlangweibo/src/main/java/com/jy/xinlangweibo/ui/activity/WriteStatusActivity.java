@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.jy.xinlangweibo.BaseApplication;
 import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.models.bean.StatusBean;
 import com.jy.xinlangweibo.models.retrofitservice.StatusInteraction;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.utils.CommonImageLoader.CustomImageLoader;
@@ -35,7 +36,6 @@ import com.jy.xinlangweibo.widget.emotionkeyboard.EmoticonsEditText;
 import com.jy.xinlangweibo.widget.emotionkeyboard.EmoticonsEditText.OnTextChangedInterface;
 import com.jy.xinlangweibo.widget.emotionkeyboard.EmoticonsKeyBoardBar;
 import com.jy.xinlangweibo.widget.ninephoto.BGASortableNinePhotoLayout;
-import com.sina.weibo.sdk.openapi.models.Status;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -81,7 +81,7 @@ public class WriteStatusActivity extends BaseActivity implements
     EmoticonsEditText et_content;
     @BindView(R.id.rg_card_status)
     RelativeLayout rg_card_status;
-    private Status retweeted_status;
+    private StatusBean oldStatus;
     private SharedPreferences sp;
     private InputMethodManager imm;
     private ImageView iv_emotions;
@@ -100,14 +100,14 @@ public class WriteStatusActivity extends BaseActivity implements
         from.startActivityForResult(intent,requestCode);
     }
 
-    public static void intentToRepost(Activity from ,Status status,int requestCode) {
+    public static void intentToRepost(Activity from , StatusBean status, int requestCode) {
         Intent intent = new Intent(from, WriteStatusActivity.class);
         intent.putExtra("status",status);
         intent.putExtra("publishType", PublishType.statusRepost);
         from.startActivityForResult(intent,requestCode);
     }
 
-    public static void intentToComment(Activity from ,Status status,int requestCode) {
+    public static void intentToComment(Activity from ,StatusBean status,int requestCode) {
         Intent intent = new Intent(from, WriteStatusActivity.class);
         intent.putExtra("status",status);
         intent.putExtra("publishType", PublishType.commentCreate);
@@ -140,14 +140,14 @@ public class WriteStatusActivity extends BaseActivity implements
                 et_content.setHint("输入内容......");
                 rg_card_status.setVisibility(View.GONE);
                 // 获得原微博内容
-                retweeted_status = (Status) getIntent().getSerializableExtra("status");
+                oldStatus = (StatusBean) getIntent().getSerializableExtra("status");
                 break;
             case commentCreate:
                 titleBuilder.setTitle("评论");
                 et_content.setHint("输入内容......");
                 rg_card_status.setVisibility(View.GONE);
                 // 获得原微博内容
-                retweeted_status = (Status) getIntent().getSerializableExtra("status");
+                oldStatus = (StatusBean) getIntent().getSerializableExtra("status");
                 break;
             case commentReply:
         }
@@ -210,19 +210,19 @@ public class WriteStatusActivity extends BaseActivity implements
         et_content.setOnTextChangedInterface(this);
         et_content.setOnClickListener(this);
 
-        if (retweeted_status != null) {
+        if (oldStatus != null) {
             rg_card_status.setVisibility(View.VISIBLE);
             snplMomentAddPhotos.setVisibility(View.GONE);
-            if (TextUtils.isEmpty(retweeted_status.thumbnail_pic)) {
+            if (TextUtils.isEmpty(oldStatus.thumbnail_pic)) {
                 iv_card_status.setVisibility(View.GONE);
             }else {
                 CustomImageLoader.displayImage(this,
                         iv_card_status,
-                        retweeted_status.thumbnail_pic,
+                        oldStatus.thumbnail_pic,
                         R.drawable.timeline_image_loading,
                         R.drawable.timeline_image_failure,0,0);
             }
-            tv_card_status.setText(WeiboStringUtils.getOnlyImageSpan(this,retweeted_status.text,tv_card_status));
+            tv_card_status.setText(WeiboStringUtils.getOnlyImageSpan(this, oldStatus.text,tv_card_status));
         }
     }
 
@@ -310,14 +310,14 @@ public class WriteStatusActivity extends BaseActivity implements
         case R.id.nav_right_text:
             if (!TextUtils.isEmpty(et_content.getText().toString())) {
                 if(snplMomentAddPhotos.getData().size() == 1) {
-                    StatusInteraction.getInstance().uploadFile(
+                    StatusInteraction.getInstance(this).uploadFile(
                             BaseApplication.getInstance().getAccessAccessToken().getToken(),
                             et_content.getText().toString(),
                             snplMomentAddPhotos.getData().get(0));
                 }
                 else if(snplMomentAddPhotos.getData().size() > 1){
 //                       多图暂时只上传第一张图
-                    StatusInteraction.getInstance().uploadFile(
+                    StatusInteraction.getInstance(this).uploadFile(
                             BaseApplication.getInstance().getAccessAccessToken().getToken(),
                             et_content.getText().toString(),
                             snplMomentAddPhotos.getData().get(0));
@@ -325,17 +325,17 @@ public class WriteStatusActivity extends BaseActivity implements
                 else if(snplMomentAddPhotos.getData().size() == 0){
                     switch (publishType) {
                     case status:
-                    StatusInteraction.getInstance().update(
+                    StatusInteraction.getInstance(this).update(
                     BaseApplication.getInstance().getAccessAccessToken().getToken(),
                     et_content.getText().toString());
                     finishForResult(RESULT_UPDATE);
                     break;
                     case statusRepost:
-                    StatusInteraction.getInstance().statusesRepost(
+                    StatusInteraction.getInstance(this).statusesRepost(
                     BaseApplication.getInstance().getAccessAccessToken().getToken(),
-                    retweeted_status.id,
+                    oldStatus.id,
                     et_content.getText().toString(),
-                    new Observer<Status>() {
+                    new Observer<StatusBean>() {
                         @Override
                         public void onCompleted() {
 
@@ -347,18 +347,18 @@ public class WriteStatusActivity extends BaseActivity implements
                         }
 
                         @Override
-                        public void onNext(Status status) {
+                        public void onNext(StatusBean status) {
                             showLog("转发成功======="+status);
                         }
                     });
                     finishForResult(RESULT_REPOST);
                     break;
                     case commentCreate:
-                    StatusInteraction.getInstance().commentsCreate(
+                    StatusInteraction.getInstance(this).commentsCreate(
                             BaseApplication.getInstance().getAccessAccessToken().getToken(),
-                            retweeted_status.id,
+                            oldStatus.id,
                             et_content.getText().toString(),
-                            new Observer<Status>() {
+                            new Observer<StatusBean>() {
                                 @Override
                                 public void onCompleted() {
 
@@ -370,7 +370,7 @@ public class WriteStatusActivity extends BaseActivity implements
                                 }
 
                                 @Override
-                                public void onNext(Status status) {
+                                public void onNext(StatusBean status) {
                                     showLog("评论成功======="+status);
                                 }
                             });

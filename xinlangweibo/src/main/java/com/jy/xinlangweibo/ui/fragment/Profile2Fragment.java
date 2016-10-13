@@ -19,7 +19,7 @@ import com.jiang.library.ui.adapter.recyleviewadapter.BasicRecycleViewAdapter;
 import com.jiang.library.ui.adapter.recyleviewadapter.IITemView;
 import com.jiang.library.ui.adapter.recyleviewadapter.IItemViewCreator;
 import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.models.retrofitservice.bean.UserBean;
+import com.jy.xinlangweibo.models.bean.UserBean;
 import com.jy.xinlangweibo.ui.activity.base.FragmentToolbarActivity;
 import com.jy.xinlangweibo.ui.fragment.base.BaseCacheFragment;
 import com.jy.xinlangweibo.utils.CommonImageLoader.ImageLoadeOptions;

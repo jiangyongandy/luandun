@@ -2,13 +2,12 @@ package com.jy.xinlangweibo.presenter;
 
 import android.app.Activity;
 
-import com.jy.xinlangweibo.api.SimpleRequestlistener;
 import com.jy.xinlangweibo.constant.AccessTokenKeeper;
 import com.jy.xinlangweibo.models.StatusesInteraction;
-import com.jy.xinlangweibo.models.impl.StatusesInteractionImpl;
+import com.jy.xinlangweibo.models.bean.StatusListBean;
+import com.jy.xinlangweibo.models.retrofitservice.BaseObserver;
+import com.jy.xinlangweibo.models.retrofitservice.StatusInteraction;
 import com.jy.xinlangweibo.ui.IView.HomeFragmentView;
-import com.sina.weibo.sdk.auth.Oauth2AccessToken;
-import com.sina.weibo.sdk.exception.WeiboException;
 
 /**
  * Created by JIANG on 2016/8/27.
@@ -16,43 +15,38 @@ import com.sina.weibo.sdk.exception.WeiboException;
 public class StatusPresenter extends BasePresenter{
 
     private final HomeFragmentView homeFragmentView;
+    private final String token;
     private  StatusesInteraction api;
 
 
     public StatusPresenter(Activity activity,HomeFragmentView homeFragmentView) {
         super(activity);
         this.homeFragmentView = homeFragmentView;
-        Oauth2AccessToken readAccessToken = AccessTokenKeeper
-                .readAccessToken(activity);
-        api = new StatusesInteractionImpl(activity, readAccessToken);
+        token = AccessTokenKeeper.readAccessToken(activity).getToken();
     }
 
     public void getHomeTimeline(final int page) {
-        api.getStatusesHomeTimeline(page, new SimpleRequestlistener(activity,
-                null) {
+        StatusInteraction.getInstance(activity).statusesPublic_timeline(token, String.valueOf(page),new BaseObserver<StatusListBean>() {
             @Override
-            public void onComplete(String response) {
-                super.onComplete(response);
-                // Statuses fromJson = new Gson().fromJson(response,
-                // Statuses.class);
-                homeFragmentView.updateHomeTimelineList(page,response);
-                onAllDone();
+            public void onNext(StatusListBean models) {
+                super.onNext(models);
+                homeFragmentView.updateHomeTimelineList(page,models);
             }
 
             @Override
-            public void onWeiboException(WeiboException arg0) {
-                super.onWeiboException(arg0);
-                homeFragmentView.onExecptionComplete();
-                onAllDone();
-            }
-
-            @Override
-            protected void onAllDone() {
-                super.onAllDone();
-                homeFragmentView.dimissProgressDialog();
+            public void onCompleted() {
+                super.onCompleted();
+//                homeFragmentView.dimissProgressDialog();
                 homeFragmentView.onGetTimeLineDone();
             }
+
+            @Override
+            public void onError(Throwable e) {
+                super.onError(e);
+                homeFragmentView.onExecptionComplete();
+            }
         });
+
     }
 
 

@@ -1,5 +1,7 @@
 package com.jy.xinlangweibo.ui.IView;
 
+import com.jy.xinlangweibo.models.bean.StatusListBean;
+
 /**
  * Created by JIANG on 2016/8/27.
  */
@@ -9,7 +11,7 @@ public interface HomeFragmentView extends BaseIView {
 
     void dimissProgressDialog();
 
-    void updateHomeTimelineList(final int page, String response);
+    void updateHomeTimelineList(final int page, StatusListBean statusList);
 
     void onGetTimeLineDone();
 

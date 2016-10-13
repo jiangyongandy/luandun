@@ -19,7 +19,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase.OnLastItemVisibleLis
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.api.SimpleRequestlistener;
+import com.jy.xinlangweibo.models.api.SimpleRequestlistener;
 import com.jy.xinlangweibo.constant.AccessTokenKeeper;
 import com.jy.xinlangweibo.models.StatusesInteraction;
 import com.jy.xinlangweibo.models.impl.StatusesInteractionImpl;

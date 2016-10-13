@@ -26,6 +26,10 @@ import com.jiang.library.ui.adapter.listviewadapter.ViewHolderBase;
 import com.jiang.library.ui.adapter.listviewadapter.ViewHolderCreator;
 import com.jiang.library.ui.widget.BasePopupWindow;
 import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.db.StatusBeanDB;
+import com.jy.xinlangweibo.models.bean.StatusBean;
+import com.jy.xinlangweibo.models.bean.StatusListBean;
+import com.jy.xinlangweibo.models.bean.UserBean;
 import com.jy.xinlangweibo.presenter.StatusPresenter;
 import com.jy.xinlangweibo.ui.IView.HomeFragmentView;
 import com.jy.xinlangweibo.ui.activity.MainActivity;
@@ -43,9 +47,6 @@ import com.jy.xinlangweibo.utils.Utils;
 import com.jy.xinlangweibo.utils.WeiboStringUtils;
 import com.jy.xinlangweibo.widget.ninephoto.BGANinePhotoLayout;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.sina.weibo.sdk.openapi.models.Status;
-import com.sina.weibo.sdk.openapi.models.StatusList;
-import com.sina.weibo.sdk.openapi.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +61,7 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
     private View footView;
     private View tvLoad;
     private ImageView ivLoad;
-    private ArrayList<Status> statusList = new ArrayList<Status>();
+    private ArrayList<StatusBean> publicTimeLineList = new ArrayList<StatusBean>();
     private int curPage;
     private PopupWindow pw;
     private MaterialDialog materialDialog;
@@ -72,6 +73,7 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
                              Bundle savedInstanceState) {
         view = View.inflate(activity, R.layout.fragment_home, null);
         ButterKnife.bind(this, view);
+        getCache();
         initView();
         return view;
     }
@@ -89,11 +91,13 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
     @Override
     public void onPause() {
         super.onPause();
-        mCache.remove("HomeTimeline");
-//		缓存数据（IO操作，新开线程）耗时操作
-        mCache.put("HomeTimeline", statusList);
+        StatusBeanDB.getInstance(activity).deleteStatusBeanList(Long.valueOf(activity.getAccessAccessToken().getUid()),StatusBeanDB.publicTimelineCacheType);
+        Logger.showLog("缓存publicTimeline",""+this);
+        StatusBeanDB.getInstance(activity).insertStatusBeanList(publicTimeLineList,Long.valueOf(activity.getAccessAccessToken().getUid()),StatusBeanDB.publicTimelineCacheType);
     }
 
+//    被系统强制清除不会调用该方法，mainactivity因为home键改写所以只能被系统强制杀死
+//    如果要finish则需另处理（使得mainactivity正常退出）
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -104,9 +108,18 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
         presenter = new StatusPresenter(activity, this);
         statusPresenter = (StatusPresenter) presenter;
         initPlv();
-        initPop();
-        showProgressDialog();
-        statusPresenter.getHomeTimeline(1);
+//        showProgressDialog();
+    }
+
+
+    private void getCache() {
+        ArrayList<StatusBean> statuses = (ArrayList<StatusBean>) StatusBeanDB.getInstance(activity).queryStatusBeanList(Long.valueOf(activity.getAccessAccessToken().getUid()),StatusBeanDB.publicTimelineCacheType);
+        if(statuses == null) {
+            Logger.showLog("没有得到缓存publicTimeline",""+this);
+        }else {
+            publicTimeLineList = statuses;
+            Logger.showLog("得到缓存publicTimeline",""+this);
+        }
     }
 
     @Override
@@ -126,36 +139,13 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
     /**
      *
      */
-    private void initPop() {
-/*        View popView = LayoutInflater.from(activity).inflate(
-                R.layout.pop_mainact_navright, null);
-        pw = new PopupWindow(popView, Utils.dip2px(activity, 115),
-                LinearLayout.LayoutParams.WRAP_CONTENT, true);
-        // 设置允许在外点击消失
-        pw.setOutsideTouchable(true);
-        // 刷新状态
-        pw.update();
-        // 点back键和其他地方使其消失,设置了这个才能触发OnDismisslistener ，设置其他控件变化等操作
-        pw.setBackgroundDrawable(getResources().getDrawable(
-                R.drawable.conversation_options_bg));
-        pw.setOnDismissListener(new PopupWindow.OnDismissListener() {
-            @Override
-            public void onDismiss() {
-                ((MainActivity) activity).getMainmenu().getForeground().setAlpha(0); // restore
-            }
-        });*/
-    }
-
-
-    /**
-     *
-     */
     private void initPlv() {
         footView = View.inflate(activity, R.layout.status_footview_loading,
                 null);
         ivLoad = (ImageView) footView.findViewById(R.id.iv_status_loading);
         tvLoad = footView.findViewById(R.id.tv_status_loading);
-        adapter.setData(statusList);
+
+        adapter.setData(publicTimeLineList);
         lvStatus.setAdapter(adapter);
         lvStatus.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -163,7 +153,7 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
                 //前往微博详情界面
                 Intent intent = new Intent(parent.getContext(), StatusDetailsActivity.class);
                 //这里的position是从1开始
-                intent.putExtra("Status", statusList.get(position - 1));
+                intent.putExtra("Status", publicTimeLineList.get(position - 1));
                 parent.getContext().startActivity(intent);
             }
         });
@@ -171,10 +161,6 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
                 statusPresenter.getHomeTimeline(1);
-            }
-
-            private void loadCaheData() {
-
             }
         });
     }
@@ -190,39 +176,29 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
 
     @Override
     public void onExecptionComplete() {
-        System.out.println("请求缓存");
-        ArrayList<Status> statuses = (ArrayList<Status>) mCache
-                .getAsObject("STATUES");
-        if (statuses != null) {
-            for (Status sta : statuses) {
-                statusList.add(sta);
-                if (statusList.size() == 50)
-                    break;
-            }
-            adapter.notifyDataSetChanged();
-        }
+        System.out.println("请求异常");
         tvLoad.setVisibility(View.GONE);
     }
 
     @Override
-    public void updateHomeTimelineList(final int page, String response) {
+    public void updateHomeTimelineList(final int page, StatusListBean statusList) {
         if (page == 1) {
-            statusList.clear();
+            publicTimeLineList.clear();
             curPage = 1;
         }
         curPage = page;
-        StatusList list = StatusList.parse(response);
-        if (list == null) {
+        if (statusList == null) {
             Logger.showLog("list null", "updatehometimeline faliure");
             return;
         }
-        if (null != list.statusList) {
-            for (Status sta : list.statusList) {
-                statusList.add(sta);
+        if (null != statusList.statuses && statusList.statuses.size() > 0) {
+            List<StatusBean> statuses = statusList.statuses;
+            for (StatusBean sta : statuses) {
+                publicTimeLineList.add(sta);
             }
             adapter.notifyDataSetChanged();
             ListView refreshableView = lvStatus.getRefreshableView();
-            if (list.statusList.size() < list.total_number) {
+            if (statuses.size() < statusList.total_number) {
                 addFootView(refreshableView);
             } else {
                 removeFootView(refreshableView);
@@ -268,28 +244,23 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
 
     public void showPopupWindow() {
 //            Logger.showLog("屏幕宽度：" + Utils.getDisplayWidthPixels(activity) + "弹窗宽度:" + View.MeasureSpec.getSize(pw.getWidth()), "计算弹窗偏移量");
-        if(pw == null)
+        if (pw == null)
             pw = new BasePopupWindow.Builder(activity)
                     .setBackground(getResources().getDrawable(R.drawable.conversation_options_bg))
                     .setPopupWindowView(R.layout.pop_mainact_navright)
                     .setWidth(Utils.dip2px(activity, 115))
                     .build();
-        if (!pw.isShowing()) {
-            pw.showAsDropDown(((MainActivity) activity).getToolbar(), Utils.getDisplayWidthPixels(activity) - View.MeasureSpec.getSize(pw.getWidth()) - Utils.dip2px(activity, 10), 0);
-//            ((MainActivity) activity).getMainmenu().getForeground().setAlpha(50); // dim
-        } else {
-            pw.dismiss();
-        }
+        pw.showAsDropDown(((MainActivity) activity).getToolbar(), Utils.getDisplayWidthPixels(activity) - View.MeasureSpec.getSize(pw.getWidth()) - Utils.dip2px(activity, 10), 0);
     }
 
-    private ListViewDataAdapter adapter = new ListViewDataAdapter<Status>(new ViewHolderCreator<Status>() {
+    private ListViewDataAdapter adapter = new ListViewDataAdapter<StatusBean>(new ViewHolderCreator<StatusBean>() {
         @Override
-        public ViewHolderBase<Status> createViewHolder(int position) {
+        public ViewHolderBase<StatusBean> createViewHolder(int position) {
             return new TimeLineItemViewHolderBase();
         }
     });
 
-    public static class TimeLineItemViewHolderBase extends ViewHolderBase<Status> implements BGANinePhotoLayout.Delegate {
+    public static class TimeLineItemViewHolderBase extends ViewHolderBase<StatusBean> implements BGANinePhotoLayout.Delegate {
         //
         private static final int REQUEST_REPOST = 1;
         private static final int REQUEST_COMMENT = 2;
@@ -337,10 +308,10 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
         }
 
         @Override
-        public void showData(int position, final Status status) {
+        public void showData(int position, final StatusBean status) {
             if (status == null)
                 return;
-            final User user = status.user;
+            final UserBean user = status.user;
 
             //bind publisher
             imageLoader.displayImage(user.avatar_hd, ivHead,
@@ -361,9 +332,9 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
             timelinePhotos.init((Activity) context);
             if (status.pic_urls != null) {
                 for (int i = 0; i < status.pic_urls.size(); i++) {
-                    status.pic_urls.set(i, status.pic_urls.get(i).replace("thumbnail", "bmiddle"));
+                    status.getPic_urls2().set(i, status.getPic_urls2().get(i).replace("thumbnail", "bmiddle"));
                 }
-                timelinePhotos.setData(status.pic_urls);
+                timelinePhotos.setData(status.getPic_urls2());
                 timelinePhotos.setDelegate(this);
             } else {
                 ArrayList<String> strings = new ArrayList<>();
@@ -424,9 +395,9 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
                 retweetedTimelinePhotos.init((Activity) context);
                 if (status.retweeted_status.pic_urls != null) {
                     for (int i = 0; i < status.retweeted_status.pic_urls.size(); i++) {
-                        status.retweeted_status.pic_urls.set(i, status.retweeted_status.pic_urls.get(i).replace("thumbnail", "bmiddle"));
+                        status.retweeted_status.getPic_urls2().set(i, status.retweeted_status.getPic_urls2().get(i).replace("thumbnail", "bmiddle"));
                     }
-                    retweetedTimelinePhotos.setData(status.retweeted_status.pic_urls);
+                    retweetedTimelinePhotos.setData(status.retweeted_status.getPic_urls2());
                     retweetedTimelinePhotos.setDelegate(this);
                 } else {
                     ArrayList<String> strings = new ArrayList<>();

@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.api.SimpleRequestlistener;
+import com.jy.xinlangweibo.models.api.SimpleRequestlistener;
 import com.jy.xinlangweibo.constant.AccessTokenKeeper;
 import com.jy.xinlangweibo.models.StatusesInteraction;
 import com.jy.xinlangweibo.models.impl.StatusesInteractionImpl;

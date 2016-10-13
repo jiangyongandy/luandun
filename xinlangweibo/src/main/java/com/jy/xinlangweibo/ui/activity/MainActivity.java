@@ -16,7 +16,6 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -25,9 +24,9 @@ import android.widget.TextView;
 
 import com.jiang.library.ui.BaseViewHolder;
 import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.models.bean.UserBean;
 import com.jy.xinlangweibo.models.retrofitservice.BaseObserver;
 import com.jy.xinlangweibo.models.retrofitservice.StatusInteraction;
-import com.jy.xinlangweibo.models.retrofitservice.bean.UserBean;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.ui.activity.base.FragmentToolbarActivity;
 import com.jy.xinlangweibo.ui.fragment.DiscoverFragment;
@@ -53,8 +52,6 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
     NavigationView navgationview;
     @BindView(R.id.drawer)
     DrawerLayout drawer;
-    @BindView(R.id.mainmenu)
-    FrameLayout mainmenu;
     @BindView(R.id.tabhomeid)
     RadioButton tabhomeid;
     @BindView(R.id.tabmessageid)
@@ -84,10 +81,6 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
         }
         getSwipeBackLayout().setEnableGesture(false);
         setContentView(R.layout.activity_main);
-        //  这里是为了设置popupwindow 背景半透明
-        mainmenu = (FrameLayout) findViewById(R.id.mainmenu);
-        mainmenu.getForeground().setAlpha(0);
-        //		得到缓存
         initView();
     }
 
@@ -103,6 +96,7 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
     protected void onDestroy() {
         super.onDestroy();
         FragmentController.onDestroy();
+
     }
 
     //    因为FragmentController为单例模式 finish以后ondestroy（验证是新activity oncreate后执行）
@@ -187,7 +181,7 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
         rg.setOnCheckedChangeListener(this);
         navgationview.setNavigationItemSelectedListener(this);
         final BaseViewHolder<UserBean> navHeadViewHolderHolder = new NavHeadViewHolder(this,navgationview.getHeaderView(0));
-        StatusInteraction.getInstance().userShow(getAccessAccessToken().getToken(),
+        StatusInteraction.getInstance(this).userShow(getAccessAccessToken().getToken(),
             new BaseObserver<UserBean>() {
             @Override
             public void onNext(UserBean userBean) {
@@ -262,10 +256,6 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
 
     public DrawerLayout getDrawer() {
         return drawer;
-    }
-
-    public FrameLayout getMainmenu() {
-        return mainmenu;
     }
 
     public TextView getNavTitle() {

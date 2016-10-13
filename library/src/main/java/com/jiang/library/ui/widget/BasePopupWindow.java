@@ -13,7 +13,7 @@ import android.widget.PopupWindow;
 /**
  * Created by JIANG on 2016/10/5.
  */
-public class BasePopupWindow extends PopupWindow implements View.OnClickListener{
+public class BasePopupWindow extends PopupWindow implements View.OnClickListener {
 
     private ViewGroup activityView;
     private Builder builder;
@@ -23,10 +23,10 @@ public class BasePopupWindow extends PopupWindow implements View.OnClickListener
     int blackOverlayColor;
 
     private BasePopupWindow(Builder builder) {
-        super(builder.popupWindowView,builder.width,
+        super(builder.popupWindowView, builder.width,
                 builder.heigth, builder.focusable);
         this.builder = builder;
-        this.activityView = (ViewGroup)builder.activity.findViewById(android.R.id.content);
+        this.activityView = (ViewGroup) builder.activity.findViewById(android.R.id.content);
         blackOverlayColor = builder.blackOverlayColor;
         // 设置允许在外点击消失
         setOutsideTouchable(builder.touchable);
@@ -38,7 +38,7 @@ public class BasePopupWindow extends PopupWindow implements View.OnClickListener
             @Override
             public void onDismiss() {
                 activityView.removeView(blackOverlay);
-                if(onDismissListenerDelegate != null)
+                if (onDismissListenerDelegate != null)
                     onDismissListenerDelegate.onDismiss();
             }
         });
@@ -50,14 +50,22 @@ public class BasePopupWindow extends PopupWindow implements View.OnClickListener
         blackOverlay.setBackgroundColor(blackOverlayColor);
         blackOverlay.setOnClickListener(this);
         activityView.addView(blackOverlay, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        super.showAtLocation(parent,gravity,x,y);
+        if (!isShowing()) {
+            super.showAtLocation(parent, gravity, x, y);
+        } else {
+            dismiss();
+        }
     }
 
     public void showAsDropDown(View anchor, int xoff, int yoff) {
         blackOverlay = new View(builder.activity);
         blackOverlay.setBackgroundColor(blackOverlayColor);
         activityView.addView(blackOverlay, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        super.showAsDropDown(anchor,xoff,yoff);
+        if (!isShowing()) {
+            super.showAsDropDown(anchor, xoff, yoff);
+        } else {
+            dismiss();
+        }
     }
 
     @Override
@@ -69,14 +77,14 @@ public class BasePopupWindow extends PopupWindow implements View.OnClickListener
     }
 
     public interface OnDismissListenerDelegate {
-         void onDismiss();
+        void onDismiss();
     }
 
     public void setOnDismissListenerDelegate(OnDismissListenerDelegate onDismissListenerDelegate) {
         this.onDismissListenerDelegate = onDismissListenerDelegate;
     }
 
-    public static class Builder{
+    public static class Builder {
         private ViewGroup activityView;
         private Activity activity;
         private View popupWindowView;
@@ -137,26 +145,26 @@ public class BasePopupWindow extends PopupWindow implements View.OnClickListener
         }
 
 
-        public BasePopupWindow show(View anchor, int xoff, int yoff){
+        public BasePopupWindow show(View anchor, int xoff, int yoff) {
             initEmptyParams();
             BasePopupWindow basePopupWindow = new BasePopupWindow(this);
-            if(basePopupWindow.isShowing()) {
+            if (basePopupWindow.isShowing()) {
                 basePopupWindow.dismiss();
-            }else {
-                basePopupWindow.showAsDropDown(anchor,xoff,yoff);
+            } else {
+                basePopupWindow.showAsDropDown(anchor, xoff, yoff);
             }
             return basePopupWindow;
         }
 
-        public BasePopupWindow build(){
+        public BasePopupWindow build() {
             initEmptyParams();
             return new BasePopupWindow(this);
         }
 
         private void initEmptyParams() {
-            if(popupWindowView == null)
+            if (popupWindowView == null)
                 throw new RuntimeException("popupWindowView can't is null");
-            if(background == null)
+            if (background == null)
                 background = new ColorDrawable(0xffffff);
         }
     }

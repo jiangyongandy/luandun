@@ -39,7 +39,6 @@ public class BaseActivity extends SwipeBackActivity {
 		tag = this.getClass().getSimpleName();
 //		此段代码修复引入侧滑结束activity 状态栏主题换色的问题
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-
 			Window window = getWindow();
 			window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
 					| WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
@@ -54,7 +53,7 @@ public class BaseActivity extends SwipeBackActivity {
 		setTheme(ThemeUtils.themeArr[AppSetting.getThemeColor()][0]);
 		this.theme = AppSetting.getThemeColor();
 
-		//		得到缓存
+		//		得到缓存组件
 		mCache = ACache.get(this);
 	}
 
@@ -109,7 +108,7 @@ public class BaseActivity extends SwipeBackActivity {
 		this.startActivity(intent);
 	}
 
-	protected Oauth2AccessToken getAccessAccessToken(){
+	public Oauth2AccessToken getAccessAccessToken(){
 		accessToken = AccessTokenKeeper.readAccessToken(this);
 		return accessToken;
 	}

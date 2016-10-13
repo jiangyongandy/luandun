@@ -1,5 +1,6 @@
 package com.jy.xinlangweibo.models.service.publish;
 
+import android.content.Context;
 import android.os.AsyncTask;
 
 import com.jy.xinlangweibo.BaseApplication;
@@ -16,8 +17,10 @@ import java.util.ArrayList;
 public class UploadImageTask extends AsyncTask{
 
     private final PublishBean publishBean;
+    private final Context context;
 
-    public UploadImageTask(PublishBean publishBean) {
+    public UploadImageTask(PublishBean publishBean, Context context) {
+        this.context = context;
         this.publishBean = publishBean;
     }
 
@@ -30,7 +33,7 @@ public class UploadImageTask extends AsyncTask{
     protected Object doInBackground(Object[] params) {
         ArrayList<String> pids = new ArrayList<>();
         for(int i = 0;i<publishBean.getPics().length;i++) {
-            pids.add(0,StatusInteraction.getInstance().uploadImageForPicId(BaseApplication.getInstance().getAccessAccessToken().getToken(),publishBean.getPics()[i]));
+            pids.add(0,StatusInteraction.getInstance(context).uploadImageForPicId(BaseApplication.getInstance().getAccessAccessToken().getToken(),publishBean.getPics()[i]));
         }
         // 图片都上传完了，开始发布微博
         String picIdStr = "";
