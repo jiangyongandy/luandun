@@ -184,4 +184,18 @@ public class StatusBeanDB {
                                         .list();
         return list;
     }
+
+    public List<StatusBean> queryFuzzyStatusBeanList(long ownerId,String like) {
+        DaoMaster daoMaster = new DaoMaster(getReadableDatabase());
+        DaoSession daoSession = daoMaster.newSession();
+        StatusBeanDao statusBeanDao = daoSession.getStatusBeanDao();
+        QueryBuilder<StatusBean> qb = statusBeanDao.queryBuilder();
+        List<StatusBean> list = qb.where(StatusBeanDao.Properties.OwnerId.eq(ownerId),
+                StatusBeanDao.Properties.Text.like("%"+like+"%")
+                ).list();
+        System.out.println("queryFuzzyStatusBeanList-----"+list);
+        return list;
+    }
+
+
 }

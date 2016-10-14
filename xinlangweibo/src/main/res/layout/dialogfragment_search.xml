@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent" android:background="@color/bg_agray"
+    android:layout_height="match_parent">
+
+    <SearchView
+        android:layout_margin="10dp"
+        android:id="@+id/sv_home"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_history_suggesst"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

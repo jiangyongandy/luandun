@@ -44,6 +44,7 @@
     <string name="bga_pp_take_picture">拍摄照片</string>
     <string name="bga_pp_toast_photo_picker_max">最多只能选择 %1$s 张图片</string>
     <string name="bga_pp_view_photo">查看图片</string>
+    <string name="searchView_hint">搜索本地记录</string>
 
 
     <string-array name="mdColorNames">

@@ -45,6 +45,7 @@ import com.jy.xinlangweibo.utils.DateUtils;
 import com.jy.xinlangweibo.utils.Logger;
 import com.jy.xinlangweibo.utils.Utils;
 import com.jy.xinlangweibo.utils.WeiboStringUtils;
+import com.jy.xinlangweibo.widget.dialog.SearchDialogFragment;
 import com.jy.xinlangweibo.widget.ninephoto.BGANinePhotoLayout;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -147,6 +148,14 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
 
         adapter.setData(publicTimeLineList);
         lvStatus.setAdapter(adapter);
+        View headView = activity.getLayoutInflater().inflate(R.layout.layout_custom_searchview,lvStatus,false);
+        headView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SearchDialogFragment.getSearchDialogFragment().show(activity.getSupportFragmentManager(),"SearchDialogFragment");
+            }
+        });
+        lvStatus.getmRefreshableView().addHeaderView(headView);
         lvStatus.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
