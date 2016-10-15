@@ -4,12 +4,17 @@
     android:orientation="vertical" android:background="@color/white"
     android:gravity="center"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/tv_item_search_suggest"
+        android:id="@+id/tv_item_search_type" android:background="@color/bg_gray_dark"
         android:layout_width="match_parent" android:layout_height="wrap_content" tools:text="搜索历史"
-        android:padding="10dp"
+        android:padding="10dp" android:lines="1"
         />
+
+    <com.jy.xinlangweibo.widget.FullListView.NestFullListView android:id="@+id/nfl_recordList"
+        android:dividerPadding="1px"  android:orientation="vertical"
+        android:layout_height="wrap_content" android:showDividers="middle"
+        android:layout_width="match_parent"/>
 
 </LinearLayout>

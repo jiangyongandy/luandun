@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
@@ -116,6 +117,37 @@ public class WeiboStringUtils {
 			}
 		}
 		return spannableString;
+	}
+
+	public static SpannableStringBuilder getSearchMatchedText(final Context context,String pattern,
+			String source, TextView tv) {
+		SpannableStringBuilder spannableString = new SpannableStringBuilder(source);
+		Pattern pa = Pattern.compile(pattern);
+		Matcher matcher = pa.matcher(source);
+		if (matcher.find()) {
+			tv.setMovementMethod(LinkMovementMethod.getInstance());
+			matcher.reset();
+		}
+		int lastStart = 0;
+		int lastEnd = 0;
+		while (matcher.find()){
+			final String phone = matcher.group(0);
+			if (!TextUtils.isEmpty(phone)) {
+				int start = matcher.start(0);
+				lastStart = start;
+				int end = matcher.end(0);
+				lastEnd = end + 3 ;
+				spannableString.setSpan(new MyClickableSpan(context),start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+			}
+		}
+		if(lastStart >= 3)
+			lastStart -= 3;
+		if(lastEnd > spannableString.length()-1)
+			lastEnd = spannableString.length()-1;
+		SpannableStringBuilder stringBuilder = SpannableStringBuilder.valueOf(spannableString.subSequence(lastStart, lastEnd));
+		stringBuilder.insert(0,"...");
+		stringBuilder.append("...");
+		return stringBuilder;
 	}
 
 	public static SpannableString getOnlyImageSpan(final Context context,

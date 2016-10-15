@@ -17,8 +17,14 @@ import com.jiang.library.ui.adapter.recyleviewadapter.IITemView;
 import com.jiang.library.ui.adapter.recyleviewadapter.IItemViewCreator;
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.db.StatusBeanDB;
+import com.jy.xinlangweibo.db.bean.LocateRecordBeanSet;
+import com.jy.xinlangweibo.models.retrofitservice.BaseObserver;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.utils.ACache;
+import com.jy.xinlangweibo.utils.WeiboStringUtils;
+import com.jy.xinlangweibo.widget.FullListView.NestFullListView;
+import com.jy.xinlangweibo.widget.FullListView.NestFullListViewAdapter;
+import com.jy.xinlangweibo.widget.FullListView.NestFullViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,11 +39,9 @@ import butterknife.ButterKnife;
  */
 public class SearchDialogFragment extends DialogFragment {
 
-    public static SearchDialogFragment getSearchDialogFragment() {
-        return new SearchDialogFragment();
-    }
-
+    private static final String SEARCHHISTORYKEY = "searchHistoryKey";
     private static final String SEARCHHISTORY = "searchHistory";
+
     @BindView(R.id.sv_home)
     SearchView svHome;
     @BindView(R.id.rv_history_suggesst)
@@ -45,31 +49,20 @@ public class SearchDialogFragment extends DialogFragment {
     private BasicRecycleViewAdapter adapter;
     private List<String> strings = new ArrayList<String>();
     private ACache mCache;
-    private Timer timer ;
-    private QueryTimeTask timerTask ;
+    private Timer timer;
+    private QueryTimeTask timerTask;
+    private String queryKey = "";
+    private List<LocateRecordBeanSet<String>> locateRecordBeenList = new ArrayList<>();
+
+    public static SearchDialogFragment getSearchDialogFragment() {
+        return new SearchDialogFragment();
+    }
 
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setStyle(DialogFragment.STYLE_NO_FRAME, android.R.style.Theme_Holo_Light);
     }
-
-/*    @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        Dialog dialog = super.onCreateDialog(savedInstanceState);
-        //dialog.setTitle(R.string.warning);
-        Window w = dialog.getWindow();
-        WindowManager.LayoutParams lp = w.getAttributes();
-        lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
-        lp.height = ViewGroup.LayoutParams.MATCH_PARENT;
-        w.setAttributes(lp);
-//		setCancelable(false);
-//		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.alertDialog);
-//		builder.setTitle(R.string.warning);
-//		builder.setMessage(this.getArguments().getString("msg"));
-//		builder.setPositiveButton(R.string.btn_ok, null);
-        return dialog;
-    }*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle icicle) {
@@ -84,28 +77,35 @@ public class SearchDialogFragment extends DialogFragment {
     public void onPause() {
         super.onPause();
 //        保存搜索历史24h
-        mCache.put(SEARCHHISTORY,(ArrayList)strings,24*60*60);
+        mCache.put(SEARCHHISTORY, (ArrayList) strings, 24 * 60 * 60);
+        mCache.put(SEARCHHISTORYKEY, queryKey, 24 * 60 * 60);
     }
 
     private void getCache() {
         //		得到缓存
         mCache = ACache.get(this.getActivity());
-        strings = (List<String>) mCache.getAsObject(SEARCHHISTORY);
+        List<String> cachelist = (List<String>) mCache.getAsObject(SEARCHHISTORY);
+        String cacheQueryKey = mCache.getAsString(SEARCHHISTORYKEY);
+        if (cachelist != null)
+            strings = cachelist;
+        if (cacheQueryKey != null)
+            queryKey = cacheQueryKey;
+
     }
 
 
     private void initViewAndEvents() {
-        adapter = new BasicRecycleViewAdapter<String>(new IItemViewCreator<String>() {
+        adapter = new BasicRecycleViewAdapter<LocateRecordBeanSet<String>>(new IItemViewCreator<LocateRecordBeanSet<String>>() {
             @Override
             public View newContentView(LayoutInflater layoutInflater, ViewGroup parent, int viewType) {
                 return layoutInflater.inflate(R.layout.item_search_suggest, parent, false);
             }
 
             @Override
-            public IITemView<String> newItemView(View convertView, int viewType) {
-                return new SeachSuggestItem(getActivity(),convertView);
+            public IITemView<LocateRecordBeanSet<String>> newItemView(View convertView, int viewType) {
+                return new SeachSuggestItem(getActivity(), convertView);
             }
-        }, strings);
+        }, locateRecordBeenList, getActivity());
         rvHistorySuggesst.setAdapter(adapter);
         rvHistorySuggesst.setLayoutManager(new LinearLayoutManager(getActivity()));
         svHome.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -116,8 +116,10 @@ public class SearchDialogFragment extends DialogFragment {
 
             @Override
             public boolean onQueryTextChange(final String newText) {
+                if (newText.isEmpty())
+                    return true;
 //                500毫秒内没有内容变化则执行定时任务
-                if(timer != null) {
+                if (timer != null) {
                     timer.cancel();
                     timerTask = null;
                 }
@@ -129,18 +131,28 @@ public class SearchDialogFragment extends DialogFragment {
             private void startTimerTak() {
                 timer = new Timer();
                 timerTask = new QueryTimeTask();
-                timer.schedule(timerTask,500);
+                timer.schedule(timerTask, 500);
             }
         });
     }
 
-    public  class QueryTimeTask extends TimerTask {
+    public class QueryTimeTask extends TimerTask {
         private String newText;
 
         @Override
         public void run() {
             BaseActivity activity = (BaseActivity) getActivity();
-            StatusBeanDB.getInstance(getActivity()).queryFuzzyStatusBeanList(Long.parseLong(activity.getAccessAccessToken().getUid()),newText);
+            StatusBeanDB.getInstance(getActivity()).queryFuzzyStatusBeanList2(Long.parseLong(activity.getAccessAccessToken().getUid()),
+                    newText,
+                    new BaseObserver<List<String>>() {
+                        @Override
+                        public void onNext(List<String> models) {
+                            super.onNext(models);
+                            updateListView(models);
+                        }
+                    }
+            );
+            queryKey = newText;
         }
 
         public void setNewText(String newText) {
@@ -148,18 +160,40 @@ public class SearchDialogFragment extends DialogFragment {
         }
     }
 
-    public static class SeachSuggestItem extends ARecycleViewItemView<String> {
+    private void updateListView(List<String> models) {
+        locateRecordBeenList.clear();
+        LocateRecordBeanSet recordBean = new LocateRecordBeanSet();
+        recordBean.recordType = "本地微博记录";
+        recordBean.recordList = models;
+        locateRecordBeenList.add(recordBean);
+        adapter.notifyDataSetChanged();
+
+        strings.clear();
+        strings.addAll(models);
+    }
+
+    public class SeachSuggestItem extends ARecycleViewItemView<LocateRecordBeanSet<String>> {
 //        R.layout.item_search_suggest
-        @BindView(R.id.tv_item_search_suggest)
-        TextView tvItemSearchSuggest;
+        @BindView(R.id.tv_item_search_type)
+        TextView tvItemSearchType;
+        @BindView(R.id.nfl_recordList)
+        NestFullListView nflRecordList;
 
         public SeachSuggestItem(Context context, View itemView) {
             super(context, itemView);
         }
 
         @Override
-        public void onBindData(View convertView, String model, int position) {
-            tvItemSearchSuggest.setText(model);
+        public void onBindData(View convertView, final LocateRecordBeanSet<String> model, int position) {
+            tvItemSearchType.setText(model.recordType);
+            nflRecordList.setAdapter(new NestFullListViewAdapter<String>(R.layout.item_search_suggest_record,model.recordList) {
+                @Override
+                public void onBind(int pos, String o, NestFullViewHolder holder) {
+                    TextView tvSearch = holder.getView(R.id.tv_item_search_suggest);
+                    tvSearch.setText(WeiboStringUtils.getSearchMatchedText(context, queryKey, model.recordList.get(pos), tvSearch));
+                }
+            });
+            nflRecordList.updateUI();
         }
     }
 }

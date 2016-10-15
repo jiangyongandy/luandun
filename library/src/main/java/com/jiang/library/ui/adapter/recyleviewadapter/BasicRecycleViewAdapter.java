@@ -21,6 +21,7 @@ import java.util.List;
  * Created by JIANG on 2016/9/14.
  */
 public class BasicRecycleViewAdapter<T extends Serializable> extends Adapter {
+    private Activity activity;
     private IItemViewCreator<T> itemViewCreator;
     private List<T> datas;
     private IITemView footerItemView;
@@ -46,6 +47,16 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends Adapter {
     };
 
     public BasicRecycleViewAdapter(IItemViewCreator<T> itemViewCreator, List<T> datas) {
+        if (datas == null) {
+            datas = new ArrayList();
+        }
+
+        this.itemViewCreator = itemViewCreator;
+        this.datas = datas;
+    }
+
+    public BasicRecycleViewAdapter(IItemViewCreator<T> itemViewCreator, List<T> datas,Activity activity) {
+        this.activity = activity;
         if (datas == null) {
             datas = new ArrayList();
         }
@@ -121,11 +132,19 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends Adapter {
             itemView = this.footerItemView;
             convertView = itemView.getConvertView();
         } else if (this.isHeaderType(viewType)) {
-            convertView = this.headerItemViewCreator.newContentView(((Activity) parent.getContext()).getLayoutInflater(), parent, viewType);
+            if(activity == null) {
+                convertView = this.headerItemViewCreator.newContentView(((Activity) parent.getContext()).getLayoutInflater(), parent, viewType);
+            }else {
+                convertView = this.headerItemViewCreator.newContentView(activity.getLayoutInflater(), parent, viewType);
+            }
             itemView = this.headerItemViewCreator.newItemView(convertView, viewType);
             convertView.setTag(R.id.itemview, itemView);
         } else {
-            convertView = this.itemViewCreator.newContentView(((Activity) parent.getContext()).getLayoutInflater(), parent, viewType);
+            if(activity == null) {
+                convertView = this.itemViewCreator.newContentView(((Activity) parent.getContext()).getLayoutInflater(), parent, viewType);
+            }else {
+                convertView = this.itemViewCreator.newContentView(activity.getLayoutInflater(), parent, viewType);
+            }
             itemView = this.itemViewCreator.newItemView(convertView, viewType);
             convertView.setTag(R.id.itemview, itemView);
         }
