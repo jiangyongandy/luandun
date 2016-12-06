@@ -3,10 +3,10 @@ package com.jy.xinlangweibo.presenter;
 import android.app.Activity;
 
 import com.jy.xinlangweibo.constant.AccessTokenKeeper;
-import com.jy.xinlangweibo.models.StatusesInteraction;
-import com.jy.xinlangweibo.models.bean.StatusListBean;
-import com.jy.xinlangweibo.models.retrofitservice.BaseObserver;
-import com.jy.xinlangweibo.models.retrofitservice.StatusInteraction;
+import com.jy.xinlangweibo.models.net.StatusesInteraction;
+import com.jy.xinlangweibo.models.net.sinaapi.sinabean.StatusListBean;
+import com.jy.xinlangweibo.models.net.sinaapi.BaseObserver;
+import com.jy.xinlangweibo.models.net.sinaapi.StatusInteraction;
 import com.jy.xinlangweibo.ui.IView.HomeFragmentView;
 
 /**
@@ -26,7 +26,7 @@ public class StatusPresenter extends BasePresenter{
     }
 
     public void getHomeTimeline(final int page) {
-        StatusInteraction.getInstance(activity).statusesPublic_timeline(token, String.valueOf(page),new BaseObserver<StatusListBean>() {
+        StatusInteraction.getInstance(activity).statusesHome_timeline(token, String.valueOf(page),new BaseObserver<StatusListBean>() {
             @Override
             public void onNext(StatusListBean models) {
                 super.onNext(models);

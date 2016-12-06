@@ -26,7 +26,7 @@ public class FragmentToolbarActivity extends BaseActivity  {
      * @param clazz
      * @param isToolbarActivity
      */
-    public static void launch(Activity activity, Class<? extends Fragment> clazz,Boolean isToolbarActivity) {
+    public static void launch(Activity activity, Class<? extends Fragment> clazz, Boolean isToolbarActivity) {
         Intent intent = new Intent(activity, FragmentToolbarActivity.class);
         intent.putExtra("className", clazz.getName());
         intent.putExtra("isToolbarActivity",isToolbarActivity);

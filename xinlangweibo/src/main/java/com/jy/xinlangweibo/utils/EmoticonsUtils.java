@@ -6,7 +6,7 @@ import android.text.TextUtils;
 
 import com.jy.xinlangweibo.bean.EmoticonBean;
 import com.jy.xinlangweibo.bean.EmoticonSetBean;
-import com.jy.xinlangweibo.db.DBHelper;
+import com.jy.xinlangweibo.models.db.DBHelper;
 import com.jy.xinlangweibo.utils.emotionimageloader.ImageBase;
 
 import java.io.IOException;

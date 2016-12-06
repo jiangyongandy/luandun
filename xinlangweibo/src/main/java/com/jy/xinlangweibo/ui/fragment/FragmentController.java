@@ -18,7 +18,7 @@ public class FragmentController {
 
 	private FragmentController(Activity activity,int id,Fragment[] fragments) {
 		mainActivity = (MainActivity) activity;
-		fm = activity.getFragmentManager();
+		fm = ((MainActivity) activity).getFragmentManager();
 		this.containerId = id;
 		this.fragments = fragments;
 		initView();
@@ -39,8 +39,8 @@ public class FragmentController {
 						}
 						break;
 					case 1:
-						if (!(fragments[1] instanceof MessageFragment)) {
-							fragments[1] = new MessageFragment();
+						if (!(fragments[1] instanceof VideoRecommendFragment)) {
+							fragments[1] = new VideoRecommendFragment();
 							ft.add(containerId, fragments[1]);
 						}
 						break;

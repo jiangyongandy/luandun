@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_dialogBase_title"
+        android:gravity="center" android:layout_marginTop="15dp"
+        android:layout_width="match_parent" android:textSize="16sp"
+        android:layout_height="wrap_content" android:text="标题"/>
+    <TextView
+        android:id="@+id/tv_dialogBase_content"
+        android:gravity="center"
+        android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1" android:text="内容"/>
+
+    <view
+        android:layout_width="match_parent"
+        android:layout_height="1dp" android:solidColor="@android:color/darker_gray"/>
+
+    <LinearLayout
+        android:layout_width="match_parent" android:background="@android:color/secondary_text_dark"
+        android:layout_height="56dp" android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/tv_dialogBase_left"
+            android:gravity="center"
+            android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="match_parent" android:text="取消"/>
+
+        <view
+            android:layout_width="1dp"
+            android:layout_height="match_parent" android:solidColor="@android:color/darker_gray"/>
+
+        <TextView
+            android:id="@+id/tv_dialogBase_right"
+            android:gravity="center" android:textColor="@android:color/holo_blue_dark"
+            android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="match_parent" android:text="确认"/>
+
+    </LinearLayout>
+
+</LinearLayout>

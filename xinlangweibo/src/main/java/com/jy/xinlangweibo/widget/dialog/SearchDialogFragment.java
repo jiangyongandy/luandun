@@ -16,15 +16,15 @@ import com.jiang.library.ui.adapter.recyleviewadapter.BasicRecycleViewAdapter;
 import com.jiang.library.ui.adapter.recyleviewadapter.IITemView;
 import com.jiang.library.ui.adapter.recyleviewadapter.IItemViewCreator;
 import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.db.StatusBeanDB;
-import com.jy.xinlangweibo.db.bean.LocateRecordBeanSet;
-import com.jy.xinlangweibo.models.retrofitservice.BaseObserver;
+import com.jy.xinlangweibo.models.db.StatusBeanDB;
+import com.jy.xinlangweibo.models.db.bean.LocateRecordBeanSet;
+import com.jy.xinlangweibo.models.net.sinaapi.BaseObserver;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.utils.ACache;
 import com.jy.xinlangweibo.utils.WeiboStringUtils;
-import com.jy.xinlangweibo.widget.FullListView.NestFullListView;
-import com.jy.xinlangweibo.widget.FullListView.NestFullListViewAdapter;
-import com.jy.xinlangweibo.widget.FullListView.NestFullViewHolder;
+import com.jy.xinlangweibo.widget.NestListView.NestFullListView;
+import com.jy.xinlangweibo.widget.NestListView.NestFullListViewAdapter;
+import com.jy.xinlangweibo.widget.NestListView.NestFullViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -154,7 +154,6 @@ public class SearchDialogFragment extends DialogFragment {
             );
             queryKey = newText;
         }
-
         public void setNewText(String newText) {
             this.newText = newText;
         }
@@ -173,7 +172,8 @@ public class SearchDialogFragment extends DialogFragment {
     }
 
     public class SeachSuggestItem extends ARecycleViewItemView<LocateRecordBeanSet<String>> {
-//        R.layout.item_search_suggest
+        public static final int MAXITEMNUM = 4;
+        //        R.layout.item_search_suggest
         @BindView(R.id.tv_item_search_type)
         TextView tvItemSearchType;
         @BindView(R.id.nfl_recordList)
@@ -186,7 +186,14 @@ public class SearchDialogFragment extends DialogFragment {
         @Override
         public void onBindData(View convertView, final LocateRecordBeanSet<String> model, int position) {
             tvItemSearchType.setText(model.recordType);
-            nflRecordList.setAdapter(new NestFullListViewAdapter<String>(R.layout.item_search_suggest_record,model.recordList) {
+            List<String> subList = model.recordList;
+            if(model.recordList.size() > MAXITEMNUM) {
+                subList = model.recordList.subList(0, MAXITEMNUM);
+                nflRecordList.addFooterView(getActivity().getLayoutInflater().inflate(R.layout.nestfulllistview_footer,nflRecordList,false));
+            }else {
+                nflRecordList.removeFooterView();
+            }
+            nflRecordList.setAdapter(new NestFullListViewAdapter<String>(R.layout.item_search_suggest_record,subList) {
                 @Override
                 public void onBind(int pos, String o, NestFullViewHolder holder) {
                     TextView tvSearch = holder.getView(R.id.tv_item_search_suggest);

@@ -13,7 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.Scroller;
 import android.widget.TextView;
 
-import com.jy.xinlangweibo.widget.pulltorefresh.PullToRefreshListFooter;
+import com.jiang.library.ui.widget.pulltorefresh.PullToRefreshListFooter;
 
 public class PulltorefreshRecyclerView extends RecyclerView {
 

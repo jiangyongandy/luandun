@@ -1,6 +1,6 @@
 package com.jy.xinlangweibo.ui.IView;
 
-import com.jy.xinlangweibo.models.bean.StatusListBean;
+import com.jy.xinlangweibo.models.net.sinaapi.sinabean.StatusListBean;
 
 /**
  * Created by JIANG on 2016/8/27.

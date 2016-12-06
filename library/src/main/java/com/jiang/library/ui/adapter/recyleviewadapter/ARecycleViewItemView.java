@@ -23,6 +23,11 @@ public  class ARecycleViewItemView<T extends Serializable> extends RecyclerView.
         this.convertView = itemView;
     }
 
+    public ARecycleViewItemView(View itemView) {
+        super(itemView);
+        this.convertView = itemView;
+    }
+
     public void onBindView(View convertView) {
 //        InjectUtility.initInjectedView(this.getContext(), this, convertView);
         ButterKnife.bind(this,convertView);

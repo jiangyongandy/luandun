@@ -14,9 +14,13 @@ import com.jy.xinlangweibo.presenter.BasePresenter;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.squareup.leakcanary.RefWatcher;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
 public class BaseFragment extends Fragment {
 	protected BaseActivity activity;
 	protected BasePresenter presenter;
+	private Unbinder bind;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -27,6 +31,7 @@ public class BaseFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View rootView = inflater.inflate(CreateView(),container,false);
+		bind = ButterKnife.bind(this, rootView);
 		initViewAndEvent(rootView);
 		return rootView;
 	}
@@ -36,6 +41,7 @@ public class BaseFragment extends Fragment {
 		super.onDestroy();
 		if(presenter != null)
 			presenter.onDestroy();
+		bind.unbind();
 		RefWatcher refWatcher = BaseApplication.getRefWatcher(getActivity());
 		refWatcher.watch(this);
 	}

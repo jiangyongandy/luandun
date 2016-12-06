@@ -24,16 +24,16 @@ import android.widget.TextView;
 
 import com.jiang.library.ui.BaseViewHolder;
 import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.models.bean.UserBean;
-import com.jy.xinlangweibo.models.retrofitservice.BaseObserver;
-import com.jy.xinlangweibo.models.retrofitservice.StatusInteraction;
+import com.jy.xinlangweibo.models.net.sinaapi.BaseObserver;
+import com.jy.xinlangweibo.models.net.sinaapi.StatusInteraction;
+import com.jy.xinlangweibo.models.net.sinaapi.sinabean.UserBean;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.ui.activity.base.FragmentToolbarActivity;
 import com.jy.xinlangweibo.ui.fragment.DiscoverFragment;
 import com.jy.xinlangweibo.ui.fragment.FragmentController;
 import com.jy.xinlangweibo.ui.fragment.Home2Fragment;
-import com.jy.xinlangweibo.ui.fragment.MessageFragment;
 import com.jy.xinlangweibo.ui.fragment.Profile2Fragment;
+import com.jy.xinlangweibo.ui.fragment.VideoRecommendFragment;
 import com.jy.xinlangweibo.ui.fragment.setting.SettingFragment;
 import com.jy.xinlangweibo.utils.CommonImageLoader.CustomImageLoader;
 
@@ -123,7 +123,7 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
         super.onAttachFragment(fragment);
         if (fragment instanceof Home2Fragment) {
             fragments[0] = fragment;
-        } else if (fragment instanceof MessageFragment) {
+        } else if (fragment instanceof VideoRecommendFragment) {
             fragments[1] = fragment;
         } else if (fragment instanceof DiscoverFragment) {
             fragments[2] = fragment;

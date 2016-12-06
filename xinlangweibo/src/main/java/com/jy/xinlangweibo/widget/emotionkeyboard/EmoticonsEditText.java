@@ -11,7 +11,7 @@ import android.util.Log;
 import android.widget.EditText;
 
 import com.jy.xinlangweibo.bean.EmoticonBean;
-import com.jy.xinlangweibo.db.DBHelper;
+import com.jy.xinlangweibo.models.db.DBHelper;
 import com.jy.xinlangweibo.utils.Logger;
 import com.jy.xinlangweibo.utils.emotionimageloader.ImageLoader;
 import com.jy.xinlangweibo.widget.VerticalImageSpan;

@@ -60,9 +60,9 @@ public class WebFragment extends BaseFragment {
     @Override
     public void onDestroy() {
         // TODO Auto-generated method stub
+        wv.destroy();
         super.onDestroy();
 //		rootLayout.removeView(webView);
-        wv.destroy();
     }
 
     private void setWebView() {

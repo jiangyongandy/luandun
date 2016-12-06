@@ -18,8 +18,8 @@ import android.widget.Scroller;
 import android.widget.TextView;
 
 import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.widget.pulltorefresh.PullToRefreshListFooter;
-import com.jy.xinlangweibo.widget.pulltorefresh.PullToRefreshListHeader;
+import com.jiang.library.ui.widget.pulltorefresh.PullToRefreshListFooter;
+import com.jiang.library.ui.widget.pulltorefresh.PullToRefreshListHeader;
 import com.jy.xinlangweibo.widget.swipemenulistview.SwipeMenu;
 import com.jy.xinlangweibo.widget.swipemenulistview.SwipeMenuAdapter;
 import com.jy.xinlangweibo.widget.swipemenulistview.SwipeMenuCreator;

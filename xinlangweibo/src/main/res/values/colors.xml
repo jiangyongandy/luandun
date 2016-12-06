@@ -16,6 +16,7 @@
     <color name="orange_dark">#d46303</color>
     <color name="txt_black">#ffffffff</color>
     <color name="txt_gray">#565656</color>
+    <color name="font_normal">#555555</color>
     <color name="txt_light_gray">#898989</color>
     <color name="bg_gray">#f2f2f2</color>
     <color name="bg_gray_dark">#cdcdcd</color>
@@ -41,5 +42,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#3F51B5</color>
+    <color name="black_alpha_30">#48000000</color>
+    <color name="black_alpha_45">#71000000</color>
 
 </resources>

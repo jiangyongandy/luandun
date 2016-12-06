@@ -31,7 +31,7 @@ public class InternetConnectUtils {
 	 * @param mContext
 	 * @return
 	 */
-	public static boolean isConnectingToInternet(Activity mContext) {
+	public static boolean isConnectingToInternet(Context mContext) {
 		ConnectivityManager connectivity = (ConnectivityManager) mContext
 				.getSystemService(Context.CONNECTIVITY_SERVICE);
 

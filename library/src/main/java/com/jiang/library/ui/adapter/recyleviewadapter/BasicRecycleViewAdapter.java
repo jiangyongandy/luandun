@@ -25,6 +25,7 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends Adapter {
     private IItemViewCreator<T> itemViewCreator;
     private List<T> datas;
     private IITemView footerItemView;
+    private IITemView headerItemView;
     private AHeaderItemViewCreator headerItemViewCreator;
     private int[][] headerItemTypes;
     private AdapterView.OnItemClickListener onItemClickListener;
@@ -74,7 +75,17 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends Adapter {
         if (footerItemView.getConvertView().getLayoutParams() == null) {
             footerItemView.getConvertView().setLayoutParams(new LayoutParams(-1, -2));
         }
+    }
 
+    public <Y extends Serializable> void addHeadView(IITemView<Y> headerItemView) {
+        if(headerItemView == null){
+            this.headerItemView = null;
+            return;
+        }
+        this.headerItemView = headerItemView;
+        if (headerItemView.getConvertView().getLayoutParams() == null) {
+            headerItemView.getConvertView().setLayoutParams(new LayoutParams(-1, -2));
+        }
     }
 
     /**
@@ -91,8 +102,15 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends Adapter {
             return 2000;
         } else if (this.headerItemViewCreator != null && position < this.headerItemTypes.length) {
             return this.headerItemTypes[position][1];
+        } else if (this.headerItemViewCreator == null && this.headerItemView != null && position == 0) {
+            return 3000;
         } else {
-            int headerCount = this.headerItemTypes != null ? this.headerItemTypes.length : 0;
+            int headerCount = 0;
+            if(headerItemView != null) {
+                headerCount = 1;
+            }else {
+                headerCount = this.headerItemTypes != null ? this.headerItemTypes.length : 0;
+            }
             if (position >= headerCount) {
                 int realPosition = position - headerCount;
                 Serializable t = (Serializable) this.getDatas().get(realPosition);
@@ -117,7 +135,8 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends Adapter {
                 }
             }
         }
-
+        if(viewType == 3000)
+            return true;
         return false;
     }
 
@@ -132,12 +151,19 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends Adapter {
             itemView = this.footerItemView;
             convertView = itemView.getConvertView();
         } else if (this.isHeaderType(viewType)) {
-            if(activity == null) {
-                convertView = this.headerItemViewCreator.newContentView(((Activity) parent.getContext()).getLayoutInflater(), parent, viewType);
+//            采用addHead形式没有creator
+            if(headerItemViewCreator != null) {
+//                采用fragment,parent.getContext()得到的不是activity.
+                if(activity == null) {
+                    convertView = this.headerItemViewCreator.newContentView(((Activity) parent.getContext()).getLayoutInflater(), parent, viewType);
+                }else {
+                    convertView = this.headerItemViewCreator.newContentView(activity.getLayoutInflater(), parent, viewType);
+                }
+                itemView = this.headerItemViewCreator.newItemView(convertView, viewType);
             }else {
-                convertView = this.headerItemViewCreator.newContentView(activity.getLayoutInflater(), parent, viewType);
+                convertView = headerItemView.getConvertView();
+                itemView = this.headerItemView;
             }
-            itemView = this.headerItemViewCreator.newItemView(convertView, viewType);
             convertView.setTag(R.id.itemview, itemView);
         } else {
             if(activity == null) {
@@ -159,7 +185,12 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends Adapter {
 
     public void onBindViewHolder(ViewHolder holder, int position) {
         ARecycleViewItemView itemView = (ARecycleViewItemView) holder;
-        int headerCount = this.headerItemTypes != null ? this.headerItemTypes.length : 0;
+        int headerCount = 0;
+        if(headerItemView != null) {
+            headerCount = 1;
+        }else {
+            headerCount = this.headerItemTypes != null ? this.headerItemTypes.length : 0;
+        }
         if (position >= headerCount) {
             int realPosition = position - headerCount;
             itemView.reset(this.datas.size(), realPosition);
@@ -185,7 +216,12 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends Adapter {
 
     public int getItemCount() {
         int footerCount = this.footerItemView == null ? 0 : 1;
-        int headerCount = this.headerItemTypes != null ? this.headerItemTypes.length : 0;
+        int headerCount = 0;
+        if(headerItemViewCreator != null) {
+            headerCount = this.headerItemTypes != null ? this.headerItemTypes.length : 0;
+        }else if (headerItemView != null){
+            headerCount = 1;
+        }
         return this.datas.size() + footerCount + headerCount;
     }
 
@@ -240,6 +276,10 @@ public class BasicRecycleViewAdapter<T extends Serializable> extends Adapter {
         return this.onItemClickListener;
     }
 
+    /**
+     * 只为data（不包括头部，但包括尾部）设置点击监听
+     * @param onItemClickListener
+     */
     public void setOnItemClickListener(AdapterView.OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }

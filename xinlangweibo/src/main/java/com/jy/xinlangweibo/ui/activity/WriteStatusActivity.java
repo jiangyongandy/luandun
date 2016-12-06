@@ -24,8 +24,8 @@ import android.widget.Toast;
 
 import com.jy.xinlangweibo.BaseApplication;
 import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.models.bean.StatusBean;
-import com.jy.xinlangweibo.models.retrofitservice.StatusInteraction;
+import com.jy.xinlangweibo.models.net.sinaapi.sinabean.StatusBean;
+import com.jy.xinlangweibo.models.net.sinaapi.StatusInteraction;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.utils.CommonImageLoader.CustomImageLoader;
 import com.jy.xinlangweibo.utils.EmoticonsUtils;

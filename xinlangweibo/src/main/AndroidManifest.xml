@@ -52,6 +52,7 @@
         <activity android:name=".ui.activity.base.FragmentToolbarActivity" />
         <!--详情页-->
         <activity android:name=".ui.activity.StatusDetailsActivity" />
+        <activity android:name=".ui.activity.StatusDetails2Activity" />
         <!--照片选择页-->
         <activity android:name=".ui.activity.BGAPhotoPickerActivity" />
         <!--照片选择预览页-->
@@ -79,7 +80,7 @@
             </intent-filter>
         </activity>
         <!-- 发布服务 -->
-        <service android:name=".models.service.publish.PublishService"/>
+        <service android:name=".service.publish.PublishService"/>
 
     </application>
 

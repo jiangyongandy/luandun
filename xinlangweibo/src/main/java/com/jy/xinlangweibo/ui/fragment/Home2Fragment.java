@@ -26,14 +26,14 @@ import com.jiang.library.ui.adapter.listviewadapter.ViewHolderBase;
 import com.jiang.library.ui.adapter.listviewadapter.ViewHolderCreator;
 import com.jiang.library.ui.widget.BasePopupWindow;
 import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.db.StatusBeanDB;
-import com.jy.xinlangweibo.models.bean.StatusBean;
-import com.jy.xinlangweibo.models.bean.StatusListBean;
-import com.jy.xinlangweibo.models.bean.UserBean;
+import com.jy.xinlangweibo.models.db.StatusBeanDB;
+import com.jy.xinlangweibo.models.net.sinaapi.sinabean.StatusBean;
+import com.jy.xinlangweibo.models.net.sinaapi.sinabean.StatusListBean;
+import com.jy.xinlangweibo.models.net.sinaapi.sinabean.UserBean;
 import com.jy.xinlangweibo.presenter.StatusPresenter;
 import com.jy.xinlangweibo.ui.IView.HomeFragmentView;
 import com.jy.xinlangweibo.ui.activity.MainActivity;
-import com.jy.xinlangweibo.ui.activity.StatusDetailsActivity;
+import com.jy.xinlangweibo.ui.activity.StatusDetails2Activity;
 import com.jy.xinlangweibo.ui.activity.UserShowActivity;
 import com.jy.xinlangweibo.ui.activity.WriteStatusActivity;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
@@ -159,11 +159,7 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
         lvStatus.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //前往微博详情界面
-                Intent intent = new Intent(parent.getContext(), StatusDetailsActivity.class);
-                //这里的position是从1开始
-                intent.putExtra("Status", publicTimeLineList.get(position - 1));
-                parent.getContext().startActivity(intent);
+                StatusDetails2Activity.intent2StatusDetails(parent.getContext(),publicTimeLineList.get(position-2));
             }
         });
         lvStatus.setOnRefreshListener(new OnRefreshListener<ListView>() {
