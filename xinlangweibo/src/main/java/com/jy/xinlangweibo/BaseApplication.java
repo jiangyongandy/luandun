@@ -2,6 +2,8 @@ package com.jy.xinlangweibo;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 
 import com.jy.xinlangweibo.constant.AccessTokenKeeper;
 import com.jy.xinlangweibo.utils.CommonImageLoader.ImageLoadeOptions;
@@ -15,11 +17,24 @@ import com.sina.weibo.sdk.utils.LogUtil;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Random;
+
+import static com.jy.xinlangweibo.constant.Constants.FILE_STORAGE;
 
 public class BaseApplication extends Application {
 
 	private static BaseApplication application;
+	public Random random;
+
 	public static BaseApplication getInstance() {
 		return application;
 	}
@@ -40,6 +55,8 @@ public class BaseApplication extends Application {
 		refWatcher = LeakCanary.install(this);
 
 		LogUtil.enableLog();
+		random = new Random();
+		Thread.setDefaultUncaughtExceptionHandler(restartHandler);
 	}
 
 //	此方法在应用销毁时不一定会被调用，比如当程序是被内核终止以便为其他应用程序释放资源，那
@@ -71,5 +88,73 @@ public class BaseApplication extends Application {
 		// Initialize CustomImageLoader with configuration.
 		ImageLoader.getInstance().init(config);
 	}
+
+	private Thread.UncaughtExceptionHandler restartHandler = new Thread.UncaughtExceptionHandler() {
+
+		@Override
+		public void uncaughtException(Thread arg0, Throwable arg1) {
+			//report.record(arg1);
+//			new WriteUncaughtExceptionReport().execute(arg1);
+			PackageInfo info = null;
+			try {
+				info =getPackageManager().getPackageInfo(getPackageName(), 0);
+			} catch (PackageManager.NameNotFoundException e1) {
+				e1.printStackTrace();
+			}
+			if (info != null) {
+				String versionName = info.versionName;
+				StringBuilder sb = new StringBuilder();
+				Calendar calendar = new GregorianCalendar();
+				Date date = new Date();
+				calendar.setTime(date);
+				sb.append(calendar.get(Calendar.YEAR));
+				sb.append("-");
+				sb.append(calendar.get(Calendar.MONTH) + 1);
+				sb.append("-");
+				sb.append(calendar.get(Calendar.DAY_OF_MONTH));
+				sb.append("\t");
+				sb.append(calendar.get(Calendar.HOUR_OF_DAY));
+				sb.append(":");
+				sb.append(calendar.get(Calendar.MINUTE));
+				sb.append(":");
+				sb.append(calendar.get(Calendar.SECOND));
+
+				File errorFile = new File(FILE_STORAGE,"error_report.txt");
+				BufferedOutputStream os = null;
+				try {
+					os = new BufferedOutputStream(new FileOutputStream(errorFile,true));
+					os.write("/*****************************************************************/\r\n".getBytes());//每条记录的头部
+					//应用的版本
+					os.write("Application Version:\t".getBytes());
+					os.write(versionName.getBytes());
+					os.write("\r\n".getBytes());
+					//应用崩溃时间
+					os.write("Application Crash Date:\t".getBytes());
+					os.write(sb.toString().getBytes());
+					os.write("\r\n".getBytes());
+//					//应用崩溃的具体记录
+//					String detail = stackTrace.replace("\n", "\r\n");//剪linux下的换行换成window下的换行
+					os.write("Crash Detail:\r\n".getBytes());
+					//os.write(detail.getBytes());
+					PrintStream ps = new PrintStream(os);
+					arg1.printStackTrace(ps);
+					ps.close();
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				finally {
+					if (os != null)
+						try {
+							os.close();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				}
+			}
+			arg1.printStackTrace();
+		}
+	};
 
 }

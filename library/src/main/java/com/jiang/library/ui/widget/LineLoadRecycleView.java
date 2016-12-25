@@ -78,10 +78,10 @@ public class LineLoadRecycleView extends RecyclerView {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 int totalItemCount = manager.getItemCount();
-                if(dy < 0 && manager.findLastCompletelyVisibleItemPosition() == totalItemCount - 1) {
+                if(dy > 0 && manager.findLastCompletelyVisibleItemPosition() == totalItemCount - 1) {
                     //上拉到最后一个view
                     updateFooterHeight(-dy);
-                }else if(dy > 0 && manager.findFirstCompletelyVisibleItemPosition() == 0) {
+                }else if(dy < 0 && manager.findFirstCompletelyVisibleItemPosition() == 0) {
                     //下拉到第一个view
                     updateHeaderHeight(dy);
                 }

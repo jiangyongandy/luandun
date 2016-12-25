@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.android.percent.support.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:padding="4dp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_video_pic"
+        android:layout_width="0dp" android:layout_height="0dp"
+        app:layout_heightPercent="25%w" app:layout_widthPercent="40%w" android:src="@drawable/beautifulrichu"/>
+
+    <TextView
+        android:id="@+id/tv_video_title"
+        android:gravity="center" android:layout_below="@id/iv_video_pic"
+        android:layout_width="0dp" android:layout_height="wrap_content"
+        app:layout_widthPercent="40%w" />
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_centerVertical="true" android:layout_toRightOf="@id/iv_video_pic"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:maxLines="1" style="@style/middle_gray_text"
+        />
+
+</com.zhy.android.percent.support.PercentRelativeLayout>

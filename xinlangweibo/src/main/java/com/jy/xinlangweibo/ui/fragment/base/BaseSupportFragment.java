@@ -31,6 +31,7 @@ public class BaseSupportFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View rootView = inflater.inflate(CreateView(),container,false);
+//todo bind在声明周期结束时应该解绑
 		bind = ButterKnife.bind(this, rootView);
 		initViewAndEvent(rootView);
 		return rootView;

@@ -1,4 +1,4 @@
-package com.jy.xinlangweibo.widget.sectioned;
+package com.jy.xinlangweibo.ui.adapter.section;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

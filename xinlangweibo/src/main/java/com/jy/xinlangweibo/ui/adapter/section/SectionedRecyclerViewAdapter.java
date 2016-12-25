@@ -1,4 +1,4 @@
-package com.jy.xinlangweibo.widget.sectioned;
+package com.jy.xinlangweibo.ui.adapter.section;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -333,6 +333,10 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      */
     public int getSectionItemViewType(int position)
     {
+
+        if(getSectionPosition(position) == getSectionForPosition(position).getContentItemsTotal() - 1 && getSectionForPosition(position).getContentItemsTotal() % 2 != 0) {
+            return 5;
+        }
 
         int viewType = getItemViewType(position);
 

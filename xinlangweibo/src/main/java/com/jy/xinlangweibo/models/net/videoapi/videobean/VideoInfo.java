@@ -8,13 +8,17 @@ import java.io.Serializable;
  * date: 2016/9/29 9:39
  */
 public class VideoInfo implements Serializable {
-    public String title;
-    public String pic;
-    public String dataId;
-    public String score;
-    public String airTime;
-    public String moreURL;
+    public int airTime;
+    public String duration;
     public String loadType;
-    //    public String description;
+    public float score;
+    public String angleIcon;
+    public String dataId;
+    public String description;
+    public String loadURL;
+    public String shareURL;
+    public String pic;
+    public String title;
+    public String roomId;
 
 }

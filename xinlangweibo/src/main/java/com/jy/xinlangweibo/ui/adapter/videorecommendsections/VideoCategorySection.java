@@ -1,7 +1,9 @@
-package com.jy.xinlangweibo.ui.adapter.section;
+package com.jy.xinlangweibo.ui.adapter.videorecommendsections;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,7 +15,12 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.models.net.videoapi.videobean.ChildListBean;
 import com.jy.xinlangweibo.models.net.videoapi.videobean.ListBean;
-import com.jy.xinlangweibo.widget.sectioned.StatelessSection;
+import com.jy.xinlangweibo.ui.activity.VideoInfoActivity;
+import com.jy.xinlangweibo.ui.activity.base.FragmentToolbarActivity;
+import com.jy.xinlangweibo.ui.adapter.section.StatelessSection;
+import com.jy.xinlangweibo.ui.fragment.MoreVideoFragment;
+
+import java.util.Collection;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,7 +38,7 @@ public class VideoCategorySection extends StatelessSection {
 
     public VideoCategorySection(Context context, ListBean videoListBean)
     {
-
+//todo 将圆角实现用shapeDrawable 替换cardView
         super(R.layout.layout_video_category_head, R.layout.item_section_video);
         this.mContext = context;
         this.videoListBean = videoListBean;
@@ -40,8 +47,11 @@ public class VideoCategorySection extends StatelessSection {
     @Override
     public int getContentItemsTotal()
     {
-
         return videoListBean.childList.size();
+    }
+
+    public void addData(Collection<ChildListBean> collection) {
+        videoListBean.childList.addAll(collection);
     }
 
     @Override
@@ -57,7 +67,8 @@ public class VideoCategorySection extends StatelessSection {
     {
 
         ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
-        ChildListBean bean = videoListBean.childList.get(position);
+        final ChildListBean bean;
+        bean = videoListBean.childList.get(position);
 
         Glide.with(mContext)
                 .load(bean.pic)
@@ -70,9 +81,12 @@ public class VideoCategorySection extends StatelessSection {
         itemViewHolder.mTitle.setText(bean.title);
         itemViewHolder.mPlay.setText(String.valueOf(bean.airTime));
         itemViewHolder.mUpdate.setText(bean.description);
-
-//        itemViewHolder.mCardView.setOnClickListener(v -> BangumiDetailsActivity.launch(
-//                (Activity) mContext, serializingBean.getSeason_id()));
+        itemViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                VideoInfoActivity.launch((Activity) mContext,bean);
+            }
+        });
     }
 
     @Override
@@ -89,8 +103,19 @@ public class VideoCategorySection extends StatelessSection {
 
         VideoCategorySection.HeaderViewHolder headerViewHolder = (VideoCategorySection.HeaderViewHolder) holder;
         headerViewHolder.videoCateroy.setText(videoListBean.title);
-//        headerViewHolder.mAllSerial.setOnClickListener(v -> mContext.startActivity(
-//                new Intent(mContext, NewBangumiSerialActivity.class)));
+        if(videoListBean.moreURL != null && !videoListBean.moreURL.isEmpty()) {
+            headerViewHolder.mAllSerial.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(mContext, FragmentToolbarActivity.class);
+                    intent.putExtra("list_bean", videoListBean);
+                    FragmentToolbarActivity.launch((Activity) mContext, MoreVideoFragment.class, intent,false);
+                }
+            });
+        }else {
+            headerViewHolder.mAllSerial.setVisibility(View.GONE);
+        }
+
     }
 
 

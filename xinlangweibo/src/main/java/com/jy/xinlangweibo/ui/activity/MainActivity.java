@@ -4,18 +4,12 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -24,34 +18,26 @@ import android.widget.TextView;
 
 import com.jiang.library.ui.BaseViewHolder;
 import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.models.net.sinaapi.BaseObserver;
-import com.jy.xinlangweibo.models.net.sinaapi.StatusInteraction;
 import com.jy.xinlangweibo.models.net.sinaapi.sinabean.UserBean;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
-import com.jy.xinlangweibo.ui.activity.base.FragmentToolbarActivity;
 import com.jy.xinlangweibo.ui.fragment.DiscoverFragment;
 import com.jy.xinlangweibo.ui.fragment.FragmentController;
 import com.jy.xinlangweibo.ui.fragment.Home2Fragment;
-import com.jy.xinlangweibo.ui.fragment.Profile2Fragment;
+import com.jy.xinlangweibo.ui.fragment.PersonalFragment;
 import com.jy.xinlangweibo.ui.fragment.VideoRecommendFragment;
-import com.jy.xinlangweibo.ui.fragment.setting.SettingFragment;
 import com.jy.xinlangweibo.utils.CommonImageLoader.CustomImageLoader;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity implements OnCheckedChangeListener, NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseActivity implements OnCheckedChangeListener{
 
     private static final int REQUSET_UPDATE = 1;
     @BindView(R.id.tabcenterid)
     ImageView tabcenterid;
     @BindView(R.id.rg)
     RadioGroup rg;
-    @BindView(R.id.navgationview)
-    NavigationView navgationview;
-    @BindView(R.id.drawer)
-    DrawerLayout drawer;
     @BindView(R.id.tabhomeid)
     RadioButton tabhomeid;
     @BindView(R.id.tabmessageid)
@@ -68,24 +54,23 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
     @BindView(R.id.nav_right_iv)
     ImageView navRightIv;
     private Fragment[] fragments = new Fragment[4];
-    private ActionBarDrawerToggle drawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //使得侧边栏顶端不被statusbar覆盖  这里的写法是让状态栏透明  只对主页面这样处理
         // 其他activity这样处理会使状态栏设置颜色无效，但是主页面设置颜色则有效。具体原因待分析
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
-            localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
+//            localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
+//        }
         getSwipeBackLayout().setEnableGesture(false);
         setContentView(R.layout.activity_main);
         initView();
     }
 
     /**
-     * 退出主界面不退出应用
+     * 按back键不销毁activity 参数 nonroot 为false时仅当activity在栈底生效
      */
     @Override
     public void onBackPressed() {
@@ -127,32 +112,32 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
             fragments[1] = fragment;
         } else if (fragment instanceof DiscoverFragment) {
             fragments[2] = fragment;
-        } else if (fragment instanceof Profile2Fragment) {
+        } else if (fragment instanceof PersonalFragment) {
             fragments[3] = fragment;
         }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (drawerToggle != null && drawerToggle.onOptionsItemSelected(item))
-            return true;
-        switch (item.getItemId()) {
-//            toolbar最右边图片按钮点击事件
-            case android.R.id.home:
-                if (drawer.isDrawerVisible(GravityCompat.START))
-                    drawer.closeDrawers();
-                else
-                    drawer.openDrawer(GravityCompat.START);
-                return true;
-        }
+//        if (drawerToggle != null && drawerToggle.onOptionsItemSelected(item))
+//            return true;
+//        switch (item.getItemId()) {
+////            toolbar最右边图片按钮点击事件
+//            case android.R.id.home:
+//                if (drawer.isDrawerVisible(GravityCompat.START))
+//                    drawer.closeDrawers();
+//                else
+//                    drawer.openDrawer(GravityCompat.START);
+//                return true;
+//        }
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        if (drawerToggle != null)
-            drawerToggle.syncState();
+//        if (drawerToggle != null)
+//            drawerToggle.syncState();
     }
 
     @Override
@@ -179,43 +164,32 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
         fragmentController.show(0);
 //		底部按钮初始化
         rg.setOnCheckedChangeListener(this);
-        navgationview.setNavigationItemSelectedListener(this);
-        final BaseViewHolder<UserBean> navHeadViewHolderHolder = new NavHeadViewHolder(this,navgationview.getHeaderView(0));
-        StatusInteraction.getInstance(this).userShow(getAccessAccessToken().getToken(),
-            new BaseObserver<UserBean>() {
-            @Override
-            public void onNext(UserBean userBean) {
-                super.onNext(userBean);
-                navHeadViewHolderHolder.bindData(userBean);
-            }
-        });
         initToolbar();
     }
 
     private void initToolbar() {
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
         getSupportActionBar().setTitle(null);
-        setupDrawer();
     }
 
-    private void setupDrawer() {
-        drawerToggle = new ActionBarDrawerToggle(this, drawer,
-                toolbar, R.string.draw_open, R.string.draw_close) {
-
-            public void onDrawerClosed(View view) {
-                super.onDrawerClosed(view);
-
-            }
-
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-            }
-
-        };
-        drawer.addDrawerListener(drawerToggle);
-    }
+//    private void setupDrawer() {
+//        drawerToggle = new ActionBarDrawerToggle(this, drawer,
+//                toolbar, R.string.draw_open, R.string.draw_close) {
+//
+//            public void onDrawerClosed(View view) {
+//                super.onDrawerClosed(view);
+//
+//            }
+//
+//            public void onDrawerOpened(View drawerView) {
+//                super.onDrawerOpened(drawerView);
+//            }
+//
+//        };
+//        drawer.addDrawerListener(drawerToggle);
+//    }
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -244,19 +218,15 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
         WriteStatusActivity.intentToUpdate(this, REQUSET_UPDATE);
     }
 
-    @Override
-    public boolean onNavigationItemSelected(MenuItem menuItem) {
-        int itemId = menuItem.getItemId();
-        switch (itemId) {
-            case R.id.navigation_sub_item3:
-                FragmentToolbarActivity.launch(this, SettingFragment.class);
-        }
-        return true;
-    }
-
-    public DrawerLayout getDrawer() {
-        return drawer;
-    }
+//    @Override
+//    public boolean onNavigationItemSelected(MenuItem menuItem) {
+//        int itemId = menuItem.getItemId();
+//        switch (itemId) {
+//            case R.id.navigation_sub_item3:
+//                FragmentToolbarActivity.launch(this, SettingFragment.class);
+//        }
+//        return true;
+//    }
 
     public TextView getNavTitle() {
         return navTitle;

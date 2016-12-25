@@ -36,7 +36,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by JIANG on 2016/10/24.
@@ -86,8 +85,8 @@ public class StatusDetails2Activity extends BaseActivity implements BGANinePhoto
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //todo 改写为listView 实现 coordinateLayout 存在少许BUG 滑动体验不流畅
         setContentView(R.layout.activity_status_details2);
-        ButterKnife.bind(this);
         imageLoader = ImageLoader.getInstance();
         status = (StatusBean) getIntent().getSerializableExtra("Status");
         initViewAndEvents();

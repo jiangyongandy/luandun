@@ -1,79 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/head"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/bg_gray_dark"
-    card_view:cardCornerRadius="4dp">
+    android:layout_height="270dp"
+    android:gravity="bottom">
+
+    <ImageView
+        android:id="@+id/headBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/beautifulrichu" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/profile_shadow" />
 
     <RelativeLayout
-        android:id="@+id/head"
+        android:id="@+id/xlistview_header_content"
         android:layout_width="match_parent"
         android:layout_height="270dp"
-        android:gravity="bottom">
+        android:layout_alignParentBottom="true">
 
-        <ImageView
-            android:id="@+id/headBackground"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/beautifulrichu" />
+        <com.jy.xinlangweibo.widget.CircleImageView
+            android:id="@+id/iv_head"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/avatar_default" />
 
-        <ImageView
-            android:src="@drawable/profile_shadow"
-            android:layout_width="match_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_height="120dp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_head"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-        <RelativeLayout
-            android:id="@+id/xlistview_header_content"
-            android:layout_width="match_parent"
-            android:layout_height="270dp"
-            android:layout_alignParentBottom="true">
-
-            <com.jy.xinlangweibo.widget.CircleImageView
-                android:id="@+id/iv_head"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="50dp"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/avatar_default" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <TextView
+                android:id="@+id/tv_screen_name"
+                style="@style/navhead_text"
                 android:layout_below="@id/iv_head"
                 android:layout_centerHorizontal="true"
-                android:gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:orientation="vertical">
+                android:textSize="24sp"
+                tools:text="screen_name" />
 
-                <TextView
-                    android:id="@+id/tv_screen_name"
-                    style="@style/navhead_text"
-                    android:textSize="24sp"
-                    android:layout_below="@id/iv_head"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp"
-                    tools:text="screen_name" />
+            <TextView
+                android:id="@+id/tv_created_at"
+                style="@style/navhead_text"
+                android:layout_marginTop="10dp"
+                tools:text="注册时间：2016/09/01" />
 
-                <TextView
-                    android:id="@+id/tv_created_at"
-                    style="@style/navhead_text"
-                    android:layout_marginTop="10dp"
-                    tools:text="注册时间：2016/09/01" />
-
-                <TextView
-                    android:id="@+id/tv_description"
-                    android:layout_marginTop="20dp"
-                    style="@style/navhead_text"
-                    tools:text="生命在于折腾------------" />
-            </LinearLayout>
-
-        </RelativeLayout>
+            <TextView
+                android:id="@+id/tv_description"
+                style="@style/navhead_text"
+                android:layout_marginTop="20dp"
+                tools:text="生命在于折腾------------" />
+        </LinearLayout>
 
     </RelativeLayout>
 
-</android.support.v7.widget.CardView>
+</RelativeLayout>

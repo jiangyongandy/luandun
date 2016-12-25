@@ -21,7 +21,7 @@ public class FragmentToolbarActivity extends BaseActivity  {
 
     /**
      * 启动一个带fragment和toolbar的activity
-     *
+     *使用此种方式给fragment 传输数据直接使用intent
      * @param activity
      * @param clazz
      * @param isToolbarActivity

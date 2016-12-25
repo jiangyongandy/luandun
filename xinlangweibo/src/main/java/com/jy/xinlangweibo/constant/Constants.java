@@ -16,6 +16,7 @@
 
 package com.jy.xinlangweibo.constant;
 
+import com.blankj.utilcode.utils.SDCardUtils;
 import com.jy.xinlangweibo.BaseApplication;
 
 import java.io.File;
@@ -25,6 +26,7 @@ public class Constants {
 
     public static final String PATH_DATA = BaseApplication.getInstance().getCacheDir().getAbsolutePath() + File.separator + "data";
     public static final String PATH_CACHE = PATH_DATA + File.separator + "NetCache";
+    public static final String FILE_STORAGE = SDCardUtils.getSDCardPath() + "luandunFile" + File.separator;
 
     /**
      * 当前 DEMO 应用的 APP_KEY，第三方应用应该使用自己的 APP_KEY 替换该 APP_KEY

@@ -4,11 +4,11 @@
         "source": "D:\\Xinlangweibo1\\pulltorefresh\\src\\main\\res\\drawable-mdpi\\indicator_arrow.png"
     },
     {
-        "merged": "D:\\Xinlangweibo1\\pulltorefresh\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\default_ptr_rotate.png",
-        "source": "D:\\Xinlangweibo1\\pulltorefresh\\src\\main\\res\\drawable-mdpi\\default_ptr_rotate.png"
-    },
-    {
         "merged": "D:\\Xinlangweibo1\\pulltorefresh\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\default_ptr_flip.png",
         "source": "D:\\Xinlangweibo1\\pulltorefresh\\src\\main\\res\\drawable-mdpi\\default_ptr_flip.png"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\pulltorefresh\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\default_ptr_rotate.png",
+        "source": "D:\\Xinlangweibo1\\pulltorefresh\\src\\main\\res\\drawable-mdpi\\default_ptr_rotate.png"
     }
 ]

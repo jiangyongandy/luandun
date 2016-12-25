@@ -7,9 +7,12 @@ import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jy.xinlangweibo.AppSetting;
@@ -23,6 +26,7 @@ import com.jy.xinlangweibo.utils.ToastUtils;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 public class BaseActivity extends SwipeBackActivity {
 
@@ -33,26 +37,22 @@ public class BaseActivity extends SwipeBackActivity {
 	protected BasePresenter presenter;
 	protected Oauth2AccessToken accessToken;
 
+	private View loadingView;
+	private ViewGroup parentView;
+	private int viewIndex;
+	private ViewGroup.LayoutParams params;
+	private View currentView;
+	private Unbinder bind;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		tag = this.getClass().getSimpleName();
-//		此段代码修复引入侧滑结束activity 状态栏主题换色的问题
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-			Window window = getWindow();
-			window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
-					| WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-			window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-					| View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-					| View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-			window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-			window.setStatusBarColor(ThemeUtils.getSecondThemeColor());   //这里动态修改颜色
-		}
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		setTheme(ThemeUtils.themeArr[AppSetting.getThemeColor()][0]);
 		this.theme = AppSetting.getThemeColor();
-
+		changeTheme();
 		//		得到缓存组件
 		mCache = ACache.get(this);
 	}
@@ -71,6 +71,8 @@ public class BaseActivity extends SwipeBackActivity {
 		ToastUtils.clearToast();
 		if(presenter != null)
 			presenter.onDestroy();
+		if(bind != null)
+			bind.unbind();
 		Logger.showLog(""+this,"activity onDestroy");
 	}
 
@@ -90,7 +92,22 @@ public class BaseActivity extends SwipeBackActivity {
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		if(layoutResID == R.layout.bga_pp_toolbar_viewstub)
 			return;
-		ButterKnife.bind(this);
+		bind = ButterKnife.bind(this);
+		loadingView = getLoadingTargetView();
+	}
+
+	public void changeTheme() {
+		//		此段代码修复引入侧滑结束activity 状态栏主题换色的问题
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+			Window window = getWindow();
+			window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+					| WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+			window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+					| View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+					| View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+			window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+			window.setStatusBarColor(ThemeUtils.getSecondThemeColor());   //这里动态修改颜色
+		}
 	}
 
 	public Toolbar getToolbar() {
@@ -138,5 +155,71 @@ public class BaseActivity extends SwipeBackActivity {
 
 	public void showLog(String msg) {
 		Logger.showLog(msg, tag);
+	}
+
+	protected void loadData() {}
+
+	protected View getLoadingTargetView() {
+		return null;
+	}
+
+	protected void restoreLayout() {
+		showLayout(loadingView);
+	}
+
+	protected void showLoading() {
+		String msg = "";
+		View layout = LayoutInflater.from(loadingView.getContext()).inflate(R.layout.loading, null);
+		if (!msg.isEmpty()) {
+			TextView textView = (TextView) layout.findViewById(R.id.loading_msg);
+			textView.setText(msg);
+		}
+		showLayout(layout);
+	}
+
+	protected void showErrorMessage() {
+		String msg = "";
+		View layout = LayoutInflater.from(loadingView.getContext()).inflate(R.layout.message, null);
+		if (!msg.isEmpty()) {
+			TextView textView = (TextView) layout.findViewById(R.id.message_info);
+			textView.setText(msg);
+		}
+		showLayout(layout);
+		layout.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				loadData();
+			}
+		});
+	}
+
+	private void showLayout(View layout) {
+		if (parentView == null) {
+			params = loadingView.getLayoutParams();
+			if (loadingView.getParent() != null) {
+				parentView = (ViewGroup) loadingView.getParent();
+			} else {
+				//android.R.id.content is frameLayout
+				parentView = (ViewGroup) loadingView.getRootView().findViewById(android.R.id.content);
+			}
+			int count = parentView.getChildCount();
+			for (int index = 0; index < count; index++) {
+				if (loadingView == parentView.getChildAt(index)) {
+					viewIndex = index;
+					break;
+				}
+			}
+			currentView = loadingView;
+		}
+		this.currentView = layout;
+		// 如果已经是那个view，那就不需要再进行替换操作了
+		if (parentView.getChildAt(viewIndex) != layout) {
+			ViewGroup parent = (ViewGroup) layout.getParent();
+			if (parent != null) {
+				parent.removeView(layout);
+			}
+			parentView.removeViewAt(viewIndex);
+			parentView.addView(layout, viewIndex, params);
+		}
 	}
 }

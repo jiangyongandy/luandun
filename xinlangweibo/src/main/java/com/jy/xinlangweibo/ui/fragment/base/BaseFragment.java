@@ -41,7 +41,8 @@ public class BaseFragment extends Fragment {
 		super.onDestroy();
 		if(presenter != null)
 			presenter.onDestroy();
-		bind.unbind();
+		if(bind != null)
+			bind.unbind();
 		RefWatcher refWatcher = BaseApplication.getRefWatcher(getActivity());
 		refWatcher.watch(this);
 	}
@@ -57,4 +58,6 @@ public class BaseFragment extends Fragment {
 		Intent intent = new Intent(activity,tarActivity);
 		startActivity(intent);
 	}
+
+
 }

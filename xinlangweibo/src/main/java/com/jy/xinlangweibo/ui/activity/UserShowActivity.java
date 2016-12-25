@@ -198,6 +198,11 @@ public class UserShowActivity extends BaseActivity {
         StatusBeanDB.getInstance(this).insertStatusBeanList(timeLineDataList,Long.valueOf(getAccessAccessToken().getUid()),StatusBeanDB.userTimelineCacheType);
     }
 
+    @Override
+    public void changeTheme() {
+//        don't change statusbar color
+    }
+
     private void updateTimeList(int page, StatusListBean statusList) {
         curPage = page;
         if(page == 1) {

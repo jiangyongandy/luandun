@@ -13,11 +13,10 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.models.net.api.SimpleRequestlistener;
 import com.jy.xinlangweibo.constant.AccessTokenKeeper;
 import com.jy.xinlangweibo.models.net.StatusesInteraction;
+import com.jy.xinlangweibo.models.net.api.SimpleRequestlistener;
 import com.jy.xinlangweibo.models.net.impl.StatusesInteractionImpl;
-import com.jy.xinlangweibo.ui.activity.MainActivity;
 import com.jy.xinlangweibo.ui.adapter.StaggeredHomeAdapter;
 import com.jy.xinlangweibo.ui.adapter.StaggeredHomeAdapter.OnItemClickLitener;
 import com.jy.xinlangweibo.ui.fragment.base.BaseCacheFragment;
@@ -54,9 +53,6 @@ public class DiscoverFragment extends BaseCacheFragment {
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        if(!hidden) {
-            ((MainActivity)activity).getToolbar().setVisibility(View.GONE);
-        }
     }
 
     private void init() {
@@ -101,7 +97,6 @@ public class DiscoverFragment extends BaseCacheFragment {
 
             @Override
             public void run() {
-                // TODO Auto-generated method stub
                 String ip = InternetConnectUtils.GetNetIp();
                 if (!TextUtils.isEmpty(ip)) {
                     Oauth2AccessToken readAccessToken = AccessTokenKeeper
@@ -126,7 +121,6 @@ public class DiscoverFragment extends BaseCacheFragment {
 
                                                 @Override
                                                 public void run() {
-                                                    // TODO Auto-generated
                                                     // method stub
 
                                                     addData(page, arg0);

@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    >
 
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/main_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bg_agray"
-        >
+        android:background="@color/bg_agray" >
 
         <android.support.design.widget.AppBarLayout
             android:id="@+id/app_bar_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/bg_agray"
-            >
+            android:background="@color/bg_agray">
 
             <android.support.design.widget.CollapsingToolbarLayout
                 android:id="@+id/collapsing_toolbar"
@@ -27,7 +26,7 @@
                 app:expandedTitleTextAppearance="@style/CollapsingToolbarTitleStyle.About"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-                <include  layout="@layout/status_details_head2" />
+                <include layout="@layout/status_details_head2" />
 
             </android.support.design.widget.CollapsingToolbarLayout>
 
@@ -61,6 +60,8 @@
     </android.support.design.widget.CoordinatorLayout>
 
 </FrameLayout>
+
+
 
 
 

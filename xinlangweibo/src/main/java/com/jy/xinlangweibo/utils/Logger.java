@@ -13,7 +13,7 @@ public class Logger {
 		show(msg, Log.INFO, tag);
 	}
 
-	private static void show(String msg, int level, String tag) {
+	public static void show(String msg, int level, String tag) {
 		switch (level) {
 		case Log.VERBOSE:
 			Log.v(tag, msg);

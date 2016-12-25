@@ -7,20 +7,23 @@ import android.view.View;
 
 import com.jy.xinlangweibo.BaseApplication;
 import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.models.net.sinaapi.BaseObserver;
 import com.jy.xinlangweibo.models.net.videoapi.RetrofitHelper;
 import com.jy.xinlangweibo.models.net.videoapi.videobean.ChildListBean;
 import com.jy.xinlangweibo.models.net.videoapi.videobean.HomePageResultBean;
 import com.jy.xinlangweibo.models.net.videoapi.videobean.ListBean;
-import com.jy.xinlangweibo.ui.adapter.section.VideoBannerSection;
-import com.jy.xinlangweibo.ui.adapter.section.VideoCategorySection;
+import com.jy.xinlangweibo.ui.activity.MainActivity;
+import com.jy.xinlangweibo.ui.adapter.videorecommendsections.AdSection;
+import com.jy.xinlangweibo.ui.adapter.videorecommendsections.VideoBannerSection;
+import com.jy.xinlangweibo.ui.adapter.videorecommendsections.VideoCategorySection;
 import com.jy.xinlangweibo.ui.fragment.base.LazyFragment;
-import com.jy.xinlangweibo.widget.sectioned.SectionedRecyclerViewAdapter;
+import com.jy.xinlangweibo.ui.adapter.section.SectionedRecyclerViewAdapter;
 
 import java.util.List;
 
 import butterknife.BindView;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action0;
+import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -40,7 +43,7 @@ public class VideoRecommendFragment extends LazyFragment {
     @Override
     protected void initViewAndEvent(View rootView) {
         mSectionedRecyclerViewAdapter = new SectionedRecyclerViewAdapter();
-        GridLayoutManager mGridLayoutManager = new GridLayoutManager(getActivity(), 3);
+        GridLayoutManager mGridLayoutManager = new GridLayoutManager(getActivity(), 2);
         mGridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup()
         {
 
@@ -51,7 +54,9 @@ public class VideoRecommendFragment extends LazyFragment {
                 switch (mSectionedRecyclerViewAdapter.getSectionItemViewType(position))
                 {
                     case SectionedRecyclerViewAdapter.VIEW_TYPE_HEADER:
-                        return 3;
+                        return 2;
+                    case 5:
+                        return 2;
 
                     default:
                         return 1;
@@ -63,6 +68,7 @@ public class VideoRecommendFragment extends LazyFragment {
         rvVideoRecommend.setNestedScrollingEnabled(true);
         rvVideoRecommend.setLayoutManager(mGridLayoutManager);
         rvVideoRecommend.setAdapter(mSectionedRecyclerViewAdapter);
+
     }
 
     @Override
@@ -78,12 +84,16 @@ public class VideoRecommendFragment extends LazyFragment {
         }else {
             isVisible = true;
         }
+        if (!hidden) {
+            ((MainActivity) activity).getNavTitle().setText("在线视频");
+            ((MainActivity)activity).getToolbar().setVisibility(View.VISIBLE);
+        }
         lazyLoad();
     }
 
     @Override
     protected void lazyLoad() {
-        if (!isPrepared || !isVisible)
+        if (!isPrepared)
             return;
         isPrepared = false;
         loadData();
@@ -93,19 +103,41 @@ public class VideoRecommendFragment extends LazyFragment {
     protected void loadData() {
         RetrofitHelper.getVideoApi().getHomePage()
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseObserver<HomePageResultBean>(){
+                .doOnSubscribe(new Action0() {
                     @Override
-                    public void onNext(HomePageResultBean models) {
-                        super.onNext(models);
+                    public void call() {
+                        showLoading();
+                    }
+                })
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<HomePageResultBean>() {
+                    @Override
+                    public void call(HomePageResultBean models) {
                         List<ChildListBean> bannerList = models.ret.list.get(0).childList;
                         mSectionedRecyclerViewAdapter.addSection(new VideoBannerSection(bannerList));
-                        for(ListBean listBean : models.ret.list) {
-                            mSectionedRecyclerViewAdapter.addSection(new VideoCategorySection(BaseApplication.getInstance(),listBean));
+                        models.ret.list.remove(0);
+                        for (ListBean listBean : models.ret.list) {
+                            if (listBean.showType.equals("adv")) {
+                                mSectionedRecyclerViewAdapter.addSection(new AdSection(BaseApplication.getInstance(), BaseApplication.getInstance().random.nextInt(50)));
+                            } else {
+                                mSectionedRecyclerViewAdapter.addSection(new VideoCategorySection(getActivity(), listBean));
+                            }
                         }
+                        restore();
                         updateUi();
                     }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        showErrorMessage();
+                    }
                 });
+    }
+
+    @Override
+    protected View getLoadingTargetView() {
+        return rvVideoRecommend;
     }
 
     @Override

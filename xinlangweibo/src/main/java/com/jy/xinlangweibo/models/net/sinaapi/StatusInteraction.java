@@ -1,34 +1,47 @@
 package com.jy.xinlangweibo.models.net.sinaapi;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.widget.Toast;
 
 import com.blankj.utilcode.utils.FileUtils;
-import com.blankj.utilcode.utils.NetworkUtils;
 import com.google.gson.Gson;
+import com.jy.xinlangweibo.BaseApplication;
+import com.jy.xinlangweibo.constant.Constants;
 import com.jy.xinlangweibo.models.net.sinaapi.sinabean.CommentListBean;
 import com.jy.xinlangweibo.models.net.sinaapi.sinabean.RepostListBean;
 import com.jy.xinlangweibo.models.net.sinaapi.sinabean.StatusBean;
 import com.jy.xinlangweibo.models.net.sinaapi.sinabean.StatusListBean;
 import com.jy.xinlangweibo.models.net.sinaapi.sinabean.UidBean;
 import com.jy.xinlangweibo.models.net.sinaapi.sinabean.UserBean;
+import com.jy.xinlangweibo.utils.InternetConnectUtils;
 import com.jy.xinlangweibo.utils.Logger;
 import com.jy.xinlangweibo.utils.ToastUtils;
 import com.sina.weibo.sdk.openapi.models.Status;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
+import okhttp3.Cache;
+import okhttp3.CacheControl;
+import okhttp3.Interceptor;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import okhttp3.RequestBody;
+import okhttp3.Response;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action0;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
@@ -43,11 +56,9 @@ public class StatusInteraction {
     private static StatusInteraction instance;
     private final Retrofit retrofit;
     private final StatusService service;
+    private OkHttpClient client;
 
     public static StatusInteraction getInstance(Context context) {
-        if(!NetworkUtils.isAvailable(context)) {
-            ToastUtils.show(context,"网络似乎有问题", Toast.LENGTH_SHORT);
-        }
         synchronized (StatusInteraction.class) {
             if(instance == null) {
                 instance = new StatusInteraction();
@@ -57,11 +68,7 @@ public class StatusInteraction {
     }
 
     private StatusInteraction() {
-        OkHttpClient client = new OkHttpClient();
-        int cacheSize = 10 * 1024 * 1024; // 10 MiBCache
-//		Cache cache = new Cache(this.getBaseContext().getCacheDir(), cacheSize);
-//		client.setCache(cache);
-
+        initOkHttp();
 
         retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -69,6 +76,77 @@ public class StatusInteraction {
                 .client(client).build();
 
         service = retrofit.create(StatusService.class);
+    }
+
+    private void initOkHttp() {
+        if (client == null) {
+            OkHttpClient.Builder builder = new OkHttpClient.Builder();
+//            if (BuildConfig.DEBUG) {
+            HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
+            builder.addInterceptor(loggingInterceptor);
+//            }
+            File cacheFile = new File(Constants.PATH_CACHE);
+            Cache cache = new Cache(cacheFile, 1024 * 1024 * 50);
+            Interceptor cacheInterceptor = new Interceptor() {
+                @Override
+                public Response intercept(Chain chain) throws IOException {
+                    Request request = chain.request();
+                    if (!InternetConnectUtils.isConnectingToInternet(BaseApplication.getInstance())) {
+                        Handler handler = new Handler(Looper.getMainLooper());
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                ToastUtils.show(BaseApplication.getInstance(),"网络似乎有问题", Toast.LENGTH_SHORT);
+                            }
+                        });
+                        request = request.newBuilder()
+                                .cacheControl(CacheControl.FORCE_CACHE)
+                                .build();
+                    }
+                    int tryCount = 0;
+                    Response response = chain.proceed(request);
+                    while (!response.isSuccessful() && tryCount < 3) {
+
+//                        KL.d(RetrofitHelper.class, "interceptRequest is not successful - :{}", tryCount);
+                        Logger.showLog("interceptRequest is not successful","response");
+                        tryCount++;
+
+                        // retry the request
+                        response = chain.proceed(request);
+                    }
+
+
+                    if (InternetConnectUtils.isConnectingToInternet(BaseApplication.getInstance())) {
+                        int maxAge = 0;
+                        // 有网络时, 不缓存, 最大保存时长为0
+                        response.newBuilder()
+                                .header("Cache-Control", "public, max-age=" + maxAge)
+                                .removeHeader("Pragma")
+                                .build();
+                    } else {
+                        // 无网络时，设置超时为4周
+                        int maxStale = 60 * 60 * 24 * 28;
+                        response.newBuilder()
+                                .header("Cache-Control", "public, only-if-cached, max-stale=" + maxStale)
+                                .removeHeader("Pragma")
+                                .build();
+                    }
+                    return response;
+                }
+            };
+            //设置缓存
+            builder.addNetworkInterceptor(cacheInterceptor);
+            builder.addInterceptor(cacheInterceptor);
+            builder.cache(cache);
+            //设置超时
+            builder.connectTimeout(10, TimeUnit.SECONDS);
+            builder.readTimeout(20, TimeUnit.SECONDS);
+            builder.writeTimeout(20, TimeUnit.SECONDS);
+            //错误重连
+            builder.retryOnConnectionFailure(true);
+            client = builder.build();
+        }
     }
 
     /**
@@ -217,9 +295,10 @@ public class StatusInteraction {
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
-    public void statusesHome_timeline(String access_token,String page,Observer<StatusListBean> observer) {
+    public void statusesHome_timeline(String access_token,String page,Action0 action0,Observer<StatusListBean> observer) {
         Observable<StatusListBean> observable =  service.statusesHome_timeline(access_token,page);
-        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+        observable.subscribeOn(Schedulers.io()).doOnSubscribe(action0).subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
     public void statusesRepost(String access_token,long id,String status,Observer<StatusBean> observer) {
@@ -232,14 +311,16 @@ public class StatusInteraction {
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
-    public void commentsShow(String access_token,long id,Observer<CommentListBean > observer) {
+    public void commentsShow(String access_token, long id, Action0 action0, Observer<CommentListBean > observer) {
         Observable<CommentListBean> observable = service.commentsShow(access_token, id);
-        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+        observable.subscribeOn(Schedulers.io()).doOnSubscribe(action0).subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
-    public void statusesRepost_timeline(String access_token,long id,Observer<RepostListBean> observer) {
+    public void statusesRepost_timeline(String access_token,long id,Action0 action0,Observer<RepostListBean> observer) {
         Observable<RepostListBean> observable = service.statusesRepost_timeline(access_token, id);
-        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+        observable.subscribeOn(Schedulers.io()).doOnSubscribe(action0).subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 
 }

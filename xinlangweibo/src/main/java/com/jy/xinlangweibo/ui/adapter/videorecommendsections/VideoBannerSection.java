@@ -1,4 +1,4 @@
-package com.jy.xinlangweibo.ui.adapter.section;
+package com.jy.xinlangweibo.ui.adapter.videorecommendsections;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -6,7 +6,7 @@ import android.view.View;
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.models.net.videoapi.videobean.ChildListBean;
 import com.jy.xinlangweibo.widget.banner.BannerView;
-import com.jy.xinlangweibo.widget.sectioned.StatelessSection;
+import com.jy.xinlangweibo.ui.adapter.section.StatelessSection;
 
 import java.util.List;
 
@@ -65,7 +65,7 @@ public class VideoBannerSection extends StatelessSection  {
     }
 
 
-         class EmptyViewHolder extends RecyclerView.ViewHolder
+    public static class EmptyViewHolder extends RecyclerView.ViewHolder
     {
 
         EmptyViewHolder(View itemView)

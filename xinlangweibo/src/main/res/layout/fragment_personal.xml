@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/bangumi_bg"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/beautifulrichu" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:orientation="vertical">
+
+            <com.jy.xinlangweibo.widget.CircleImageView
+                android:id="@+id/bangumi_pic"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_marginTop="80dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/beautifulrichu"
+                app:border_color="@color/white"
+                app:border_width="2dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_screen_name"
+                    style="@style/navhead_text"
+                    android:layout_marginTop="10dp"
+                    android:textSize="24sp"
+                    tools:text="screen_name" />
+
+                <TextView
+                    android:id="@+id/tv_created_at"
+                    style="@style/navhead_text"
+                    android:layout_marginTop="10dp"
+                    tools:text="注册时间：2016/09/01" />
+
+                <TextView
+                    android:id="@+id/tv_description"
+                    style="@style/navhead_text"
+                    android:layout_marginTop="20dp"
+                    tools:text="生命在于折腾------------" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <View
+        android:layout_width="match_parent" android:background="@color/divider_gray"
+        android:layout_alignParentBottom="true"
+        android:layout_height="1px"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_setting"
+        android:layout_width="match_parent" android:background="@color/white"
+        android:layout_height="48dp">
+
+        <ImageView
+            android:id="@+id/iv_setting"
+            android:layout_marginLeft="20dp"  android:layout_centerVertical="true"
+            android:layout_width="wrap_content" android:layout_alignParentLeft="true"
+            android:layout_height="wrap_content"  android:src="@drawable/ic_settings_grey_700_18dp"/>
+
+        <TextView
+            android:text="设置"
+            style="@style/middle_gray_text"
+            android:layout_toRightOf="@id/iv_setting" android:layout_centerVertical="true"
+            android:layout_marginLeft="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_marginRight="5dp" android:layout_centerVertical="true"
+            android:layout_width="wrap_content" android:layout_alignParentRight="true"
+            android:layout_height="wrap_content"  android:src="@drawable/ic_chevron_right_grey_700_18dp"/>
+
+        <View
+            android:layout_width="match_parent" android:background="@color/divider_gray"
+            android:layout_alignParentBottom="true"
+            android:layout_height="1px"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

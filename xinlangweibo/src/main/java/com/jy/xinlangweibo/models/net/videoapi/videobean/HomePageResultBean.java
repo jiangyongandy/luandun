@@ -16,6 +16,5 @@ public class HomePageResultBean extends BaseBean{
 
     public static class RetBean {
         public List<ListBean> list;
-
     }
 }

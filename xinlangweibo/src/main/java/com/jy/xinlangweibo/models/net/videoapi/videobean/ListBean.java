@@ -9,6 +9,7 @@ import java.util.List;
  */
 
 public class ListBean extends BaseBean{
+    //homePageAPI
     public String showStyle;
     public String loadType;
     public String changeOpenFlag;

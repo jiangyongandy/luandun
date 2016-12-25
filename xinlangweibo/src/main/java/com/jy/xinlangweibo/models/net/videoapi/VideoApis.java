@@ -4,6 +4,7 @@ package com.jy.xinlangweibo.models.net.videoapi;
 
 
 import com.jy.xinlangweibo.models.net.videoapi.videobean.HomePageResultBean;
+import com.jy.xinlangweibo.models.net.videoapi.videobean.VideoListBean;
 import com.jy.xinlangweibo.models.net.videoapi.videobean.VideoRes;
 
 import retrofit2.http.GET;
@@ -43,7 +44,7 @@ public interface VideoApis {
      * @return
      */
     @GET("columns/getVideoList.do")
-    Observable<VideoHttpResponse<VideoRes>> getVideoList(@Query("catalogId") String catalogId, @Query("pnum") String pnum);
+    Observable<VideoListBean> getVideoList(@Query("catalogId") String catalogId, @Query("pnum") String pnum);
 
     /**
      * 影片搜索

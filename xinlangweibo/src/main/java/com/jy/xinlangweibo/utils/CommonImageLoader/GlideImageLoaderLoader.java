@@ -19,7 +19,7 @@ import com.jy.xinlangweibo.utils.Logger;
 public class GlideImageLoaderLoader extends ImageLoader {
 
     @Override
-    public void displayImage(Activity activity, final ImageView imageView, String path, @DrawableRes int loadingResId, @DrawableRes int failResId, int width, int height) {
+    public void displayImage(Context activity, final ImageView imageView, String path, @DrawableRes int loadingResId, @DrawableRes int failResId, int width, int height) {
         final String finalPath = getPath(path);
         if(width == 0|| height == 0) {
             Glide.with(activity).load(finalPath).asBitmap().diskCacheStrategy(DiskCacheStrategy.SOURCE)

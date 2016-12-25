@@ -3,10 +3,10 @@
     <style name="appTheme" parent="WeiboBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
         <item name="themeColor">@color/orange</item>
-        <item name="android:windowTranslucentStatus">true</item>
         <item name="colorAccent">?attr/themeColor</item>
         <item name="themeStatusbarColor">@color/orange_dark</item>
         <item name="colorPrimary">?attr/themeColor</item>
-        <item name="colorPrimaryDark">?attr/themeStatusbarColor</item>
+        <item name="colorPrimaryDark">?attr/themeColor</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 </resources>

@@ -21,7 +21,7 @@ public class CustomImageLoader {
         return imageLoader;
     }
 
-    public static void displayImage(Activity activity, ImageView imageView, String path, @DrawableRes int loadingResId, @DrawableRes int failResId, int width, int height) {
+    public static void displayImage(Context activity, ImageView imageView, String path, @DrawableRes int loadingResId, @DrawableRes int failResId, int width, int height) {
         getImageLoader().displayImage(activity, imageView, path, loadingResId, failResId, width, height);
     }
 

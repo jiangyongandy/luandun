@@ -20,11 +20,11 @@ import com.jiang.library.ui.adapter.recyleviewadapter.IITemView;
 import com.jiang.library.ui.adapter.recyleviewadapter.IItemViewCreator;
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.constant.AccessTokenKeeper;
+import com.jy.xinlangweibo.models.net.sinaapi.BaseObserver;
+import com.jy.xinlangweibo.models.net.sinaapi.StatusInteraction;
 import com.jy.xinlangweibo.models.net.sinaapi.sinabean.CommentBean;
 import com.jy.xinlangweibo.models.net.sinaapi.sinabean.CommentListBean;
 import com.jy.xinlangweibo.models.net.sinaapi.sinabean.UserBean;
-import com.jy.xinlangweibo.models.net.sinaapi.BaseObserver;
-import com.jy.xinlangweibo.models.net.sinaapi.StatusInteraction;
 import com.jy.xinlangweibo.ui.fragment.base.LazySupportFragment;
 import com.jy.xinlangweibo.utils.CommonImageLoader.ImageLoadeOptions;
 import com.jy.xinlangweibo.utils.DateUtils;
@@ -36,6 +36,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import rx.functions.Action0;
 
 /**
  * Created by JIANG on 2016/10/27.
@@ -83,14 +84,6 @@ public class CommentSupportFragment extends LazySupportFragment {
         plrvComment.setAdapter(adapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         plrvComment.setLayoutManager(linearLayoutManager);
-        super.initViewAndEvent(rootView);
-    }
-
-    @Override
-    protected void lazyLoad() {
-        if (!isPrepared || !isVisible) {
-            return;
-        }
         loadData();
     }
 
@@ -98,13 +91,27 @@ public class CommentSupportFragment extends LazySupportFragment {
     protected void loadData() {
         StatusInteraction.getInstance(getContext()).commentsShow(AccessTokenKeeper.readAccessToken(getContext()).getToken(),
                 statusId,
+                new Action0() {
+                    @Override
+                    public void call() {
+                        showLoading();
+                    }
+                }
+                ,
                 new BaseObserver<CommentListBean>() {
                     @Override
                     public void onNext(CommentListBean models) {
                         super.onNext(models);
                         comments.clear();
                         comments.addAll(models.comments);
+                        restore();
                         updateUi();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        super.onError(e);
+                        showErrorMessage();
                     }
                 }
         );
@@ -113,6 +120,11 @@ public class CommentSupportFragment extends LazySupportFragment {
     @Override
     protected void updateUi() {
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected View getLoadingTargetView() {
+        return plrvComment;
     }
 
     public static class CommentAdapter extends BasicRecycleViewAdapter {

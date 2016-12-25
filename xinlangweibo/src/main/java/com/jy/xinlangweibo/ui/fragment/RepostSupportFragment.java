@@ -36,6 +36,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import rx.functions.Action0;
 
 /**
  * Created by JIANG on 2016/11/13.
@@ -92,6 +93,7 @@ public class RepostSupportFragment extends LazySupportFragment {
         if (!isPrepared || !isVisible) {
             return;
         }
+        isPrepared = false;
         loadData();
     }
 
@@ -99,13 +101,30 @@ public class RepostSupportFragment extends LazySupportFragment {
     protected void loadData() {
         StatusInteraction.getInstance(getContext()).statusesRepost_timeline(AccessTokenKeeper.readAccessToken(getContext()).getToken(),
                 statusId,
+                new Action0() {
+                    @Override
+                    public void call() {
+                        showLoading();
+                    }
+                },
                 new BaseObserver<RepostListBean>() {
                     @Override
-                    public void onNext(RepostListBean  models) {
+                    public void onNext(RepostListBean models) {
                         super.onNext(models);
+                        if(models.reposts.isEmpty()) {
+                            showErrorMessage();
+                            return;
+                        }
                         comments.clear();
                         comments.addAll(models.reposts);
+                        restore();
                         updateUi();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        super.onError(e);
+                        showErrorMessage();
                     }
                 }
         );
@@ -114,6 +133,11 @@ public class RepostSupportFragment extends LazySupportFragment {
     @Override
     protected void updateUi() {
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected View getLoadingTargetView() {
+        return plrvComment;
     }
 
     public static class CommentAdapter extends BasicRecycleViewAdapter {

@@ -3,9 +3,9 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.RecyclerView
+    <com.jiang.library.ui.widget.LoadMoreRecycleView
         android:id="@+id/rv_video_recommend"
-        android:overScrollMode="never"
+        android:overScrollMode="never" android:background="@color/white"
         android:layout_width="match_parent" android:layout_height="match_parent"/>
 
 </LinearLayout>

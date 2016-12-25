@@ -1,9 +1,14 @@
 package com.jy.xinlangweibo.models.net.videoapi;
 
+import android.os.Handler;
+import android.os.Looper;
+import android.widget.Toast;
+
 import com.jy.xinlangweibo.BaseApplication;
 import com.jy.xinlangweibo.constant.Constants;
 import com.jy.xinlangweibo.utils.InternetConnectUtils;
 import com.jy.xinlangweibo.utils.Logger;
+import com.jy.xinlangweibo.utils.ToastUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,7 +35,7 @@ public class RetrofitHelper {
     private static OkHttpClient okHttpClient = null;
     private static VideoApis videoApi;
     private static GankApis gankApis;
-
+    //todo 对rx引起的内存泄漏进行处理
     public static VideoApis getVideoApi() {
         initOkHttp();
         if (videoApi == null) {
@@ -62,7 +67,7 @@ public class RetrofitHelper {
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
 //            if (BuildConfig.DEBUG) {
                 HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-                loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
+                loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
                 builder.addInterceptor(loggingInterceptor);
 //            }
             File cacheFile = new File(Constants.PATH_CACHE);
@@ -72,12 +77,24 @@ public class RetrofitHelper {
                 public Response intercept(Chain chain) throws IOException {
                     Request request = chain.request();
                     if (!InternetConnectUtils.isConnectingToInternet(BaseApplication.getInstance())) {
+                        Handler handler = new Handler(Looper.getMainLooper());
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                ToastUtils.show(BaseApplication.getInstance(),"网络似乎有问题", Toast.LENGTH_SHORT);
+                            }
+                        });
                         request = request.newBuilder()
                                 .cacheControl(CacheControl.FORCE_CACHE)
                                 .build();
                     }
                     int tryCount = 0;
-                    Response response = chain.proceed(request);
+                    Response response = null;
+                    try {
+                        response = chain.proceed(request); //there are socket connect timeout exception
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     while (!response.isSuccessful() && tryCount < 3) {
 
 //                        KL.d(RetrofitHelper.class, "interceptRequest is not successful - :{}", tryCount);

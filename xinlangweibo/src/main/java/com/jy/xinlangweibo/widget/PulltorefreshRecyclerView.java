@@ -58,6 +58,7 @@ public class PulltorefreshRecyclerView extends RecyclerView {
 	private final static int SCROLL_DURATION = 400;
 	private final static int PULL_LOAD_MORE_DELTA = 50;
 	private final static float OFFSET_RADIO = 0.5f;
+	private final static float OFFSET_RADIO2 = 0.2f;
 	private final static int DEFHeaderViewHeight = 270;
 	private final static int DEFHeaderBACKViewHeight = 370;
 
@@ -115,7 +116,7 @@ public class PulltorefreshRecyclerView extends RecyclerView {
 					// 即判断为到顶下拉
 //					updateHeaderHeight(deltaY * ((mDefHeaderViewHeight*0.5f - mheadView.getLayoutParams().height + mDefHeaderViewHeight)/
 //													mDefHeaderViewHeight*0.5f));
-					updateHeaderHeight(deltaY * OFFSET_RADIO);
+					updateHeaderHeight(deltaY * OFFSET_RADIO2);
 				} else if (deltaY < 0) {
 					int totalItemCount = manager.getItemCount();
 					if(manager.findLastCompletelyVisibleItemPosition() == totalItemCount - 1) {

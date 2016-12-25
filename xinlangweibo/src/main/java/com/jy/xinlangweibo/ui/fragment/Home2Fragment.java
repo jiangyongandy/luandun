@@ -3,12 +3,10 @@ package com.jy.xinlangweibo.ui.fragment;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -39,7 +37,7 @@ import com.jy.xinlangweibo.ui.activity.WriteStatusActivity;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.ui.activity.base.FragmentToolbarActivity;
 import com.jy.xinlangweibo.ui.adapter.RecyleViewHolder;
-import com.jy.xinlangweibo.ui.fragment.base.BaseCacheFragment;
+import com.jy.xinlangweibo.ui.fragment.base.LazyFragment;
 import com.jy.xinlangweibo.utils.CommonImageLoader.ImageLoadeOptions;
 import com.jy.xinlangweibo.utils.DateUtils;
 import com.jy.xinlangweibo.utils.Logger;
@@ -55,7 +53,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Home2Fragment extends BaseCacheFragment implements OnClickListener, HomeFragmentView {
+public class Home2Fragment extends LazyFragment implements OnClickListener, HomeFragmentView {
     @BindView(R.id.lv_status)
     PullToRefreshListView lvStatus;
     private View view;
@@ -68,32 +66,32 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
     private MaterialDialog materialDialog;
     private StatusPresenter statusPresenter;
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        view = View.inflate(activity, R.layout.fragment_home, null);
-        ButterKnife.bind(this, view);
-        getCache();
-        initView();
-        return view;
+    protected int CreateView() {
+        return R.layout.fragment_home;
     }
 
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
+        if(hidden) {
+            isVisible = false;
+        }else {
+            isVisible = true;
+        }
         if (!hidden) {
-            ((MainActivity) activity).getToolbar().setVisibility(View.VISIBLE);
+            ((MainActivity)activity).getToolbar().setVisibility(View.VISIBLE);
             ((MainActivity) activity).getNavTitle().setText("首页");
             ((MainActivity) activity).getNavRightIv().setOnClickListener(this);
+            lazyLoad();//只会加载一次
         }
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        StatusBeanDB.getInstance(activity).deleteStatusBeanList(Long.valueOf(activity.getAccessAccessToken().getUid()),StatusBeanDB.publicTimelineCacheType);
-        Logger.showLog("缓存publicTimeline",""+this);
+//        StatusBeanDB.getInstance(activity).deleteStatusBeanList(Long.valueOf(activity.getAccessAccessToken().getUid()),StatusBeanDB.publicTimelineCacheType);
+        Logger.showLog("存publicTimeline",""+this);
         StatusBeanDB.getInstance(activity).insertStatusBeanList(publicTimeLineList,Long.valueOf(activity.getAccessAccessToken().getUid()),StatusBeanDB.publicTimelineCacheType);
     }
 
@@ -105,13 +103,33 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
         RecyleViewHolder.clearViewHolder();
     }
 
-    private void initView() {
+    @Override
+    protected void initViewAndEvent(View rootView) {
+        super.initViewAndEvent(rootView);
         presenter = new StatusPresenter(activity, this);
         statusPresenter = (StatusPresenter) presenter;
         initPlv();
-//        showProgressDialog();
     }
 
+    @Override
+    protected void lazyLoad() {
+        if (!isPrepared)
+            return;
+        isPrepared = false;
+        showLoading();
+        loadData();
+    }
+
+    @Override
+    protected void loadData() {
+        super.loadData();
+        statusPresenter.getHomeTimeline(1);
+    }
+
+    @Override
+    protected View getLoadingTargetView() {
+        return lvStatus;
+    }
 
     private void getCache() {
         ArrayList<StatusBean> statuses = (ArrayList<StatusBean>) StatusBeanDB.getInstance(activity).queryStatusBeanList(Long.valueOf(activity.getAccessAccessToken().getUid()),StatusBeanDB.publicTimelineCacheType);
@@ -125,11 +143,11 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
 
     @Override
     public void showProgressDialog() {
-        materialDialog = new MaterialDialog.Builder(activity)
-                .content(R.string.please_wait)
-                .progress(true, 0)
-                .progressIndeterminateStyle(true)
-                .show();
+//        materialDialog = new MaterialDialog.Builder(activity)
+//                .content(R.string.please_wait)
+//                .progress(true, 0)
+//                .progressIndeterminateStyle(true)
+//                .show();
     }
 
     @Override
@@ -183,10 +201,12 @@ public class Home2Fragment extends BaseCacheFragment implements OnClickListener,
     public void onExecptionComplete() {
         System.out.println("请求异常");
         tvLoad.setVisibility(View.GONE);
+        showErrorMessage();
     }
 
     @Override
     public void updateHomeTimelineList(final int page, StatusListBean statusList) {
+        restore();
         if (page == 1) {
             publicTimeLineList.clear();
             curPage = 1;

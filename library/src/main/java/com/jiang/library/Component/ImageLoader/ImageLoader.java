@@ -22,7 +22,7 @@ public abstract class ImageLoader {
         return path;
     }
 
-    public abstract void displayImage(Activity activity, ImageView imageView, String path, @DrawableRes int loadingResId, @DrawableRes int failResId, int width, int height);
+    public abstract void displayImage(Context activity, ImageView imageView, String path, @DrawableRes int loadingResId, @DrawableRes int failResId, int width, int height);
 
     public abstract void downloadImage(Context context, String path);
 

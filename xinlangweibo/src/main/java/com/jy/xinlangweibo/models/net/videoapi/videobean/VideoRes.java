@@ -27,6 +27,8 @@ public class VideoRes {
     public String smoothURL;
     public String SDURL;
     public String HDURL;
+    public int totalRecords;
+    public int totalPnum;
 
     public String getVideoUrl() {
         if (!TextUtils.isEmpty(HDURL))

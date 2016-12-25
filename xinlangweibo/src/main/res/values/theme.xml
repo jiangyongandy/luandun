@@ -13,7 +13,8 @@
             <item name="themeColor">@color/orange</item>
             <item name="themeStatusbarColor">@color/orange_dark</item>
             <item name="colorPrimary">?attr/themeColor</item>
-            <item name="colorPrimaryDark">?attr/themeStatusbarColor</item>
             <item name="colorAccent">?attr/themeColor</item>
+            <item name="colorPrimaryDark">?attr/themeColor</item>
+            <item name="android:overScrollMode">never</item>
         </style>
 </resources>
