@@ -9,7 +9,7 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_activity_chooser_view_list_item.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\abc_activity_chooser_view_list_item.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\include_nav_divider.xml",
@@ -25,15 +25,19 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\notification_template_big_media.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\notification_template_big_media.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_subheader.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.0.1\\res\\layout\\design_navigation_item_subheader.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.0\\res\\layout\\design_navigation_item_subheader.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\jc_layout_standard.xml",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\fm.jiecao\\jiecaovideoplayer\\4.8.3\\res\\layout\\jc_layout_standard.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\item_section_news_sin.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\item_section_news_sin.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\md_stub_titleframe_lesspadding.xml",
@@ -41,7 +45,7 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar_include.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.0.1\\res\\layout\\design_layout_snackbar_include.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.0\\res\\layout\\design_layout_snackbar_include.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\md_listitem_singlechoice.xml",
@@ -77,11 +81,11 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_list_menu_item_icon.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\abc_list_menu_item_icon.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_header.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.0.1\\res\\layout\\design_navigation_item_header.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.0\\res\\layout\\design_navigation_item_header.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\item_staggered_home.xml",
@@ -89,11 +93,19 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_sheet_dialog.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.4.0\\res\\layout\\design_bottom_sheet_dialog.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.0\\res\\layout\\design_bottom_sheet_dialog.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_navigation_item.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.0\\res\\layout\\design_bottom_navigation_item.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\pull_to_refresh_header_horizontal.xml",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\pulltorefresh\\unspecified\\res\\layout\\pull_to_refresh_header_horizontal.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action_tombstone.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\notification_action_tombstone.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\md_dialog_progress_indeterminate.xml",
@@ -117,7 +129,11 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_action_bar_title_item.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\dialogfragment_video_search.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\dialogfragment_video_search.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\item_ad.xml",
@@ -137,7 +153,7 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_action_menu_layout.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\abc_action_menu_layout.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\include_profile_actbar.xml",
@@ -157,11 +173,11 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\notification_template_part_chronometer.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\notification_template_part_chronometer.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_select_dialog_material.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\abc_select_dialog_material.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\textscroll.xml",
@@ -173,23 +189,35 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\select_dialog_item_material.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\select_dialog_item_material.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_screen_content_include.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\abc_screen_content_include.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\item_section_news_multi.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\item_section_news_multi.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.0.1\\res\\layout\\design_navigation_item.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.0\\res\\layout\\design_navigation_item.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\notification_action.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\activity_web.xml",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\activity_web.xml"
     },
     {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media_custom.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\notification_template_media_custom.xml"
+    },
+    {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_separator.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.0.1\\res\\layout\\design_navigation_item_separator.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.0\\res\\layout\\design_navigation_item_separator.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\bga_pp_item_nine_photo.xml",
@@ -197,7 +225,7 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_screen_simple.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\abc_screen_simple.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\include_status_detail.xml",
@@ -209,19 +237,23 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_alert_dialog_material.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\abc_alert_dialog_material.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\notification_template_media.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\notification_template_media.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\item_grid_video_history.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\item_grid_video_history.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.0.1\\res\\layout\\design_navigation_menu.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.0\\res\\layout\\design_navigation_menu.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\section_item_video_relations.xml",
@@ -237,11 +269,19 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_search_view.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\abc_search_view.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_custom_big.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\notification_template_custom_big.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\message.xml",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\Xinlangweibo1\\library\\unspecified\\res\\layout\\message.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_news.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\fragment_news.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\ic_spitview_horizontal.xml",
@@ -249,11 +289,11 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_action_menu_item_layout.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\abc_action_menu_item_layout.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_header_item_layout.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_popup_menu_header_item_layout.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\abc_popup_menu_header_item_layout.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\ui_mdcolors_dialog.xml",
@@ -269,7 +309,7 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_dialog_title_material.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\abc_dialog_title_material.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_discover.xml",
@@ -277,7 +317,7 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_screen_toolbar.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\abc_screen_toolbar.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\bga_pp_toolbar_viewstub.xml",
@@ -289,7 +329,7 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\item_comments.xml",
@@ -297,11 +337,11 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_expanded_menu_layout.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\abc_expanded_menu_layout.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_cancel_action.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\notification_media_cancel_action.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\notification_media_cancel_action.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\status_details_footview_bottom.xml",
@@ -322,6 +362,10 @@
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\view_emoticonstoolbar.xml",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\view_emoticonstoolbar.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media_narrow_custom.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\notification_template_big_media_narrow_custom.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\jc_volume_dialog.xml",
@@ -353,11 +397,15 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\select_dialog_multichoice_material.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\select_dialog_multichoice_material.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\layout_input_searchview2.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\layout_input_searchview2.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\view_keyboardpopwindow.xml",
@@ -377,7 +425,7 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\support_simple_spinner_dropdown_item.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\support_simple_spinner_dropdown_item.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\status_details_head2.xml",
@@ -386,6 +434,10 @@
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\item_card_profile.xml",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\item_card_profile.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media_custom.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\notification_template_big_media_custom.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines.xml",
@@ -412,12 +464,16 @@
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\fm.jiecao\\jiecaovideoplayer\\4.8.3\\res\\layout\\jc_layout_base.xml"
     },
     {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines_media.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\notification_template_lines_media.xml"
+    },
+    {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\md_dialog_progress_indeterminate_horizontal.xml",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.1\\res\\layout\\md_dialog_progress_indeterminate_horizontal.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\notification_template_part_time.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\notification_template_part_time.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\layout_custom_banner.xml",
@@ -428,8 +484,12 @@
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\activity_status_details.xml"
     },
     {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\design_text_input_password_icon.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.0\\res\\layout\\design_text_input_password_icon.xml"
+    },
+    {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\design_menu_item_action_area.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.4.0\\res\\layout\\design_menu_item_action_area.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.0\\res\\layout\\design_menu_item_action_area.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\layout_tab_segment.xml",
@@ -465,7 +525,7 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_action_bar_up_container.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\abc_action_bar_up_container.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\md_stub_actionbuttons.xml",
@@ -473,11 +533,11 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_action_mode_bar.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\abc_action_mode_bar.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_icon.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.0.1\\res\\layout\\design_layout_tab_icon.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.0\\res\\layout\\design_layout_tab_icon.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\md_listitem.xml",
@@ -505,7 +565,7 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_action.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\notification_media_action.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\notification_media_action.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\item_toolbtn.xml",
@@ -513,11 +573,11 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu_item.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.4.0\\res\\layout\\design_navigation_menu_item.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.0\\res\\layout\\design_navigation_menu_item.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_popup_menu_item_layout.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\abc_popup_menu_item_layout.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\md_listitem_multichoice.xml",
@@ -525,15 +585,23 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_activity_chooser_view.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\abc_activity_chooser_view.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\layout_tab_left.xml",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.flyco.tablayout\\FlycoTabLayout_Lib\\2.0.0\\res\\layout\\layout_tab_left.xml"
     },
     {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\item_tag.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\item_tag.xml"
+    },
+    {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\include_writestatus_bottom.xml",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\include_writestatus_bottom.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_icon_group.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\notification_template_icon_group.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\item_grid_statusimage.xml",
@@ -545,11 +613,15 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_action_mode_close_item_material.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\abc_action_mode_close_item_material.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\__leak_canary_ref_top_row.xml",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.squareup.leakcanary\\leakcanary-android\\1.3\\res\\layout\\__leak_canary_ref_top_row.xml"
+    },
+    {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\layout_cus_s_searchview.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\layout_cus_s_searchview.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\bga_pp_item_photo_picker.xml",
@@ -557,7 +629,7 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_list_menu_item_layout.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\abc_list_menu_item_layout.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\layout_home_recommend_empty.xml",
@@ -565,7 +637,7 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\section_video_info.xml",
@@ -573,7 +645,7 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_list_menu_item_checkbox.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\abc_list_menu_item_checkbox.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\activity_videoinfo.xml",
@@ -592,12 +664,16 @@
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.github.afollestad.material-dialogs\\core\\0.8.5.1\\res\\layout\\md_dialog_list.xml"
     },
     {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\layout_input_searchview.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\layout\\layout_input_searchview.xml"
+    },
+    {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media_narrow.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\notification_template_big_media_narrow.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\notification_template_big_media_narrow.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\select_dialog_singlechoice_material.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\select_dialog_singlechoice_material.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\item_section_video.xml",
@@ -625,7 +701,7 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\bga_pp_activity_photo_picker_preview.xml",
@@ -633,7 +709,7 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_text.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.0.1\\res\\layout\\design_layout_tab_text.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.0\\res\\layout\\design_layout_tab_text.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\md_dialog_basic.xml",
@@ -645,7 +721,7 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.0.1\\res\\layout\\design_layout_snackbar.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.0\\res\\layout\\design_layout_snackbar.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\include_retweeted_statuscontent.xml",
@@ -657,7 +733,7 @@
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
-        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.1.1\\res\\layout\\abc_list_menu_item_radio.xml"
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.0\\res\\layout\\abc_list_menu_item_radio.xml"
     },
     {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\layout\\item_emoticon.xml",

@@ -20,11 +20,11 @@ import com.jiang.library.ui.adapter.recyleviewadapter.IITemView;
 import com.jiang.library.ui.adapter.recyleviewadapter.IItemViewCreator;
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.constant.AccessTokenKeeper;
+import com.jy.xinlangweibo.models.net.sinaapi.BaseObserver;
+import com.jy.xinlangweibo.models.net.sinaapi.StatusInteraction;
 import com.jy.xinlangweibo.models.net.sinaapi.sinabean.RepostBean;
 import com.jy.xinlangweibo.models.net.sinaapi.sinabean.RepostListBean;
 import com.jy.xinlangweibo.models.net.sinaapi.sinabean.UserBean;
-import com.jy.xinlangweibo.models.net.sinaapi.BaseObserver;
-import com.jy.xinlangweibo.models.net.sinaapi.StatusInteraction;
 import com.jy.xinlangweibo.ui.fragment.base.LazySupportFragment;
 import com.jy.xinlangweibo.utils.CommonImageLoader.ImageLoadeOptions;
 import com.jy.xinlangweibo.utils.DateUtils;
@@ -117,7 +117,7 @@ public class RepostSupportFragment extends LazySupportFragment {
                         }
                         comments.clear();
                         comments.addAll(models.reposts);
-                        restore();
+                        dismissLoading();
                         updateUi();
                     }
 

@@ -10,8 +10,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.models.net.videoapi.videobean.ChildListBean;
 import com.jy.xinlangweibo.models.net.videoapi.videobean.ListBean;
@@ -19,6 +17,7 @@ import com.jy.xinlangweibo.ui.activity.VideoInfoActivity;
 import com.jy.xinlangweibo.ui.activity.base.FragmentToolbarActivity;
 import com.jy.xinlangweibo.ui.adapter.section.StatelessSection;
 import com.jy.xinlangweibo.ui.fragment.MoreVideoFragment;
+import com.jy.xinlangweibo.utils.CommonImageLoader.CustomImageLoader;
 
 import java.util.Collection;
 
@@ -70,13 +69,12 @@ public class VideoCategorySection extends StatelessSection {
         final ChildListBean bean;
         bean = videoListBean.childList.get(position);
 
-        Glide.with(mContext)
-                .load(bean.pic)
-                .centerCrop()
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .placeholder(R.drawable.timeline_image_loading)
-                .dontAnimate()
-                .into(itemViewHolder.mImage);
+        CustomImageLoader.displayImage(mContext,
+                itemViewHolder.mImage,
+                bean.pic,
+                R.drawable.timeline_image_loading,
+                R.drawable.timeline_image_failure,
+                0, 0);
 
         itemViewHolder.mTitle.setText(bean.title);
         itemViewHolder.mPlay.setText(String.valueOf(bean.airTime));

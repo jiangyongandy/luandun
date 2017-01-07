@@ -23,10 +23,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            android:text="专题"
-            android:textColor="@color/font_normal"
-            android:textSize="@dimen/default_small_text_size" />
+            android:layout_marginLeft="10dp" style="@style/bigtitle_black_text"
+            android:text="专题" />
 
 
     </LinearLayout>

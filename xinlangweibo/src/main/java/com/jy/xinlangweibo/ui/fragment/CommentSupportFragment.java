@@ -104,7 +104,7 @@ public class CommentSupportFragment extends LazySupportFragment {
                         super.onNext(models);
                         comments.clear();
                         comments.addAll(models.comments);
-                        restore();
+                        dismissLoading();
                         updateUi();
                     }
 

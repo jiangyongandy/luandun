@@ -50,14 +50,14 @@
 
     <Button
         android:id="@+id/nav_right_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginBottom="5dp"
         android:layout_marginRight="6dp"
         android:layout_marginTop="5dp"
-        android:background="@drawable/timeline_card_small_button_highlighted"
+        android:background="@color/bg_gray_dark"
         android:clickable="true"
         android:text="右题"
         android:textColor="@drawable/navbar_textcolor_gray2ora_sel"

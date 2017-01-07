@@ -68,11 +68,16 @@ public class SettingFragment extends PreferenceFragment implements Preference.On
     public boolean onPreferenceClick(Preference preference) {
         switch (preference.getKey()) {
             case "pTheme":
+
                 MDColorsDialogFragment.launch(getActivity());
+                break;
+
             case "pClearCache":
+
                 ImageLoader.getInstance().clearMemoryCache();
                 ImageLoader.getInstance().clearDiskCache();
                 ToastUtils.show(getActivity(),"已经清除",Toast.LENGTH_SHORT);
+                break;
         }
         return true;
     }

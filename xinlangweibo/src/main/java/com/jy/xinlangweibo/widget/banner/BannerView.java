@@ -1,5 +1,6 @@
 package com.jy.xinlangweibo.widget.banner;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -13,6 +14,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.models.net.videoapi.videobean.ChildListBean;
+import com.jy.xinlangweibo.ui.activity.VideoInfoActivity;
 import com.jy.xinlangweibo.utils.Utils;
 
 import java.util.ArrayList;
@@ -273,5 +275,7 @@ public class BannerView extends RelativeLayout implements BannerAdapter.ViewPage
 //        BrowserActivity.launch((Activity) getContext(),
 //                bannerList.get(currrentPos).link,
 //                bannerList.get(currrentPos).title);
+
+        VideoInfoActivity.launch( (Activity)getContext(),bannerList.get(currrentPos));
     }
 }

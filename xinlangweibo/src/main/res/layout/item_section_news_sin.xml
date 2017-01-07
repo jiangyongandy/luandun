@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.android.percent.support.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_video_pic"
+        android:layout_width="0dp" android:layout_height="0dp" android:layout_alignParentRight="true"
+        app:layout_heightPercent="25%w" app:layout_widthPercent="30%w" tools:src="@drawable/beautifulrichu"/>
+
+    <TextView
+        android:id="@+id/tv_news_title"
+        android:layout_toLeftOf="@id/iv_video_pic" android:layout_alignTop="@id/iv_video_pic"
+        android:layout_alignParentLeft="true"
+         android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginRight="10dp" android:layout_marginBottom="10dp"
+        android:maxLines="2" style="@style/bigtitle_black_text" tools:text="标题"
+        />
+
+    <TextView
+        android:id="@+id/tv_news_from" tools:text="新闻来源"
+        android:gravity="center"  android:layout_alignLeft="@id/tv_news_title" android:layout_below="@id/tv_news_title"
+        android:layout_alignBottom="@id/iv_video_pic"
+        android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/small_gray_text"
+        />
+
+    <View
+        android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+        android:layout_below="@id/tv_news_from"
+        android:background="@color/bg_agray" android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+</com.zhy.android.percent.support.PercentRelativeLayout>

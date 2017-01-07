@@ -1,5 +1,6 @@
 package com.jy.xinlangweibo.ui.adapter.videoinfosections;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -9,8 +10,10 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.models.net.videoapi.videobean.ChildListBean;
 import com.jy.xinlangweibo.models.net.videoapi.videobean.VideoInfo;
 import com.jy.xinlangweibo.models.net.videoapi.videobean.VideoType;
+import com.jy.xinlangweibo.ui.activity.VideoInfoActivity;
 import com.jy.xinlangweibo.ui.adapter.section.StatelessSection;
 
 import butterknife.BindView;
@@ -44,7 +47,7 @@ public class RelationsVideoSection extends StatelessSection {
     @Override
     public void onBindItemViewHolder(RecyclerView.ViewHolder holder, int position) {
         ItemViewHolder viewHolder = (ItemViewHolder) holder;
-        VideoInfo bean = listBean.childList.get(position);
+        final VideoInfo bean = listBean.childList.get(position);
 
         Glide.with(context)
                 .load(bean.pic)
@@ -56,6 +59,15 @@ public class RelationsVideoSection extends StatelessSection {
 
         viewHolder.tvVideoTitle.setText(bean.title);
         viewHolder.tvDescription.setText(bean.description);
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ChildListBean childListBean = new ChildListBean();
+                childListBean.dataId = bean.dataId;
+                childListBean.pic = bean.pic;
+                VideoInfoActivity.launch((Activity) context,childListBean);
+            }
+        });
     }
 
     @Override
@@ -91,7 +103,6 @@ public class RelationsVideoSection extends StatelessSection {
         TextView tvDescription;
 
         public ItemViewHolder(View itemView) {
-
             super(itemView);
             ButterKnife.bind(this, itemView);
         }

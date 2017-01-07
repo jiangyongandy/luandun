@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/bg_agray"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/layout_input_searchview"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_content"
+        android:layout_width="match_parent" android:orientation="vertical"
+        android:layout_height="0dp" android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_history"
+            android:layout_marginTop="20dp"
+            android:text="历史搜索："
+            style="@style/bigtitle_gray_text"
+            android:padding="4dp"
+             />
+
+        <ImageView
+            android:id="@+id/iv_delete"
+            android:layout_alignTop="@id/tv_history"
+            android:layout_marginRight="5dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_delete"
+            android:tint="@color/bg_gray_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <com.zhy.view.flowlayout.TagFlowLayout
+            android:id="@+id/tags_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_below="@id/tv_history"
+            android:layout_marginEnd="@dimen/default_tiny_padding"
+            android:layout_marginStart="@dimen/default_tiny_padding"
+            app:max_select="-1" />
+
+    </RelativeLayout>
+
+</LinearLayout>

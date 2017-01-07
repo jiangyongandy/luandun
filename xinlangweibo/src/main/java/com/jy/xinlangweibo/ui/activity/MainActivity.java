@@ -1,11 +1,11 @@
 package com.jy.xinlangweibo.ui.activity;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -20,11 +20,11 @@ import com.jiang.library.ui.BaseViewHolder;
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.models.net.sinaapi.sinabean.UserBean;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
-import com.jy.xinlangweibo.ui.fragment.DiscoverFragment;
 import com.jy.xinlangweibo.ui.fragment.FragmentController;
-import com.jy.xinlangweibo.ui.fragment.Home2Fragment;
-import com.jy.xinlangweibo.ui.fragment.PersonalFragment;
-import com.jy.xinlangweibo.ui.fragment.VideoRecommendFragment;
+import com.jy.xinlangweibo.ui.fragment.home.Home2Fragment;
+import com.jy.xinlangweibo.ui.fragment.home.NewsFragment;
+import com.jy.xinlangweibo.ui.fragment.home.PersonalFragment;
+import com.jy.xinlangweibo.ui.fragment.home.VideoRecommendFragment;
 import com.jy.xinlangweibo.utils.CommonImageLoader.CustomImageLoader;
 
 import butterknife.BindView;
@@ -46,7 +46,6 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
     RadioButton tabdiscoverid;
     @BindView(R.id.tabprofileid)
     RadioButton tabprofileid;
-    protected FragmentController fragmentController;
     @BindView(R.id.nav_title)
     TextView navTitle;
     @BindView(R.id.toolbar)
@@ -54,6 +53,7 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
     @BindView(R.id.nav_right_iv)
     ImageView navRightIv;
     private Fragment[] fragments = new Fragment[4];
+    protected FragmentController fragmentController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,7 +110,7 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
             fragments[0] = fragment;
         } else if (fragment instanceof VideoRecommendFragment) {
             fragments[1] = fragment;
-        } else if (fragment instanceof DiscoverFragment) {
+        } else if (fragment instanceof NewsFragment) {
             fragments[2] = fragment;
         } else if (fragment instanceof PersonalFragment) {
             fragments[3] = fragment;

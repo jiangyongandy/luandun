@@ -142,7 +142,7 @@ public class EmoticonsEditText extends EditText {
             }
         }
         if(onTextChangedInterface != null){
-            onTextChangedInterface.onTextChanged(arg0);
+            onTextChangedInterface.onTextChanged(arg0.toString());
         }
     }
 

@@ -3,6 +3,10 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include
+        android:id="@+id/sv_video_search"
+        layout="@layout/layout_cus_s_searchview" />
+
     <com.jiang.library.ui.widget.LoadMoreRecycleView
         android:id="@+id/rv_video_recommend"
         android:overScrollMode="never" android:background="@color/white"

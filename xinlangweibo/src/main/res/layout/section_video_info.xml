@@ -31,7 +31,7 @@
         <TextView
             android:padding="2dp"
             android:id="@id/tv_description"
-            android:layout_width="match_parent"  style="@style/middle_gray_text" tools:text="1111111111111111111"
+            android:layout_width="match_parent"  style="@style/middle_balck_text" tools:text="1111111111111111111"
             android:layout_height="wrap_content" />
 
     </LinearLayout>

@@ -7,8 +7,6 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.text.Html;
 import android.text.TextPaint;
@@ -23,6 +21,7 @@ import com.jy.xinlangweibo.models.net.sinaapi.sinabean.StatusBean;
 import com.jy.xinlangweibo.models.net.sinaapi.sinabean.UserBean;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.ui.activity.base.FragmentToolbarActivity;
+import com.jy.xinlangweibo.ui.adapter.base.BaseViewPagerAdapter;
 import com.jy.xinlangweibo.ui.fragment.CommentSupportFragment;
 import com.jy.xinlangweibo.ui.fragment.ImageBrowserFragment;
 import com.jy.xinlangweibo.ui.fragment.RepostSupportFragment;
@@ -99,7 +98,7 @@ public class StatusDetails2Activity extends BaseActivity implements BGANinePhoto
         fragments.add(repostFragment);
         titles.add("评论");
         titles.add("转发");
-        StatusDetailsPagerAdapter pagerAdapter = new StatusDetailsPagerAdapter(getSupportFragmentManager(), fragments, titles);
+        BaseViewPagerAdapter pagerAdapter = new BaseViewPagerAdapter(getSupportFragmentManager(), fragments, titles);
         viewPager.setAdapter(pagerAdapter);
         viewPager.setOffscreenPageLimit(2);
         tabLayout.setViewPager(viewPager);
@@ -252,42 +251,5 @@ public class StatusDetails2Activity extends BaseActivity implements BGANinePhoto
     @Override
     public boolean onLongClickNinePhotoItem(BGANinePhotoLayout ninePhotoLayout, View view, int position, String model, List<String> models) {
         return false;
-    }
-
-    public static class StatusDetailsPagerAdapter extends FragmentStatePagerAdapter
-    {
-
-        private List<Fragment> fragments;
-
-        private List<String> titles;
-
-        StatusDetailsPagerAdapter(FragmentManager fm, List<Fragment> fragments, List<String> titles)
-        {
-
-            super(fm);
-            this.fragments = fragments;
-            this.titles = titles;
-        }
-
-        @Override
-        public Fragment getItem(int position)
-        {
-
-            return fragments.get(position);
-        }
-
-        @Override
-        public int getCount()
-        {
-
-            return fragments.size();
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position)
-        {
-
-            return titles.get(position);
-        }
     }
 }

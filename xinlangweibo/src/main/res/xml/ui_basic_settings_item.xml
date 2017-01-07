@@ -92,6 +92,10 @@
 
         <Preference
             android:key="pClearCache" android:title="清除图片缓存"/>
+
+        <CheckBoxPreference android:key="pNoImage" android:title="无图模式" android:defaultValue="false"
+            android:summary="默认为加载图片" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

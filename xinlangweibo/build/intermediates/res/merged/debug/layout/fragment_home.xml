@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/apk/res-auto"
-
+    android:background="@color/bg_gray"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -10,7 +10,7 @@
         android:id="@+id/lv_status"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bg_agray"
+        android:background="@color/bg_gray"
         android:scrollbars="none"
         ptr:ptrAnimationStyle="flip"
         ptr:ptrDrawable="@drawable/tableview_pull_refresh_arrow_up"

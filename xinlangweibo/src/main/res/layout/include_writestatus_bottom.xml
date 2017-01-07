@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:clickable="true"
-        android:src="@drawable/btn_insert_pics"
+        android:src="@drawable/btn_insert_pics" android:visibility="gone"
         android:gravity="center" />
 
     <ImageView
@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:clickable="true"
-        android:src="@drawable/btn_insert_at"
+        android:src="@drawable/btn_insert_at" android:visibility="gone"
         android:gravity="center" />
 
     <ImageView
@@ -30,12 +30,12 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:clickable="true"
-        android:src="@drawable/btn_insert_topic"
+        android:src="@drawable/btn_insert_topic" android:visibility="gone"
         android:gravity="center" />
 
     <ImageView
         android:id="@+id/iv_emotions"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:clickable="true"
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:clickable="true"
-        android:src="@drawable/btn_insert_more"
+        android:src="@drawable/btn_insert_more" android:visibility="gone"
         android:gravity="center" />
 
 </LinearLayout>

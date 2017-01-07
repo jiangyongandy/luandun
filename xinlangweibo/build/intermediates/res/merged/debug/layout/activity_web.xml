@@ -1,22 +1,28 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:orientation="vertical"
-     >
+    android:orientation="vertical">
 
-    <WebView
-        android:id="@+id/wv"
+    <include layout="@layout/comm_lay_toolbar" />
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-    </WebView>
+        android:layout_height="0dp" android:layout_weight="1">
 
-    <ProgressBar
-        android:id="@+id/pgb_wv"
-        style="@style/mProgress_horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="4dp" />
+        <WebView
+            android:id="@+id/wv"
+            android:overScrollMode="never"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-</RelativeLayout>
+        <ProgressBar
+            android:id="@+id/pgb_wv"
+            style="@style/mProgress_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="4dp" />
+
+    </FrameLayout>
+
+</LinearLayout>

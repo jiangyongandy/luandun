@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:orientation="vertical"
+    android:padding="10dp"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_news_title"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:maxLines="2" style="@style/bigtitle_black_text" tools:text="标题" android:layout_marginBottom="10dp"
+        />
+
+    <com.zhy.android.percent.support.PercentLinearLayout
+        android:id="@+id/perll_pics"
+        android:layout_width="match_parent" android:orientation="horizontal" android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="0dp" android:layout_height="0dp"  app:layout_marginRightPercent="2%w"
+            app:layout_heightPercent="25%w" app:layout_widthPercent="32%w" tools:src="@drawable/beautifulrichu"
+            android:scaleType="centerCrop"
+            />
+
+        <ImageView
+            android:layout_width="0dp" android:layout_height="0dp"  app:layout_marginRightPercent="2%w"
+            app:layout_heightPercent="25%w" app:layout_widthPercent="32%w" tools:src="@drawable/beautifulrichu"
+            android:scaleType="centerCrop"
+            />
+
+        <ImageView
+            android:layout_width="0dp" android:layout_height="0dp"
+            app:layout_heightPercent="25%w" app:layout_widthPercent="32%w" tools:src="@drawable/beautifulrichu"
+            android:scaleType="centerCrop"
+            />
+
+    </com.zhy.android.percent.support.PercentLinearLayout>
+
+    <TextView
+        android:id="@+id/tv_news_from" tools:text="新闻来源"
+        android:gravity="center"
+        android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/small_gray_text"
+        />
+
+    <View
+        android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+        android:background="@color/bg_agray" android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+</LinearLayout>

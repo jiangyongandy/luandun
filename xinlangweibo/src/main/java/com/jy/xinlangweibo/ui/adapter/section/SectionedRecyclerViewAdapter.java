@@ -39,7 +39,6 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
 
     public SectionedRecyclerViewAdapter()
     {
-
         sections = new LinkedHashMap<>();
         sectionViewTypeNumbers = new HashMap<>();
     }

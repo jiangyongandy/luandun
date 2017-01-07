@@ -38,6 +38,11 @@
         <item name="android:textColor">@color/txt_gray</item>
     </style>
 
+    <style name="small_balck_text">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="content_black_text">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -52,6 +57,20 @@
         <item name="android:textColor">@color/txt_gray</item>
     </style>
 
+    <style name="middle_balck_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="middle_light_gray_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/txt_light_gray</item>
+    </style>
+
     <style name="large_gray_text">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -62,8 +81,22 @@
     <style name="bigtitle_black_text">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="bigtitle_gray_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/txt_gray</item>
+    </style>
+
+    <style name="bigtitle_blue_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/txt_at_blue</item>
     </style>
 
     <style name="mProgress_horizontal">

@@ -5,8 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.utils.ToastUtils;
 
 /**
  * Created by JIANG on 2016/10/27.
@@ -24,12 +26,6 @@ public abstract class LazySupportFragment extends BaseSupportFragment  {
     private ViewGroup.LayoutParams params;
     private View currentView;
 
-
-    @Override
-    protected void initViewAndEvent(View rootView) {
-
-    }
-
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         finishCreateView(savedInstanceState);
@@ -37,10 +33,12 @@ public abstract class LazySupportFragment extends BaseSupportFragment  {
         isPrepared = true;
     }
 
-    public void finishCreateView(Bundle state){};
+    public void finishCreateView(Bundle state){
+        isPrepared = true;
+    }
 
     /**
-     * Fragment数据的懒加载 此方法在viewpage滑动时有效
+     * Fragment数据的懒加载 此方法与OnCreateView没有先后顺序
      *
      * @param isVisibleToUser
      */
@@ -81,6 +79,8 @@ public abstract class LazySupportFragment extends BaseSupportFragment  {
 
     protected void loadData() {}
 
+    protected void loadMoreData() {}
+
     protected void initRecyclerView() {}
 
     protected void initRefreshLayout() {}
@@ -88,6 +88,10 @@ public abstract class LazySupportFragment extends BaseSupportFragment  {
     protected void updateUi() {}
 
     protected abstract View getLoadingTargetView();
+
+    public void showToast(String text) {
+        ToastUtils.show(getActivity(), text, Toast.LENGTH_SHORT);
+    }
 
     protected void showLoading() {
         String msg = "";
@@ -115,7 +119,7 @@ public abstract class LazySupportFragment extends BaseSupportFragment  {
         });
     }
 
-    protected void restore() {
+    protected void dismissLoading() {
         showLayout(loadingView);
     }
 

@@ -1,7 +1,7 @@
 package com.jy.xinlangweibo.utils;
 
+import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.text.Spannable;
@@ -16,8 +16,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jy.xinlangweibo.ui.activity.base.FragmentToolbarActivity;
-import com.jy.xinlangweibo.ui.fragment.WebFragment;
+import com.jy.xinlangweibo.ui.activity.BrowserActivity;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -82,9 +81,8 @@ public class WeiboStringUtils {
 					public void onClick(View arg0) {
 //						点击进入WEBVIEW显示网页
 						ToastUtils.show(context, "链接："+htt, Toast.LENGTH_SHORT);
-						Intent intent = new Intent(arg0.getContext(),FragmentToolbarActivity.class);
-						intent.putExtra("Website",htt );
-						FragmentToolbarActivity.launch(arg0.getContext(), WebFragment.class,intent);
+
+						BrowserActivity.launch((Activity) arg0.getContext(),htt,"详情");
 					}
 				}, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 			}

@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.jy.xinlangweibo.BaseApplication;
 import com.jy.xinlangweibo.presenter.BasePresenter;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
+import com.jy.xinlangweibo.utils.ToastUtils;
 import com.squareup.leakcanary.RefWatcher;
 
 import butterknife.ButterKnife;
@@ -43,6 +44,7 @@ public class BaseSupportFragment extends Fragment {
 		if(presenter != null)
 			presenter.onDestroy();
 		bind.unbind();
+		ToastUtils.clearToast();
 		RefWatcher refWatcher = BaseApplication.getRefWatcher(getActivity());
 		refWatcher.watch(this);
 	}

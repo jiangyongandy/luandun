@@ -56,7 +56,7 @@ public class BaseApplication extends Application {
 
 		LogUtil.enableLog();
 		random = new Random();
-		Thread.setDefaultUncaughtExceptionHandler(restartHandler);
+//		Thread.setDefaultUncaughtExceptionHandler(restartHandler);
 	}
 
 //	此方法在应用销毁时不一定会被调用，比如当程序是被内核终止以便为其他应用程序释放资源，那

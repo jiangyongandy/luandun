@@ -17,6 +17,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jiang.library.ui.widget.LineLoadRecycleView;
 import com.jiang.library.ui.widget.LoadMoreRecycleView;
 import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.models.cache.LocaleHistory;
 import com.jy.xinlangweibo.models.net.videoapi.RetrofitHelper;
 import com.jy.xinlangweibo.models.net.videoapi.VideoHttpResponse;
 import com.jy.xinlangweibo.models.net.videoapi.videobean.ChildListBean;
@@ -46,7 +47,7 @@ import rx.schedulers.Schedulers;
 /**
  * Created by JIANG on 2016/12/22.
  */
-
+//todo 增加缓存处理
 public class VideoInfoActivity extends BaseActivity {
     @BindView(R.id.video_player)
     JCVideoPlayerStandard videoPlayer;
@@ -141,6 +142,7 @@ public class VideoInfoActivity extends BaseActivity {
         super.onPause();
         JCVideoPlayer.releaseAllVideos();
         sensorManager.unregisterListener(sensorEventListener);
+        LocaleHistory.getInstance().addVideoPlayHistory(childListBean);
     }
 
     @Override

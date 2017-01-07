@@ -136,7 +136,7 @@ public class BGASortableNinePhotoLayout extends RecyclerView implements AdapterV
         } else {
             mGridLayoutManager.setSpanCount(MAX_SPAN_COUNT);
         }
-        int itemWidth = Utils.getDisplayWidthPixels(getContext()) / (MAX_SPAN_COUNT + 1);
+        int itemWidth = Utils.getDisplayWidthPixels(getContext()) / (MAX_SPAN_COUNT );
         int width = itemWidth * mGridLayoutManager.getSpanCount();
         int height = 0;
         if (mPhotoAdapter.getItemCount() != 0) {

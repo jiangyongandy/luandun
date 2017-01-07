@@ -1,11 +1,15 @@
 package com.jy.xinlangweibo.ui.fragment;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 
 import com.jy.xinlangweibo.ui.activity.MainActivity;
+import com.jy.xinlangweibo.ui.fragment.home.Home2Fragment;
+import com.jy.xinlangweibo.ui.fragment.home.NewsFragment;
+import com.jy.xinlangweibo.ui.fragment.home.PersonalFragment;
+import com.jy.xinlangweibo.ui.fragment.home.VideoRecommendFragment;
 
 //单例设计模式
 public class FragmentController {
@@ -18,7 +22,7 @@ public class FragmentController {
 
 	private FragmentController(Activity activity,int id,Fragment[] fragments) {
 		mainActivity = (MainActivity) activity;
-		fm = ((MainActivity) activity).getFragmentManager();
+		fm = ((MainActivity) activity).getSupportFragmentManager();
 		this.containerId = id;
 		this.fragments = fragments;
 		initView();
@@ -45,8 +49,8 @@ public class FragmentController {
 						}
 						break;
 					case 2:
-						if (!(fragments[2] instanceof DiscoverFragment)) {
-							fragments[2] = new DiscoverFragment();
+						if (!(fragments[2] instanceof NewsFragment)) {
+							fragments[2] = new NewsFragment();
 							ft.add(containerId, fragments[2]);
 						}
 						break;

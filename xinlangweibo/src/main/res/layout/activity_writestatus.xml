@@ -40,7 +40,7 @@
                 <com.jy.xinlangweibo.widget.ninephoto.BGASortableNinePhotoLayout
                     android:id="@+id/snpl_moment_add_photos"
                     android:layout_height="match_parent"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_margin="10dp" />
 
                 <!-- 转发微博内容（卡片） -->
@@ -59,7 +59,7 @@
         <com.jy.xinlangweibo.widget.emotionkeyboard.EmoticonsKeyBoardBar
             android:id="@+id/EmoticonsKeyBoardBar"
             android:layout_width="match_parent"
-            android:layout_height="230dp"
+            android:layout_height="wrap_content"
             android:visibility="gone" >
         </com.jy.xinlangweibo.widget.emotionkeyboard.EmoticonsKeyBoardBar>
         

@@ -11,6 +11,7 @@
 
     <TextView
         android:id="@+id/tv_video_title"
+        style="@style/small_balck_text"
         android:gravity="center" android:layout_below="@id/iv_video_pic"
         android:layout_width="0dp" android:layout_height="wrap_content"
         app:layout_widthPercent="40%w" />
@@ -19,7 +20,7 @@
         android:id="@+id/tv_description"
         android:layout_centerVertical="true" android:layout_toRightOf="@id/iv_video_pic"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:maxLines="1" style="@style/middle_gray_text"
+        android:maxLines="1" style="@style/middle_balck_text"
         />
 
 </com.zhy.android.percent.support.PercentRelativeLayout>

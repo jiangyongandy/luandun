@@ -77,6 +77,10 @@
             android:name="com.jy.xinlangweibo.ui.activity.WebActivity"
             android:hardwareAccelerated="true"
             android:label="@string/title_activity_web" />
+        <activity
+            android:name="com.jy.xinlangweibo.ui.activity.BrowserActivity"
+            android:hardwareAccelerated="true" />
+
         <!-- 用户信息显示页 -->
         <activity
             android:name="com.jy.xinlangweibo.ui.activity.UserShowActivity"
@@ -90,7 +94,6 @@
             </intent-filter>
         </activity>
         <!-- 在线视频详情页 -->
-android:configChanges="orientation|screenSize|keyboardHidden"
         <activity
             android:name="com.jy.xinlangweibo.ui.activity.VideoInfoActivity"
             android:configChanges="orientation|screenSize|keyboardHidden" />

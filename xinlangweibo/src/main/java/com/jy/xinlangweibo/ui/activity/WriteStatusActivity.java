@@ -24,8 +24,8 @@ import android.widget.Toast;
 
 import com.jy.xinlangweibo.BaseApplication;
 import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.models.net.sinaapi.sinabean.StatusBean;
 import com.jy.xinlangweibo.models.net.sinaapi.StatusInteraction;
+import com.jy.xinlangweibo.models.net.sinaapi.sinabean.StatusBean;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.utils.CommonImageLoader.CustomImageLoader;
 import com.jy.xinlangweibo.utils.EmoticonsUtils;
@@ -229,7 +229,7 @@ public class WriteStatusActivity extends BaseActivity implements
     private void initTitle() {
         titleBuilder
         .setLeftimg(R.drawable.icon_navbarback_gra2ora_sel)
-        .setrightButton("发送", R.drawable.timeline_card_small_button,
+        .setrightButton("发送", R.color.bg_agray,
                 R.color.bg_gray_pressed).setRightOnclickListener(this)
         .setLeftOnclickListener(new OnClickListener() {
 
@@ -494,7 +494,7 @@ public class WriteStatusActivity extends BaseActivity implements
                     et_content.setTextColor(getResources().getColor(
                             R.color.txt_light_gray));
                     titleBuilder.setrightButton("发送",
-                            R.drawable.timeline_card_small_button,
+                            R.color.bg_agray,
                             R.color.bg_gray_pressed);
                 }
             }
