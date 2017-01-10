@@ -162,12 +162,10 @@ public class MoreVideoFragment extends LazyFragment {
                         List<ChildListBean> childList = models.ret.list;
                         categorySection.addData(childList);
                         mSectionedRecyclerViewAdapter.notifyItemRangeInserted(mSectionedRecyclerViewAdapter.getItemCount() - childList.size(), childList.size());
-                        rvMoreVideo.resumeLoadMore();
                     }
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
-                        rvMoreVideo.resumeLoadMore();
                         Logger.show(throwable.getMessage(), Log.WARN, "" + this);
                     }
                 });

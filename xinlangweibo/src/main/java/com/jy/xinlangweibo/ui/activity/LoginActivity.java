@@ -9,9 +9,9 @@ import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 import com.jy.xinlangweibo.R;
-import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.constant.AccessTokenKeeper;
 import com.jy.xinlangweibo.constant.Constants;
+import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.sina.weibo.sdk.auth.AuthInfo;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.auth.WeiboAuthListener;
@@ -85,6 +85,7 @@ public class LoginActivity extends BaseActivity {
 						mAccessToken);
 				Toast.makeText(LoginActivity.this, "OUATH成功",
 						Toast.LENGTH_SHORT).show();
+				finishForResult(MainActivity.OAUTH_SUCCESS);
 			} else {
 				// 以下几种情况，您会收到 Code：
 				// 1. 当您未在平台上注册的应用程序的包名与签名时；
@@ -97,9 +98,8 @@ public class LoginActivity extends BaseActivity {
 				}
 				Toast.makeText(LoginActivity.this, message, Toast.LENGTH_LONG)
 						.show();
+				finish();
 			}
-			intent2Activity(MainActivity.class);
-			finish();
 		}
 
 		@Override

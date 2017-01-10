@@ -17,13 +17,18 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jiang.library.ui.widget.LineLoadRecycleView;
 import com.jiang.library.ui.widget.LoadMoreRecycleView;
 import com.jy.xinlangweibo.R;
+import com.jy.xinlangweibo.constant.Constants;
 import com.jy.xinlangweibo.models.cache.LocaleHistory;
 import com.jy.xinlangweibo.models.net.videoapi.RetrofitHelper;
 import com.jy.xinlangweibo.models.net.videoapi.VideoHttpResponse;
 import com.jy.xinlangweibo.models.net.videoapi.videobean.ChildListBean;
 import com.jy.xinlangweibo.models.net.videoapi.videobean.VideoRes;
 import com.jy.xinlangweibo.models.net.videoapi.videobean.VideoType;
-import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
+import com.jy.xinlangweibo.share.ShareBottomDialog;
+import com.jy.xinlangweibo.share.shareutil.ShareUtil;
+import com.jy.xinlangweibo.share.shareutil.share.ShareListener;
+import com.jy.xinlangweibo.share.shareutil.share.SharePlatform;
+import com.jy.xinlangweibo.ui.activity.base.BaseShareActivity;
 import com.jy.xinlangweibo.ui.adapter.section.SectionedRecyclerViewAdapter;
 import com.jy.xinlangweibo.ui.adapter.videoinfosections.CommentSection;
 import com.jy.xinlangweibo.ui.adapter.videoinfosections.RelationsVideoSection;
@@ -48,7 +53,7 @@ import rx.schedulers.Schedulers;
  * Created by JIANG on 2016/12/22.
  */
 //todo 增加缓存处理
-public class VideoInfoActivity extends BaseActivity {
+public class VideoInfoActivity extends BaseShareActivity {
     @BindView(R.id.video_player)
     JCVideoPlayerStandard videoPlayer;
     @BindView(R.id.rv_video_info)
@@ -61,6 +66,24 @@ public class VideoInfoActivity extends BaseActivity {
 
     private JCVideoPlayer.JCAutoFullscreenListener sensorEventListener;
     private SensorManager sensorManager;
+
+    private ShareListener mShareListener = new ShareListener () {
+        @Override
+        public void shareSuccess() {
+            Toast.makeText(VideoInfoActivity.this, "分享成功", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void shareFailure(Exception e) {
+            Toast.makeText(VideoInfoActivity.this, "分享失败", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void shareCancel() {
+            Toast.makeText(VideoInfoActivity.this, "取消分享", Toast.LENGTH_SHORT).show();
+
+        }
+    };
 
     public static void launch(Activity from, ChildListBean bean) {
         Intent intent = new Intent(from, VideoInfoActivity.class);
@@ -112,12 +135,10 @@ public class VideoInfoActivity extends BaseActivity {
                                 List<VideoType> list = videoResVideoHttpResponse.getRet().list;
                                 commentSection.addData(list);
                                 mSectionedRecyclerViewAdapter.notifyItemRangeInserted(mSectionedRecyclerViewAdapter.getItemCount()-list.size(),list.size());
-                                rvVideoInfo.resumeLoadMore();
                             }
                         }, new Action1<Throwable>() {
                             @Override
                             public void call(Throwable throwable) {
-                                rvVideoInfo.resumeLoadMore();
                                 Logger.show(throwable.getMessage(), Log.WARN,""+this);
                             }
                         });
@@ -128,6 +149,42 @@ public class VideoInfoActivity extends BaseActivity {
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         sensorEventListener = new JCVideoPlayer.JCAutoFullscreenListener();
+
+        dialog.setOnShareListener(new ShareBottomDialog.OnShareListener() {
+            @Override
+            public void onShare(View view) {
+                switch (view.getId()) {
+                    case R.id.share_qq:
+                        ShareUtil.shareMedia(VideoInfoActivity.this, SharePlatform.QQ, childListBean.title, childListBean.description,
+                                Constants.APP_URL, childListBean.pic,
+                                mShareListener);
+                        break;
+                    case R.id.share_qzone:
+                        ShareUtil.shareMedia(VideoInfoActivity.this, SharePlatform.QZONE, childListBean.title, childListBean.description,
+                                Constants.APP_URL, childListBean.pic,
+                                mShareListener);
+                        break;
+                    case R.id.share_weibo:
+                        ShareUtil.shareMedia(VideoInfoActivity.this, SharePlatform.WEIBO, childListBean.title, childListBean.description,
+                                Constants.APP_URL, childListBean.pic,
+                                mShareListener);
+                        break;
+                    case R.id.share_wx_timeline:
+                        ShareUtil.shareMedia(VideoInfoActivity.this, SharePlatform.WX_TIMELINE, childListBean.title, childListBean.description,
+                                Constants.APP_URL, childListBean.pic,
+                                mShareListener);
+                        break;
+                    case R.id.share_wx:
+                        ShareUtil.shareMedia(VideoInfoActivity.this, SharePlatform.WX, childListBean.title, childListBean.description,
+                                Constants.APP_URL, childListBean.pic,
+                                mShareListener);
+                        break;
+                }
+                dialog.dismiss();
+            }
+        });
+
+        showToast("旋转屏幕可以切换全屏模式哦！");
     }
 
     @Override

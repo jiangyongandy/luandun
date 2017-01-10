@@ -4,6 +4,11 @@ android {
     compileSdkVersion 8
     buildToolsVersion "23.0.3"
 
+    sourceSets.main {
+        // 你的.so库的实际路径
+        jniLibs.srcDir 'src/main/libs'
+    }
+
     defaultConfig {
         minSdkVersion 8
         targetSdkVersion 8
@@ -19,5 +24,5 @@ android {
 
 dependencies {
     compile 'com.android.support:support-v4:18.0.0'
-    compile files('libs/weiboSDKCore_3.1.2.jar')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
 }

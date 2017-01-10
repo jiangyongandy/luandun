@@ -34,6 +34,10 @@ public class Constants {
 
     public static final String EXTRA_TITLE = "title";
 
+    public static final String APP_URL = "http://www.hnist.cn/";
+
+    public static final String APP_DESCRIPTION = "来自凉川APP";
+
 
     /**
      * 当前 DEMO 应用的 APP_KEY，第三方应用应该使用自己的 APP_KEY 替换该 APP_KEY
@@ -69,10 +73,10 @@ public class Constants {
                     + "friendships_groups_read,friendships_groups_write,statuses_to_me_read,"
                     + "follow_app_official_microblog," + "invitation_write";
 
-    static{
-        //加载库文件
-        System.loadLibrary("key");
-    }
+//    static{
+//        //加载库文件
+//        System.loadLibrary("key");
+//    }
 
-    public native String getKey();
+//    public native String getKey();
 }

@@ -41,9 +41,7 @@ public class LoadMoreRecycleView extends RecyclerView {
                 int totalItemCount = manager.getItemCount();
                 if(dy > 0 && manager.findLastCompletelyVisibleItemPosition() == totalItemCount - 1) {
                     //上拉到最后一个view
-                    if(!mPullLoading) {
                         startLoadMore();
-                    }
                 }else if(dy < 0 && manager.findFirstCompletelyVisibleItemPosition() == 0) {
                     //下拉到第一个view
                 }
@@ -58,15 +56,10 @@ public class LoadMoreRecycleView extends RecyclerView {
 
     private void startLoadMore() {
         if (mEnablePullLoad ) {
-            mPullLoading = true;
             if (mListViewListener != null) {
                 mListViewListener.onLoadMore();
             }
         }
-    }
-
-    public void resumeLoadMore() {
-        mPullLoading = false;
     }
 
     public void setmListViewListener(LineLoadRecycleView.IXListViewListener mListViewListener) {

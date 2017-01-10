@@ -52,13 +52,15 @@ public class FirstActivity extends BaseActivity {
 		
 //		初始化表情数据库（把表情包创建成表存储在数据库中）这个操作只会执行一次 除非清空数据（shareference）
 		EmoticonsUtils.initEmoticonsDB(getApplicationContext());
+
+		handler.sendEmptyMessageDelayed(What_Intent2Main, Duration);
 		
-		accessToken = getAccessAccessToken();
-//		这里只能验证shareference 中是否存在token 不能验证token 有效性
-		if(accessToken.isSessionValid()) {
-			handler.sendEmptyMessageDelayed(What_Intent2Main, Duration);
-		}else {
-			handler.sendEmptyMessageDelayed(What_Intent2Login, Duration);
-		}
+//		accessToken = getAccessAccessToken();
+////		这里只能验证shareference 中是否存在token 不能验证token 有效性
+//		if(accessToken.isSessionValid()) {
+//			handler.sendEmptyMessageDelayed(What_Intent2Main, Duration);
+//		}else {
+//			handler.sendEmptyMessageDelayed(What_Intent2Login, Duration);
+//		}
 	}
 }

@@ -17,6 +17,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 
 import com.jiang.library.ui.BaseViewHolder;
+import com.jiang.library.ui.widget.BasePopupWindow;
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.models.net.sinaapi.sinabean.UserBean;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
@@ -26,14 +27,24 @@ import com.jy.xinlangweibo.ui.fragment.home.NewsFragment;
 import com.jy.xinlangweibo.ui.fragment.home.PersonalFragment;
 import com.jy.xinlangweibo.ui.fragment.home.VideoRecommendFragment;
 import com.jy.xinlangweibo.utils.CommonImageLoader.CustomImageLoader;
+import com.jy.xinlangweibo.utils.RxBus;
+import com.jy.xinlangweibo.utils.Utils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity implements OnCheckedChangeListener{
+public class MainActivity extends BaseActivity implements OnCheckedChangeListener,View.OnClickListener {
 
     private static final int REQUSET_UPDATE = 1;
+    public static final int RESULT_UPDATE = 2;
+    public static final int RESULT_REPOST = 3;
+    public static final int RESULT_COMMENT = 4;
+
+    public static final int OAUTH_REQUEST = 5;
+    public static final int OAUTH_SUCCESS = 6;
+
+
     @BindView(R.id.tabcenterid)
     ImageView tabcenterid;
     @BindView(R.id.rg)
@@ -54,6 +65,7 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
     ImageView navRightIv;
     private Fragment[] fragments = new Fragment[4];
     protected FragmentController fragmentController;
+    private BasePopupWindow pw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,11 +118,11 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
     @Override
     public void onAttachFragment(Fragment fragment) {
         super.onAttachFragment(fragment);
-        if (fragment instanceof Home2Fragment) {
+        if (fragment instanceof VideoRecommendFragment) {
             fragments[0] = fragment;
-        } else if (fragment instanceof VideoRecommendFragment) {
-            fragments[1] = fragment;
         } else if (fragment instanceof NewsFragment) {
+            fragments[1] = fragment;
+        } else if (fragment instanceof Home2Fragment) {
             fragments[2] = fragment;
         } else if (fragment instanceof PersonalFragment) {
             fragments[3] = fragment;
@@ -144,16 +156,43 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
-            case WriteStatusActivity.RESULT_UPDATE:
+            case RESULT_UPDATE:
                 showToast("微博已发表");
                 break;
-            case WriteStatusActivity.RESULT_REPOST:
+            case RESULT_REPOST:
                 showToast("已转发");
                 break;
-            case WriteStatusActivity.RESULT_COMMENT:
+            case RESULT_COMMENT:
                 showToast("已评论");
                 break;
+            case OAUTH_SUCCESS:
+                RxBus.getInstance().post(new OuathResultEvnet());
+                break;
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.nav_right_iv:
+                showPopupWindow();
+        }
+    }
+
+    public void showPopupWindow() {
+//            Logger.showLog("屏幕宽度：" + Utils.getDisplayWidthPixels(activity) + "弹窗宽度:" + View.MeasureSpec.getSize(pw.getWidth()), "计算弹窗偏移量");
+        if (pw == null)
+            pw = new BasePopupWindow.Builder(this)
+                    .setBackground(getResources().getDrawable(R.drawable.conversation_options_bg))
+                    .setPopupWindowView(R.layout.pop_mainact_navright)
+                    .setWidth(Utils.dip2px(this, 115))
+                    .build();
+        pw.showAsDropDown(((MainActivity) this).getToolbar(), Utils.getDisplayWidthPixels(this) - View.MeasureSpec.getSize(pw.getWidth()) - Utils.dip2px(this, 10), 0);
+    }
+
+
+    public class OuathResultEvnet{
+
     }
 
     private void initView() {
@@ -165,6 +204,8 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
 //		底部按钮初始化
         rg.setOnCheckedChangeListener(this);
         initToolbar();
+
+        getNavRightIv().setOnClickListener(this);
     }
 
     private void initToolbar() {
@@ -215,7 +256,13 @@ public class MainActivity extends BaseActivity implements OnCheckedChangeListene
 
     @OnClick(R.id.tabcenterid)
     public void onClick() {
-        WriteStatusActivity.intentToUpdate(this, REQUSET_UPDATE);
+        if(getAccessAccessToken().isSessionValid()) {
+
+            WriteStatusActivity.intentToUpdate(this, REQUSET_UPDATE);
+        }else {
+
+            showToast("发表微博，需先授权登陆！");
+        }
     }
 
 //    @Override

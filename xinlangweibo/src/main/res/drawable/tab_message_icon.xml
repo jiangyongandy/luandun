@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_checked="true">
-        <bitmap android:src="@drawable/tabbar_message_center_highlighted"
+        <bitmap android:src="@drawable/ic_assignment_black_24dp"
             android:tint="?attr/themeColor" />
     </item>
 
-    <item android:drawable="@drawable/tabbar_message_center"/>
+    <item android:drawable="@drawable/ic_assignment_black_24dp"/>
 </selector>

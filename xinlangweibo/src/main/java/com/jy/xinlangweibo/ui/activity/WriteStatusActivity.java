@@ -44,6 +44,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx.Observer;
 
+import static com.jy.xinlangweibo.ui.activity.MainActivity.RESULT_UPDATE;
+
 public class WriteStatusActivity extends BaseActivity implements
         OnClickListener, OnTextChangedInterface, BGASortableNinePhotoLayout.Delegate {
 
@@ -55,9 +57,7 @@ public class WriteStatusActivity extends BaseActivity implements
     private static final int REQUEST_CODE_PHOTO_PREVIEW = 2;
 
     private static final int MAX_PHOTO_COUNT = 9;
-    public static final int RESULT_UPDATE = 2;
-    public static final int RESULT_REPOST = 3;
-    public static final int RESULT_COMMENT = 4;
+
     private PublishType publishType;
     private ImageView iv_card_status;
     private TextView tv_card_status;
@@ -328,7 +328,7 @@ public class WriteStatusActivity extends BaseActivity implements
                     StatusInteraction.getInstance(this).update(
                     BaseApplication.getInstance().getAccessAccessToken().getToken(),
                     et_content.getText().toString());
-                    finishForResult(RESULT_UPDATE);
+                    finishForResult(MainActivity.RESULT_UPDATE);
                     break;
                     case statusRepost:
                     StatusInteraction.getInstance(this).statusesRepost(
@@ -351,7 +351,7 @@ public class WriteStatusActivity extends BaseActivity implements
                             showLog("转发成功======="+status);
                         }
                     });
-                    finishForResult(RESULT_REPOST);
+                    finishForResult(MainActivity.RESULT_REPOST);
                     break;
                     case commentCreate:
                     StatusInteraction.getInstance(this).commentsCreate(
@@ -374,10 +374,10 @@ public class WriteStatusActivity extends BaseActivity implements
                                     showLog("评论成功======="+status);
                                 }
                             });
-                    finishForResult(RESULT_COMMENT);
+                    finishForResult(MainActivity.RESULT_COMMENT);
                     break;
                     case commentReply:
-                        finishForResult(RESULT_COMMENT);
+                        finishForResult(MainActivity.RESULT_COMMENT);
                     }
                     break;
                 }

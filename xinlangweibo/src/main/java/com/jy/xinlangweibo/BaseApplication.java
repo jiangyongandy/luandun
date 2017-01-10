@@ -6,6 +6,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
 import com.jy.xinlangweibo.constant.AccessTokenKeeper;
+import com.jy.xinlangweibo.share.shareutil.ShareConfig;
+import com.jy.xinlangweibo.share.shareutil.ShareManager;
 import com.jy.xinlangweibo.utils.CommonImageLoader.ImageLoadeOptions;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -32,6 +34,9 @@ import static com.jy.xinlangweibo.constant.Constants.FILE_STORAGE;
 
 public class BaseApplication extends Application {
 
+	private static final String QQ_ID = "1105005431";
+	private static final String WX_ID = "";
+	private static final String WEIBO_ID = "3269135043";
 	private static BaseApplication application;
 	public Random random;
 
@@ -52,6 +57,7 @@ public class BaseApplication extends Application {
 		File cacheDir = StorageUtils.getOwnCacheDirectory(getApplicationContext(), "imageloader/Cache");  
 		application = this;
 		initImageLoader(this);
+		initShare();
 		refWatcher = LeakCanary.install(this);
 
 		LogUtil.enableLog();
@@ -59,7 +65,18 @@ public class BaseApplication extends Application {
 //		Thread.setDefaultUncaughtExceptionHandler(restartHandler);
 	}
 
-//	此方法在应用销毁时不一定会被调用，比如当程序是被内核终止以便为其他应用程序释放资源，那
+	private void initShare() {
+		ShareConfig config = ShareConfig.instance()
+				.qqId(QQ_ID)
+				.wxId(WX_ID)
+				.weiboId(WEIBO_ID);
+				// 下面两个，如果不需要登录功能，可不填写
+//				.weiboRedirectUrl(REDIRECT_URL)
+//				.wxSecret(WX_ID);
+		ShareManager.init(config);
+	}
+
+	//	此方法在应用销毁时不一定会被调用，比如当程序是被内核终止以便为其他应用程序释放资源，那
 //	么将不会提醒，并且不调用应用程序的对象的onTerminate方法而直接终止进程
 	@Override
 	public void onTerminate() {

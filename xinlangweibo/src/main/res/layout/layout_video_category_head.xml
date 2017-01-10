@@ -38,11 +38,10 @@
         android:layout_centerVertical="true"
         android:drawableRight="@drawable/ic_gray_arrow_right"
         android:drawableEnd="@drawable/ic_gray_arrow_right"
-        android:drawablePadding="@dimen/default_tiny_margin"
+        android:drawablePadding="4dp"
         android:padding="@dimen/default_general_margin"
-        android:text="更多"
-        android:textColor="@color/black_alpha_30"
-        android:textSize="@dimen/default_tiny_text_size" />
+        android:text="更多"  style="@style/small_balck_text"
+         />
 
 
 </RelativeLayout>

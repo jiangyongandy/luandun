@@ -85,6 +85,8 @@
 
             <TextView
                 android:layout_alignParentLeft="true"
+                android:drawableLeft="@drawable/ic_history_black_18dp"
+                android:drawablePadding="4dp" android:layout_centerVertical="true"
                 android:layout_width="wrap_content"  android:layout_margin="10dp"
                 android:text="播放记录" style="@style/middle_gray_text"
                 android:layout_height="wrap_content" />
@@ -93,12 +95,11 @@
                 android:id="@+id/iv_delete"
                 android:layout_margin="10dp"
                 android:layout_width="wrap_content"  android:layout_alignParentRight="true"
-                android:layout_height="wrap_content" android:src="@drawable/ic_delete"
+                android:layout_height="wrap_content" android:src="@drawable/ic_delete_black_36dp"
                 android:tint="@color/bg_agray"
                 />
 
         </RelativeLayout>
-
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/hlvSimpleList"
@@ -114,7 +115,7 @@
 
     <RelativeLayout
         android:id="@+id/rl_setting"
-        android:layout_width="match_parent" android:background="@color/white"
+        android:layout_width="match_parent" android:background="@drawable/backgro_status_whi2gra_sel"
         android:layout_height="48dp">
 
         <ImageView
@@ -142,6 +143,36 @@
             android:layout_height="1px"/>
 
     </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_out1"
+        android:layout_width="match_parent" android:background="@drawable/backgro_status_whi2gra_sel"
+        android:layout_height="48dp">
+
+
+        <ImageView
+            android:id="@+id/iv_exit"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"  android:src="@drawable/ic_exit_to_app_black_36dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="退出"
+            style="@style/middle_gray_text"
+            android:layout_toRightOf="@id/iv_exit" android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:layout_width="match_parent" android:background="@color/divider_gray"
+            android:layout_alignParentBottom="true"
+            android:layout_height="1px"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent" android:background="@color/divider_gray"
+        android:layout_height="100dp"/>
 
 </LinearLayout>
 

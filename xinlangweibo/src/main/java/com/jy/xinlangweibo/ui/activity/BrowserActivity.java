@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,10 +22,15 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.constant.Constants;
-import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
+import com.jy.xinlangweibo.share.ShareBottomDialog;
+import com.jy.xinlangweibo.share.shareutil.ShareUtil;
+import com.jy.xinlangweibo.share.shareutil.share.ShareListener;
+import com.jy.xinlangweibo.share.shareutil.share.SharePlatform;
+import com.jy.xinlangweibo.ui.activity.base.BaseShareActivity;
 import com.jy.xinlangweibo.utils.ClipboardUtil;
 
 import butterknife.BindView;
@@ -33,7 +39,7 @@ import butterknife.BindView;
  * Created by JIANG on 2017/1/5.
  */
 
-public class BrowserActivity extends BaseActivity
+public class BrowserActivity extends BaseShareActivity
 {
 
     @BindView(R.id.pgb_wv)
@@ -48,6 +54,24 @@ public class BrowserActivity extends BaseActivity
 
     private WebViewClientBase webViewClient = new WebViewClientBase();
     private WebChromeClientBase webChromeViewClient = new WebChromeClientBase();
+
+    private ShareListener mShareListener = new ShareListener () {
+        @Override
+        public void shareSuccess() {
+            Toast.makeText(BrowserActivity.this, "分享成功", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void shareFailure(Exception e) {
+            Toast.makeText(BrowserActivity.this, "分享失败", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void shareCancel() {
+            Toast.makeText(BrowserActivity.this, "取消分享", Toast.LENGTH_SHORT).show();
+
+        }
+    };
 
     public static void launch(Activity activity, String url, String title)
     {
@@ -77,6 +101,41 @@ public class BrowserActivity extends BaseActivity
 
         initToolBar();
         setupWebView();
+
+
+        dialog.setOnShareListener(new ShareBottomDialog.OnShareListener() {
+            @Override
+            public void onShare(View view) {
+                switch (view.getId()) {
+                    case R.id.share_qq:
+                        ShareUtil.shareMedia(BrowserActivity.this, SharePlatform.QQ, mTitle, Constants.APP_DESCRIPTION,
+                                url, BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher),
+                                mShareListener);
+                        break;
+                    case R.id.share_qzone:
+                        ShareUtil.shareMedia(BrowserActivity.this, SharePlatform.QZONE, mTitle, Constants.APP_DESCRIPTION,
+                                url, BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher),
+                                mShareListener);
+                        break;
+                    case R.id.share_weibo:
+                        ShareUtil.shareMedia(BrowserActivity.this, SharePlatform.WEIBO, mTitle, Constants.APP_DESCRIPTION,
+                                url, BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher),
+                                mShareListener);
+                        break;
+                    case R.id.share_wx_timeline:
+                        ShareUtil.shareMedia(BrowserActivity.this, SharePlatform.WX_TIMELINE, mTitle, Constants.APP_DESCRIPTION,
+                                url, BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher),
+                                mShareListener);
+                        break;
+                    case R.id.share_wx:
+                        ShareUtil.shareMedia(BrowserActivity.this, SharePlatform.WX, mTitle, Constants.APP_DESCRIPTION,
+                                url, BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher),
+                                mShareListener);
+                        break;
+                }
+                dialog.dismiss();
+            }
+        });
     }
 
     public void initToolBar()
@@ -99,14 +158,6 @@ public class BrowserActivity extends BaseActivity
 
         switch (item.getItemId())
         {
-            case android.R.id.home:
-                onBackPressed();
-                break;
-
-            case R.id.menu_share:
-                share();
-                break;
-
             case R.id.menu_open:
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(url));
@@ -121,7 +172,7 @@ public class BrowserActivity extends BaseActivity
         return super.onOptionsItemSelected(item);
     }
 
-
+    @Deprecated
     private void share()
     {
 
@@ -130,6 +181,7 @@ public class BrowserActivity extends BaseActivity
         intent.putExtra(Intent.EXTRA_SUBJECT, "分享");
         intent.putExtra(Intent.EXTRA_TEXT, "来自「哔哩哔哩」的分享:" + url);
         startActivity(Intent.createChooser(intent, mTitle));
+
     }
 
 
@@ -137,15 +189,16 @@ public class BrowserActivity extends BaseActivity
     public void onBackPressed()
     {
 
-        if (mWebView.canGoBack() && mWebView.copyBackForwardList().getSize() > 0
-                && !mWebView.getUrl().equals(mWebView.copyBackForwardList()
-                .getItemAtIndex(0).getOriginalUrl()))
-        {
-            mWebView.goBack();
-        } else
-        {
-            finish();
-        }
+//        if (mWebView.canGoBack() && mWebView.copyBackForwardList().getSize() > 0
+//                && !mWebView.getUrl().equals(mWebView.copyBackForwardList()
+//                .getItemAtIndex(0).getOriginalUrl()))
+//        {
+//            mWebView.goBack();
+//        } else
+//        {
+//            finish();
+//        }
+        finish();
     }
 
     @SuppressLint("SetJavaScriptEnabled")

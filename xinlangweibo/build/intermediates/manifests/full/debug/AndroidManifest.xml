@@ -97,8 +97,31 @@
         <activity
             android:name="com.jy.xinlangweibo.ui.activity.VideoInfoActivity"
             android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity android:name="com.jy.xinlangweibo.share.shareutil._ShareActivity" />
         <!-- 发布服务 -->
         <service android:name="com.jy.xinlangweibo.service.publish.PublishService" />
+
+        <!-- QQ分享 -->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent1105005431" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="behind"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+
         <service
             android:name="com.squareup.leakcanary.internal.HeapAnalyzerService"
             android:enabled="false"

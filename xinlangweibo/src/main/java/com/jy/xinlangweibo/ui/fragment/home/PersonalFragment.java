@@ -18,6 +18,7 @@ import com.jy.xinlangweibo.models.net.videoapi.RetrofitHelper;
 import com.jy.xinlangweibo.models.net.videoapi.videobean.ChildListBean;
 import com.jy.xinlangweibo.models.net.videoapi.videobean.GankHttpResponse;
 import com.jy.xinlangweibo.models.net.videoapi.videobean.GankItemBean;
+import com.jy.xinlangweibo.ui.activity.LoginActivity;
 import com.jy.xinlangweibo.ui.activity.MainActivity;
 import com.jy.xinlangweibo.ui.activity.UserShowActivity;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
@@ -28,6 +29,7 @@ import com.jy.xinlangweibo.ui.fragment.setting.SettingFragment;
 import com.jy.xinlangweibo.utils.CommonImageLoader.CustomImageLoader;
 import com.jy.xinlangweibo.utils.DateUtils;
 import com.jy.xinlangweibo.utils.Logger;
+import com.jy.xinlangweibo.utils.RxBus;
 import com.jy.xinlangweibo.widget.CircleImageView;
 
 import java.util.List;
@@ -43,6 +45,7 @@ import rx.schedulers.Schedulers;
  */
 
 public class PersonalFragment extends BaseSupportFragment {
+
     @BindView(R.id.bangumi_bg)
     ImageView bangumiBg;
     @BindView(R.id.bangumi_pic)
@@ -63,6 +66,8 @@ public class PersonalFragment extends BaseSupportFragment {
     ImageView ivDelete;
     @BindView(R.id.iv_setting)
     ImageView ivSetting;
+    @BindView(R.id.rl_out1)
+    RelativeLayout rlOut;
 
     @Override
     public void onHiddenChanged(boolean hidden) {
@@ -80,10 +85,12 @@ public class PersonalFragment extends BaseSupportFragment {
         return R.layout.fragment_personal;
     }
 
-
     @Override
     protected void initViewAndEvent(View rootView) {
         super.initViewAndEvent(rootView);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        hlvSimpleList.setLayoutManager(layoutManager);
         StatusInteraction.getInstance(getActivity()).userShow(((BaseActivity) getActivity()).getAccessAccessToken().getToken(),
                 new BaseObserver<UserBean>() {
                     @Override
@@ -92,9 +99,20 @@ public class PersonalFragment extends BaseSupportFragment {
                         updateUI(userBean);
                     }
                 });
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        hlvSimpleList.setLayoutManager(layoutManager);
+
+        RxBus.getInstance().toObserverable(MainActivity.OuathResultEvnet.class).subscribe(new Action1<MainActivity.OuathResultEvnet>() {
+            @Override
+            public void call(MainActivity.OuathResultEvnet ouathResult) {
+                StatusInteraction.getInstance(getActivity()).userShow(((BaseActivity) getActivity()).getAccessAccessToken().getToken(),
+                        new BaseObserver<UserBean>() {
+                            @Override
+                            public void onNext(UserBean userBean) {
+                                super.onNext(userBean);
+                                updateUI(userBean);
+                            }
+                        });
+            }
+        });
     }
 
     private void updateVideoHistoryUI(List<ChildListBean> playHistory) {
@@ -142,7 +160,7 @@ public class PersonalFragment extends BaseSupportFragment {
                 });
     }
 
-    @OnClick({R.id.rl_setting,R.id.iv_delete})
+    @OnClick({R.id.rl_setting, R.id.iv_delete, R.id.bangumi_pic})
     public void onClick(View view) {
 
         switch (view.getId()) {
@@ -155,8 +173,20 @@ public class PersonalFragment extends BaseSupportFragment {
                 LocaleHistory.getInstance().clearVideoPlayHistory();
                 hlvSimpleList.setVisibility(View.GONE);
                 break;
+            case R.id.bangumi_pic:
+
+                MainActivity activity = (MainActivity) getActivity();
+                if (!activity.getAccessAccessToken().isSessionValid()) {
+                    activity.startActivityForResult(LoginActivity.class, MainActivity.OAUTH_REQUEST);
+                }
+                break;
         }
 
     }
 
+    @OnClick(R.id.rl_out1)
+    public void onClick() {
+        activity.finish();
+        System.exit(0);
+    }
 }

@@ -136,7 +136,7 @@ public class StatusInteraction {
                 }
             };
             //设置缓存
-            builder.addNetworkInterceptor(cacheInterceptor);
+//            builder.addNetworkInterceptor(cacheInterceptor);//network interceptor must call proceed() exactly once
             builder.addInterceptor(cacheInterceptor);
             builder.cache(cache);
             //设置超时

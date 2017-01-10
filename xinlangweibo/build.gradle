@@ -18,11 +18,17 @@ android {
         minSdkVersion 15
         targetSdkVersion 21
 
-        ndk {
-            moduleName "key"
-            ldLibs "log", "z", "m"
-            abiFilters "armeabi", "armeabi-v7a", "x86"
-        }
+        manifestPlaceholders = [
+                //  替换成你的qq_id
+                qq_id: "123456789"
+        ]
+
+//        ndk {
+//            moduleName "key"
+//            ldLibs "log", "z", "m"
+//            abiFilters "armeabi", "armeabi-v7a", "x86"
+//
+//        }
 
     }
 
@@ -49,8 +55,7 @@ dependencies {
     compile project(':pulltorefresh')
     compile project(':weiboSDK1')
     compile project(':library')
-    compile files('libs/nineoldandroids-2.4.0.jar')
-    compile files('libs/universal-image-loader-1.9.4-with-sources.jar')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.zhy:percent-support-extends:1.0.1'
 //butterknife相关依赖
@@ -63,7 +68,7 @@ dependencies {
 //GreenDao
     compile 'org.greenrobot:greendao:3.0.1'
 //RXJAVA+retrofit+gson
-    compile 'io.reactivex:rxjava:1.1.0'
+    compile 'io.reactivex:rxjava:1.2.3'
     compile 'io.reactivex:rxandroid:1.1.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
@@ -89,4 +94,7 @@ dependencies {
     compile 'com.android.support:cardview-v7:25.0.0'
     compile 'com.android.support:design:25.0.0'
     compile 'com.android.support:appcompat-v7:25.0.0'
+
+    compile 'me.shaohui:bottomdialog:1.1.9'
+
 }

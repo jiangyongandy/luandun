@@ -42,6 +42,7 @@ public class VideoHistoryAdapter extends BaseRecycleViewAdapter<ChildListBean> {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+        super.onBindViewHolder(holder,position);
         final ViewHolder viewHolder = (ViewHolder) holder;
 
         imageLoader.displayImage( getItem(position).pic, viewHolder.ivVideoPic);

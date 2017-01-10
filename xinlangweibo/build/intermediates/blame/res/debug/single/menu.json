@@ -4,6 +4,10 @@
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\menu\\main.xml"
     },
     {
+        "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\menu\\menu_share.xml",
+        "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\menu\\menu_share.xml"
+    },
+    {
         "merged": "D:\\Xinlangweibo1\\xinlangweibo\\build\\intermediates\\res\\merged\\debug\\menu\\bga_pp_menu_photo_picker_preview.xml",
         "source": "D:\\Xinlangweibo1\\xinlangweibo\\src\\main\\res\\menu\\bga_pp_menu_photo_picker_preview.xml"
     },

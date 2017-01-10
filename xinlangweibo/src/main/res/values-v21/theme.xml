@@ -68,4 +68,11 @@
         <item name="android:windowTranslucentStatus">true</item>
     </style>
 
+    <style name="ShareActivityTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowTranslucentStatus">false</item>
+    </style>
+
 </resources>

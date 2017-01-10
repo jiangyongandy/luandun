@@ -37,20 +37,20 @@ public class FragmentController {
 			for (int i = 0;i<4;i++) {
 					switch (i) {
 					case 0:
-						if (!(fragments[0] instanceof Home2Fragment)) {
-							fragments[0] = new Home2Fragment();
+						if (!(fragments[0] instanceof VideoRecommendFragment)) {
+							fragments[0] = new VideoRecommendFragment();
 							ft.add(containerId, fragments[0]);
 						}
 						break;
 					case 1:
-						if (!(fragments[1] instanceof VideoRecommendFragment)) {
-							fragments[1] = new VideoRecommendFragment();
+						if (!(fragments[1] instanceof NewsFragment)) {
+							fragments[1] = new NewsFragment();
 							ft.add(containerId, fragments[1]);
 						}
 						break;
 					case 2:
-						if (!(fragments[2] instanceof NewsFragment)) {
-							fragments[2] = new NewsFragment();
+						if (!(fragments[2] instanceof Home2Fragment)) {
+							fragments[2] = new Home2Fragment();
 							ft.add(containerId, fragments[2]);
 						}
 						break;

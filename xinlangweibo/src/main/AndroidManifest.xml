@@ -92,8 +92,30 @@
         <!--在线视频详情页-->
         <activity android:name=".ui.activity.VideoInfoActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"/>
+        <activity android:name="com.jy.xinlangweibo.share.shareutil._ShareActivity"
+            />
         <!-- 发布服务 -->
         <service android:name=".service.publish.PublishService"/>
+
+        <!--QQ分享-->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:noHistory="true"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="tencent1105005431" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:screenOrientation="behind"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden">
+        </activity>
 
     </application>
 

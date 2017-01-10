@@ -167,6 +167,9 @@ public class SearchDialogFragment extends DialogFragment {
         @Override
         public void run() {
             BaseActivity activity = (BaseActivity) getActivity();
+            if(activity.getAccessAccessToken().getUid().isEmpty()) {
+                return;
+            }
             StatusBeanDB.getInstance(getActivity()).queryFuzzyStatusBeanList2(Long.parseLong(activity.getAccessAccessToken().getUid()),
                     newText,
                     new BaseObserver<List<String>>() {

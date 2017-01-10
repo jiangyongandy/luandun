@@ -22,7 +22,6 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.jiang.library.ui.adapter.listviewadapter.ListViewDataAdapter;
 import com.jiang.library.ui.adapter.listviewadapter.ViewHolderBase;
 import com.jiang.library.ui.adapter.listviewadapter.ViewHolderCreator;
-import com.jiang.library.ui.widget.BasePopupWindow;
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.models.db.StatusBeanDB;
 import com.jy.xinlangweibo.models.net.sinaapi.sinabean.StatusBean;
@@ -43,7 +42,7 @@ import com.jy.xinlangweibo.ui.fragment.dialog.SearchDialogFragment;
 import com.jy.xinlangweibo.utils.CommonImageLoader.ImageLoadeOptions;
 import com.jy.xinlangweibo.utils.DateUtils;
 import com.jy.xinlangweibo.utils.Logger;
-import com.jy.xinlangweibo.utils.Utils;
+import com.jy.xinlangweibo.utils.RxBus;
 import com.jy.xinlangweibo.utils.WeiboStringUtils;
 import com.jy.xinlangweibo.widget.ninephoto.BGANinePhotoLayout;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -53,8 +52,9 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import rx.functions.Action1;
 
-public class Home2Fragment extends LazySupportFragment implements OnClickListener, HomeFragmentView {
+public class Home2Fragment extends LazySupportFragment implements HomeFragmentView {
     @BindView(R.id.lv_status)
     PullToRefreshListView lvStatus;
     private View view;
@@ -82,8 +82,7 @@ public class Home2Fragment extends LazySupportFragment implements OnClickListene
         }
         if (!hidden) {
             ((MainActivity)activity).getToolbar().setVisibility(View.VISIBLE);
-            ((MainActivity) activity).getNavTitle().setText("首页");
-            ((MainActivity) activity).getNavRightIv().setOnClickListener(this);
+            ((MainActivity) activity).getNavTitle().setText("微博");
             lazyLoad();//只会加载一次
         }
     }
@@ -92,8 +91,10 @@ public class Home2Fragment extends LazySupportFragment implements OnClickListene
     public void onPause() {
         super.onPause();
 //        StatusBeanDB.getInstance(activity).deleteStatusBeanList(Long.valueOf(activity.getAccessAccessToken().getUid()),StatusBeanDB.publicTimelineCacheType);
-        Logger.showLog("存publicTimeline",""+this);
-        StatusBeanDB.getInstance(activity).insertStatusBeanList(publicTimeLineList,Long.valueOf(activity.getAccessAccessToken().getUid()),StatusBeanDB.publicTimelineCacheType);
+        if(publicTimeLineList.size() > 0) {
+            Logger.showLog("存publicTimeline",""+this);
+            StatusBeanDB.getInstance(activity).insertStatusBeanList(publicTimeLineList,Long.valueOf(activity.getAccessAccessToken().getUid()),StatusBeanDB.publicTimelineCacheType);
+        }
     }
 
 //    被系统强制清除不会调用该方法，mainactivity因为home键改写所以只能被系统强制杀死
@@ -110,21 +111,31 @@ public class Home2Fragment extends LazySupportFragment implements OnClickListene
         presenter = new StatusPresenter(activity, this);
         statusPresenter = (StatusPresenter) presenter;
         initPlv();
+        RxBus.getInstance().toObserverable(MainActivity.OuathResultEvnet.class).subscribe(new Action1<MainActivity.OuathResultEvnet>() {
+            @Override
+            public void call(MainActivity.OuathResultEvnet ouathResult) {
+                statusPresenter.getHomeTimeline(1, StatusPresenter.LoadType.REFRESH);
+            }
+        });
     }
+
 
     @Override
     protected void lazyLoad() {
         if (!isPrepared)
             return;
         isPrepared = false;
-        showLoading();
         loadData();
     }
 
     @Override
     protected void loadData() {
         super.loadData();
-        statusPresenter.getHomeTimeline(1);
+        if(!activity.getAccessAccessToken().isSessionValid()) {
+            showToast("需要登录微博哟，试试重新登陆吧0.0");
+            return;
+        }
+        statusPresenter.getHomeTimeline(1, StatusPresenter.LoadType.LOADING);
     }
 
     @Override
@@ -144,6 +155,8 @@ public class Home2Fragment extends LazySupportFragment implements OnClickListene
 
     @Override
     public void showProgressDialog() {
+
+        showLoading();
 //        materialDialog = new MaterialDialog.Builder(activity)
 //                .content(R.string.please_wait)
 //                .progress(true, 0)
@@ -184,7 +197,7 @@ public class Home2Fragment extends LazySupportFragment implements OnClickListene
         lvStatus.setOnRefreshListener(new OnRefreshListener<ListView>() {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-                statusPresenter.getHomeTimeline(1);
+                statusPresenter.getHomeTimeline(1, StatusPresenter.LoadType.REFRESH);
             }
         });
     }
@@ -254,30 +267,12 @@ public class Home2Fragment extends LazySupportFragment implements OnClickListene
                     ivLoad.setVisibility(View.VISIBLE);
                     ivLoad.startAnimation(AnimationUtils.loadAnimation(
                             activity, R.anim.ra_loading));
-                    statusPresenter.getHomeTimeline(curPage + 1);
+                    statusPresenter.getHomeTimeline(curPage + 1, StatusPresenter.LoadType.MORE);
                 }
             });
         }
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.nav_right_iv:
-                showPopupWindow();
-        }
-    }
-
-    public void showPopupWindow() {
-//            Logger.showLog("屏幕宽度：" + Utils.getDisplayWidthPixels(activity) + "弹窗宽度:" + View.MeasureSpec.getSize(pw.getWidth()), "计算弹窗偏移量");
-        if (pw == null)
-            pw = new BasePopupWindow.Builder(activity)
-                    .setBackground(getResources().getDrawable(R.drawable.conversation_options_bg))
-                    .setPopupWindowView(R.layout.pop_mainact_navright)
-                    .setWidth(Utils.dip2px(activity, 115))
-                    .build();
-        pw.showAsDropDown(((MainActivity) activity).getToolbar(), Utils.getDisplayWidthPixels(activity) - View.MeasureSpec.getSize(pw.getWidth()) - Utils.dip2px(activity, 10), 0);
-    }
 
     private ListViewDataAdapter adapter = new ListViewDataAdapter<StatusBean>(new ViewHolderCreator<StatusBean>() {
         @Override

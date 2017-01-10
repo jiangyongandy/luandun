@@ -88,6 +88,7 @@ public class BaseActivity extends SwipeBackActivity {
 			this.setSupportActionBar(this.mToolbar);
 			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 			getSupportActionBar().setDisplayShowHomeEnabled(false);
+			getSupportActionBar().setDisplayShowTitleEnabled(false);
 		}
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		if(layoutResID == R.layout.bga_pp_toolbar_viewstub)

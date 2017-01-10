@@ -4,9 +4,9 @@ import android.app.Activity;
 
 import com.jy.xinlangweibo.constant.AccessTokenKeeper;
 import com.jy.xinlangweibo.models.net.StatusesInteraction;
-import com.jy.xinlangweibo.models.net.sinaapi.sinabean.StatusListBean;
 import com.jy.xinlangweibo.models.net.sinaapi.BaseObserver;
 import com.jy.xinlangweibo.models.net.sinaapi.StatusInteraction;
+import com.jy.xinlangweibo.models.net.sinaapi.sinabean.StatusListBean;
 import com.jy.xinlangweibo.ui.IView.HomeFragmentView;
 
 import rx.functions.Action0;
@@ -17,22 +17,35 @@ import rx.functions.Action0;
 public class StatusPresenter extends BasePresenter{
 
     private final HomeFragmentView homeFragmentView;
-    private final String token;
     private  StatusesInteraction api;
+
+    public enum LoadType {
+        LOADING, REFRESH, MORE
+    }
 
 
     public StatusPresenter(Activity activity,HomeFragmentView homeFragmentView) {
         super(activity);
         this.homeFragmentView = homeFragmentView;
-        token = AccessTokenKeeper.readAccessToken(activity).getToken();
     }
 
-    public void getHomeTimeline(final int page) {
-        StatusInteraction.getInstance(activity).statusesHome_timeline(token, String.valueOf(page),
+    public void getHomeTimeline(final int page, final LoadType loadType) {
+        StatusInteraction.getInstance(activity).statusesHome_timeline(AccessTokenKeeper.readAccessToken(activity).getToken(), String.valueOf(page),
                 new Action0() {
                     @Override
                     public void call() {
-                        homeFragmentView.showProgressDialog();
+                        switch (loadType) {
+                            case LOADING:
+
+                                homeFragmentView.showProgressDialog();
+                                break;
+                            case REFRESH:
+
+                                break;
+                            case MORE:
+
+                                break;
+                        }
                     }
                 },
                 new BaseObserver<StatusListBean>() {
@@ -57,6 +70,5 @@ public class StatusPresenter extends BasePresenter{
                 });
 
     }
-
 
 }

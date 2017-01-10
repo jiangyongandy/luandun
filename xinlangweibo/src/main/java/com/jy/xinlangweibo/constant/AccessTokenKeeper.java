@@ -35,7 +35,8 @@ public class AccessTokenKeeper {
     private static final String KEY_ACCESS_TOKEN  = "access_token";
     private static final String KEY_EXPIRES_IN    = "expires_in";
     private static final String KEY_REFRESH_TOKEN    = "refresh_token";
-    
+
+
     /**
      * 保存 Token 对象到 SharedPreferences。
      * 
@@ -54,6 +55,7 @@ public class AccessTokenKeeper {
         editor.putString(KEY_REFRESH_TOKEN, token.getRefreshToken());
         editor.putLong(KEY_EXPIRES_IN, token.getExpiresTime());
         editor.commit();
+
     }
 
     /**
