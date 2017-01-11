@@ -18,7 +18,7 @@ import com.jy.xinlangweibo.models.net.videoapi.videobean.VideoListBean;
 import com.jy.xinlangweibo.ui.adapter.section.SectionedRecyclerViewAdapter;
 import com.jy.xinlangweibo.ui.adapter.videorecommendsections.VideoCategorySection;
 import com.jy.xinlangweibo.ui.fragment.base.LazyFragment;
-import com.jy.xinlangweibo.ui.fragment.dialog.SearchDialogFragment;
+import com.jy.xinlangweibo.ui.fragment.dialog.VideoSearchDialogFragment;
 import com.jy.xinlangweibo.utils.Logger;
 
 import java.util.List;
@@ -94,7 +94,7 @@ public class MoreVideoFragment extends LazyFragment {
         cardSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SearchDialogFragment.getSearchDialogFragment().show(activity.getSupportFragmentManager(),"SearchDialogFragment");
+                VideoSearchDialogFragment.getVideoSearchDialogFragment().show(activity.getSupportFragmentManager(),"SearchDialogFragment");
             }
         });
 

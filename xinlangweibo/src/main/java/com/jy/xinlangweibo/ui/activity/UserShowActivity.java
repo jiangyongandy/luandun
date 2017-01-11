@@ -23,13 +23,14 @@ import com.jiang.library.ui.adapter.recyleviewadapter.ARecycleViewItemView;
 import com.jiang.library.ui.adapter.recyleviewadapter.BasicRecycleViewAdapter;
 import com.jiang.library.ui.adapter.recyleviewadapter.IITemView;
 import com.jiang.library.ui.adapter.recyleviewadapter.IItemViewCreator;
+import com.jiang.library.ui.widget.pulltorefresh.PullToRefreshListFooter;
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.models.db.StatusBeanDB;
+import com.jy.xinlangweibo.models.net.sinaapi.BaseObserver;
+import com.jy.xinlangweibo.models.net.sinaapi.StatusInteraction;
 import com.jy.xinlangweibo.models.net.sinaapi.sinabean.StatusBean;
 import com.jy.xinlangweibo.models.net.sinaapi.sinabean.StatusListBean;
 import com.jy.xinlangweibo.models.net.sinaapi.sinabean.UserBean;
-import com.jy.xinlangweibo.models.net.sinaapi.BaseObserver;
-import com.jy.xinlangweibo.models.net.sinaapi.StatusInteraction;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.ui.activity.base.FragmentToolbarActivity;
 import com.jy.xinlangweibo.ui.fragment.ImageBrowserFragment;
@@ -41,7 +42,6 @@ import com.jy.xinlangweibo.utils.ToastUtils;
 import com.jy.xinlangweibo.utils.WeiboStringUtils;
 import com.jy.xinlangweibo.widget.PulltorefreshRecyclerView;
 import com.jy.xinlangweibo.widget.ninephoto.BGANinePhotoLayout;
-import com.jiang.library.ui.widget.pulltorefresh.PullToRefreshListFooter;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
@@ -127,18 +127,7 @@ public class UserShowActivity extends BaseActivity {
                     Logger.showLog("网络未连接", ""+this);
                     return;
                 }
-                HashMap<String, String> mapParams = new HashMap<>();
-                mapParams.put("access_token",getAccessAccessToken().getToken());
-                mapParams.put("screen_name",screen_name);
-                mapParams.put("page", String.valueOf(1));
-                StatusInteraction.getInstance(UserShowActivity.this).statusesUser_timeline2(mapParams,
-                        new BaseObserver<StatusListBean>() {
-                            @Override
-                            public void onNext(StatusListBean models) {
-                                super.onNext(models);
-                                updateTimeList(1,models);
-                            }
-                        });
+                refreshData();
             }
 
             @Override
@@ -163,6 +152,7 @@ public class UserShowActivity extends BaseActivity {
                         });
             }
         });
+        refreshData();
     }
 
     @Override
@@ -201,6 +191,21 @@ public class UserShowActivity extends BaseActivity {
     @Override
     public void changeTheme() {
 //        don't change statusbar color
+    }
+
+    private void refreshData() {
+        HashMap<String, String> mapParams = new HashMap<>();
+        mapParams.put("access_token",getAccessAccessToken().getToken());
+        mapParams.put("screen_name",screen_name);
+        mapParams.put("page", String.valueOf(1));
+        StatusInteraction.getInstance(UserShowActivity.this).statusesUser_timeline2(mapParams,
+                new BaseObserver<StatusListBean>() {
+                    @Override
+                    public void onNext(StatusListBean models) {
+                        super.onNext(models);
+                        updateTimeList(1,models);
+                    }
+                });
     }
 
     private void updateTimeList(int page, StatusListBean statusList) {

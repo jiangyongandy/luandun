@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.jy.xinlangweibo.BaseApplication;
 import com.jy.xinlangweibo.presenter.BasePresenter;
@@ -59,5 +60,9 @@ public class BaseSupportFragment extends Fragment {
 	protected void intent2Activity(Class<? extends BaseActivity> tarActivity) {
 		Intent intent = new Intent(activity,tarActivity);
 		startActivity(intent);
+	}
+
+	public void showToast(String text) {
+		ToastUtils.show(getActivity(), text, Toast.LENGTH_SHORT);
 	}
 }

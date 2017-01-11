@@ -7,12 +7,14 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.jy.xinlangweibo.share.shareutil.ShareUtil;
 import com.jy.xinlangweibo.share.shareutil.share.ImageDecoder;
 import com.jy.xinlangweibo.share.shareutil.share.ShareImageObject;
 import com.jy.xinlangweibo.share.shareutil.share.ShareListener;
 import com.jy.xinlangweibo.share.shareutil.share.SharePlatform;
+import com.jy.xinlangweibo.utils.Logger;
 import com.tencent.connect.share.QQShare;
 import com.tencent.connect.share.QzonePublish;
 import com.tencent.connect.share.QzoneShare;
@@ -127,6 +129,7 @@ public class QQShareInstance implements ShareInstance {
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
+                        Logger.show(throwable.getMessage(), Log.ERROR,"shareImage");
                         activity.finish();
                         listener.shareFailure(new Exception(throwable));
                     }

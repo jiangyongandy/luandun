@@ -71,7 +71,9 @@ public class WriteStatusActivity extends BaseActivity implements
         // 回复评论
         commentReply,
         // 转发微博
-        statusRepost
+        statusRepost,
+        //反馈
+        feedBack
 
     }
 
@@ -114,6 +116,12 @@ public class WriteStatusActivity extends BaseActivity implements
         from.startActivityForResult(intent,requestCode);
     }
 
+    public static void intentToFeedBack(Activity from ) {
+        Intent intent = new Intent(from, WriteStatusActivity.class);
+        intent.putExtra("publishType", PublishType.feedBack);
+        from.startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -132,10 +140,12 @@ public class WriteStatusActivity extends BaseActivity implements
 //        showLog("获取publishType==="+publishType.name()+"  "+publishType);
         switch (publishType) {
             case status:
+
                 titleBuilder.setTitle("发表微博");
                 et_content.setHint("分享有趣的事情......");
                 break;
             case statusRepost:
+
                 titleBuilder.setTitle("转发");
                 et_content.setHint("输入内容......");
                 rg_card_status.setVisibility(View.GONE);
@@ -143,6 +153,7 @@ public class WriteStatusActivity extends BaseActivity implements
                 oldStatus = (StatusBean) getIntent().getSerializableExtra("status");
                 break;
             case commentCreate:
+
                 titleBuilder.setTitle("评论");
                 et_content.setHint("输入内容......");
                 rg_card_status.setVisibility(View.GONE);
@@ -150,6 +161,14 @@ public class WriteStatusActivity extends BaseActivity implements
                 oldStatus = (StatusBean) getIntent().getSerializableExtra("status");
                 break;
             case commentReply:
+
+                break;
+            case feedBack:
+
+                titleBuilder.setTitle("反馈与建议");
+                et_content.setText("#反馈与建议#@_攻城狮_jy   我想说：");
+                et_content.setSelection(et_content.getText().length());
+                break;
         }
 
 
@@ -303,85 +322,103 @@ public class WriteStatusActivity extends BaseActivity implements
 
             break;
         case R.id.et_content:
+
             if (EmoticonsKeyBoardBar.getVisibility() == View.VISIBLE) {
                 EmoticonsKeyBoardBar.setVisibility(View.GONE);
             }
             break;
         case R.id.nav_right_text:
+
             if (!TextUtils.isEmpty(et_content.getText().toString())) {
+
                 if(snplMomentAddPhotos.getData().size() == 1) {
+
                     StatusInteraction.getInstance(this).uploadFile(
                             BaseApplication.getInstance().getAccessAccessToken().getToken(),
                             et_content.getText().toString(),
                             snplMomentAddPhotos.getData().get(0));
+                    finishForResult(RESULT_UPDATE);
                 }
                 else if(snplMomentAddPhotos.getData().size() > 1){
+
 //                       多图暂时只上传第一张图
                     StatusInteraction.getInstance(this).uploadFile(
                             BaseApplication.getInstance().getAccessAccessToken().getToken(),
                             et_content.getText().toString(),
                             snplMomentAddPhotos.getData().get(0));
+                    finishForResult(RESULT_UPDATE);
                 }
                 else if(snplMomentAddPhotos.getData().size() == 0){
+
                     switch (publishType) {
                     case status:
-                    StatusInteraction.getInstance(this).update(
-                    BaseApplication.getInstance().getAccessAccessToken().getToken(),
-                    et_content.getText().toString());
-                    finishForResult(MainActivity.RESULT_UPDATE);
-                    break;
+
+                        StatusInteraction.getInstance(this).update(
+                        BaseApplication.getInstance().getAccessAccessToken().getToken(),
+                        et_content.getText().toString());
+                        finishForResult(MainActivity.RESULT_UPDATE);
+                        break;
                     case statusRepost:
-                    StatusInteraction.getInstance(this).statusesRepost(
-                    BaseApplication.getInstance().getAccessAccessToken().getToken(),
-                    oldStatus.id,
-                    et_content.getText().toString(),
-                    new Observer<StatusBean>() {
-                        @Override
-                        public void onCompleted() {
 
-                        }
+                        StatusInteraction.getInstance(this).statusesRepost(
+                        BaseApplication.getInstance().getAccessAccessToken().getToken(),
+                        oldStatus.id,
+                        et_content.getText().toString(),
+                        new Observer<StatusBean>() {
+                            @Override
+                            public void onCompleted() {
 
-                        @Override
-                        public void onError(Throwable e) {
+                            }
 
-                        }
+                            @Override
+                            public void onError(Throwable e) {
 
-                        @Override
-                        public void onNext(StatusBean status) {
-                            showLog("转发成功======="+status);
-                        }
-                    });
-                    finishForResult(MainActivity.RESULT_REPOST);
-                    break;
+                            }
+
+                            @Override
+                            public void onNext(StatusBean status) {
+                                showLog("转发成功======="+status);
+                            }
+                        });
+                        finishForResult(MainActivity.RESULT_REPOST);
+                        break;
                     case commentCreate:
-                    StatusInteraction.getInstance(this).commentsCreate(
-                            BaseApplication.getInstance().getAccessAccessToken().getToken(),
-                            oldStatus.id,
-                            et_content.getText().toString(),
-                            new Observer<StatusBean>() {
-                                @Override
-                                public void onCompleted() {
 
-                                }
+                        StatusInteraction.getInstance(this).commentsCreate(
+                                BaseApplication.getInstance().getAccessAccessToken().getToken(),
+                                oldStatus.id,
+                                et_content.getText().toString(),
+                                new Observer<StatusBean>() {
+                                    @Override
+                                    public void onCompleted() {
 
-                                @Override
-                                public void onError(Throwable e) {
+                                    }
 
-                                }
+                                    @Override
+                                    public void onError(Throwable e) {
 
-                                @Override
-                                public void onNext(StatusBean status) {
-                                    showLog("评论成功======="+status);
-                                }
-                            });
-                    finishForResult(MainActivity.RESULT_COMMENT);
-                    break;
-                    case commentReply:
+                                    }
+
+                                    @Override
+                                    public void onNext(StatusBean status) {
+                                        showLog("评论成功======="+status);
+                                    }
+                                });
                         finishForResult(MainActivity.RESULT_COMMENT);
+                        break;
+                    case commentReply:
+
+                        finishForResult(MainActivity.RESULT_COMMENT);
+                        break;
+                    case feedBack:
+
+                        StatusInteraction.getInstance(this).update(
+                                BaseApplication.getInstance().getAccessAccessToken().getToken(),
+                                et_content.getText().toString());
+                        showToast("谢谢你的反馈和建议0.0");
+                        finish();
                     }
-                    break;
                 }
-                finishForResult(RESULT_UPDATE);
 
             } else {
                 ToastUtils.show(this, "内容不能为空", Toast.LENGTH_SHORT);
@@ -400,7 +437,7 @@ public class WriteStatusActivity extends BaseActivity implements
         et_content.post(new Runnable() {
             @Override
             public void run() {
-                imm.showSoftInput(et_content, 0);
+                imm.showSoftInput(et_content, InputMethodManager.SHOW_FORCED);
             }
         });
     }

@@ -18,9 +18,11 @@ import com.jy.xinlangweibo.models.net.videoapi.RetrofitHelper;
 import com.jy.xinlangweibo.models.net.videoapi.videobean.ChildListBean;
 import com.jy.xinlangweibo.models.net.videoapi.videobean.GankHttpResponse;
 import com.jy.xinlangweibo.models.net.videoapi.videobean.GankItemBean;
+import com.jy.xinlangweibo.ui.activity.AboutActivity;
 import com.jy.xinlangweibo.ui.activity.LoginActivity;
 import com.jy.xinlangweibo.ui.activity.MainActivity;
 import com.jy.xinlangweibo.ui.activity.UserShowActivity;
+import com.jy.xinlangweibo.ui.activity.WriteStatusActivity;
 import com.jy.xinlangweibo.ui.activity.base.BaseActivity;
 import com.jy.xinlangweibo.ui.activity.base.FragmentToolbarActivity;
 import com.jy.xinlangweibo.ui.adapter.VideoHistoryAdapter;
@@ -68,6 +70,10 @@ public class PersonalFragment extends BaseSupportFragment {
     ImageView ivSetting;
     @BindView(R.id.rl_out1)
     RelativeLayout rlOut;
+    @BindView(R.id.rl_about)
+    RelativeLayout rlAbout;
+    @BindView(R.id.feed_back)
+    RelativeLayout feedBack;
 
     @Override
     public void onHiddenChanged(boolean hidden) {
@@ -97,6 +103,24 @@ public class PersonalFragment extends BaseSupportFragment {
                     public void onNext(UserBean userBean) {
                         super.onNext(userBean);
                         updateUI(userBean);
+                    }
+                });
+        RetrofitHelper.getGankApis().getGirlList(0, 0).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<GankHttpResponse<List<GankItemBean>>>() {
+                    @Override
+                    public void call(GankHttpResponse<List<GankItemBean>> listGankHttpResponse) {
+                        CustomImageLoader.displayImage(getActivity(),
+                                bangumiBg,
+                                listGankHttpResponse.getResults().get(BaseApplication.getInstance().random.nextInt(50)).getUrl(),
+                                R.drawable.timeline_image_loading,
+                                R.drawable.timeline_image_failure,
+                                0, 0);
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        Logger.showLog(throwable.getMessage(), "personfragment");
                     }
                 });
 
@@ -140,27 +164,10 @@ public class PersonalFragment extends BaseSupportFragment {
                 UserShowActivity.launch(getActivity(), model.screen_name);
             }
         });
-        RetrofitHelper.getGankApis().getGirlList(0, 0).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<GankHttpResponse<List<GankItemBean>>>() {
-                    @Override
-                    public void call(GankHttpResponse<List<GankItemBean>> listGankHttpResponse) {
-                        CustomImageLoader.displayImage(getActivity(),
-                                bangumiBg,
-                                listGankHttpResponse.getResults().get(BaseApplication.getInstance().random.nextInt(50)).getUrl(),
-                                R.drawable.timeline_image_loading,
-                                R.drawable.timeline_image_failure,
-                                0, 0);
-                    }
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
-                        Logger.showLog(throwable.getMessage(), "personfragment");
-                    }
-                });
+
     }
 
-    @OnClick({R.id.rl_setting, R.id.iv_delete, R.id.bangumi_pic})
+    @OnClick({R.id.rl_setting, R.id.iv_delete, R.id.bangumi_pic, R.id.rl_about, R.id.feed_back, R.id.rl_out1})
     public void onClick(View view) {
 
         switch (view.getId()) {
@@ -175,18 +182,29 @@ public class PersonalFragment extends BaseSupportFragment {
                 break;
             case R.id.bangumi_pic:
 
-                MainActivity activity = (MainActivity) getActivity();
                 if (!activity.getAccessAccessToken().isSessionValid()) {
                     activity.startActivityForResult(LoginActivity.class, MainActivity.OAUTH_REQUEST);
                 }
+                break;
+            case R.id.rl_about:
+
+                intent2Activity(AboutActivity.class);
+                break;
+            case R.id.feed_back:
+
+                if(!activity.getAccessAccessToken().isSessionValid()) {
+                    showToast("需要登录微博哟，试试重新登陆吧0.0");
+                    return;
+                }
+                WriteStatusActivity.intentToFeedBack(getActivity());
+                break;
+            case R.id.rl_out1:
+
+                getActivity().finish();
+                System.exit(0);
                 break;
         }
 
     }
 
-    @OnClick(R.id.rl_out1)
-    public void onClick() {
-        activity.finish();
-        System.exit(0);
-    }
 }

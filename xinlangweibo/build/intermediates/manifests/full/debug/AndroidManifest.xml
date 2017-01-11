@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jy.xinlangweibo"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionCode="60"
+    android:versionName="6.0" >
 
     <uses-sdk
         android:minSdkVersion="15"
@@ -66,7 +66,7 @@
         <activity
             android:name="com.jy.xinlangweibo.ui.activity.WriteStatusActivity"
             android:theme="@style/AppThemeNotTranslucentStatusBar"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
+            android:windowSoftInputMode="stateAlwaysVisible|adjustResize" />
         <!--
                     <activity
                     android:name=".ui.activity.ImageBrowseActivity"
@@ -96,6 +96,9 @@
         <!-- 在线视频详情页 -->
         <activity
             android:name="com.jy.xinlangweibo.ui.activity.VideoInfoActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name="com.jy.xinlangweibo.ui.activity.AboutActivity"
             android:configChanges="orientation|screenSize|keyboardHidden" />
         <activity android:name="com.jy.xinlangweibo.share.shareutil._ShareActivity" />
         <!-- 发布服务 -->
