@@ -23,6 +23,8 @@
         android:label="@string/app_name"
         android:theme="@style/appTheme">
 
+        <meta-data android:value="5876e156f43e4847780011b5" android:name="UMENG_APPKEY"/>
+        <meta-data android:value="xiaomi" android:name="UMENG_CHANNEL"/>
         <meta-data
             android:name="com.jy.xinlangweibo.utils.CommonImageLoader.MyGlideModule"
             android:value="GlideModule" />

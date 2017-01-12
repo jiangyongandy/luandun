@@ -23,6 +23,12 @@
         android:supportsRtl="true"
         android:theme="@style/appTheme" >
         <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5876e156f43e4847780011b5" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="xiaomi" />
+        <meta-data
             android:name="com.jy.xinlangweibo.utils.CommonImageLoader.MyGlideModule"
             android:value="GlideModule" />
         <!-- splash activity -->

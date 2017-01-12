@@ -1162,7 +1162,7 @@
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="action_settings">Settings</string>
-    <string name="app_name">LuanDun</string>
+    <string name="app_name">乱炖电影</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="bga_pp_all_image">所有图片</string>
     <string name="bga_pp_choose">选择</string>

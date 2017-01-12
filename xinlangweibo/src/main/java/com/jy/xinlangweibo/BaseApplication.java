@@ -18,6 +18,7 @@ import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.utils.LogUtil;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
+import com.umeng.analytics.MobclickAgent;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -58,6 +59,7 @@ public class BaseApplication extends Application {
 		application = this;
 		initImageLoader(this);
 		initShare();
+		MobclickAgent.setScenarioType(application ,MobclickAgent.EScenarioType.E_UM_NORMAL );
 		refWatcher = LeakCanary.install(this);
 
 		LogUtil.enableLog();

@@ -24,6 +24,7 @@ import com.jy.xinlangweibo.utils.Logger;
 import com.jy.xinlangweibo.utils.ThemeUtils;
 import com.jy.xinlangweibo.utils.ToastUtils;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
+import com.umeng.analytics.MobclickAgent;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -63,6 +64,13 @@ public class BaseActivity extends SwipeBackActivity {
 		if(this.theme != AppSetting.getThemeColor()) {
 			reload();
 		}
+		MobclickAgent.onResume(this);
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		MobclickAgent.onPause(this);
 	}
 
 	@Override

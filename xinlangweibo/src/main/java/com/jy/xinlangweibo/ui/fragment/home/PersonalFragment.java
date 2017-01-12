@@ -33,6 +33,7 @@ import com.jy.xinlangweibo.utils.DateUtils;
 import com.jy.xinlangweibo.utils.Logger;
 import com.jy.xinlangweibo.utils.RxBus;
 import com.jy.xinlangweibo.widget.CircleImageView;
+import com.umeng.analytics.MobclickAgent;
 
 import java.util.List;
 
@@ -200,6 +201,7 @@ public class PersonalFragment extends BaseSupportFragment {
                 break;
             case R.id.rl_out1:
 
+                MobclickAgent.onKillProcess(activity);
                 getActivity().finish();
                 System.exit(0);
                 break;
