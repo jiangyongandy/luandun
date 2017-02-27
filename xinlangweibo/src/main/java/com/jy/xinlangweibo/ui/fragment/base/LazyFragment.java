@@ -125,7 +125,7 @@ public abstract class LazyFragment extends BaseFragment {
     protected void updateUi() {}
 
     protected void showToast(CharSequence msg) {
-        ToastUtils.show(getContext(),msg, Toast.LENGTH_SHORT);
+        ToastUtils.show(getActivity(),msg, Toast.LENGTH_SHORT);
     }
 
     private void showLayout(View layout) {

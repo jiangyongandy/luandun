@@ -34,7 +34,7 @@
         <item name="android:windowTranslucentStatus">false</item>
     </style>
 
-    <style name="AppThemeTranslucentStatusBar" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppThemeTranslucentStatusBar" parent="@style/Theme.AppCompat.NoActionBar">
         <item name="themeColor">@color/orange</item>
         <item name="colorAccent">?attr/themeColor</item>
         <item name="colorPrimary">?attr/themeColor</item>

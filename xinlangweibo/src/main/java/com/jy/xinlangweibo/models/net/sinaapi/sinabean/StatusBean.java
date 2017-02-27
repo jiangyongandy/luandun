@@ -131,7 +131,7 @@ public class StatusBean implements Serializable {
      */
     public ArrayList<String> getPic_urls2() {
         if(pic_urls != null && pic_urls2 == null) {
-            pic_urls2 = new ArrayList<>();
+            pic_urls2 = new ArrayList<String>();
             for(PicUrlsBean pic:pic_urls)
                 pic_urls2.add(pic.thumbnail_pic);
         }

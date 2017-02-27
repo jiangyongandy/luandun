@@ -218,7 +218,7 @@ public class StatusBeanDB {
                 .map(new Func1<List<StatusBean>, List<String>>() {
                     @Override
                     public List<String> call(List<StatusBean> statusBeens) {
-                        ArrayList<String> strings = new ArrayList<>();
+                        ArrayList<String> strings = new ArrayList<String>();
                         for(StatusBean statusBean:statusBeens) {
                             strings.add(statusBean.text);
                         }

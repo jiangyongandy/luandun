@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class BGAImageFolderModel  extends BaseSerial{
     public String name;
     public String coverPath;
-    private ArrayList<String> mImages = new ArrayList<>();
+    private ArrayList<String> mImages = new ArrayList<String>();
     private boolean mTakePhotoEnabled;
 
     public BGAImageFolderModel(boolean takePhotoEnabled) {

@@ -95,7 +95,7 @@ public class RetrofitHelper {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    while (!response.isSuccessful() && tryCount < 3) {
+                    while ((response == null || !response.isSuccessful()) && tryCount < 3) {
 
 //                        KL.d(RetrofitHelper.class, "interceptRequest is not successful - :{}", tryCount);
                         Logger.showLog("interceptRequest is not successful","response");

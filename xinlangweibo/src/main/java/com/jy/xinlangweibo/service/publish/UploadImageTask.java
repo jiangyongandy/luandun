@@ -31,7 +31,7 @@ public class UploadImageTask extends AsyncTask{
 
     @Override
     protected Object doInBackground(Object[] params) {
-        ArrayList<String> pids = new ArrayList<>();
+        ArrayList<String> pids = new ArrayList<String>();
         for(int i = 0;i<publishBean.getPics().length;i++) {
             pids.add(0,StatusInteraction.getInstance(context).uploadImageForPicId(BaseApplication.getInstance().getAccessAccessToken().getToken(),publishBean.getPics()[i]));
         }

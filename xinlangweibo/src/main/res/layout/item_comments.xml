@@ -27,6 +27,7 @@
             android:layout_alignTop="@+id/iv_head"
             android:layout_marginLeft="14dp"
             android:layout_toRightOf="@+id/iv_head"
+            style="@style/small_balck_text"
             android:text="吴彦祖"
             android:textSize="12sp" />
 
@@ -47,8 +48,9 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/tv_from"
             android:layout_below="@+id/iv_head"
+            style="@style/middle_balck_text"
             android:text="油坊桥从前有个人，后来他成吴彦祖！！！！"
-            android:textSize="13sp" />
+             />
 
         <!--
          <ImageView
@@ -59,7 +61,8 @@
         android:layout_below="@+id/tv_statuses_content"
         android:scaleType="centerCrop"
         android:src="@drawable/psb"
-        android:visibility="visible" />        -->
+        android:visibility="visible" />
+        -->
 
     </RelativeLayout>
 

@@ -12,9 +12,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:tint="@color/icon"
         android:paddingLeft="16dp"
         android:src="@drawable/icon_navbarhomeleft_gra2ora_sel" />
+        <!--android:tint="@color/icon"-->
 
     <TextView
         android:id="@+id/nav_left_text"
@@ -41,12 +41,12 @@
         android:id="@+id/nav_right_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:tint="@color/icon"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:paddingRight="16dp"
         android:src="@drawable/icon_navbarhomeright_gra2ora_sel"
         android:visibility="visible" />
+        <!--android:tint="@color/icon"-->
 
     <Button
         android:id="@+id/nav_right_text"

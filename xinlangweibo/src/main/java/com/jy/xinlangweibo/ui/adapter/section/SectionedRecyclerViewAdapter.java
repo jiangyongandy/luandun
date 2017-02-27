@@ -29,6 +29,8 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
 
     public final static int VIEW_TYPE_FAILED = 4;
 
+    public final static int VIEW_TYPE_SECTION_ITEM_LAST = 5;
+
     private LinkedHashMap<String,Section> sections;
 
     private HashMap<String,Integer> sectionViewTypeNumbers;
@@ -332,9 +334,10 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      */
     public int getSectionItemViewType(int position)
     {
+        Section section = getSectionForPosition(position);
 
-        if(getSectionPosition(position) == getSectionForPosition(position).getContentItemsTotal() - 1 && getSectionForPosition(position).getContentItemsTotal() % 2 != 0) {
-            return 5;
+        if(getSectionPosition(position) == section.getContentItemsTotal() - 1 && section.getContentItemsTotal() % 2 != 0) {
+            return VIEW_TYPE_SECTION_ITEM_LAST;
         }
 
         int viewType = getItemViewType(position);

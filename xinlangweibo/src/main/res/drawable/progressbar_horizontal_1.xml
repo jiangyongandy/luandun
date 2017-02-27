@@ -20,7 +20,7 @@
     <item android:id="@android:id/progress">
         <clip>
             <shape>
-                <solid android:color="?attr/themeStatusbarColor" />
+                <solid android:color="@color/colorPrimaryDark" />
             </shape>
         </clip>
     </item>

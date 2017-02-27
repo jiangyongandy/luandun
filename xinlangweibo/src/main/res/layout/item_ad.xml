@@ -4,6 +4,6 @@
 
     <ImageView
         android:id="@+id/iv_ad"
-        android:layout_width="match_parent" android:scaleType="centerCrop" android:src="@drawable/beautifulrichu"
+        android:layout_width="match_parent" android:scaleType="centerCrop" android:background="@color/white"
         android:layout_height="200dp" />
 </RelativeLayout>

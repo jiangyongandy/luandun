@@ -1,6 +1,7 @@
 package com.jy.xinlangweibo.ui.adapter.videorecommendsections;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -9,10 +10,13 @@ import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.models.net.videoapi.RetrofitHelper;
 import com.jy.xinlangweibo.models.net.videoapi.videobean.GankHttpResponse;
 import com.jy.xinlangweibo.models.net.videoapi.videobean.GankItemBean;
+import com.jy.xinlangweibo.ui.activity.base.FragmentToolbarActivity;
+import com.jy.xinlangweibo.ui.adapter.section.StatelessSection;
+import com.jy.xinlangweibo.ui.fragment.ImageBrowserFragment;
 import com.jy.xinlangweibo.utils.CommonImageLoader.CustomImageLoader;
 import com.jy.xinlangweibo.utils.Logger;
-import com.jy.xinlangweibo.ui.adapter.section.StatelessSection;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -69,13 +73,30 @@ public class AdSection extends StatelessSection {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<GankHttpResponse<List<GankItemBean>>>() {
                     @Override
-                    public void call(GankHttpResponse<List<GankItemBean>> listGankHttpResponse) {
+                    public void call(final GankHttpResponse<List<GankItemBean>> listGankHttpResponse) {
                         CustomImageLoader.displayImage(mContext,
                                 bannerViewHolder.mBannerView,
                                 listGankHttpResponse.getResults().get(num).getUrl(),
                                 R.drawable.timeline_image_loading,
                                 R.drawable.timeline_image_failure,
                                 0, 0);
+
+                        final ArrayList<String> picUrls = new ArrayList<>();
+
+                        for(GankItemBean bean:listGankHttpResponse.getResults()) {
+                            picUrls.add(bean.getUrl());
+                        }
+
+                        bannerViewHolder.mBannerView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                //					前往图片浏览器
+                                Intent intent = new Intent(mContext, FragmentToolbarActivity.class);
+                                intent.putExtra("Pic_urls", (ArrayList) picUrls);
+                                intent.putExtra("Position", num);
+                                FragmentToolbarActivity.launch(mContext, ImageBrowserFragment.class, intent, false);
+                            }
+                        });
                     }
                 }, new Action1<Throwable>() {
                     @Override

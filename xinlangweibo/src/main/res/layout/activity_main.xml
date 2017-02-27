@@ -31,11 +31,11 @@
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_gravity="right"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
             android:paddingRight="16dp"
             android:src="@drawable/icon_navbarhomeright_gra2ora_sel"
-            android:tint="@color/icon"
             android:visibility="visible" />
+            <!--android:background="?android:attr/selectableItemBackgroundBorderless"-->
+            <!--android:tint="@color/icon"-->
     </android.support.v7.widget.Toolbar>
 
     <FrameLayout

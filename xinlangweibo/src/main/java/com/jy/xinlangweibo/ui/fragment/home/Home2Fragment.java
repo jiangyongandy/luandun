@@ -173,14 +173,13 @@ public class Home2Fragment extends LazySupportFragment implements HomeFragmentVi
      *
      */
     private void initPlv() {
-        footView = View.inflate(activity, R.layout.status_footview_loading,
-                null);
+        footView = activity.getLayoutInflater().inflate(R.layout.status_footview_loading,lvStatus.getmRefreshableView(),false);
         ivLoad = (ImageView) footView.findViewById(R.id.iv_status_loading);
         tvLoad = footView.findViewById(R.id.tv_status_loading);
 
         adapter.setData(publicTimeLineList);
         lvStatus.setAdapter(adapter);
-        View headView = activity.getLayoutInflater().inflate(R.layout.layout_custom_searchview,lvStatus,false);
+        View headView = activity.getLayoutInflater().inflate(R.layout.layout_custom_searchview,lvStatus.getmRefreshableView(),false);
         headView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -281,7 +280,7 @@ public class Home2Fragment extends LazySupportFragment implements HomeFragmentVi
         }
     });
 
-    public static class TimeLineItemViewHolderBase extends ViewHolderBase<StatusBean> implements BGANinePhotoLayout.Delegate {
+    public class TimeLineItemViewHolderBase extends ViewHolderBase<StatusBean> implements BGANinePhotoLayout.Delegate {
         //
         private static final int REQUEST_REPOST = 1;
         private static final int REQUEST_COMMENT = 2;
@@ -322,7 +321,7 @@ public class Home2Fragment extends LazySupportFragment implements HomeFragmentVi
 
         @Override
         public View createView(LayoutInflater layoutInflater) {
-            View rootView = layoutInflater.inflate(R.layout.item_status2, null);
+            View rootView = layoutInflater.inflate(R.layout.item_status2, lvStatus.getmRefreshableView(),false);
             ButterKnife.bind(this, rootView);
             context = rootView.getContext();
             return rootView;

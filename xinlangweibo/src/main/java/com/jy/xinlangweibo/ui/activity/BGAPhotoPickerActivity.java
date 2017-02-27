@@ -40,6 +40,7 @@ import com.jy.xinlangweibo.widget.ninephoto.BGASpaceItemDecoration;
 import com.jy.xinlangweibo.widget.pw.BGAPhotoFolderPw;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -131,7 +132,7 @@ public class BGAPhotoPickerActivity extends ToolbarActivity  implements AdapterV
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bga_pp_activity_photo_picker);
         ButterKnife.bind(this);
@@ -151,7 +152,17 @@ public class BGAPhotoPickerActivity extends ToolbarActivity  implements AdapterV
             rvPhotoPickerContent.addOnScrollListener(new BGARVOnScrollListener(this));
         }
 
-        processLogic(savedInstanceState);
+        requestStoragePermission(new PermissionHandler() {
+            @Override
+            public void onGranted() {
+                processLogic(savedInstanceState);
+            }
+
+            @Override
+            public void onDenied() {
+                ToastUtils.show(BGAPhotoPickerActivity.this,"请求权限已被拒绝",Toast.LENGTH_SHORT);
+            }
+        });
     }
 
     protected void processLogic(Bundle savedInstanceState) {
@@ -268,11 +279,18 @@ public class BGAPhotoPickerActivity extends ToolbarActivity  implements AdapterV
      * 拍照
      */
     private void takePhoto() {
-        try {
-            startActivityForResult(mImageCaptureManager.getTakePictureIntent(), REQUEST_CODE_TAKE_PHOTO);
-        } catch (Exception e) {
-            ToastUtils.show(this, getString(R.string.bga_pp_photo_not_support), Toast.LENGTH_SHORT);
-        }
+        requestCameraPermission(new PermissionHandler() {
+            @Override
+            public void onGranted() {
+
+                try {
+                    startActivityForResult(mImageCaptureManager.getTakePictureIntent(), REQUEST_CODE_TAKE_PHOTO);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    ToastUtils.show(BGAPhotoPickerActivity.this, getString(R.string.bga_pp_photo_not_support), Toast.LENGTH_SHORT);
+                }
+            }
+        });
     }
 
     @Override

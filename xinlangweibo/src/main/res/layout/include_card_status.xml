@@ -20,6 +20,7 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="17dp"
         android:layout_toRightOf="@+id/iv_card_status"
+        style="@style/content_black_text"
         android:text="卡片微博的文字内容。。。" />
 
 </RelativeLayout>

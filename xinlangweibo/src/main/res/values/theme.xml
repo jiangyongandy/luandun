@@ -4,7 +4,7 @@
             Base application theme, dependent on API level. This theme is replaced
             by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
         -->
-        <style name="WeiboBaseTheme" parent="Theme.AppCompat.Light.NoActionBar"></style>
+        <style name="WeiboBaseTheme" parent="@style/Theme.AppCompat.NoActionBar"></style>
 
         <!-- Application theme. -->
 

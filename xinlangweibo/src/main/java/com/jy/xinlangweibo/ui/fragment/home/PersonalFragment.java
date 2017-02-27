@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.jy.xinlangweibo.BaseApplication;
 import com.jy.xinlangweibo.R;
 import com.jy.xinlangweibo.models.cache.LocaleHistory;
@@ -39,6 +40,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import jp.wasabeef.glide.transformations.BlurTransformation;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
@@ -111,12 +113,12 @@ public class PersonalFragment extends BaseSupportFragment {
                 .subscribe(new Action1<GankHttpResponse<List<GankItemBean>>>() {
                     @Override
                     public void call(GankHttpResponse<List<GankItemBean>> listGankHttpResponse) {
-                        CustomImageLoader.displayImage(getActivity(),
-                                bangumiBg,
-                                listGankHttpResponse.getResults().get(BaseApplication.getInstance().random.nextInt(50)).getUrl(),
-                                R.drawable.timeline_image_loading,
-                                R.drawable.timeline_image_failure,
-                                0, 0);
+
+                        //设置背景高斯模糊图片
+                        Glide.with(getActivity())
+                                .load(listGankHttpResponse.getResults().get(BaseApplication.getInstance().random.nextInt(50)).getUrl())
+                                .bitmapTransform(new BlurTransformation(getActivity()))
+                                .into(bangumiBg);
                     }
                 }, new Action1<Throwable>() {
                     @Override

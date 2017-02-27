@@ -109,7 +109,10 @@ public class QQLoginInstance extends LoginInstance {
                     JSONObject jsonObject = new JSONObject(response.body().string());
                     QQUser user = QQUser.parse(token.getOpenid(), jsonObject);
                     qqUserEmitter.onNext(user);
-                } catch (IOException | JSONException e) {
+                } catch (IOException e) {
+                    ShareLogger.e(INFO.FETCH_USER_INOF_ERROR);
+                    qqUserEmitter.onError(e);
+                } catch (JSONException e) {
                     ShareLogger.e(INFO.FETCH_USER_INOF_ERROR);
                     qqUserEmitter.onError(e);
                 }

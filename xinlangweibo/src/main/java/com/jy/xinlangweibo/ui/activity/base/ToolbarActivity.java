@@ -8,7 +8,7 @@ import com.jy.xinlangweibo.R;
 /**
  * Created by JIANG on 2016/9/17.
  */
-public class ToolbarActivity extends BaseActivity {
+public class ToolbarActivity extends BasePermissionActivity {
 
 
     private ViewStubCompat viewStub;

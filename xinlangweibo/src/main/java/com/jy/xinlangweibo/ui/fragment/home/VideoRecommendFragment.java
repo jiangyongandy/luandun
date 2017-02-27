@@ -14,8 +14,10 @@ import com.jy.xinlangweibo.models.net.videoapi.videobean.ChildListBean;
 import com.jy.xinlangweibo.models.net.videoapi.videobean.HomePageResultBean;
 import com.jy.xinlangweibo.models.net.videoapi.videobean.ListBean;
 import com.jy.xinlangweibo.ui.activity.MainActivity;
+import com.jy.xinlangweibo.ui.adapter.section.Section;
 import com.jy.xinlangweibo.ui.adapter.section.SectionedRecyclerViewAdapter;
 import com.jy.xinlangweibo.ui.adapter.videorecommendsections.AdSection;
+import com.jy.xinlangweibo.ui.adapter.videorecommendsections.GoodVideoCategorySection;
 import com.jy.xinlangweibo.ui.adapter.videorecommendsections.VideoBannerSection;
 import com.jy.xinlangweibo.ui.adapter.videorecommendsections.VideoCategorySection;
 import com.jy.xinlangweibo.ui.fragment.base.LazySupportFragment;
@@ -51,7 +53,7 @@ public class VideoRecommendFragment extends LazySupportFragment {
     @Override
     protected void initViewAndEvent(View rootView) {
         mSectionedRecyclerViewAdapter = new SectionedRecyclerViewAdapter();
-        GridLayoutManager mGridLayoutManager = new GridLayoutManager(getActivity(), 2);
+        GridLayoutManager mGridLayoutManager = new GridLayoutManager(getActivity(), 6);
         mGridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
 
             @Override
@@ -59,9 +61,15 @@ public class VideoRecommendFragment extends LazySupportFragment {
 
                 switch (mSectionedRecyclerViewAdapter.getSectionItemViewType(position)) {
                     case SectionedRecyclerViewAdapter.VIEW_TYPE_HEADER:
-                        return 2;
-                    case 5:
-                        return 2;
+
+                        return 6;
+                    case SectionedRecyclerViewAdapter.VIEW_TYPE_SECTION_ITEM_LAST:
+
+                        return 6;
+                    case SectionedRecyclerViewAdapter.VIEW_TYPE_ITEM_LOADED:
+
+                        Integer spanSize = mSectionedRecyclerViewAdapter.getSectionForPosition(position).getItemSpanSize();
+                        return spanSize;
 
                     default:
                         return 1;
@@ -116,18 +124,8 @@ public class VideoRecommendFragment extends LazySupportFragment {
                 .subscribe(new Action1<HomePageResultBean>() {
                     @Override
                     public void call(HomePageResultBean models) {
-                        List<ChildListBean> bannerList = models.ret.list.get(0).childList;
-                        mSectionedRecyclerViewAdapter.addSection(new VideoBannerSection(bannerList));
-                        models.ret.list.remove(0);
-                        for (ListBean listBean : models.ret.list) {
-                            if (listBean.showType.equals("adv")) {
-                                mSectionedRecyclerViewAdapter.addSection(new AdSection(BaseApplication.getInstance(), BaseApplication.getInstance().random.nextInt(50)));
-                            } else {
-                                mSectionedRecyclerViewAdapter.addSection(new VideoCategorySection(getActivity(), listBean));
-                            }
-                        }
                         dismissLoading();
-                        updateUi();
+                        updateUi(models);
                     }
                 }, new Action1<Throwable>() {
                     @Override
@@ -144,6 +142,29 @@ public class VideoRecommendFragment extends LazySupportFragment {
 
     @Override
     protected void updateUi() {
+        mSectionedRecyclerViewAdapter.notifyDataSetChanged();
+    }
+
+    private void updateUi(HomePageResultBean models) {
+        List<ChildListBean> bannerList = models.ret.list.get(0).childList;
+        mSectionedRecyclerViewAdapter.addSection(new VideoBannerSection(bannerList));
+        models.ret.list.remove(0);
+        for (ListBean listBean : models.ret.list) {
+            if (listBean.showType.equals("adv")) {
+                mSectionedRecyclerViewAdapter.addSection(new AdSection(getActivity(), BaseApplication.getInstance().random.nextInt(50)));
+            } else {
+                Section section;
+                if(listBean.title.equals("精彩推荐")) {
+                    section = new GoodVideoCategorySection(getActivity(), listBean);
+                    section.setItemSpanSize(2);
+                }else {
+
+                    section = new VideoCategorySection(getActivity(), listBean);
+                    section.setItemSpanSize(3);
+                }
+                mSectionedRecyclerViewAdapter.addSection(section);
+            }
+        }
         mSectionedRecyclerViewAdapter.notifyDataSetChanged();
     }
 

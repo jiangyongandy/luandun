@@ -504,7 +504,7 @@ public class WriteStatusActivity extends BaseActivity implements
         DisplayMetrics metrics = new DisplayMetrics();
         this.getWindowManager().getDefaultDisplay().getMetrics(metrics);
         int usableHeight = metrics.heightPixels;
-        this.getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
+        this.getWindowManager().getDefaultDisplay().getMetrics(metrics);
         int realHeight = metrics.heightPixels;
         if (realHeight > usableHeight) {
             return realHeight - usableHeight;

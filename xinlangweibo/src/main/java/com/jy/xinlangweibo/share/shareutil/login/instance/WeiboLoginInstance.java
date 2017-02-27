@@ -100,7 +100,10 @@ public class WeiboLoginInstance extends LoginInstance {
                     JSONObject jsonObject = new JSONObject(response.body().string());
                     WeiboUser user = WeiboUser.parse(jsonObject);
                     weiboUserEmitter.onNext(user);
-                } catch (IOException | JSONException e) {
+                } catch (IOException e) {
+                    ShareLogger.e(INFO.FETCH_USER_INOF_ERROR);
+                    weiboUserEmitter.onError(e);
+                } catch (JSONException e) {
                     ShareLogger.e(INFO.FETCH_USER_INOF_ERROR);
                     weiboUserEmitter.onError(e);
                 }

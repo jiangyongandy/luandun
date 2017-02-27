@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:layout="@layout/preference_custom">
 
-    <PreferenceCategory android:title="@string/category_color_theme_item">
+    <PreferenceCategory android:title="@string/category_color_theme_item" android:layout="@layout/preference_custom">
 
         <Preference
-            android:key="pTheme" android:title="@string/settings_md_colors" />
+            android:key="pTheme" android:title="@string/settings_md_colors" android:layout="@layout/preference_custom"/>
 
         <!--<Preference android:key="pThemeCustom" android:title="@string/settings_custom_colors" />-->
     </PreferenceCategory>
@@ -85,15 +85,16 @@
 
     &lt;!&ndash;</PreferenceCategory>&ndash;&gt;-->
 
-    <PreferenceCategory android:title="其它设置">
-        <Preference
+    <PreferenceCategory android:title="其它设置" android:layout="@layout/preference_custom">
+        <Preference  android:layout="@layout/preference_custom"
             android:key="pPicSavePath" android:summary="/sdcard/"
             android:title="图片储存路径"/>
 
-        <Preference
+        <Preference android:layout="@layout/preference_custom"
             android:key="pClearCache" android:title="清除图片缓存"/>
 
-        <CheckBoxPreference android:key="pNoImage" android:title="无图模式" android:defaultValue="false"
+        <CheckBoxPreference android:layout="@layout/preference_custom"
+            android:key="pNoImage" android:title="无图模式" android:defaultValue="false"
             android:summary="默认为加载图片" />
 
     </PreferenceCategory>

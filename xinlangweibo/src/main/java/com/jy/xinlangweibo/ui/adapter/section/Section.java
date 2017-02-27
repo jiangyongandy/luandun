@@ -33,6 +33,9 @@ public abstract class Section
 
     private Integer failedResourceId;
 
+    //default
+    private Integer itemSpanSize = 1;
+
     /**
      * Package-level constructor
      */
@@ -396,5 +399,13 @@ public abstract class Section
     public void onBindFailedViewHolder(RecyclerView.ViewHolder holder)
     {
         // Nothing to bind here.
+    }
+
+    public Integer getItemSpanSize() {
+        return itemSpanSize;
+    }
+
+    public void setItemSpanSize(Integer itemSpanSize) {
+        this.itemSpanSize = itemSpanSize;
     }
 }

@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.support.v7.app.AppCompatDelegate;
 
 import com.jy.xinlangweibo.constant.AccessTokenKeeper;
 import com.jy.xinlangweibo.share.shareutil.ShareConfig;
@@ -52,6 +53,11 @@ public class BaseApplication extends Application {
 
 	private RefWatcher refWatcher;
 
+	static
+	{
+		AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+	}
+
 	@Override
 	public void onCreate() {
 		super.onCreate();
@@ -64,6 +70,7 @@ public class BaseApplication extends Application {
 
 		LogUtil.enableLog();
 		random = new Random();
+		//todo 正式环境应该加上
 //		Thread.setDefaultUncaughtExceptionHandler(restartHandler);
 	}
 

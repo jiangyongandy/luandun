@@ -46,7 +46,7 @@ public class LocaleHistory {
     public void addVideoPlayHistory(ChildListBean bean) {
         List<ChildListBean> playHistory = getVideoPlayHistory();
         if(playHistory == null)
-            playHistory = new ArrayList<>();
+            playHistory = new ArrayList<ChildListBean>();
         if( playHistory.size() > 0 && playHistory.get(0).dataId.equals(bean.dataId) ) {
             return;
         }
